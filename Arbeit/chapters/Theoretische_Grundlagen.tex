@@ -50,6 +50,8 @@ In der \textit{copy\_from\_user} werden die Daten ab \textit{from} aus dem Users
 Analog arbeitet das Gegenstück \textit{copy\_to\_user}. Hier gibt \textit{from} allerdings die Speicherstelle im Kernel an und somit ist \textit{to} die Stelle im Userspace.
 Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der nicht kopierten Bytes zurückgegeben. \citep[S. 250f]{schroder2009embedded}
 
+%todo minor and major id
+
 \section{Plattformtreiber}\label{sec:plat_t}
 Gerätetreiber, und damit auch Plattformtreiber, sind unter Linux im Kernel angesiedelt. Eigene Treiber werden hierzu meist modular entwickelt und nicht fest in den Kernel integriert. Allerdings muss auch der Programmierer bei den nachgeladenen Kernelmodulen auf die korrekte Nutzung des Speicherplatzes achten, da diese Module ebenfalls im Kernel laufen und somit ein Segmentierungsfehler schwerwiegende Folgen hätte. \citep[S. 231ff.]{schroder2009embedded}
 

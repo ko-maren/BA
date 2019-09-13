@@ -6,11 +6,18 @@ In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des in \r
 %Umsetzung
 
 \section{Plattformtreiber und \acl{mfd}} \label{sec:plat}
-Um eine einwandfreie Kommunikation zwischen den Firmware Modulen im \acl{fpga} und dem Kernel zu gewährleisten, muss ein generischer Treiber erstellt werden. 
+Um eine einwandfreie Kommunikation zwischen den Firmware Modulen im \ac{fpga} und dem Kernel zu gewährleisten, muss ein generischer Treiber erstellt werden. 
+
+Wie in dem Kapitel \ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Modules eingegangen werden. 
+%todo class???
+
+Beim Laden wird eine Klasse erstellt und Speicherplatz allokiert. Nach dem Setzen der Major ID in einer Datenstruktur wird eine Minor ID Liste und Spinlock initialisiert. Über die Liste wird später eine freie Minor ID ausgewählt und gesetzt. Der Spinlock sorgt bei diesem Vorgang dafür, dass dieser nicht unterbrochen wird und keine Minor ID doppelt vergeben wird.
+Am Ende der Funktion wird der Plattformtreiber mit der platform\_driver Struktur registriert.   
+Analog wird beim Freigeben des Modules der Speicherplatz freigegeben, der Plattformtreiber wird abgemeldet und die Klasse zerstört.
+
 
 Damit das Kernel-Modul ordnungsgemäß geladen bzw. entladen wird, werden hierzu zwei Funktionen erstellt. Durch ein Makro des Linuxkernels (zitat?) werden diese Funktionen, dann anstelle/.. des .. aufgerufen.
 
-Als erstes soll auf die Initialisierungsroutine des Treibers eingegangen werden. bla bla bla 
 % Klasse erstellt, cdev region allokiert, platform dirver register 
 
 \section{Implementierung im Kernel}\label{sec:kernel}
