@@ -1,0 +1,181 @@
+% Vorspann der Arbeit
+%
+
+%
+
+\begin{flushright}
+\begin{figure}
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		%\centering
+		\includegraphics[height=20mm]{pictures/Hochschule_Muenchen_Logo.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		%\centering
+		\includegraphics[height=20mm]{pictures/ARRI_AG_Corporate_Logo.png}
+	\end{subfigure}
+\end{figure}
+\end{flushright}
+
+\vspace*{20mm}
+\begin{center}
+{\large Hochschule f\"ur angewandte Wissenschaften M\"unchen}\\
+{\large Fakult\"at f\"ur Elektrotechnik und Informationstechnik}\\
+{\large Bachelorstudiengang Elektrotechnik und Informationstechnik}\\
+
+\vspace*{15mm}
+{\huge Bachelorarbeit }    %% oder Masterarbeit
+\\
+
+\vspace*{10mm}
+{\huge \bfseries{%
+                      \par Modulare Ansteuerung eines FPGAs \"uber Software \par
+}} 
+
+
+\vspace*{15mm}
+{\Large abgegeben von %
+                      Maren Konrad 
+%%                    Vorname Name
+} 
+\\
+\end{center}
+
+\vfill
+{\large
+\begin{tabbing}
+\\
+Bearbeitungsbeginn: \hspace{3.5cm} \= %
+					  12.08.2019
+\\
+Abgabetermin: \> \= %     
+                      12.02.2020
+%%                    durch Ende-Datum ersetzen
+\\
+lfd. Nr. gem\"a{\ss}  Belegschein: \> %
+					  1234 
+%% durch richtige lfd Nr ersetzen
+\\
+\end{tabbing} }
+\thispagestyle{empty}
+\cleardoublepage
+
+
+% Seite 2
+\vspace*{20mm}
+\begin{center}
+{\large Hochschule f\"ur angewandte Wissenschaften M\"unchen}\\
+{\large Fakult\"at f\"ur Elektrotechnik und Informationstechnik}\\
+{\large Bachelorstudiengang Elektrotechnik und Informationstechnik}\\
+
+\vspace*{15mm}
+{\huge Bachelorarbeit }    %% oder Masterarbeit
+\\
+
+\vspace*{10mm}
+{\huge \bfseries{%
+		\par Modulare Ansteuerung eines bildverarbeitenden FPGAs "uber generische Kernelmodule \par
+}} % deuscher Langtitel
+
+\vspace*{10mm}
+{\huge \bfseries{%
+		\par Modular control of an image processing FPGA via camera software \par
+}} % englischer Langtitel
+
+\vspace*{15mm}
+{\Large abgegeben von %
+	Maren Konrad 
+	%%                    Vorname Name
+} 
+\\
+\end{center}
+
+\vfill
+{\large
+	\begin{tabbing}
+		\\
+		Bearbeitungsbeginn: \hspace{3.5cm} \= %     
+		12.08.2019
+		%%                    durch Start-Datum ersetzen
+		\\
+		Abgabetermin: \> %     
+		12.02.2020
+		%%                    durch Ende-Datum ersetzen
+		\\
+		lfd. Nr. gem\"a{\ss}  Belegschein: \> %
+		1234
+		%%                    durch Lfd. Nr. ersetzen
+		\\
+		Betreuer (Hochschule M\"unchen): \> %         
+		Prof. Dr. Gerhard Schillhuber
+		%%                    hier den Prof. eintragen
+		\\
+		Betreuer (Extern): \> %         
+		XX
+		\\
+		Betreuer (Extern): \> %         
+		XX
+\end{tabbing} }
+\thispagestyle{empty}
+\cleardoublepage
+
+% Seite 3
+\thispagestyle{empty}
+Erkl\"arungen des Bearbeiters:\\
+\\
+Name: Konrad \\
+Vorname: Maren \\
+
+1) Ich erkl\"are hiermit, dass ich die vorliegende Bachelorarbeit selbst\"andig verfasst
+und noch nicht anderweitig zu Pr\"ufungszwecken vorgelegt habe.
+
+S\"amtliche benutzte Quellen und Hilfsmittel sind angegeben, w\"ortliche und sinngem\"a{\ss}e Zitate sind als solche gekennzeichnet.
+\vspace{15mm}
+
+\begin{tabbing}
+	M\"unchen, den \today \hspace{10mm} \= \rule{60mm}{0.5pt}\\
+	\> {\small Unterschrift}
+\end{tabbing}
+\vspace{15mm}
+
+\vfill
+2) Der Ver\"offentlichung der Bachelorarbeit stimme ich hiermit \textbf{NICHT} zu.
+\vspace{15mm}
+
+\begin{tabbing}
+	M\"unchen, den \today \hspace{10mm} \= \rule{60mm}{0.5pt}\\
+	\> {\small Unterschrift}
+\end{tabbing}
+
+\vfill
+\cleardoublepage
+
+%Seite 4
+
+\begin{center}
+{\Large \bfseries{ Kurzfassung }}\\
+\end{center}
+
+%% Hier die Kurzfassung in Deutsch einfügen
+In dem vorliegenden Bericht geht es um die Verbesserung einer Kamerasoftware. Es wird hierzu eine Abstraktionsebene vorgestellt, die aus mehreren Modulen besteht. Um das Verst\"andnis zu erleichtern wird au\ss{}erdem eine kurze Einf\"uhrung zur Bildkette gegeben und anschlie\ss{}end auf ausgew\"ahlte Module eingegangen. Durch die Abstraktionsebene wird die \"Ubersichtlichkeit und Erweiterung der Software in Zukunft erleichtert werden.
+
+
+Dieser Bericht ist f\"ur Leser aus dem Bereich der Elektrotechnik geschrieben.
+
+\vspace*{5mm}
+\begin{center}
+{\Large \bfseries{ Abstract }}\\
+\end{center}
+
+%% Hier die Kurzfassung in Englisch ein
+This report handle the improvement of an camera software. For this, an abstraction level will be introduce, which consists out of a few modules. At first there is a short intorduction to the image processing chain to make the understanding easier and then go into details of selected modules. Because of the abstraction level the clarity and extensions of the software will be easier in future. 
+
+This report targets readers having an electric engineering background.
+
+\cleardoublepage
+%% Inhaltsverzeichnis
+\tableofcontents
+\clearpage
+
+
+

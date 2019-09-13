@@ -1,0 +1,210 @@
+\chapter{\acl{fra}} \label{sec:haupt}
+In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des in \ref{sec:thema} vorgestellte \ac{fra} eingegangen werden. schwerpunkte.... In dieser Arbeit wird nur die \acl{xbar} softwareseitig implementiert, da es sonst den Umfang der Arbeit übersteigt.
+
+%Aktuelle Implementierung
+%Theoretische Grundlagen o.ä.
+%Umsetzung
+
+\section{Plattformtreiber und \acl{mfd}} \label{sec:plat}
+Um eine einwandfreie Kommunikation zwischen den Firmware Modulen im \acl{fpga} und dem Kernel zu gewährleisten, muss ein generischer Treiber erstellt werden. 
+
+Damit das Kernel-Modul ordnungsgemäß geladen bzw. entladen wird, werden hierzu zwei Funktionen erstellt. Durch ein Makro des Linuxkernels (zitat?) werden diese Funktionen, dann anstelle/.. des .. aufgerufen.
+
+Als erstes soll auf die Initialisierungsroutine des Treibers eingegangen werden. bla bla bla 
+% Klasse erstellt, cdev region allokiert, platform dirver register 
+
+\section{Implementierung im Kernel}\label{sec:kernel}
+
+\section{Implementierung im Userspace}\label{sec:user}
+%testprogramm
+\section{\acl{ioctl}}\label{sec:ioctl}
+\subsection{Konzeptionierung}
+\subsection{Implementierung}
+
+\section{Einbindung ins \acl{geo}}\label{sec:soft}
+
+
+
+
+
+
+
+
+
+
+
+%\begin{figure}[!hbtp]
+%	\centering
+%	\includegraphics[width = \linewidth]{pictures/Bildkette.eps}
+%	\smallskip
+%	\caption{Schematische Bildkette}
+%	\label{fig:bildkette}
+%\end{figure} 
+
+%In der Abbildung \ref{fig:bildkette} sieht man eine schematische Bildkette, die in diesem Bericht zur Veranschaulichung weiter detailliert wird. Das Bild an den \ac{sdi} Ausgängen wird durch verschiedene Module geleitet und angepasst. Auf die Funktionsweise der Module \ac{xbar}, Scaler, Crop sowie Append und die Implementierung wird in den nächsten Unterkapiteln eingegangen.
+
+%\section{Funktionsweise der Module}
+%Module: Scaler, Framebuffer, Append, Xbar, Crop, Resize
+%Scaler: Berechnung des Bilds aufgrund des angegebenen Skalierungsverhältnis
+%Xbar: Verbinden von verschiedenen Pfaden
+%Append: Anpassen des Bild auf eine bestimmte Größe, dazufügen
+%Crop: Anpassen des Bild auf eine bestimmte Größe, wegschneiden
+%Im \ac{FPGA} sind verschiedene Module programmiert und vorkonfiguriert. Um die Kamerasoftware zu vereinfachen werden die Module auch dort angelegt.
+
+%In diesem Abschnitt soll näher auf die Funktionsweise der einzelnen Module eingegangen werden, bevor sich der nächste Abschnitt mit der Programmierung auseinander setzt.
+
+%Im Allgemeinen werden alle Module softwareseitig nur beschrieben, die Algorithmen der einzelnen Module sind im \ac{FPGA} verankert.
+
+%Als erstes wird die \ac{xbar} erläutert. In diesem Modul finden keine Berechnungen statt. Durch entsprechende Konfigurationen kann die \ac{xbar} Bildpfade teilen und auch wieder zusammenfügen.
+
+%Um das Ausgangsbild auf die richtige Größe zu skalieren wird ein Scaler eingesetzt. Hierzu wird dem Scaler ein Skalierungsverhältnis übergeben und das Modul berechnet selbstständig die richtige Ausgangsgröße.
+
+%Die letzten beiden betrachteten Module sind von der grundsätzlichen Idee ähnlich. Durch beide Module soll das Eingangsbild auf eine bestimmte Ausgangsgröße angepasst werden. 
+%Der Crop verringert die Eingangsgröße auf die Ausgangsgröße. Im Gegensatz dazu erweitert das Append die Eingangsgröße in dem ein schwarzer Rahmen um das Bild hinzugefügt wird.
+
+%\section{Programmierung der Module}
+
+%Für die Auswahl einer geeigneten Programmiersprache muss berücksichtigt werden, dass jedes Modul über die gleichen Eingangs- und Ausgangsgrößen verfügt. Deswegen bietet sich für \ac{geo} die objektorientierte Programmiersprache C++ an. 
+
+%Um die spezifischen Module möglichst weit zu vereinfachen gibt es vier Grundklassen, die aufeinander aufbauen und im folgenden erklärt werden. Die Eingangsgröße soll später vom Sensor zum SDI durchgereicht werden und die Ausgangsgröße vom SDI zum Sensor. 
+
+%\begin{figure}[!hbtp]
+%	\centering
+%	\includegraphics[width = \linewidth]{pictures/uml.jpg}
+%	\smallskip
+%	\caption{UML Übersicht der Grundklassen}
+%	\label{fig:uml}
+%\end{figure} 
+
+%Die Klasse Port wird von allen anderen Klassen verwendet (siehe Abbildung \ref{fig:uml}). Hier sind alle Eingangs- und Ausgangsgröße deklariert, sowie alle Getter Funktionen für diese Größen. Im Konstruktor der Klasse muss außerdem ein Portindex mit angegeben werden, welcher auch in den Variablen der Klasse zu finden ist.
+
+%Die beiden friend-Klassen Inport und Outport erben alle Größen und Getter der Port Klasse. Die jeweiligen Setter werden in den Klassen definiert.
+%Es wird hier in Eingangs- und Ausgangsport unterschieden, damit nur die richtigen Größen gesetzt werden können. Dadurch, dass die beiden Klassen als friend class definiert sind, können sie auf die Setter der jeweils anderen zugreifen. Für die Updatefunktionen ist dies notwendig damit die Parameter durchgereicht oder berechnete Werte an die Ein- oder Ausgänge geschrieben werden können.
+
+%Die größte Klasse im \ac{geo} ist die Klasse Module. Jedes Modul der Bildkette erbt sein Grundgerüst von dieser Elternklasse. Ein Modul kann aus mehreren Ein- oder Ausgängen bestehen, diese Anzahl wird im Konstruktor angegeben und dementsprechend werden die Ein- und Ausgänge angelegt.
+
+%\begin{minipage}{\textwidth}
+%\begin{bash}
+%this->in_count = in_count;
+%this->out_count = out_count;
+
+%for (i = 0U; i < in_count; i++)
+%{
+%	in_ports[i] = new in_port(this->name, (geo_port_t)i);
+%}
+
+%for (i = 0U; i < out_count; i++)
+%{
+%	out_ports[i] = new out_port(this->name, (geo_port_t)i);
+%}
+%\end{bash}
+%\captionof{floatcode}{Auszug aus dem Konstruktor der Klasse Module}
+%\end{minipage}
+
+%Wie in dem obigen Codeauszug zu sehen werden die privaten Variablen der Klasse auf die angegebene Anzahl von Ein- und Ausgängen gesetzt. Anschließend werden über For-Schleifen die entsprechenden Ports angelegt.
+
+%\begin{figure}[!hbtp]
+%	\centering
+%	\includegraphics[width = \linewidth]{pictures/update.png}
+%	\smallskip
+%	\caption{Übersicht der Updatefunktion}
+%	\label{fig:update}
+%\end{figure} 
+
+%Desweiteren sind in der Klasse auch Updatefunktionen (siehe Abbildung \ref{fig:update}) für jede Größe definiert. Hier werden die Größen am Eingangsport abgefragt und an den Ausgangsport übertragen beziehungsweise am Ausgangsport abgefragt und an den Eingangsport geschrieben. 
+
+%\subsection{\acl{xbar}}
+%Das Modul hat eine wichtige Aufgabe in der Kamera. Durch die \acl{xbar} können die Daten aus einem Pfad in mehr Pfade aufgeteilt werden. 
+
+%Damit muss die Updatefunktion der Module Klasse komplett und nicht nur zu Teilen überlagert werden. Hierzu sind ein paar der Ausgangsparameter als Bitmasken angelegt. So wird garantiert, dass auch vor einer \ac{xbar} noch nachvollzogen werden kann, welche Einstellungen an dem Ausgängen vorliegen. Dies ist vor allem bei den nachfolgenden Modulen wichtig, da diese abhängig von den Einstellungen ihre Berechnungen durchführen. 
+
+%\begin{minipage}{\textwidth}
+%\begin{bash}
+%void set_config(uint32_t config);
+%void connect_ports(uint32_t in_port, uint32_t out_port);
+%\end{bash}
+%\captionof{floatcode}{Deklaration der Konfigurationsfunktionen}
+%\end{minipage}
+
+%Die Klasse \ac{xbar} hat zudem zwei Funktionen um die Konfiguration einzustellen. Bei der einen übergibt man eine Bitmaske, welche man aus vorhandenen Defines verodern kann. Die zweite Funktion besteht aus zwei Übergabeparametern, hier gibt man direkt den Eingangs- und Ausgangsport an. Auch die Abfrage der Konfiguration kann über zwei Funktionen stattfinden. Einmal kann man alle Konfigurationen abfragen und der anderen Funktion übergibt man einen Ausgangsport und bekommt den entsprechenden Eingangsport zurück.
+
+
+%\subsection{Scaler}
+%Der Scaler führt Berechnungen aus um das Sensorbild auf die richtige Ausgangsgröße zu skalieren. In der Kamerasoftware wird an dieser Stelle immer nur runterskaliert. 
+
+%Die Klasse hat noch zusätzliche Variablen, diese sind jeweils doppelt vorhanden um die Vertikale und die Horizontale abzubilden. Der Divisor und der Multipikator sind die wichtigsten Parameter. In der Klasse wird die Eingangsgröße durch den Divisor geteilt und anschließend mit dem Multipikator multipliziert. Das Ergebnis wird gerundet und an den Ausgang geschrieben. Diese Berechnungen werden wieder für die Höhe und die Breite des Bildes durchgeführt. Die Variablen werden durch einen Setter gesetzt, allerdings können sie einzeln und unabhängig voneinander abgefragt werden. 
+
+%In dieser Klasse wird nur die Updatefunktion der Elternklasse Module für die Ausgangsgrößen überschrieben. Alle anderen Parameter werden durch das Module durchgereicht und nicht verändert. 
+
+%\subsection{Crop}
+%Um den Surround View einstellen zu können wird der Crop notwendig. Wenn diese Einstellung ausgeschalten ist, soll dass Bild am Ausgang anliegen, dass vom Medium aufgezeichnet wird. Hierzu muss das Crop Modul genau den Ausschnitt aus dem Bild ausschneiden, damit liegt am Ausgang das Recordingbild an.
+
+%Auch bei diesem Modul sind nur die Ausgangsgrößen relevant und somit wird hier nur diese Updatefunktion überlagert. Durch die Möglichkeit der Klasse verschiedene Modi einzustellen, werden dort auch entsprechende Berechnungen durchgeführt. Durch die Modi kann man am Ausgang entweder manuell eine Größe einstellen oder die Größe auf die Ausgangsgröße einstellen lassen. Zusätzlich kann man auch das Crop deaktivieren. 
+
+%Eine Besonderheit des Moduls im \ac{FPGA} ist, dass die Ausgangsgrößen teilweise durch eine gerade Zahl teilbar sein muss. Um dies zu garantieren, gibt es in der Klasse Funktionen, die entsprechend die berechneten Größen rundet. 
+
+
+%\subsection{Append}
+%An den Ausgängen sollen unter anderem auch \ac{gui} eingeblendet werden. Dazu wird das Bild kleiner skaliert als der Ausgang und anschließend muss es wieder auf die Ausgangsgröße erweitert werden. Das Append Modul fügt einen schwarzen Rahmen um das Bild, über diesen Rahmen wird die \ac{gui} gelegt. 
+
+%Bei der Klasse kann man verschiedene Modi einstellen. Über die Modi kann man das Bild auf die Ausgangsgröße erweitern, manuell eine Größe einstellen oder das Append Modul außer Betrieb setzen.
+
+%Das Modul überschreibt von der Elternklasse nur die Ausgangsgrößen, da keine anderen neu kalkuliert werden müssen. Des weiteren kann man nicht nur den Modi setzen, sondern natürlich auch eine Ausgangsgröße einstellen. Beim manuellen Modus wird diesen dann eingestellt. 
+
+%Ein anderer Setter ist die Möglichkeit, die Rahmenfarbe einzustellen. Im normalen Betrieb wird nur die Farbe schwarz verwendet, allerdings muss für Entwicklungszwecke die Farbe wählbar sein.
+
+%\section{Einbindung in die Software}
+%Um das \ac{geo} in die Kamera einbinden zu können, müssen zwei Aspekte betrachtet werden. Auf der einen Seite muss man die Bildkette auch in der Software abbilden können und auf der anderen Seite muss der Zugriff auf die Module stattfinden.
+
+%\subsection{Softwareseitige Erstellung der Bildkette}
+%code anschauen
+%Damit die gewünschte Übersichtlichkeit in der Software erreicht wird, muss die Bildkette nicht nur im \ac{FPGA} vorhanden sein, sondern in dem Umfang auch von der Software abgebildet werden.
+
+%Hierzu werden die vorhandenen \ac{FPGA} - Module durch die C++ Klassen abgebildet. Zuallererst werden hier die Module angelegt und im Anschluss werden Ein- und Ausgangsport hintereinander liegender Module verbunden. Damit wird sichergestellt, dass alle Größen von der Quelle bis zur Senke gelangen, bzw. andersherum.
+
+
+%\subsection{Zugriff auf die Module}
+%Da die Kamerasoftware in der Programmiersprache C geschrieben ist, muss eine Ebene geschaffen werden um auf die Funktionen der C++ Module im restlichen Teil der Software zuzugreifen. 
+
+%Die Objekte werden in C++ in einer Liste verwaltet, damit braucht man für den Funktionsaufruf nur den Modulindex und die einzustellende Grüße. 
+
+%\begin{minipage}{\textwidth}
+%\begin{bash}
+%void geoif_append_set_size_append(uint32_t module_idx, struct size size_append)
+%{
+%	append *var;
+%	if (geo_system == NULL)
+%	{
+%		error_msg(EH_WARNING, 
+%			"Geo system not initialised.");
+%		return;
+%	}
+%	if (geo_system->get_module(module_idx) == NULL)
+%	{
+%		error_msg(EH_WARNING, 
+%			"No module exists index \%u", module_idx);
+%		return;
+%	}
+%	var = (append *)(geo_system->get_module(module_idx));
+%	if (var == NULL)
+%	{
+%		error_msg(EH_WARNING, 
+%			"Module at index \%u is not append.",
+%			module_idx);
+%		return;
+%	}
+
+%	a->set_size_append(size_append);
+%}
+%\end{bash}
+%\captionof{floatcode}{Funktion eines Appends für C }
+%\end{minipage}
+
+%Wie man in dem obigen Codebeispiel sieht, kann die Kamerasoftware nicht direkt auf die Module zugreifen sondern geht über eine Extrafunktion. Bei dieser und allen weiteren Funktionen wird als Erstes überprüft, ob das Modul an diesem Index, dem der Funktion entspricht. Wenn dieses nicht der Fall ist, wird die Funktion verlassen. Bei einer Übereinstimmung der Module wird in der nächsten Zeile die entsprechende Größe in diesem Modul gesetzt.
+
+%Am Ende werden die Module in der zuvor definierten Reihenfolge geupdatet und damit sind in jedem Modul die richtigen Größen und Werte.
+
+%\subsection{Übertragen der Größen in den \ac{FPGA}}
+%Am Ende müssen die in dem \ac{geo} eingestellten Größen in die Module des \ac{FPGA}s übertragen werden. Hierzu werden die richtigen Module auf Software- und Hardwareseite zusammen aufgerufen. Die Größen des Moduls werden aus dem \ac{geo} entnommen und über entsprechende Hardwarefunktionen in die Register des \ac{FPGA}s geschrieben. An diesem Punkt findet allerdings keine Überprüfung auf die Richtigkeit des Moduls statt, sondern lediglich die Kontrolle, ob dieses im \ac{geo} und im \ac{FPGA} existiert.
+
+

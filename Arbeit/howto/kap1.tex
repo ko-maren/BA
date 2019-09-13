@@ -1,0 +1,202 @@
+\chapter{Internet und Intranet - Dienste und Anwendungen}
+\section{test}
+\section{Einführung}
+\index{Internet}
+Was ist eigentlich genau \qq{das Internet}?
+
+Testtext
+
+Definition: Als {\it Internet} wird die Verbindung aller Rechner bezeichnet, die 
+über das TCP/IP-Protokoll (Transmission Control Protocol/Internet Protocol) 
+miteinander kommunizieren. Bla.
+
+\index{Rechnerverbund} \index{LAN} \index{WAN}
+\begin{itemize}
+\item	Verbindung mehrerer lokaler Netze zu einen größeren Verbund.
+\item	Alle Rechner des einen Netzes können mit allen Rechnern der anderen Netze kommunizieren. 
+\item	Durch den Anschluß weiterer Netze entsteht ein immer größeres Netz - bis hin zum Internet.
+\item	LANs sind zumeist in regionalen Netzwerkverbunden organisiert, welche wiederum mindestens 
+einen überregionalen Zugang besitzen, den WAN-Anschluß (WAN = Wide Area Network).
+\end{itemize}
+Das weltumspannende Internet bietet so ein homogenes Erscheinungsbild, obwohl es technisch 
+auf einem heterogenen Konglomerat von Netzwerken aufgebaut ist.
+
+\index{TCP/IP}
+Ein Rechner wird allgemein dann als zum Internet gehörend angesehen, wenn:
+\begin{itemize}
+\item	er mit anderen Rechnern über TCP/IP oder per Modem über PPP kommunizieren kann,
+\item	er eine Netzadresse (IP-Nummer) besitzt,
+\item	er mit anderen Rechnern kommunizieren kann, die eine Netzadresse haben.
+\end{itemize}
+
+Dank TCP/IP kann der Datentransport über die unterschiedlichsten Medien erfolgen. Bei 
+LANs normalerweise über Kabel oder Glasfaser, bei Weitverkehrsverbindungen kommt 
+alles von der analogen Telefonverbindung über ISDN, ADSL, Standleitungen bis hin zu 
+Breitband-Glasfasernetzen und Richtfunk in Frage.
+
+\subsection{Entwicklung}
+Das Internet wurde 1969 aus einem Forschungsprojekt namens ARPA-Net geboren. 
+Das	Ziel: Ein Netzsystem, das auch partielle Ausfälle verkraften konnte. 
+Die Kommunikation findet immer nur zwischen einem Sender und einem Empfänger statt. 
+Das Netz dazwischen wird als unsicher angesehen.
+Jeder Rechner auf dem Netz mit jedem anderen kommunizieren können.
+Die Verbindung der Netze erfolgt über Koppelelemente (Router, Gateways).
+
+\index{TCP/IP} \index{NSFNET}
+Mit diesen Vorgaben entstand die Internet-Protokoll-Spezifikation TCP/IP. Da 
+etwa zur gleichen Zeit an der University of California ein neues Betriebssystem 
+mit Namen Unix entwickelt wurde, konnte diese Netzwerksoftware gleich fester 
+Bestandteil dieses Betriebssystems werden. Ein weiterer Meilenstein beim 
+Aufbau des Internet war die Gründung des NSFNET der National Science 
+Foundation (NSF) Ende der achtziger Jahre, die damit fünf neu gegründete 
+Super Computer Centers den amerikanischen Hochschulen zugänglich machte.
+
+\index{IAB} \index{IETF} \index{RFC}
+\subsection{Verwaltung}
+Das höchste Gremium im Internet ist das IAB (Internet Architecture Board). 
+Es segnet Entscheidungen über Standards und Adressvergabe ab und läßt 
+diese Entscheidungen bekanntgeben. Technische und betriebliche Probleme 
+werden zuvor in der IETF (Internet Engineering Task Force) behandelt, 
+deren Treffen für jedermann offen sind. Hier werden Standards entwickelt 
+und dokumentiert. Die Standards werden dann in sogenannten RFCs 
+(Request for Comments) niedergelegt. Als ausführende Institutionen 
+arbeiten sogenannte NICs (Network Information Centers) und NOCs 
+(Network Operation Centers), welche auf weltweiter, kontinentaler, 
+nationaler und regionaler Ebene existieren. 
+
+\subsection{Top-Level-Domains}
+Es hat sich ziemlich früh herausgestellt, dass menschliche Benutzer die 
+numerischen IP-Adressen nicht benutzen wollen, sondern aussagekräftige 
+und vor allem merkbare Namen bevorzugen. Es wurde daher das Domain Name 
+System entwickelt, das den Aufbau von Rechnernamen regelt. Es ordnet 
+jedem (weltweit eindeutigen) Namen eine IP-Adresse zu. 
+
+Die Namen im DNS sind hierarchisch aufgebaut. Das gesamte Internet ist 
+in Domains aufgeteilt, welche wieder durch Subdomains strukturiert werden. 
+In den Subdomains setzt sich die Strukturierung fort. Diese Hierarchie 
+spiegelt sich im Namen wieder. Die entsprechenden Domains werden durch 
+Punkt getrennt. 
+
+Die Top-Level Domain steht ganz rechts und wird durch 
+den Country-Code abgekürzt (weitere Beispiele: 'at' für Österreich, 'au' 
+für Australien, 'fr' für Frankreich, 'uk' für Großbritannien, ... ). 
+In den USA gibt es aus historischen Gründen allerdings sechs Top Level 
+Domains:
+ 
+\begin{tabelle}{|l|l|}{Generische TLDs}{Tab1}
+\hline
+{\bf TLD} & {\bf Bedeutung}\\
+\hline
+com	& Kommerzielle Organisationen\\
+edu	& (education) Schulen und Hochschulen\\
+gov	& (government) Regierungsinstitutionen\\
+mil	& militärische Einrichtungen\\
+net	& Netzwerk betreffende Organisationen\\
+org	& Nichtkommerzielle Organisationen\\
+int	& Internationale Organisationen\\
+\hline
+\end{tabelle}
+
+\begin{stabelle}{ll}{Generische TLDs}{Tab2}
+\sthead{TLD} & \sthead{Bedeutung}\\
+com	& Kommerzielle Organisationen\\
+edu	& (education) Schulen und Hochschulen\\
+gov	& (government) Regierungsinstitutionen\\
+mil	& militärische Einrichtungen\\
+net	& Netzwerk betreffende Organisationen\\
+org	& Nichtkommerzielle Organisationen\\
+int	& Internationale Organisationen\\
+\end{stabelle}
+
+\subsection{Dokumentation}
+Alle Protokolle und Vereinbarungen über das Internet sind in Dokumenten 
+festgehalten. Ganz zu Anfang waren diese Dokumente als Diskussionsgrundlagen 
+für einen weiten Kreis von Teilnehmern gedacht, weshalb sie den Namen 
+\qq{Request for Comment}, kurz RFC, erhielten. Es stellte sich jedoch 
+heraus, dass der Kreis der Diskutierenden relativ klein war und daher 
+auf das RFC-Dokument kein eigenes Standard-Dokument folgen musste. Die 
+Dokumente sind durchnummeriert und im Netz frei erhältlich.
+
+
+\chapter{Das World Wide Web (WWW)}
+Das World Wide Web (WWW) ist ein Multimediales Hypertextsystem im Internet.
+
+Es wurde 1989 im CERN (dem Europäischen Kernforschungszentrum in Genf, 
+Conseil Européen pur la Rechérche Nucléaire) entwickelt und basiert auf 
+einem System namens Hypertext. Der Text enthält Querverwei-se, die man 
+mit dem Betrachtungsprogramm per Tastendruck oder Mausklick abrufen kann. 
+Es können nicht nur lokale Dateien, sondern Dateien auf beliebigen 
+Rechnern im Internet als Querverweis angegeben und per Knopfdruck erreicht
+werden. 
+
+Mit dem WWW ging das Internet dann in die Hose! Am besten drücken Sie jetzt
+die Tasten \keys{Strg} \keys{Alt} \keys{Del} .
+
+\section{Nun wird es seltsam}
+Ich bin Blindtext. Von Geburt an. Es hat lange gedauert, bis ich begriffen habe, 
+was es bedeutet, ein blinder Text zu sein: Man macht keinen Sinn. Man wirkt hier 
+und da aus dem Zusammenhang gerissen. Oft wird man gar nicht erst gelesen. Aber 
+bin ich deshalb ein schlechter Text? Ich weiss, dass ich nie die Chance haben werde 
+im Stern zu erscheinen. Aber bin ich darum weniger wichtig? Ich bin blind! Aber 
+ich bin gerne Text. Und sollten Sie mich jetzt tatsächlich zu Ende lesen, dann
+habe ich etwas geschafft, was den meisten \qq{normalen} Texten nicht gelingt.
+
+Ich bin nur Blindtext und halte den Platz für Wichtigeres frei. Ich weiss, 
+dass ich wieder gelöscht werde aber das macht mir nichts aus. Das ist meine Bestimmung.
+
+\epsbild{bang.jpg}{0.6\textwidth}{Hier rummst es gleich}{Bild1}
+
+\section{Der Jammer geht weiter}
+Jaja, es stimmt. Ich bin Blindtext. Von Geburt an. Ein trauriges Leben ist das. 
+Ich kenne weder Erzeuger noch Autor. Irgendwann haben sie mich in die Welt gesetzt, 
+und seitdem werde ich herum gereicht. Meine Eltern bekennen sich nicht einmal zu mir. 
+Ich stehe ganz allein da. Meistens zwischen schillernden neuen Layouts, die dann alle 
+bewundern. Oder neben schicken Bildern, die andere beachten. MICH beachtet keiner. 
+Ich bleibe oft ungelesen. Kein Wunder: Würden Sie jemandem Beachtung schenken, der 
+meistens aus dem Zusammenhang gerissen ist? Eben. Ich bin ein elender Lückenbüßer, 
+der Geschmacksverstärker der Grafikbeilage. Aber ich bin kein schlechter Text! 
+
+Wirklich. Ich bin mehr als eine tumbe Zeichenabfolge. Ich ergebe Sinn, meine ganze 
+Existenz ist nicht sinnlos, nur weil ich blind bin. Wie viel Arbeit habe ich 
+Redakteuren schon erspart? Wie viele Nullnummern und Präsentationen habe ich 
+schon gerettet? Und manchmal, wenn sie nicht aufpassen, dann mogle ich mich 
+auch schon mal rein ins Blatt. Nur so. Für meine Warhol'schen fünf Minuten 
+Glanz und Ruhm. Und den Ärger bekommt dann immer ein anderer. Ich kann ja 
+nichts dafür: Ich bin Blindtext.
+
+\section{Noch ein Listing}
+Zum Schluss noch ein Beispiel für die Listing-Variante mit grauem Hintergrund.
+
+\begin{glisting}
+#!/usr/bin/perl
+# Lottozahlengenerator
+use strict;
+
+# Anzahl der Zufallszahlen
+my $count = 6;  
+
+# Obergrenze der Zufallszahlen
+my $Maximum = 49;
+
+# Hash fuer die Lottozahlen
+my %zahlen = ();
+
+# Zufallsgenerator-Init
+srand(time ^ $$);
+
+for(my $i = 1; $i <= $count; $i++) 
+  {
+  print &ZufallsZahl($Maximum), "\n";
+  }
+
+sub ZufallsZahl #($top)
+  {
+  my $top = shift;
+  my $zahl;
+  do 
+    {	$zahl = int(rand($top) + 1);} 
+  while (exists($zahlen{$zahl}));
+  $zahlen{$zahl} = 1;
+  return $zahl;
+  }
+\end{glisting}

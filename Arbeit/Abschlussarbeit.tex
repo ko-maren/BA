@@ -1,0 +1,101 @@
+%% Standard-Vorspann
+\documentclass[a4paper,11pt,twoside]{report}
+\usepackage{ngerman}  
+\usepackage[utf8]{inputenc}                
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[fleqn]{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%% Auf Schriftart Palatino umschalten
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{courier}
+\usepackage[figuresright]{rotating}
+%% fast immer benoetigte Pakete
+\usepackage{acronym}
+\usepackage{amssymb, amsthm}
+\usepackage{alltt}
+\usepackage{latexsym}
+\usepackage{makeidx}
+\usepackage{textcomp}
+\usepackage{rotating}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{caption}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{thmtools}
+\declaretheorem[style=Definition, title=Definition, numberwithin=chapter]{dfn}
+\newtheorem{axiom}{Axiom}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage[natbib,maxnames=3,style=numeric,backend=bibtex,sortlocale=de]{biblatex}
+\addbibresource{bibtex/literature.bib}
+\DeclareBibliographyCategory{fullcited}
+\usepackage{listings}
+\usepackage[hang]{footmisc}
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+\setlength{\footnotemargin}{0pt}
+\usepackage{url}
+\renewcommand\UrlFont{\sffamily\slshape}
+\usepackage{nicefrac}
+\usepackage{units}
+\usepackage{minibox}
+\pdfminorversion=7
+\usepackage{emptypage}
+\usepackage{hyperref}
+
+%% spezielles Zeug
+\usepackage{Abschlussarbeit}
+
+
+%\input{chapters/Abkuerzungsverzeichnis}
+
+%% Index erzeugen
+\makeindex
+
+%% jetzt geht's los
+\begin{document}
+\raggedbottom
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+%% Die Datei "Vorspann.tex"  bitte ausf�llen!
+\include{chapters/Vorspann}  
+\include{chapters/Abkuerzungsverzeichnis}
+
+%% Hier kommt der eigentlich Text der Arbeit
+%% sinnvoll ist, f�r jedes Kapitel eine eigene 
+%% Datei zu nehmen, verk�rzt die Zeit beim LaTeX-Durchlauf
+%% Erst am Schluss alle Dateien verwenden.
+
+\include{chapters/Einleitung}
+\include{chapters/Theoretische_Grundlagen}
+\include{chapters/Aktuelle_Implementierung}
+\include{chapters/Fachlicher_Hauptteil}
+\include{chapters/Ausblick}
+
+\printbibliography[title=Literaturverzeichnis]
+
+%% Beim Anhang gibt es eine Musterdatei, die 
+%% erg�nzt werden kann
+\include{chapters/Anhang}
+
+
+%% Stichwortverzeichnis ausgeben.
+%% falls nicht notwendig, die folgende Zeile loeschen
+\printindex
+
+\end{document}

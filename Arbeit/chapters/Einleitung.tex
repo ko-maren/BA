@@ -1,0 +1,23 @@
+\chapter{Einleitung}
+
+\section{\acl{ARRI}}
+Die Bachelorarbeit fand bei der Firma \acf{ARRI} statt. Nach der Gründung 1917 liegt der Hauptsitz von \ac{ARRI} immer noch in München. 
+Mittlerweile sind weltweit um die 1500 Mitarbeiter angestellt und die Firma ist einer der führenden Hersteller und Lieferanten in der Film- und Fernsehindustrie.
+
+Die \ac{ARRI} Gruppe ist in fünf Geschäftsbereiche eingeteilt: Kamerasysteme, Licht, Postproduktion, Verleihservice und Operationskamerasystem für die Medizin. \cite{arricorpinfo}
+
+Das Thema dieser Bachelorarbeit wurde im Bereich Kamerasysteme in der Forschungs- und Entwicklungsabteilung erarbeitet.
+
+
+\section{Hinführung zum Thema}\label{sec:thema}
+Damit die Kamera einwandfrei funktioniert müssen Firmware und Software zusammenspielen. Im \ac{geo} werden die verschiedenen Module aus dem \ac{fpga} abgebildet und entsprechend der Kameraeinstellungen die Bildgrößen berechnet. 
+
+In der Software werden dann in verschiedenen Funktionen die einzelnen Register im \ac{fpga} entsprechend gesetzt. Durch die aktuelle Implementierung können keine Module gleichzeitig im \ac{fpga} geupdatet werden. 
+
+%todo plural!
+Damit eine modulare Ansteuerung möglich wird, soll eine weitere Abstraktionsebene erstellt werden. Dieses sogenannte \ac{fra} soll die einzelnen Module im Kernel darstellen und entsprechend aus dem Userspace über \ac{ioctl} angesprochen werden können. Zusätzlich werden dann die direkten Hardwarezugriffe aus dem Hauptcode eliminiert. 
+
+Durch die neue Abstraktionsebene soll die Wartbarkeit sowie die Erweiterung der Kamerasoftware in Zukunft ohne tiefere Kenntnisse von \ac{fpga} durch unterschiedliche Entwickler möglich werden. 
+
+
+

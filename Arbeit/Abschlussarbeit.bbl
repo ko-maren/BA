@@ -1,0 +1,163 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nty/global//global/global}
+  \entry{arricorpinfo}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={ARRI},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{howpublished}{Webseite}
+    \field{note}{Accessed 2019-09-06}
+    \field{title}{{About ARRI}}
+    \verb{url}
+    \verb https://www.arri.com/en/company/about-arri
+    \endverb
+  \endentry
+
+  \entry{corbetplatform}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=CJ}{%
+         family={Corbet},
+         familyi={C\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CJ1}
+    \strng{fullhash}{CJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{howpublished}{Webseite}
+    \field{note}{Accessed 2019-09-13}
+    \field{title}{The platform device API}
+    \verb{url}
+    \verb https://lwn.net/Articles/448499/
+    \endverb
+  \endentry
+
+  \entry{corbet2005linux}{book}{}
+    \name{author}{3}{}{%
+      {{hash=CJ}{%
+         family={Corbet},
+         familyi={C\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Rubini},
+         familyi={R\bibinitperiod},
+         given={Alessandro},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KHG}{%
+         family={Kroah-Hartman},
+         familyi={K\bibinitperiod-H\bibinitperiod},
+         given={Greg},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {O'Reilly Media, Inc.}%
+    }
+    \strng{namehash}{CJRAKHG1}
+    \strng{fullhash}{CJRAKHG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{{Linux Device Drivers: Where the Kernel Meets the Hardware}}
+    \verb{url}
+    \verb https://free-electrons.com/doc/books/ldd3.pdf
+    \endverb
+    \field{year}{2005}
+  \endentry
+
+  \entry{plotner2012linux}{book}{}
+    \name{author}{2}{}{%
+      {{hash=PJ}{%
+         family={Pl{\"o}tner},
+         familyi={P\bibinitperiod},
+         given={Johannes},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=WS}{%
+         family={Wendzel},
+         familyi={W\bibinitperiod},
+         given={Steffen},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Galileo Press}%
+    }
+    \strng{namehash}{PJWS1}
+    \strng{fullhash}{PJWS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{Linux: das umfassende Handbuch;}
+    \field{year}{2012}
+  \endentry
+
+  \entry{schroder2009embedded}{book}{}
+    \name{author}{3}{}{%
+      {{hash=SJ}{%
+         family={Schr{\"o}der},
+         familyi={S\bibinitperiod},
+         given={Joachim},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GT}{%
+         family={Gockel},
+         familyi={G\bibinitperiod},
+         given={Tilo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={Dillmann},
+         familyi={D\bibinitperiod},
+         given={R{\"u}diger},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer-Verlag}%
+    }
+    \strng{namehash}{SJGTDR1}
+    \strng{fullhash}{SJGTDR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Embedded Linux: Das Praxisbuch}
+    \field{year}{2009}
+  \endentry
+\enddatalist
+\endinput

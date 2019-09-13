@@ -1,0 +1,20 @@
+\chapter{Aktuelle Implementierung} \label{sec:imp}
+Zunächst soll die Entwicklungsumgebung und die aktuelle Implementation in der Software näher betrachtet werden. In dieser Arbeit wird nur das \ac{fpga}-Module \ac{xbar} softwareseitig implementiert, da es sonst den Umfang der Arbeit überschreitet. 
+
+%situation auf der Kamera etc, kompilieren
+\section{Entwicklungsumgebung}
+
+\section{Kamera}
+v.4.15.9
+
+\section{Software}
+%geo
+%hw update
+%fpga
+Nahezu alle Module im \ac{fpga} werden in dem \ac{geo} abgebildet. Das objektorientierte Framework führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der Bildkette geupdatet und entsprechend voreingestellter Parameter werden die Größen neu berechnet. 
+
+Nach der Änderung der Größen wird in dem entsprechenden Modul ein Flag gesetzt, welches später dafür sorgt, dass auch das Modul im \ac{fpga} geupdated wird.
+
+Der \ac{fpga} wird mit dem Starten der Software über ein \ac{ioctl} initialisiert und anschließend kann man über eine Variable im Shared Memory in allen Prozessen darauf zugegriffen werden. Das Problem ist, dass durch den Zugriff auf ein Modul immer der ganze \ac{fpga} gesperrt werden muss. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind.
+
+Die Funktion zum Updaten des Modules wird bei einer gesetzten Flag ausgeführt. Hier werden dann an den entsprechenden Offset im \ac{fpga} die übergebenen Einstellungen geschrieben. 

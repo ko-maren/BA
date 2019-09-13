@@ -1,0 +1,23 @@
+\BOOKMARK [0][-]{chapter.1}{Abk\374rzungsverzeichnis}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Einleitung}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Arnold \046 Richter Cine Technik GmbH \046 Co. Betriebs KG}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Hinf\374hrung zum Thema}{chapter.2}% 4
+\BOOKMARK [0][-]{chapter.3}{Theoretische Grundlagen}{}% 5
+\BOOKMARK [1][-]{section.3.1}{Linux - Kernel und Userspace}{chapter.3}% 6
+\BOOKMARK [1][-]{section.3.2}{IO Control}{chapter.3}% 7
+\BOOKMARK [1][-]{section.3.3}{Datenaustausch zwischen Kernel und Userspace}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.4}{Plattformtreiber}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.5}{Multifunction Device}{chapter.3}% 10
+\BOOKMARK [0][-]{chapter.4}{Aktuelle Implementierung}{}% 11
+\BOOKMARK [1][-]{section.4.1}{Entwicklungsumgebung}{chapter.4}% 12
+\BOOKMARK [1][-]{section.4.2}{Kamera}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.3}{Software}{chapter.4}% 14
+\BOOKMARK [0][-]{chapter.5}{FPGA Resource Abstraction}{}% 15
+\BOOKMARK [1][-]{section.5.1}{Plattformtreiber und Multifunction Device}{chapter.5}% 16
+\BOOKMARK [1][-]{section.5.2}{Implementierung im Kernel}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.3}{Implementierung im Userspace}{chapter.5}% 18
+\BOOKMARK [1][-]{section.5.4}{IO Control}{chapter.5}% 19
+\BOOKMARK [2][-]{subsection.5.4.1}{Konzeptionierung}{section.5.4}% 20
+\BOOKMARK [2][-]{subsection.5.4.2}{Implementierung}{section.5.4}% 21
+\BOOKMARK [1][-]{section.5.5}{Einbindung ins Geometrie Framework}{chapter.5}% 22
+\BOOKMARK [0][-]{chapter.6}{Ausblick}{}% 23

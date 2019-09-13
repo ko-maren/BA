@@ -1,0 +1,423 @@
+\ProvidesPackage{Abschlussarbeit}[2013/03/13]
+%%% -------------------------------------------------- 
+
+\RequirePackage{ngerman}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{rotating}
+\RequirePackage{epsfig}
+\RequirePackage{color}
+\RequirePackage{caption}
+\RequirePackage{verbatim}
+\RequirePackage{eurosym}       % Euro-Symbol
+\RequirePackage{makeidx}
+\RequirePackage{fancyhdr}
+%\RequirePackage{bibgerm}
+\RequirePackage{multicol}
+\RequirePackage{framed}
+\RequirePackage{longtable}
+%\RequirePackage[table]{xcolor}
+\PassOptionsToPackage{table}{xcolor}
+\RequirePackage{float}
+\RequirePackage{xparse}
+\RequirePackage{listings}
+
+% Die Bildunterschriften werden einen Punkt kleiner gesetzt. 
+% Der Labelfont ist zusätzlich fett gesetzt.  Nach einer 
+% Abbildung wird ein Abstand von $0.2$em verwendet.
+% Außerdem:  "`Abbildung"' --> "`Bild"'
+\renewcommand{\captionfont}{\small}
+\renewcommand{\captionlabelfont}{\small \bfseries}
+\setlength\abovecaptionskip          {0.0mm}
+\setlength\belowcaptionskip          {0.2em}
+%\renewcommand{\figurename}{Bild}
+%\renewcommand{\listfigurename}{Bilderverzeichnis}
+
+% Der Textanteil einer Seite. Der Default
+% ist $0.2$. Er wird auf $0.001$ gesetzt.
+\renewcommand{\textfraction}{0.001}
+
+% Eine Abbildung muss mindestens einen Anteil |\floatpagefraction| 
+% einer Seite haben, um auf eine eigene leere Seite gesetzt zu 
+% werden. Der Default dafür ist $0.5$. Er wird hier auf $0.99$ gesetzt.
+\renewcommand{\floatpagefraction}{.99}
+
+
+% -------------------------------------------- Allgemeine Formatanweisungen
+\setlength{\parskip}{4pt plus 4pt}% Einzug am Begin des Absatzes
+\parindent 0pt        % verzichte auf Einrücken der ersten Zeile
+
+\raggedbottom         % kein vertikaler Randausgleich nach unten
+\widowpenalty=10000   % Schusterjungen und Hurenkinder möglichst
+\clubpenalty=10000    % ausschließen
+\sloppy               % Anzahl der Warnungen reduzieren (es bleiben genug!)
+
+% Trennung auch bei tt-Schrift (laut de-tex-faq)
+\newcommand{\origttfamily}{}% sollte noch nicht definiert sein!
+\let\origttfamily=\ttfamily % alte Definition von \ttfamily sichern
+\renewcommand{\ttfamily}{\origttfamily \hyphenchar\font=`\-}
+
+
+% ----------------------------- Eigene Definitionen fuer Kopf- und Fusszeilen
+%% Kolumnentitel nicht so TeX-Like (Gross-/Kleinbuchstaben, 
+%% linke Seiten Kapitelueberschrift, rechte Seiten Abschnittsueberschrift 
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\quad #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\nouppercase \rightmark}
+\fancyhead[RE]{\nouppercase \leftmark}
+\fancyfoot{}
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
+
+%% Erste Seite eines Kapitels (keine Seitenzahl)
+\renewcommand\chapter{\if@openright
+                          \clearpage
+                          \thispagestyle{empty}%
+                          \cleardoublepage
+                      \else
+                         \clearpage\fi
+                      \thispagestyle{empty}%
+                      \global\@topnum\z@
+                      \@afterindentfalse
+                      \secdef\@chapter\@schapter}     
+
+
+% ----------------------------------- Eigene Definitionen fuer Ueberschriften
+%% Kapitelzahl gross, Kapitelueberschrift Huge,Helvetica
+% (nicht so TeX-Standard-Like)
+\def \@makechapterhead#1{%
+  \vspace*{40\p@}%
+  {\parindent \z@%
+  \raggedright%
+  \reset@font\sffamily%
+%      \LARGE \bfseries \@chapapp{} \thechapter% "Normale" Überschrift
+      \flushright \fontsize{50}{52} \selectfont \thechapter% Kapitelnummer sehr gross
+      \par%
+      \vskip 20\p@%
+  \sffamily \Huge \bfseries #1%
+  \par%
+  \nobreak%
+  \vskip 40\p@%
+  }%
+}
+
+%% Kapitelzahl gross, Kapitelueberschrift Huge,Helvetica
+% (nicht so TeX-Standard-Like)
+\def \@makeschapterhead#1{%
+  \vspace*{40\p@}%
+  {\parindent \z@%
+  \raggedright%
+  \reset@font\sffamily%
+      \par%
+      \vskip 20\p@%
+  \flushright \sffamily \Huge \bfseries #1%
+  \par%
+  \nobreak%
+  \vskip 40\p@%
+  }%
+}
+
+% \subsection usw. anpassen, Helvetica fett
+\renewcommand\section{\@startsection {section}{1}{0mm}%
+                {6mm}%
+                {2.8mm}%
+                {\sffamily\raggedright\Large\bfseries}}
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                {4mm}
+                {1.3mm}
+                {\normalfont\sffamily\large\bfseries}}
+
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                {4mm}
+                {0.8mm}
+                {\normalfont\sffamily\normalsize\bfseries}}
+
+
+
+% ----------------------------------------------------------- Tastensymbole
+%% Der Texte wird als Taste umrandet, Aufruf z. B. \keys{Stg}
+
+\newbox\mybox
+\newcount\laenge
+\newcount\laengehalbe
+\newcommand{\keys}[1]{%
+\setbox\mybox=\hbox{\footnotesize\textsf{#1}}%
+\laenge=\wd\mybox%
+\advance\laenge by 400000% entspricht 2.15 mm
+\laengehalbe=\laenge%
+\divide \laengehalbe by 2%
+\unitlength1sp\begin{picture}(\laenge,600000)(0, 140000)
+\put(\laengehalbe, 300000){\oval(\laenge, 600000)}%
+\put(200000, 140000){\unhbox\mybox}
+\end{picture}}
+
+
+% --------------------------------------------- diverse Schriften und Zeichen
+
+\newcommand{\qq}[1]{"`#1"'}              			% ,,Gänsefüsschen''
+\newcommand{\qf}[1]{">#1"<}              			% >>Gänsefüsschen<<
+%\newcommand{\url}[1]{{\sffamily\slshape #1}}  % URL
+\newcommand{\komm}[1]{{\ttfamily #1}}         % Unix-Kommandos, C-Befehle
+\newcommand{\dat}[1]{{\slshape{\ttfamily #1}}}% Datei- und Verzeichnisnamen
+\newcommand{\ii}[1]{{\itshape #1}}            % für das Indexverzeichnis
+
+\renewcommand{\emph}[1]{{\slshape #1}}        % slanted statt emphasized
+
+\newcommand{\tild}{\textasciitilde}
+\newcommand{\zb}{z.\,B.\ }
+% \textmu                                     % mue wie in Mikrofarad
+% \textohm                                    % Omega
+
+% Text mit Ueberstrich (fuer Digitaltechnik, IC-Signale etc.)
+\newcommand{\textover}[1]{\ensuremath{\overline{\text{#1}}}}
+                                              
+
+% ------------------------------------------------------------ diverse Farben
+
+\definecolor{colorTabHead}{gray}{0.3}
+\definecolor{colorTab1}{gray}{0.92}
+\definecolor{colorTab2}{gray}{0.88}
+\definecolor{weiss}{gray}{1.00} 
+% fuer Listings (\shaded)
+\definecolor{shadecolor}{gray}{0.92}
+
+% ----------------------------------------------------- Aufzählung mit Bullets
+%% neue Definition fuer Listenumgebungen
+%% linken Einzug definieren
+\setlength\leftmargini     {1.25em}
+\setlength\leftmarginii    {1.75em}
+\setlength\leftmarginiii   {1.50em}
+\setlength\leftmarginiv    {1.25em}
+%% kleines Kaestchen als erstes Aufzaehlungszeichen, 
+%% Bullet als zweite, kleiner Kreis als drittes, Minus als viertes
+\renewcommand{\labelitemi}	 {\addtolength{\leftmargini}{-0.25em}\textcolor[gray]{0.5}{\rule{1.0ex}{1.0ex}}}
+\renewcommand{\labelitemii}	 {\textbullet}
+\renewcommand{\labelitemiii} {\textopenbullet}
+\renewcommand{\labelitemiv}	 {\textminus}
+
+%% Compressed itemize{}
+\newenvironment{citemize}%
+{\itemize%
+\setlength{\leftmargini}{1.00em}\setlength{\leftmarginii}{1.75em}%
+\setlength{\leftmarginiii}{1.50em}\setlength{\leftmarginiv}{1.25em}%
+\setlength{\itemsep}{0pt}\setlength{\parsep}{1.5mm}%
+\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}%
+{\enditemize}
+ 
+%% Compressed enumerate{}
+\newenvironment{cenumerate}%
+{\enumerate%
+\setlength{\leftmargini}{1.25em}\setlength{\leftmarginii}{1.75em}%
+\setlength{\leftmarginiii}{1.50em}\setlength{\leftmarginiv}{1.25em}%
+\setlength{\itemsep}{0pt}\setlength{\parsep}{1.5mm}%
+\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}%
+{\endenumerate}
+
+%% Compressed description{}
+\newenvironment{cdescription}%
+{\description%
+\setlength{\itemsep}{0pt}\setlength{\parsep}{1.5mm}%
+\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}%
+{\enddescription}
+
+
+% ------------------------------------------- leere Seite zwischen Kapiteln
+% \clearpage bzw. \cleardoublepage
+% falls letzte Seite eines Kapitels leer ist 
+% (also gerade Seitennummer), keine Kopf- und Fußzeile
+\newcommand{\leereseite}{
+\hbox{} \ifodd \thepage {\newpage\thispagestyle{empty}} \fi} 
+
+
+% ------------------------------------------------------------- Abbildungen
+
+%% Einbinden von Bildern (.ps oder .eps) definieren
+%% Aufruf: \epsbild{<bilddatei>}{<Breite>}{<Bildunterschrift>}{<label>}
+%% z.B.: \epsbild{bilder/bild.eps}{\textwidth}{Tolles Schaltbild}{tsb1}
+\newcommand{\epsbild}[4]%
+{\begin{figure}[!h!t!b]%
+ \begin{center}%
+ \includegraphics[width=#2]{#1}%
+ \renewcommand{\figurename}{Bild}%
+ \caption{#3 \label{#4}}%
+ \end{center}%
+ \vspace{-0.7em}%
+ \end{figure}}
+
+
+% ---------------------------------------------------------------- Listings
+
+%% listing
+%% ~~~~~~~
+%% Umgebung fuer Listings und andere Textteile, die 'verbatim'
+%% ausgegeben werden sollen. Schrift kleiner (footnotesize),
+%% Teletype-Font, Abstand zum Text etwas kleiner als bei Standard-verbatim.
+%% Alle Zeichen sind erlaubt (keine Ersatzdarstellung noetig)
+
+% Variante: Linie oben und unten
+\newenvironment{rlisting}%
+ {\rule{\linewidth}{0.5pt}\footnotesize\verbatim}%
+ {\endverbatim\rule{\linewidth}{0.5pt}}
+
+% Variante: grau hinterlegt, leicht eingerückt
+\newenvironment{glisting}%
+{\quote\footnotesize\shaded\verbatim}%
+{\endverbatim\endshaded\endquote}
+
+% Variante: nur Verbatim ohne Gedoens
+\newenvironment{listing}%
+ {\vspace{-5pt}\quote\footnotesize\verbatim}%
+ {\endverbatim\endquote\vspace{-5pt}}
+ 
+
+% Codesamples
+\newfloat{floatcode}{tbph}{loq}
+\floatname{floatcode}{Code sample}
+\lstnewenvironment{devicetree}[1][]
+	{\lstset{%
+			basicstyle=\footnotesize\ttfamily,%
+			breaklines=true,%
+			language=VRML,%
+			alsoletter={-},%
+			morekeywords={*,reg, interrupts, compatible, interrupt-parent, target-path},%
+			keywordstyle=\bfseries\color{green!40!black},%
+			commentstyle=\itshape\color{blue!60!black},%
+			identifierstyle=\color{black},%
+			stringstyle=\color{orange},%
+			#1
+		}}%
+	{}
+	
+\lstnewenvironment{bash}[1][]
+{\lstset{%
+		basicstyle=\footnotesize\ttfamily,%
+		breaklines=true,%
+		language=bash,%
+		morekeywords={*,make,ls,grep,$},%
+		keywordstyle=\bfseries\color{green!40!black},%
+		commentstyle=\itshape\color{blue!60!black},%
+		identifierstyle=\color{black},%
+		stringstyle=\color{orange},%
+		#1
+}}%
+{}
+
+\lstnewenvironment{C}[1][]
+{\lstset{%
+		basicstyle=\footnotesize\ttfamily,%
+		breaklines=true,%
+		language=C,%
+		keywordstyle=\bfseries\color{green!40!black},%
+		commentstyle=\itshape\color{blue!60!black},%
+		identifierstyle=\color{black},%
+		stringstyle=\color{orange},%
+		#1
+}}%
+{}
+
+
+% ------------------------------------------------------- Standard-Tabellen
+
+%% tabelle
+%% ~~~~~~~
+%% #1 Tabellenspalten-Definition
+%% #2 Caption (eine fuer die gesamte Tabelle)
+%% #3 Label
+\newenvironment{tabelle}[3]%
+ {\begin{table}[h!t] 
+  \renewcommand{\arraystretch}{1.20}
+  \begin{center} 
+  \caption{#2 \label{#3}}
+  \vspace{3 pt}
+   \small\begin{tabular}{#1}}%
+ {\end{tabular}
+  \end{center} 
+  \end{table}}%
+
+
+%% tabelle im Streifen-Style
+%% ~~~~~~~~~~~~~~~~~~~~~~~
+%% #1 Tabellenspalten-Definition
+%% #2 Caption (eine fuer die gesamte Tabelle)
+%% #3 Label
+\newenvironment{stabelle}[3]{%
+  \begin{table}[h!t]% 
+  \begin{center}%
+  \renewcommand{\arraystretch}{1.20}%
+  \caption{#2 \label{#3}}%
+%  \vspace{3 pt}%
+  \rowcolors{1}{colorTab1}{colorTab2}%
+  \begin{raggedright}%
+  \small\begin{tabular}{#1}}%
+ {\end{tabular}%
+  \end{raggedright}%
+  \end{center}% 
+  \end{table}%
+ }%
+
+%% Tabellenzelle in der Headerzeile
+\newcommand{\sthead}[1]%
+  {\cellcolor{colorTabHead}%
+   \textcolor{weiss}{\sffamily\bfseries #1}}%
+
+
+% ------------------------------------------- Stichwortverzeichnis
+% Die Einträge in das Stichwortverzeichnis werden wie in \cite{companion} erzeugt. Das Layout des
+% Stichwortverzeichnisses wurde verändert, insbesondere wird die Umgebung |multicol| für ein
+% zweispaltiges Layout verwendet, und mit |\addcontentsline{toc}| ein Eintrag in das Inhaltsverzeichnis
+% erzwungen.
+%    \begin{macrocode}
+\makeatletter
+\renewenvironment{theindex}%
+    {\newpage\parskip 0pt\columnseprule 0pt%
+     \chapter*{Stichwortverzeichnis}%
+     \markboth{\small Stichwortverzeichnis}{\small Stichwortverzeichnis}%
+     \addcontentsline{toc}{chapter}{Stichwortverzeichnis}%
+     \thispagestyle{plain}%
+     \let\item\@idxitem%
+     \begin{multicols}{2}}
+    {\end{multicols}}
+\renewcommand{\@idxitem}{\par\hangindent 20\p@}
+\renewcommand{\subitem}{\par\hangindent 20\p@ \hspace*{10\p@}}
+\renewcommand{\subsubitem}{\par\hangindent 20\p@ \hspace*{20\p@}}
+\makeatother
+
+% -----------------------------Abbildungs- und Tabellenverzeichnis
+% Beide Verzeichnisse kommen in den Anhang
+% deutsche Namen definieren
+%\renewcommand{\listfigurename}{Abbildungsverzeichnis}
+%\renewcommand{\listtablename}{Tabellenverzeichnis}
+
+% Anhang-Konform formatieren
+\makeatletter
+%
+\renewcommand\listoffigures{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \section{\listfigurename}%
+  \@mkboth{\listfigurename}{\listfigurename}%
+  \@starttoc{lof}%
+  \if@restonecol\twocolumn\fi
+  }
+    
+\renewcommand\listoftables{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \section{\listtablename}%
+  \@mkboth{\listtablename}{\listtablename}%
+  \@starttoc{lot}%
+  \if@restonecol\twocolumn\fi
+  }
+%   
+\makeatother
+
+%%% End ---------------------------------------------------------- 

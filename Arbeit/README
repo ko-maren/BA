@@ -1,0 +1,126 @@
+LaTeX-Vorlage für Abschlussarbeiten
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In diesem Archiv befinden sich folgende Dateien:
+
+Abschlussarbeit.sty
+-------------------
+Dies ist ein Package namens "Abschlussarbeit" das einige Voreinstellungen
+vornimmt und etliche Makros und Umgebungen definiert. Am wichtigsten ist hier
+die Layoutdefinition für die Kopfzeilen und Kapitelanfänge. Beides ist so
+gestaltet, dass es nicht so "Standard-TeX"-like aussieht. Unter anderem werden
+auch Aufzählungen etwas kompakter gemacht und die Absatzeinzüge weggelassen.
+
+Auch die Kapitelüberschriften sind neu definiert (nicht so LaTeX-like).
+
+Ausserdem wird auf die Schriften Palatino (mit Serifen), Helvetica (ohne Serifen)
+und Courier (Schreibmaschine) umgeschaltet.
+
+Weiter unten in der Datei werden dann einige Kommandos für den Fliesstext definiert,
+darunter:
+
+\qq{Text in Anführungszeichen}          ,,Text in Anführungszeichen''
+\qf{Text in Anführungszeichen}          >>Text in Anführungszeichen<<
+\komm{Text}                             Text in Schreibmaschinenschrift (Kommando)
+\dat{Text}                              Text in geneigter Schreibmaschinenschrift
+\zb										z. B. (mit richtigen Abständen)
+\textover{Text}                         Text mit Überstrich (fuer Digitaltechnik, 
+                                        IC-Signale etc.)
+\keys{Text}                             zeichnet eine mit "Text" beschriftete Taste
+\leereseite                             Leere Seite am Kapitelende (Kapitel beginnt
+
+                                        immer auf einer rechten Seite)
+Hinweis: 
+\textmu                                 liefert mue wie in Mikrofarad
+\textohm                                liefert Omega wie in Ohm
+\tild                                   Kurzform von \texttilde
+
+\epsbild{<bilddatei>}{<Breite>}{<Bildunterschrift>}{<label>} 
+erleichtert das Einfügen von Bildern als Gleitobjekt. Hier sind alle Kommandos 
+zusammengefasst, die zum Einbinden eines Bildes benötigt werden, z. B.: 
+
+\epsbild{bilder/bild.eps}{0.5 \textwidth}{Tolles Schaltbild}{tsb1}
+
+Man kann sich dann im Text auf das Bild mittels "...wie in Bild \ref{tsb1}..." beziehen.
+Anmerkung: Bei Verwendung von PDFLaTeX müssen statt der EPS-Bilder JPG-Bilder
+verwendet werden. Das Makro kann aber auch da genauso verwendet werden.
+
+Es gibt auch einige neue Umgebungen:
+
+\begin{listing} .... \end{listing}     Listing in Schreibmaschinenschrift
+\begin{rlisting} .... \end{rlisting}   dito mit Linie darüber und darunter
+\begin{glisting} .... \end{glisting}   dito grau unterlegt und etwas eingerückt
+
+sind Umgebungen für Listings und andere Textteile, die 'verbatim' ausgegeben werden sollen. 
+Schrift kleiner (footnotesize), Courier-Font, Abstand zum Text etwas kleiner als bei 
+Standard-verbatim. Alle Zeichen sind erlaubt (keine Ersatzdarstellung nötig). 
+Bei rlisting wird zur Abgrenzung unterhalb und oberhalb des Listings eine Linie über die 
+Seite gezogen, bei glisting wird das Listing hellgrau unterlegt.
+
+
+\begin{tabelle}{<Spalten>}{<Überschrift>}{<label>} ... \end{tabelle}
+
+soll das Setzen von Tabellen als Gleitobjekt erleichtern. Der erste Parameter enthält die
+Tabellenspalten-Definition wie bei der \tabular-Umgebung, danach folgt die Überschrift
+für die gesamte Tabelle und ein Label, damit man sich im Text darauf beziehen kann, z. B.:
+
+\begin{tabelle}{|l|l|l|}{Marktübersicht Hexenpelze}{Hextab}
+     ... 
+\end{tabelle}
+
+
+\begin{stabelle}{<Spalten>}{<Überschrift>}{<label>} ... \end{stabelle}
+
+ist eine andere Form der Tabelle, bei der die Zeilen abwechselnd in zwei versichiedenen 
+Grautönen hinterlegt werden. Für die Tabellenüberschrift kann \sthead{...} verwendet
+werden. Hier wird weißer Text auf dunkelgrauem Hintergrund erzeugt, z. B.:
+
+\begin{stabelle}{llr}{Marktübersicht Hexenpelze}{Hextab}
+\sthead{Modell} & \sthead{Hersteller} & \sthead{Preis}\\
+     ... 
+\end{stabelle}
+
+Sollen die Aufzählungen (itemize, enumerate, description) noch kompakter gesetzt werden, 
+können an deren Stelle citemize, cenumerate und cdescription verwendet werden. Alles
+andere bleibt wie gehabt.
+
+Die Datei "Abschlussarbeit.sty" sollte NICHT verändert werden (ausser Sie wissen, was Sie tun).
+
+
+Abschlussarbeit.tex
+-------------------
+Diese Datei enthält den LaTeX-üblichen Vorspann. Auch hier sollten Sie wenig verändern und
+nur dort, wo das Beispielkapitel mit \include{kap1} eingefügt wird stattdessen Ihre
+Kapitel per \include{} einfügen. Für den Üblichen Vorspann bzw. den Anhang gibt es
+schon Musterdateien (siehe unten).
+
+
+Vorspann.tex
+------------
+Diese Datei enthält den üblichen Vorspann der Arbeit (also die ersten Seiten mit Titel,
+Erklärung usw. In dieser Datei müssen Sie etliche mit "xxxxxxxxx..." markierte Stellen
+ersetzen (z. B. den Titel der Arbeit, Ihren Namen usw.). Die LaTeX-Kommentare (eingeleitet
+durch "%%" sagen Ihnen, was wohin kommt. Ansonsten sollte die Datei so bleiben, wie sie ist.
+
+
+Anhang.tex
+----------
+Diese Datei ist ein Muster für den Anhang. Sie sollten diese nach Ihren Gegebenheiten ändern.
+
+
+HM_Deu_CMYK.eps
+---------------
+Das unvermeidliche HM-Logo als eps-Grafik.
+
+
+kap1.tex
+--------
+Ein Beispielkapitel, das Sie durch Ihr erstes Kapitel ersetzen sollten. Hier werden auch die oben
+beschriebenen Elemente aus der Style-Datei demonstriert.
+
+
+Abschlussarbeit.pdf
+-------------------
+Ergebnis der Übersetzung obiger Dateien mit LaTeX.
+
+
