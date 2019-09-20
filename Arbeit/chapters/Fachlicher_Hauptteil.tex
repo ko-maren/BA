@@ -8,15 +8,14 @@ In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des in \r
 \section{Plattformtreiber und \acl{mfd}} \label{sec:plat}
 Um eine einwandfreie Kommunikation zwischen den Firmware Modulen im \ac{fpga} und dem Kernel zu gewährleisten, muss ein generischer Treiber erstellt werden. 
 
-Wie in dem Kapitel \ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Modules eingegangen werden. 
+Wie in dem Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Modules eingegangen werden. 
 %todo class???
 
-Beim Laden wird eine Klasse erstellt und Speicherplatz allokiert. Nach dem Setzen der Major ID in einer Datenstruktur wird eine Minor ID Liste und Spinlock initialisiert. Über die Liste wird später eine freie Minor ID ausgewählt und gesetzt. Der Spinlock sorgt bei diesem Vorgang dafür, dass dieser nicht unterbrochen wird und keine Minor ID doppelt vergeben wird.
-Am Ende der Funktion wird der Plattformtreiber mit der platform\_driver Struktur registriert.   
-Analog wird beim Freigeben des Modules der Speicherplatz freigegeben, der Plattformtreiber wird abgemeldet und die Klasse zerstört.
 
+Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz allokiert. Es wird als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Da die Majornummer den Treiber kennzeichnet (siehe Kapitel~\ref{sec:mmnum_t}) wird diese in der globalen Treiberstruktur festgelegt. Für die Minornummer wird in der Datenstruktur eine Liste und ein zugehöriges Spinlock initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die individuell bei jedem Device ist und gleichzeitig wird die Anzahl der möglichen Module begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen unterbrechungsfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. Am Ende der initialen Funktion wird der Plattformtreiber mit der platfrom\_driver Struktur (siehe Listing~\ref{code:platform_driver}) registriert.
 
-Damit das Kernel-Modul ordnungsgemäß geladen bzw. entladen wird, werden hierzu zwei Funktionen erstellt. Durch ein Makro des Linuxkernels (zitat?) werden diese Funktionen, dann anstelle/.. des .. aufgerufen.
+Analog wird beim Freigeben des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstelle Klasse zertört.
+
 
 % Klasse erstellt, cdev region allokiert, platform dirver register 
 

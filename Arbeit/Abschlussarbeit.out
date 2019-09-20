@@ -7,18 +7,19 @@
 \BOOKMARK [1][-]{section.3.2}{IO Control}{chapter.3}% 7
 \BOOKMARK [1][-]{section.3.3}{Datenaustausch zwischen Kernel und Userspace}{chapter.3}% 8
 \BOOKMARK [1][-]{section.3.4}{Plattformtreiber}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.5}{Multifunction Device}{chapter.3}% 10
-\BOOKMARK [0][-]{chapter.4}{Aktuelle Implementierung}{}% 11
-\BOOKMARK [1][-]{section.4.1}{Entwicklungsumgebung}{chapter.4}% 12
-\BOOKMARK [1][-]{section.4.2}{Kamera}{chapter.4}% 13
-\BOOKMARK [1][-]{section.4.3}{Software}{chapter.4}% 14
-\BOOKMARK [0][-]{chapter.5}{FPGA Resource Abstraction}{}% 15
-\BOOKMARK [1][-]{section.5.1}{Plattformtreiber und Multifunction Device}{chapter.5}% 16
-\BOOKMARK [1][-]{section.5.2}{Implementierung im Kernel}{chapter.5}% 17
-\BOOKMARK [1][-]{section.5.3}{Implementierung im Userspace}{chapter.5}% 18
-\BOOKMARK [1][-]{section.5.4}{IO Control}{chapter.5}% 19
-\BOOKMARK [2][-]{subsection.5.4.1}{Konzeptionierung}{section.5.4}% 20
-\BOOKMARK [2][-]{subsection.5.4.2}{Implementierung}{section.5.4}% 21
-\BOOKMARK [1][-]{section.5.5}{Einbindung ins Geometrie Framework}{chapter.5}% 22
-\BOOKMARK [0][-]{chapter.6}{Testbackend}{}% 23
-\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 24
+\BOOKMARK [2][-]{subsection.3.4.1}{Major- und Minornummern}{section.3.4}% 10
+\BOOKMARK [1][-]{section.3.5}{Multifunction Device}{chapter.3}% 11
+\BOOKMARK [0][-]{chapter.4}{Aktuelle Implementierung}{}% 12
+\BOOKMARK [1][-]{section.4.1}{Entwicklungsumgebung}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.2}{Kamera}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.3}{Software}{chapter.4}% 15
+\BOOKMARK [0][-]{chapter.5}{FPGA Resource Abstraction}{}% 16
+\BOOKMARK [1][-]{section.5.1}{Plattformtreiber und Multifunction Device}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.2}{Implementierung im Kernel}{chapter.5}% 18
+\BOOKMARK [1][-]{section.5.3}{Implementierung im Userspace}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.4}{IO Control}{chapter.5}% 20
+\BOOKMARK [2][-]{subsection.5.4.1}{Konzeptionierung}{section.5.4}% 21
+\BOOKMARK [2][-]{subsection.5.4.2}{Implementierung}{section.5.4}% 22
+\BOOKMARK [1][-]{section.5.5}{Einbindung ins Geometrie Framework}{chapter.5}% 23
+\BOOKMARK [0][-]{chapter.6}{Testbackend}{}% 24
+\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 25

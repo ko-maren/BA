@@ -18,6 +18,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Plattformtreiber}{16}{section.3.4}
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.1}Major- und Minornummern}{17}{subsection.3.4.1}
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.5}\acl {mfd}}{17}{section.3.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Aktuelle Implementierung}{18}{chapter.4}
