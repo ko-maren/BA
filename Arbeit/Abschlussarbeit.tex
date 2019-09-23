@@ -26,6 +26,7 @@
 \usepackage{color}
 \usepackage[table]{xcolor}
 \usepackage{caption}
+\DeclareCaptionType{code}[Codebeispiel][Liste der Codebeispiele]
 \usepackage{listings}
 \usepackage{verbatim}
 \usepackage{fancyhdr}
@@ -85,10 +86,11 @@
 		numbersep=5pt,
 		numberstyle=\tiny\color{mygray},
 		breakatwhitespace=false,
+		morekeywords={uint8\_t, spinlock\_t, uint32\_t},
 		tabsize=2,	
-		frame=single, %todo ja oder nein??
+		%frame=single, %todo ja oder nein??
 		breaklines=true}
-\captionsetup[lstlisting]{font=it,
+\captionsetup[code]{font=it,
 						  position=below,
 					  	  belowskip=0.5cm}
 

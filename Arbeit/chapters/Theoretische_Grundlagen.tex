@@ -15,7 +15,7 @@ Die Brücke zwischen der Hardware und dem Benutzer stellt somit der Kernel da.
 
 \section{\acl{ioctl}}\label{sec:ioctl_t}
 Um ein zuverlässig arbeitendes Betriebssystem zu haben, muss der Speicherbereich von Kernel und Userspace getrennt sein. \citep[S. 232]{schroder2009embedded}
-Damit entsteht die Notwenigkeit zwischen Userspace und Kernel Daten auszutauschen. Die Anwendungen im Userspace können über das sogenannte Systemcall Interface auf die Funktionen im Kernel zugreifen. In einer Struktur vom Typ file\_operations wird die Schnittstelle zu einem Treiber vorgegeben. In dieser Struktur werden treiberabhängige Funktionszeiger gespeichert. \citep[S. 249]{schroder2009embedded}
+Damit entsteht die Notwenigkeit zwischen Userspace und Kernel Daten auszutauschen. Die Anwendungen im Userspace können über das sogenannte Systemcall Interface auf die Funktionen im Kernel zugreifen. In einer Struktur vom Typ \textit{file\_operations} wird die Schnittstelle zu einem Treiber vorgegeben. In dieser Struktur werden treiberabhängige Funktionszeiger gespeichert. \citep[S. 249]{schroder2009embedded}
 
 Im folgenden soll lediglich der Zeiger auf das \acf{ioctl} betrachtet werden, da dieser im weiteren Teil der Arbeit eine wichtige Rolle spielt.
 Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur Verfügung gestellt. 
@@ -24,7 +24,7 @@ Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur V
 \begin{lstlisting}
 int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsigned long arg);
 \end{lstlisting}
-\captionof{lstlisting}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur}
+\captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur}
 
 Über die \textit{node} wird der Dateideskriptor und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird meistens als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 90f]{corbet2005linux}
 
@@ -36,10 +36,10 @@ Dadurch wird der Datenaustausch zwischen den beiden Ebenen natürlich schwierige
 
 %todo linux kernel code & Unterschrift
 \begin{lstlisting}
-unsigned long copy from user(void *to, const void *from, unsigned long num);
-unsigned long copy to user(void *to, const void *from, unsigned long num);
+unsigned long copy_from_user(void *to, const void *from, unsigned long num);
+unsigned long copy_to_user(void *to, const void *from, unsigned long num);
 \end{lstlisting}
-\captionof{lstlisting}{Funktionsdeklaration in asm/uaccess.h}
+\captionof{code}{Funktionsdeklaration in asm/uaccess.h}
 
 Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
 In der \textit{copy\_from\_user} werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
@@ -47,11 +47,11 @@ Analog arbeitet das Gegenstück \textit{copy\_to\_user}. Hier gibt \textit{from}
 Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der nicht kopierten Bytes zurückgegeben. \citep[S. 250f]{schroder2009embedded}
 
 \section{Plattformtreiber}\label{sec:plat_t}
-Gerätetreiber, und damit auch Plattformtreiber, sind unter Linux im Kernel angesiedelt. Eigene Treiber werden hierzu meist modular entwickelt und nicht fest in den Kernel integriert. Allerdings muss auch der Programmierer bei den nachgeladenen Kernelmodulen auf die korrekte Nutzung des Speicherplatzes achten, da diese Module ebenfalls im Kernel laufen und somit ein Segmentierungsfehler schwerwiegende Folgen hätte. \citep[S. 231ff]{schroder2009embedded}
+Gerätetreiber, und damit auch Plattformtreiber, sind unter Linux im Kernel angesiedelt. Eigene Treiber werden hierzu meist modular entwickelt und nicht fest in den Kernel integriert. Allerdings muss auch der Programmierer bei den nachgeladenen Kernelmodulen auf die korrekte Nutzung des Speicherplatzes achten, da diese Module ebenfalls im Kernel laufen und somit ein Zugriffsfehler schwerwiegende Folgen hätte. \citep[S. 231ff]{schroder2009embedded}
 
 Damit die Treiber richtig funktionieren werden müssen gibt es einige Bestandteile, die in jedem Modul wiederzufinden sind. Standardmäßig wird die Registrierung von Treiber und Device an unterschiedlichen Teilen des Programms ausgeführt. \cite{corbetplatform} 
 
-Jedes Kernelmodule besitzt mindestens eine init und exit Funktion. Hierzu gibt es im Kernel eigene Makros, in welchen die Funktionen übergeben werden. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden des Modules oder beim Entfernen des Treibers.
+Jedes Kernelmodule besitzt mindestens eine init und exit Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers.
 %todo linux kernel zitieren!
 (https://elixir.bootlin.com/linux/v4.15.9/source/include/linux/module.h ab Zeile 77)
 
@@ -68,10 +68,10 @@ struct platform_driver {
 	bool prevent_deferred_probe;
 };
 \end{lstlisting}
-\captionof{lstlisting}{\label{code:platform_driver}Struktur in linux/platform\_device.h}
+\captionof{code}{\label{code:platform_driver}Struktur in linux/platform\_device.h}
 
-
-Nachdem der entsprechende Treiber geladen ist und das Plattformgeräte registriert wurde, wird die .probe Funktion aufgerufen. Dort wird dann eine Instanz des Devices erzeugt. Analog dazu gibt es die .remove Funktion, hier wird die Instanz entsprechend wieder aufgelöst. \cite{corbetplatform} 
+Beim Laden des Treibers wird die eine \textit{platform\_driver} Struktur übergeben. In dieser Struktur sind Zeiger auf die Funktionen gespeichert, die beim Erzeugen oder Löschen einer Instanz gebraucht werden.  
+In dieser Arbeit werden lediglich die \textit{.probe} und \textit{.remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{.probe} Zeiger aufgerufen und analog beim Auflösen die \textit{.remove} Funktion.\cite{corbetplatform} 
 
 %todo umformulieren & kapitel zitieren
 Beim Anlegen der Instanz kann ein Zeiger auf ein struct übergeben werden, in welchem Daten übergeben werden. In der probe Funktion sind somit spezielle Daten für ein entsprechendes Device vorhanden. \cite{corbetplatform} 
@@ -90,11 +90,10 @@ Die Majornummer kennzeichnet hier üblicherweise dem Device zugehörigen Treiber
 Normalerweise wird lediglich ein Device angelegt, ohne weitere Unterteilungen zu machen. Es ist allerdings möglich unter einem Parentdevice noch weitere Childdevices zu registrieren. Diese Art wird dann \acf{mfd} genannt.
 
 %todo linux kernel code & Unterschrift
-
 \begin{lstlisting}
 extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cell *cells, int n_devs, struct resource *mem_base,int irq_base, struct irq_domain *irq_domain);
 \end{lstlisting}
-\captionof{lstlisting}{Funktionsdeklaration in mfd/core.h}
+\captionof{code}{Funktionsdeklaration in mfd/core.h}
 
 
 Durch die obere Funktion werden alle Childdevices automatisch entfernt, wenn diese aufgelöst werden.

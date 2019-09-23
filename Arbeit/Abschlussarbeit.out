@@ -14,7 +14,7 @@
 \BOOKMARK [1][-]{section.4.2}{Kamera}{chapter.4}% 14
 \BOOKMARK [1][-]{section.4.3}{Software}{chapter.4}% 15
 \BOOKMARK [0][-]{chapter.5}{FPGA Resource Abstraction}{}% 16
-\BOOKMARK [1][-]{section.5.1}{Plattformtreiber und Multifunction Device}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.1}{Generischer Plattformtreiber}{chapter.5}% 17
 \BOOKMARK [1][-]{section.5.2}{Implementierung im Kernel}{chapter.5}% 18
 \BOOKMARK [1][-]{section.5.3}{Implementierung im Userspace}{chapter.5}% 19
 \BOOKMARK [1][-]{section.5.4}{IO Control}{chapter.5}% 20

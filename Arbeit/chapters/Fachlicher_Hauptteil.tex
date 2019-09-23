@@ -5,24 +5,77 @@ In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des in \r
 %Theoretische Grundlagen o.ä.
 %Umsetzung
 
-\section{Plattformtreiber und \acl{mfd}} \label{sec:plat}
+\section{Generischer Plattformtreiber} \label{sec:plat}
 Um eine einwandfreie Kommunikation zwischen den Firmware Modulen im \ac{fpga} und dem Kernel zu gewährleisten, muss ein generischer Treiber erstellt werden. 
 
-Wie in dem Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Modules eingegangen werden. 
-%todo class???
+
+Wie in dem Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Treibers eingegangen werden.
 
 
-Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz allokiert. Es wird als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Da die Majornummer den Treiber kennzeichnet (siehe Kapitel~\ref{sec:mmnum_t}) wird diese in der globalen Treiberstruktur festgelegt. Für die Minornummer wird in der Datenstruktur eine Liste und ein zugehöriges Spinlock initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die individuell bei jedem Device ist und gleichzeitig wird die Anzahl der möglichen Module begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen unterbrechungsfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. Am Ende der initialen Funktion wird der Plattformtreiber mit der platfrom\_driver Struktur (siehe Listing~\ref{code:platform_driver}) registriert.
+Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz allokiert. 
+\begin{lstlisting}
+struct afm_driver
+{
+	unsigned int major_id;
 
-Analog wird beim Freigeben des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstelle Klasse zertört.
+	uint8_t minor_list[AFM_MAX];
+	spinlock_t minor_spinlock;
+	struct class * class;
+};
+\end{lstlisting}
+\captionof{code}{\label{code:afm_data}Struktur des Treibers}
+
+Es wird als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Da die Majornummer den Treiber kennzeichnet (siehe Kapitel~\ref{sec:mmnum_t}) wird diese in der globalen Treiberstruktur festgelegt. Für die Minornummer wird in der Datenstruktur eine Liste und ein zugehöriges Spinlock initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die bei jedem Device individuell ist und gleichzeitig wird die Anzahl der möglichen Module begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen unterbrechungsfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. Am Ende der initialen Funktion wird der Plattformtreiber mit der \textit{platfrom\_driver} Struktur (siehe Codebeispiel~\ref{code:platform_driver}) registriert.
 
 
-% Klasse erstellt, cdev region allokiert, platform dirver register 
+Analog wird beim Freigeben des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstelle Klasse zerstört.\\
+
+
+Beim Anlegen einer Instanz vom Treiber wird die \textit{.probe} Funktion aufgerufen und zusätzlich wird der Modultyp und Name in einer \textit{arri\_fra\_mod\_config} Struktur zur Verfügung gestellt. In der initialen Funktion der Instanz wird diese Struktur genutzt um spezifische Einstellungen für jede einzelne Instanz festgelegt und in einer entsprechenden Datenstruktur gespeichert. 
+
+%todo aussotieren 
+\begin{lstlisting}
+struct afm_device 
+{
+	struct arri_fra_mod_config *mod_config;
+
+	struct class *class;
+	struct cdev cdev;
+	unsigned int minor_id;
+	struct platform_device *pdev;
+	struct resource *res;
+	u8 __iomem *base;
+
+	struct afm_file fdev[AFM_FILE_MAX];
+	spinlock_t open_spinlock;
+	%atomic_t use_count;
+
+	#define AFM_NOLOGGING   ((uint32_t)0U)
+	#define AFM_LOGGING     ((uint32_t)1U)
+	uint32_t has_logging;
+};
+\end{lstlisting}
+\captionof{code}{Auszug aus der Struktur einer Instanz}
+
+Der einzige Übergabeparameter der Probefunktion ist die Struktur des \textit{platform\_device}, diese wird in dem Zeiger \textit{*pdev} gespeichert. Auch die, beim Laden des Treibers, angelegte Klasse wird ohne weitere Änderungen unter \textit{*class} abgelegt. 
+
+Aus der Liste der Minornummern (siehe Codebeispiel~\ref{code:afm_data}) wird nach dem Sperren des zugehörigen Spinlocks eine freie Nummer ausgewählt und als \textit{minor\_id}, sowie auf verwendet gesetzt. 
+
+Anschließend wird mit Hilfe der Majornummer und der Minornummer ein Device erstellt und als \textit{cdev} gespeichert. 
+
+%todo vorteile statischer speicher
+Damit das Öffnen der Devices auf eine bestimmte Anzahl limitiert ist, wird beim Initialisieren der Instanz ein Array der \textit{afm\_file} Struktur angelegt. Gleichzeitig wird der Speicherplatz statisch zur Kompilierzeit reserviert. Durch den Spinlock \textit{open\_spinlock} wird später dafür gesorgt, dass die Auswahl nicht unterbrochen und somit verfälscht wird.
+
+%todo base/res
+
 
 \section{Implementierung im Kernel}\label{sec:kernel}
 
 \section{Implementierung im Userspace}\label{sec:user}
+ 
+
 %testprogramm
+%überlegungen zum testen, backend entscheidung
 \section{\acl{ioctl}}\label{sec:ioctl}
 \subsection{Konzeptionierung}
 \subsection{Implementierung}
