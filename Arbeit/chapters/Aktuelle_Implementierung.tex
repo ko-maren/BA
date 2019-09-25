@@ -1,20 +1,78 @@
-\chapter{Aktuelle Implementierung} \label{sec:imp}
-Zunächst soll die Entwicklungsumgebung und die aktuelle Implementation in der Software näher betrachtet werden. In dieser Arbeit wird nur das \ac{fpga}-Module \ac{xbar} softwareseitig implementiert, da es sonst den Umfang der Arbeit überschreitet. 
+%todo titel!!
+\chapter{tbd} \label{sec:imp}
+Zunächst soll die Entwicklungsumgebung und die aktuelle Implementation in der Software näher betrachtet werden. Im Anschluss wird noch das erarbeitete Konzept des \ac{fra} vorgestellt.
+In dieser Arbeit wird nur das \ac{fpga}-Module \ac{xbar} softwareseitig implementiert, da es sonst den Umfang der Arbeit überschreitet. 
 
-%situation auf der Kamera etc, kompilieren
-\section{Entwicklungsumgebung}
+%situation auf der Kamera etc
+\section{Kontext}
+Um einen Überblick über das Umfeld der Arbeit zu bekommen, sollen ein paar Grundlagen und auch die Funktionsweise einer Kamera betrachtet werden. 
 
-\section{Kamera}
-v.4.15.9
+\subsection{Kamera}
+Um die Funktionalität des \ac{fra} zu festzustellen und grobe Fehler rechtzeitig zu erkennen, ist das regelmäßige Testen auf einer Kamera unerlässlich. Da die Wahl der Kamera keine weiteren Einschränkungen unterliegt, wurde eine AMIRA gewählt. 
+%https://www.arri.com/resource/blob/33916/909908b1643addb99036f132d6b3582c/amira-product-image-data.jpg
+%todo quelle!!
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width = 0.7\linewidth]{pictures/amira-product-image-data.jpg}
+	\smallskip
+	\caption{ARRI AMIRA}
+	\label{fig:amira}
+\end{figure}  
 
-\section{Software}
-%geo
-%hw update
-%fpga
-Nahezu alle Module im \ac{fpga} werden in dem \ac{geo} abgebildet. Das objektorientierte Framework führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der Bildkette geupdatet und entsprechend voreingestellter Parameter werden die Größen neu berechnet. 
+Die AMIRA ist eine vielseitige Kamera, die für eine Einmannbedienung ausgelegt ist.
+Zusätzlich ist sie mit einem Audioboard ausgestattet und aus diesem Grund bei Dokumentationsfilmen und der elektronische Berichtserstattung gerne verwendet. Zum Beispiel wird die ARRI AMIRA bei Sportveranstaltungen der NFL in Amerika eingesetzt. \cite{arrinewsamira} 
 
-Nach der Änderung der Größen wird in dem entsprechenden Modul ein Flag gesetzt, welches später dafür sorgt, dass auch das Modul im \ac{fpga} geupdated wird.
+Für Spielfilm- und Serienproduktionen wird auch manchmal die ARRI AMIRA eingesetzt, wodurch das breite Einsatzspektrum der Kamera noch deutlicher wird.
+Als Beispiele sind hier der bayrische Eberhofer Krimi \glqq Sauerkrautkoma\grqq{} \cite{arrikrimi}, die Netflixserie \glqq The Ivory Game\grqq{} \cite{imdbivory} oder auch das Fernsehmagazin \glqq The Grand Tour\grqq{} über Autos \cite{imdbtour} zu nennen.
 
-Der \ac{fpga} wird mit dem Starten der Software über ein \ac{ioctl} initialisiert und anschließend kann man über eine Variable im Shared Memory in allen Prozessen darauf zugegriffen werden. Das Problem ist, dass durch den Zugriff auf ein Modul immer der ganze \ac{fpga} gesperrt werden muss. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind.
+
+% Elektronische Berichtserstattung, billigste, neues marktsegement, keine andere arri kamera drinnen, live sendung bis hin zu reportage, viel bei broadcast unternehmen und sportveranstaltungen
+%doku: the ivery game (netflix),  doku & aktion, super bild, und audiopoard, top gear (amazon), serien udn spielfilm (eberhofer filme), veep (us), sportveranstalungen (nfl nba) us, 2 bis 6 Kameras
+%eb kamera, broadcaster, live sendung bis reportage
+
+\subsection{Bildkette}
+Unter einer Bildkette versteht man den Durchlauf des Sensorbilds bis zu zum Ausgang, in unserem Fall die \ac{rec} und das \ac{sdi}.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width = \linewidth]{pictures/bildkette.png}
+	\smallskip
+	\caption{Schematische Bildkette}
+	\label{fig:bild}
+\end{figure} 
+
+In der Abbildung~\ref{fig:bild} sieht man eine schematische Bildkette, die in dieser Arbeit zur Veranschaulichung weiter detailliert wird. 
+Von der Quelle bis zur jeweiligen Senke läuft das Bild durch verschiedene Module, in welchen es angepasst wird. 
+
+Direkt nach dem Sensor geht das Bild durch eine \acl{xbar}, hier wird es lediglich auf zwei Bildpfade aufgeteilt. Für die \acl{rec} wird das Bild im Crop zugeschnitten, somit wird nur ein Bildausschnitt aufgezeichnet. In dem anderen Bildpfad, wird mithilfe des Scalers, das Bild kleiner skaliert. Nachdem eine grafische Benutzeroberfläche hinzugefügt worden ist, wird das Bild am \ac{sdi} ausgegeben. Hier ist durch die Skalierung, das komplette Sensorbild zu sehen.
+
+
+\subsection{Funktionsweise}
+Bevor auf das erarbeitete Konzept eingegangen wird, soll kurz auf die Funktionsweise der Kamera und die aktuelle Implementierung eingegangen werden.
+
+Die bildverarbeitende Hauptfunktionalität liegt im \ac{fpga}. Hier werden die Module entsprechend der Bildkette angeordnet und verbunden. Durch die Software werden bei den \ac{fpga} Module Einstellungen vorgenommen.\\
+
+
+Damit die Einstellungen auch zu dem Sensorbild passen werden alle Module des \ac{fpga}s in dem \ac{geo} abgebildet. Das objektorientierte Framework führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der abgebildeten Frameworkbildkette geupdatet und entsprechend der voreingestellten Parametern werden die Größen neu berechnet. 
+
+Nach der Änderung der Größen wird in dem entsprechenden Modul ein Flag gesetzt, welches später dafür sorgt, dass auch das Modul im \ac{fpga} aktualisiert wird.
+
+Beim Starten der Software wird der \ac{fpga} über ein \ac{ioctl} initialisiert und anschließend kann über eine Variable im Shared Memory in allen Prozessen darauf zugegriffen werden. 
 
 Die Funktion zum Updaten des Modules wird bei einer gesetzten Flag ausgeführt. Hier werden dann an den entsprechenden Offset im \ac{fpga} die übergebenen Einstellungen geschrieben. 
+
+
+\subsection{Problematik}
+Bei der aktuellen Implementierung liegen verschiedene Problematiken vor, die durch ein neues Framework eliminiert werden sollen.
+
+Zum einen muss bei den Zugriff auf ein Modul immer der \ac{fpga} gesperrt werden. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind.
+
+Des weiteren müssen die Adressen für die \ac{fpga} Module händisch eingetragen werden. Hier durch steigt natürlich die Fehleranfälligkeit weiter, da es passieren kann, dass die Software Einstellungen an eine Adresse schreibt, hinter der kein Modul liegt. In schlechtesten Fall werden die Register eines anderen Modules beschrieben und es kommt zum Fehlerfall in der Bildkette.
+
+
+Die Länge der Register wird in der aktuellen Implementierung nicht weiter berücksichtigt. Natürlich kann es dann passieren, dass über ein Register hinweg geschrieben wird. Auch dann kommt es zum Fehlerfall in der Bildkette, da andere Einstellungen überschrieben werden. 
+ 
+v.4.15.9
+
+
+\section{Konzept}

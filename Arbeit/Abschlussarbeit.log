@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  23 SEP 2019 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  25 SEP 2019 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1613,7 +1613,7 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 
 
 (./chapters/Vorspann.tex
-<pictures/Hochschule_Muenchen_Logo.png, id=107, 1796.7125pt x 779.91376pt>
+<pictures/Hochschule_Muenchen_Logo.png, id=119, 1796.7125pt x 779.91376pt>
 File: pictures/Hochschule_Muenchen_Logo.png Graphic file (type png)
 <use pictures/Hochschule_Muenchen_Logo.png>
 Package pdftex.def Info: pictures/Hochschule_Muenchen_Logo.png  used on input l
@@ -1663,7 +1663,7 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 12.
 (c:/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-<pictures/ARRI_AG_Corporate_Logo.png, id=109, 1284.8pt x 474.77374pt>
+<pictures/ARRI_AG_Corporate_Logo.png, id=121, 1284.8pt x 474.77374pt>
 File: pictures/ARRI_AG_Corporate_Logo.png Graphic file (type png)
 <use pictures/ARRI_AG_Corporate_Logo.png>
 Package pdftex.def Info: pictures/ARRI_AG_Corporate_Logo.png  used on input lin
@@ -1727,23 +1727,23 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 47.49985pt on input line 2.
 Package acronym Info: Label `acro:smpte' newly defined as it shall be overridde
 n
-although it is yet undefined on input line 17.
+although it is yet undefined on input line 18.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 17.
+(Font)              scaled to size 9.37807pt on input line 18.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 17.
+(Font)              scaled to size 7.29405pt on input line 18.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 17.
+(Font)              scaled to size 5.21004pt on input line 18.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 17.
+(Font)              scaled to size 9.37807pt on input line 18.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 17.
+(Font)              scaled to size 7.29405pt on input line 18.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 17.
+(Font)              scaled to size 5.21004pt on input line 18.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 17.
+(Font)              scaled to size 8.54997pt on input line 18.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.54997pt on input line 17.
+(Font)              scaled to size 8.54997pt on input line 18.
 ) [11
 
 
@@ -1909,12 +1909,33 @@ mfd-
 Kapitel 4.
 Package acronym Info: Label `acro:xbar' newly defined as it shall be overridden
 
-although it is yet undefined on input line 2.
-) [18
+although it is yet undefined on input line 4.
+<pictures/amira-product-image-data.jpg, id=315, 1927.2pt x 836.12375pt>
+File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
+<use pictures/amira-product-image-data.jpg>
+Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
+ine 16.
+(pdftex.def)             Requested size: 251.9989pt x 109.32504pt.
+[18
 
 
 
-] [19]
+ <./pictures/amira-product-image-data.jpg>]
+Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
+although it is yet undefined on input line 34.
+Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
+although it is yet undefined on input line 34.
+<pictures/bildkette.png, id=328, 2720.75294pt x 630.59117pt>
+File: pictures/bildkette.png Graphic file (type png)
+<use pictures/bildkette.png>
+Package pdftex.def Info: pictures/bildkette.png  used on input line 38.
+(pdftex.def)             Requested size: 360.0pt x 83.43265pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+[19 <./pictures/Bildkette.png>]) [20]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
@@ -1924,7 +1945,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 26.
 See the caption package documentation for explanation.
 
-[20
+[21
 
 
 
@@ -1950,12 +1971,12 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 58.
 See the caption package documentation for explanation.
 
-[21]) [22]
+[22]) [23]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 6.
-) [23
+) [24
 
 
 
@@ -1964,14 +1985,14 @@ Kapitel 6.
 
  (./chapters/Ausblick.tex
 Kapitel 7.
-) [24
+) [25
 
 
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 10.40245pt on input line 113.
- [25
+ [26
 
 
 ]
@@ -1989,16 +2010,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 124.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 124.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 124.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 82D455CBCA0C2AC6678D86F62354F04D;1647.
+(rerunfilecheck)             Checksum: 74F0A79F9F555220CF324A91D6B3C7D1;1815.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38297 strings out of 492642
- 700322 string characters out of 6133163
- 954812 words of memory out of 5000000
- 41359 multiletter control sequences out of 15000+600000
+ 38344 strings out of 492642
+ 701341 string characters out of 6133163
+ 956238 words of memory out of 5000000
+ 41390 multiletter control sequences out of 15000+600000
  606478 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,63p,878b,1451s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2010,10 +2031,10 @@ c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/201
 8/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/p
 alatino/uplri8a.pfb>
-Output written on Abschlussarbeit.pdf (25 pages, 284040 bytes).
+Output written on Abschlussarbeit.pdf (26 pages, 802505 bytes).
 PDF statistics:
- 441 PDF objects out of 1000 (max. 8388607)
- 397 compressed objects within 4 object streams
- 131 named destinations out of 1000 (max. 500000)
- 223 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 493 PDF objects out of 1000 (max. 8388607)
+ 445 compressed objects within 5 object streams
+ 144 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -38,6 +38,26 @@
     \endverb
   \endentry
 
+  \entry{arrinewsamira}{article}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={ARRI},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{pages}{26f}
+    \field{title}{{AMIRA: mulit-purpose tool}}
+    \field{journaltitle}{{ARRI News}}
+    \field{month}{09}
+    \field{year}{2015}
+  \endentry
+
   \entry{corbetplatform}{misc}{}
     \name{author}{1}{}{%
       {{hash=CJ}{%
@@ -96,6 +116,29 @@
     \verb https://free-electrons.com/doc/books/ldd3.pdf
     \endverb
     \field{year}{2005}
+  \endentry
+
+  \entry{arrikrimi}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=MA}{%
+         family={Media},
+         familyi={M\bibinitperiod},
+         given={ARRI},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MA1}
+    \strng{fullhash}{MA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{howpublished}{Webseite}
+    \field{note}{Accessed 2019-09-25}
+    \field{title}{{ARRI im SAUERKRAUTKOMA}}
+    \verb{url}
+    \verb https://www.arrimedia.de/global/detail-news/arri-im-sauerkrautkoma/
+    \endverb
   \endentry
 
   \entry{plotner2012linux}{book}{}
@@ -158,6 +201,30 @@
     \field{sortinithash}{S}
     \field{title}{Embedded Linux: Das Praxisbuch}
     \field{year}{2009}
+  \endentry
+
+  \entry{imdbtour}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{howpublished}{Webseite}
+    \field{note}{Accessed 2019-09-25}
+    \field{title}{{The Grand Tour, Technical Specifications}}
+    \verb{url}
+    \verb https://www.imdb.com/title/tt5712554/technical?ref_=tt_dt_spec
+    \endverb
+  \endentry
+
+  \entry{imdbivory}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{howpublished}{Webseite}
+    \field{note}{Accessed 2019-09-25}
+    \field{title}{{The Ivory Game, Technical Specifications}}
+    \verb{url}
+    \verb https://www.imdb.com/title/tt5952266/technical?ref_=tt_dt_spec
+    \endverb
   \endentry
 \enddatalist
 \endinput

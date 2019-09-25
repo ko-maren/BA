@@ -22,30 +22,36 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.5}\acl {mfd}}{17}{section.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Aktuelle Implementierung}{18}{chapter.4}
+\contentsline {chapter}{\numberline {4}tbd}{18}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Entwicklungsumgebung}{18}{section.4.1}
+\contentsline {section}{\numberline {4.1}Kontext}{18}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Kamera}{18}{section.4.2}
+\contentsline {subsection}{\numberline {4.1.1}Kamera}{18}{subsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Software}{18}{section.4.3}
+\contentsline {subsection}{\numberline {4.1.2}Bildkette}{19}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}\acl {fra}}{20}{chapter.5}
+\contentsline {subsection}{\numberline {4.1.3}Funktionsweise}{19}{subsection.4.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Generischer Plattformtreiber}{20}{section.5.1}
+\contentsline {subsection}{\numberline {4.1.4}Problematik}{20}{subsection.4.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Implementierung im Kernel}{22}{section.5.2}
+\contentsline {section}{\numberline {4.2}Konzept}{20}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Implementierung im Userspace}{22}{section.5.3}
+\contentsline {chapter}{\numberline {5}\acl {fra}}{21}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}\acl {ioctl}}{22}{section.5.4}
+\contentsline {section}{\numberline {5.1}Generischer Plattformtreiber}{21}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.1}Konzeptionierung}{22}{subsection.5.4.1}
+\contentsline {section}{\numberline {5.2}Implementierung im Kernel}{23}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.2}Implementierung}{22}{subsection.5.4.2}
+\contentsline {section}{\numberline {5.3}Implementierung im Userspace}{23}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Einbindung ins \acl {geo}}{22}{section.5.5}
+\contentsline {section}{\numberline {5.4}\acl {ioctl}}{23}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Testbackend}{23}{chapter.6}
+\contentsline {subsection}{\numberline {5.4.1}Konzeptionierung}{23}{subsection.5.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Ausblick}{24}{chapter.7}
+\contentsline {subsection}{\numberline {5.4.2}Implementierung}{23}{subsection.5.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.5}Einbindung ins \acl {geo}}{23}{section.5.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Testbackend}{24}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Ausblick}{25}{chapter.7}
