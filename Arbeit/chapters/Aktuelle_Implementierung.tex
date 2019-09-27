@@ -62,17 +62,25 @@ Beim Starten der Software wird der \ac{fpga} über ein \ac{ioctl} initialisiert 
 Die Funktion zum Updaten des Modules wird bei einer gesetzten Flag ausgeführt. Hier werden dann an den entsprechenden Offset im \ac{fpga} die übergebenen Einstellungen geschrieben. 
 
 
-\subsection{Problematik}
+\subsection{Problematik}\label{sec:prob}
 Bei der aktuellen Implementierung liegen verschiedene Problematiken vor, die durch ein neues Framework eliminiert werden sollen.
 
 Zum einen muss bei den Zugriff auf ein Modul immer der \ac{fpga} gesperrt werden. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind.
+
 
 Des weiteren müssen die Adressen für die \ac{fpga} Module händisch eingetragen werden. Hier durch steigt natürlich die Fehleranfälligkeit weiter, da es passieren kann, dass die Software Einstellungen an eine Adresse schreibt, hinter der kein Modul liegt. In schlechtesten Fall werden die Register eines anderen Modules beschrieben und es kommt zum Fehlerfall in der Bildkette.
 
 
 Die Länge der Register wird in der aktuellen Implementierung nicht weiter berücksichtigt. Natürlich kann es dann passieren, dass über ein Register hinweg geschrieben wird. Auch dann kommt es zum Fehlerfall in der Bildkette, da andere Einstellungen überschrieben werden. 
  
-v.4.15.9
-
-
+%v.4.15.9
 \section{Konzept}
+Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sollen durch ein neues Framework behoben werden, aber auch die Zugriffe der Software auf den \ac{fpga} sollen übersichtlicher und wartbarer gestaltet werden. \\
+
+Die Zugriffe auf den \ac{fpga} benötigen in der momentanen Implementierung immer die Adressen der Module im \ac{fpga}. Dadurch wird die Fehlersuche in diesen Teilen der Software extrem kompliziert. Durch das \ac{fra} sollen die Firmware Module im Kernel als Gerät angelegt werden und in der Software wird auf die \ac{fpga} Module über die entsprechenden Dateideskriptoren zugegriffen. 
+Die Geräte werden mit der Adresse, dem Name, dem Type und der Größe des dahinterstehenden Modul angelegt. Dieser Teil soll generisch generiert werden, aber aufgrund von verschiedenen Abhängigkeiten überschreitet es den Umfang der Arbeit. Dadurch sollen die Geräte beim Initialisieren des Bildpfads mit den entsprechenden Parametern angelegt werden.
+
+Das Öffnen der Dateideskriptoren erfolgt in der Software über den Namen und wird in einem Handle gespeichert. Damit ist der Zugriff ohne Adresse gewährleistet. 
+
+Bei Zugriffen auf das Modul kann mit dem Framework geprüft werden, ob man innerhalb der angegebenen Modulgröße liegt...
+

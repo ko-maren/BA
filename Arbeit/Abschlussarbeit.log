@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  25 SEP 2019 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  27 SEP 2019 16:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1935,7 +1935,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-[19 <./pictures/Bildkette.png>]) [20]
+[19 <./pictures/Bildkette.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+[20]) [21]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
@@ -1945,7 +1950,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 26.
 See the caption package documentation for explanation.
 
-[21
+[22
 
 
 
@@ -1971,12 +1976,12 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 58.
 See the caption package documentation for explanation.
 
-[22]) [23]
+[23]) [24]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 6.
-) [24
+) [25
 
 
 
@@ -1985,14 +1990,14 @@ Kapitel 6.
 
  (./chapters/Ausblick.tex
 Kapitel 7.
-) [25
+) [26
 
 
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 10.40245pt on input line 113.
- [26
+ [27
 
 
 ]
@@ -2016,10 +2021,10 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38344 strings out of 492642
- 701341 string characters out of 6133163
- 956238 words of memory out of 5000000
- 41390 multiletter control sequences out of 15000+600000
+ 38346 strings out of 492642
+ 701358 string characters out of 6133163
+ 956284 words of memory out of 5000000
+ 41391 multiletter control sequences out of 15000+600000
  606478 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,63p,878b,1451s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2031,10 +2036,10 @@ c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/201
 8/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/p
 alatino/uplri8a.pfb>
-Output written on Abschlussarbeit.pdf (26 pages, 802505 bytes).
+Output written on Abschlussarbeit.pdf (27 pages, 803885 bytes).
 PDF statistics:
- 493 PDF objects out of 1000 (max. 8388607)
- 445 compressed objects within 5 object streams
- 144 named destinations out of 1000 (max. 500000)
+ 505 PDF objects out of 1000 (max. 8388607)
+ 456 compressed objects within 5 object streams
+ 145 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
