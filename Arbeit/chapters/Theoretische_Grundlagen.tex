@@ -95,10 +95,9 @@ extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cel
 \end{lstlisting}
 \captionof{code}{Funktionsdeklaration in mfd/core.h}
 
+Die obere Funktion legt Childdevices an und beim Entfernen des Parentdevice werden alle Childdevices automatisch aufgelöst.
 
-Durch die obere Funktion werden alle Childdevices automatisch entfernt, wenn diese aufgelöst werden.
-
-Als ersten Parameter ein Zeiger auf das Parentdevice übergeben. \textit{mfd\_cell} ist eine Struktur, welche das Childdevice näher beschreibt und über die \textit{n\_devs} wird die Anzahl der zu registrierenden Childdevices übergeben. Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. 
+Als ersten Parameter wird ein Zeiger auf das Parentdevice übergeben. \textit{mfd\_cell} ist eine Struktur, welche das Childdevice näher beschreibt und über die \textit{n\_devs} wird die Anzahl der zu registrierenden Childdevices übergeben. Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. 
 (https://elixir.bootlin.com/linux/v5.2.14/source/drivers/mfd/mfd-core.c)
 
 
