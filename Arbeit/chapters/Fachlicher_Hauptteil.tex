@@ -107,16 +107,24 @@ Um ein Register mithilfe einer Bitmaske auszulesen, muss diese zusätzlich angeg
 Dadurch sind die wichtigsten \ac{ioctl}s erläutert, die notwendig sind um die Grundfunktionen des Geräte abzudecken und zusätzlich eine triviale Debug Möglichkeit bieten.
 
 \section{Implementierung im Kernel}\label{sec:kernel}
-% Anlegen der Devices, Über Ioctl im Arri fpga treiber, öffnen und schließen des device, im eigenen Verzeichnis
+% Anlegen der Devices (arrifpga), Über Ioctl im Arri fpga treiber, öffnen und schließen des device, im eigenen Verzeichnis
 % ioctl implementierung im kernel, was steht dahinter, wie funktioniert es, auszüge
+
+\subsection{Anlegen der Geräte}
+%im fpga treiber
+\subsection{Öffnen und Schließen der Geräte}
+%kernelseitige  implementierung im Treiber
+\subsection{Implementierung der \acl{ioctl}s}
+%umsetzung der konzeptionierung 
+
 
 
 \section{Implementierung im Userspace}\label{sec:user}
 %öffnen und schließen der Devices, testprogramm, über namen, (überlegungen zu Test und Backend entscheidung) -> oderr in ioctl implem.
 %Implementierung der ioctls im Userspace, zweites testprogramm, backend!
-
 %testprogramm
 %überlegungen zum testen, backend entscheidung
+
 
 \section{Einbindung ins \acl{geo}}\label{sec:soft}
 %anlegen der Devices in der software, öffnen der devices über den module_idx und abspeichern im entsprechenden handdle, abändern der funktionen von fpga zugriff auf fra zugriff und hw update lediglich über den module_idx des geo module möglich, da über den identischen namen geöffnet wurde und handle unter dem idx gespeichert ist, umstellen des hw update auf die neuen Funktionen
