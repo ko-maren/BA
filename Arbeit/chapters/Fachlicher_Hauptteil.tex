@@ -77,16 +77,40 @@ Damit das Öffnen der Devices auf eine bestimmte Anzahl limitiert ist, wird beim
 %todo base/res
 
 \section{Konzeptionierung der \acl{ioctl}s}\label{sec:ioctl}
+%todo zu oft ioctl
 %über ioctl zugriff auf das geöffnete Device
 %Auf die ioctl eingehen und die Überlegungen hinter diesen
+%hello, logging/unlogging?, get id, get reg, get reg bitmask, get reg block, set reg, set reg bitmask, set reg block, 
 In dem Abschnitt soll auf die Konzeptionierung der \ac{ioctl}s eingegangen werden. Wie in Kapitel~\ref{sec:ioctl_t} erläutert werden \ac{ioctl}s benötigt um zwischen Kernel und Userspace Daten auszutauschen. Da der Großteil der Software im Userspace läuft, aber der Treiber im Kernel, wird der hauptsächliche Zugriff auf die Geräte über \ac{ioctl}s geregelt.\\
 
-%todo pid synonym
-Als Erstes \ac{ioctl} ist eine Anmeldung der Anwendung bei dem Gerät notwendig. Um die Eindeutigkeit zu garantieren wird hier die pid übergeben. Allerdings wird auch der Prozessname benötigt, damit eine schnelle Nachvollziehbarkeit vorhanden ist. Wie in Kapitel~\ref{sec:konzept} erläutert, soll die Unterscheidung zwischen Standardapplikation und Debugtool möglich sein. Aus diesem Grund wird bei der Anmeldung zusätzlich zur pid und dem Prozessnamen auch der Typ der Applikation übergeben.
+
+Als Erstes ist eine Anmeldung der Anwendung bei dem Gerät notwendig. Um die Eindeutigkeit zu garantieren wird hier die \ac{pid} übergeben. Allerdings wird auch der Prozessname benötigt, damit eine schnelle Nachvollziehbarkeit vorhanden ist. Wie in Kapitel~\ref{sec:konzept} erläutert, soll die Unterscheidung zwischen Standardapplikation und Debugtool möglich sein. Aus diesem Grund wird bei der Anmeldung zusätzlich zur \ac{pid} und dem Prozessnamen auch der Typ der Applikation übergeben. 
+%todo satz hier oder wo anders?
+Ohne die Ausführung von dem \textit{ARRI\_FRA\_MOD\_HELLO} \ac{ioctl} bleibt der weitere Zugriff auf das Gerät über \ac{ioctl}s verwehrt.\\
+
+Die Protokollierung der Zugriffe auf ein Gerät ist ein notwendiger Bestandteil. Dadurch soll vor allem im Fehlerfall, die Suche erleichtert werden. Aufgrund der Zugriffe durch verschiedene Prozesse besteht ohne Protokollierung kein einheitlicher Überblick über diese.
+In dem Zusammenhang werden zwei \ac{ioctl}s angelegt. Dabei ist \textit{ARRI\_FRA\_MOD\_LOGGING} zum Aktivieren der Protokollierung zuständig und analog wird diese durch \textit{ARRI\_FRA\_MOD\_NOLOGGING} deaktiviert. \\
+
+Beim Anlegen des Geräts werden der Gerätetyp und der Name abgelegt. Im Userspace soll nach dem Öffnen des Geräts auf diese Informationen zugegriffen werden. Dafür wird ein eigenes \ac{ioctl} benötigt, welches den Typ und Namen aus der Instanzstruktur (siehe Codebeispiel~\ref{code:afm_device}) zurück gibt.\\
+
+Die essenziellen Funktionen des Treibers sind das Setzen bzw. Auslesen von Register. Basierend auf den in der aktuellen Implementierung genutzten Funktionen und den entsprechenden Registerzugriffen, gibt es hier jeweils drei verschiedene Arten. Jede soll durch ein eigenes \ac{ioctl} abgebildet werden, da so die spätere Verwendung vereinfacht wird. 
+
+
+Die Größe eines Registers ist auf 4 Byte normiert. Damit werden zum einfachen Setzen eines Registers lediglich zwei Parameter benötigt. Zum Einen die Stelle des Registers im Gerät(auch Registernummer) und zum anderen der Inhalt. 
+Allerdings besteht auch die Notwendigkeit einzelne Bits oder mehrere hintereinander liegende Register über einen Aufruf zu setzen. Für beide gibt es ein gesondertes \ac{ioctl}. Zum Setzen von einzelnen Bits wird zusätzlich zu den beiden oben genannten Parametern noch eine Bitmaske übergeben. Mithilfe der Bitmaske werden im Register erst die entsprechenden Bits gelöscht und danach gesetzt. 
+Der zweite Sonderfall benötigt andere Übergabeparameter als das einfache Setzen. Zusätzlich zu der Registernummer wird hier eine Registeranzahl gebraucht. Des Weiteren muss der Inhalt der Register in einem Array mit der Größe der Anzahl übergeben werden. Damit kann dann der Reihe nach jedes Register einzeln mit dem entsprechenden Inhalt beschrieben werden.
+
+
+Das Auslesen der Register erfolgt analog zu dem Setzen. Der Parameter für den Registerinhalt wird hier allerdings über das \ac{ioctl} gefüllt und dann zurück in den Userspace übergeben. 
+Um ein Register mithilfe einer Bitmaske auszulesen, muss diese zusätzlich angegeben werden. Damit man einen ganzen Block an Registern zurück lesen kann, muss durch das übergeben eines leeren Arrays mit der richtigen Größe der Speicherbereich zu Verfügung gestellt werden.\\
+
+Dadurch sind die wichtigsten \ac{ioctl}s erläutert, die notwendig sind um die Grundfunktionen des Geräte abzudecken und zusätzlich eine triviale Debug Möglichkeit bieten.
 
 \section{Implementierung im Kernel}\label{sec:kernel}
 % Anlegen der Devices, Über Ioctl im Arri fpga treiber, öffnen und schließen des device, im eigenen Verzeichnis
 % ioctl implementierung im kernel, was steht dahinter, wie funktioniert es, auszüge
+
+
 \section{Implementierung im Userspace}\label{sec:user}
 %öffnen und schließen der Devices, testprogramm, über namen, (überlegungen zu Test und Backend entscheidung) -> oderr in ioctl implem.
 %Implementierung der ioctls im Userspace, zweites testprogramm, backend!
