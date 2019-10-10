@@ -18,11 +18,9 @@
 \BOOKMARK [1][-]{section.4.2}{Konzept}{chapter.4}% 18
 \BOOKMARK [0][-]{chapter.5}{FPGA Resource Abstraction}{}% 19
 \BOOKMARK [1][-]{section.5.1}{Generischer Plattformtreiber}{chapter.5}% 20
-\BOOKMARK [1][-]{section.5.2}{Implementierung im Kernel}{chapter.5}% 21
-\BOOKMARK [1][-]{section.5.3}{Implementierung im Userspace}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.4}{IO Control}{chapter.5}% 23
-\BOOKMARK [2][-]{subsection.5.4.1}{Konzeptionierung}{section.5.4}% 24
-\BOOKMARK [2][-]{subsection.5.4.2}{Implementierung}{section.5.4}% 25
-\BOOKMARK [1][-]{section.5.5}{Einbindung ins Geometrie Framework}{chapter.5}% 26
-\BOOKMARK [0][-]{chapter.6}{Testbackend}{}% 27
-\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 28
+\BOOKMARK [1][-]{section.5.2}{Konzeptionierung der IO Controls}{chapter.5}% 21
+\BOOKMARK [1][-]{section.5.3}{Implementierung im Kernel}{chapter.5}% 22
+\BOOKMARK [1][-]{section.5.4}{Implementierung im Userspace}{chapter.5}% 23
+\BOOKMARK [1][-]{section.5.5}{Einbindung ins Geometrie Framework}{chapter.5}% 24
+\BOOKMARK [0][-]{chapter.6}{Testbackend}{}% 25
+\BOOKMARK [0][-]{chapter.7}{Ausblick}{}% 26

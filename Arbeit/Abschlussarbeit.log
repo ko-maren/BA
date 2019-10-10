@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  30 SEP 2019 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  3 OCT 2019 16:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1613,7 +1613,7 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 
 
 (./chapters/Vorspann.tex
-<pictures/Hochschule_Muenchen_Logo.png, id=119, 1796.7125pt x 779.91376pt>
+<pictures/Hochschule_Muenchen_Logo.png, id=111, 1796.7125pt x 779.91376pt>
 File: pictures/Hochschule_Muenchen_Logo.png Graphic file (type png)
 <use pictures/Hochschule_Muenchen_Logo.png>
 Package pdftex.def Info: pictures/Hochschule_Muenchen_Logo.png  used on input l
@@ -1663,7 +1663,7 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 12.
 (c:/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-<pictures/ARRI_AG_Corporate_Logo.png, id=121, 1284.8pt x 474.77374pt>
+<pictures/ARRI_AG_Corporate_Logo.png, id=113, 1284.8pt x 474.77374pt>
 File: pictures/ARRI_AG_Corporate_Logo.png Graphic file (type png)
 <use pictures/ARRI_AG_Corporate_Logo.png>
 Package pdftex.def Info: pictures/ARRI_AG_Corporate_Logo.png  used on input lin
@@ -1680,37 +1680,37 @@ schule_Muenchen_Logo.png> <./pictures/ARRI_AG_Corporate_Logo.png>] [2
 ] [3] [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 124--128
+Underfull \hbox (badness 10000) in paragraph at lines 121--125
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--128
+Underfull \hbox (badness 10000) in paragraph at lines 121--125
 
  []
 
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 142.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 139.
 [5] [6
 
 ]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 156.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 153.
  [7] [8
 
 ]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 177.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 174.
  (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 10.40245pt on input line 177.
+(Font)              scaled to size 10.40245pt on input line 174.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 177.
+(Font)              scaled to size 23.63593pt on input line 174.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 177.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 174.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 23.63593pt on input line 177.
+(Font)              scaled to size 23.63593pt on input line 174.
 
 (./Abschlussarbeit.toc [9
 
@@ -1873,33 +1873,33 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--103
-[]\T1/ppl/m/n/10.95 Als ers-ten Pa-ra-me-ter ein Zei-ger auf das Pa-rent-de-vi-
-ce über-ge-
+Underfull \hbox (badness 3701) in paragraph at lines 100--102
+[]\T1/ppl/m/n/10.95 Als ers-ten Pa-ra-me-ter wird ein Zei-ger auf das Pa-rent-d
+e-vi-ce über-
  []
 
 
-Underfull \hbox (badness 4168) in paragraph at lines 101--103
-\T1/ppl/m/n/10.95 ben. \T1/ppl/m/it/10.95 mfd_cell \T1/ppl/m/n/10.95 ist ei-ne 
-Struk-tur, wel-che das Child-de-vi-ce nä-her be-
+Underfull \hbox (badness 1975) in paragraph at lines 100--102
+\T1/ppl/m/n/10.95 ge-ben. \T1/ppl/m/it/10.95 mfd_cell \T1/ppl/m/n/10.95 ist ei-
+ne Struk-tur, wel-che das Child-de-vi-ce nä-her be-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--103
-\T1/ppl/m/n/10.95 Child-de-vi-ces über-ge-ben. Die an-de-ren Über-ga-be-pa-ra-m
-e-ter wer-den
+Underfull \hbox (badness 2119) in paragraph at lines 100--102
+\T1/ppl/m/n/10.95 schreibt und über die \T1/ppl/m/it/10.95 n_devs \T1/ppl/m/n/1
+0.95 wird die An-zahl der zu re-gis-trie-ren-
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 101--103
-\T1/ppl/m/n/10.95 nicht nä-her be-trach-tet, da sie im fol-gen-den nicht be-nö-
-tigt wer-den.
+Underfull \hbox (badness 3724) in paragraph at lines 100--102
+\T1/ppl/m/n/10.95 den Child-de-vi-ces über-ge-ben. Die an-de-ren Über-ga-be-pa-
+ra-me-ter wer-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--103
-\T1/ppl/m/n/10.95 (https://elixir.bootlin.com/linux/v5.2.14/source/drivers/mfd/
-mfd-
+Underfull \hbox (badness 1199) in paragraph at lines 100--102
+\T1/ppl/m/n/10.95 den nicht nä-her be-trach-tet, da sie im fol-gen-den nicht be
+-nö-tigt wer-
  []
 
 ) [17]
@@ -1907,7 +1907,7 @@ mfd-
 
  (./chapters/Aktuelle_Implementierung.tex
 Kapitel 4.
-<pictures/amira-product-image-data.jpg, id=313, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=303, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1925,19 +1925,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
  <./pictures/amira-product-image-data.jpg>]
 Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
-although it is yet undefined on input line 39.
+although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
-although it is yet undefined on input line 39.
-<pictures/bildkette.png, id=326, 2720.75294pt x 630.59117pt>
+although it is yet undefined on input line 34.
+<pictures/bildkette.png, id=316, 2720.75294pt x 630.59117pt>
 File: pictures/bildkette.png Graphic file (type png)
 <use pictures/bildkette.png>
-Package pdftex.def Info: pictures/bildkette.png  used on input line 43.
+Package pdftex.def Info: pictures/bildkette.png  used on input line 38.
 (pdftex.def)             Requested size: 360.0pt x 83.43265pt.
 Package acronym Info: Label `acro:xbar' newly defined as it shall be overridden
 
-although it is yet undefined on input line 54.
+although it is yet undefined on input line 49.
  [19 <./pictures/Bildkette.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
@@ -1946,23 +1956,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
-
- []
-
 [20]
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
@@ -1971,21 +1981,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
-
- []
-
 ) [21]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
 Kapitel 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 26.
@@ -1996,28 +2001,33 @@ See the caption package documentation for explanation.
 
 
 ]
-Underfull \hbox (badness 1852) in paragraph at lines 31--32
+Underfull \hbox (badness 1852) in paragraph at lines 37--38
 \T1/ppl/m/n/10.95 frei-ge-ge-ben, der Platt-form-trei-ber ab-ge-mel-det und die
  er-stel-le Klas-se
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
 
-Underfull \hbox (badness 1715) in paragraph at lines 34--35
+Underfull \hbox (badness 1715) in paragraph at lines 40--42
 \T1/ppl/m/n/10.95 ge-ru-fen und zu-sätz-lich wird der Mo-dul-typ und Na-me in e
 i-ner \T1/ppl/m/it/10.95 ar-
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 58.
+(caption)                particular \caption on input line 63.
 See the caption package documentation for explanation.
 
-[23]) [24]
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+) [24]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
@@ -2056,19 +2066,19 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 122.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 122.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 122.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 17336057BB62E06F6936EA0FC4C89DF7;1835.
+(rerunfilecheck)             Checksum: 0C1DCC167DB62457EE72AEA05AEFB965;1718.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38346 strings out of 492642
- 701364 string characters out of 6133163
- 957320 words of memory out of 5000000
+ 38344 strings out of 492642
+ 701326 string characters out of 6133163
+ 957437 words of memory out of 5000000
  41391 multiletter control sequences out of 15000+600000
  606478 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,63p,878b,1451s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,63p,842b,1451s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
 f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2018/texmf-dist/fonts/ty
 pe1/urw/helvetic/uhvr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/helveti
@@ -2077,10 +2087,10 @@ c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/201
 8/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/p
 alatino/uplri8a.pfb>
-Output written on Abschlussarbeit.pdf (27 pages, 804986 bytes).
+Output written on Abschlussarbeit.pdf (27 pages, 806796 bytes).
 PDF statistics:
- 508 PDF objects out of 1000 (max. 8388607)
- 459 compressed objects within 5 object streams
- 145 named destinations out of 1000 (max. 500000)
- 257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 503 PDF objects out of 1000 (max. 8388607)
+ 454 compressed objects within 5 object streams
+ 143 named destinations out of 1000 (max. 500000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
 

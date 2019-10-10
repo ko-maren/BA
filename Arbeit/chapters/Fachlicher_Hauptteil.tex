@@ -9,7 +9,7 @@ In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des in \r
 Um eine einwandfreie Kommunikation zwischen den Firmware Modulen im \ac{fpga} und dem Kernel zu gewährleisten, muss ein generischer Treiber erstellt werden. 
 
 
-Wie in dem Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Treibers eingegangen werden.
+Wie in dem Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Treibers eingegangen werden.\\
 
 
 Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz allokiert. 
@@ -25,37 +25,45 @@ struct afm_driver
 \end{lstlisting}
 \captionof{code}{\label{code:afm_data}Struktur des Treibers}
 
-Es wird als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Da die Majornummer den Treiber kennzeichnet (siehe Kapitel~\ref{sec:mmnum_t}) wird diese in der globalen Treiberstruktur festgelegt. Für die Minornummer wird in der Datenstruktur eine Liste und ein zugehöriges Spinlock initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die bei jedem Device individuell ist und gleichzeitig wird die Anzahl der möglichen Module begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen unterbrechungsfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. Am Ende der initialen Funktion wird der Plattformtreiber mit der \textit{platfrom\_driver} Struktur (siehe Codebeispiel~\ref{code:platform_driver}) registriert.
+Im Treiber wird beim Laden als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Diese Klasse wird in der dem Treiber zugehörigen Struktur \textit{afm\_driver} in der Variablen \textit{class} abgespeichert. 
+
+
+Da die Majornummer den Treiber kennzeichnet (siehe Kapitel~\ref{sec:mmnum_t}) wird diese in der globalen Treiberstruktur als \textit{major\_id} gespeichert. Für die Minornummer wird in der Datenstruktur eine Liste \textit{minor\_list[AFM\_MAX]} und ein zugehöriges Spinlock \textit{minor\_spinlock} initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die bei jedem Gerät individuell ist und gleichzeitig wird dadurch die Anzahl der möglichen Module auf \textit{AFM\_MAX} begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen unterbrechungsfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. 
+
+
+Am Ende der initialen Funktion wird der Plattformtreiber mit der \textit{platfrom\_driver} Struktur (siehe Codebeispiel~\ref{code:platform_driver}) registriert. Damit werden die initiale Funktion zum Anlegen, aber auch die Funktion zum Deinitialisieren der Geräte übergeben.
 
 
 Analog wird beim Freigeben des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstelle Klasse zerstört.\\
 
 
-Beim Anlegen einer Instanz vom Treiber wird die \textit{.probe} Funktion aufgerufen und zusätzlich wird der Modultyp und Name in einer \textit{arri\_fra\_mod\_config} Struktur zur Verfügung gestellt. In der initialen Funktion der Instanz wird diese Struktur genutzt um spezifische Einstellungen für jede einzelne Instanz festgelegt und in einer entsprechenden Datenstruktur gespeichert. 
-
-%todo aussotieren 
+Beim Anlegen einer Instanz vom Treiber wird die \textit{.probe} Funktion aufgerufen und zusätzlich wird der Modultyp und Name in einer \textit{arri\_fra\_mod\_config} Struktur zur Verfügung gestellt.
+%todo aussotieren
 \begin{lstlisting}
 struct afm_device 
 {
-	struct arri_fra_mod_config *mod_config;
+struct arri_fra_mod_config *mod_config;
 
-	struct class *class;
-	struct cdev cdev;
-	unsigned int minor_id;
-	struct platform_device *pdev;
-	struct resource *res;
-	u8 __iomem *base;
+struct class *class;
+struct cdev cdev;
+unsigned int minor_id;
+struct platform_device *pdev;
+struct resource *res;
+u8 __iomem *base;
 
-	struct afm_file fdev[AFM_FILE_MAX];
-	spinlock_t open_spinlock;
-	%atomic_t use_count;
+struct afm_file fdev[AFM_FILE_MAX];
+spinlock_t open_spinlock;
+%atomic_t use_count;
 
-	#define AFM_NOLOGGING   ((uint32_t)0U)
-	#define AFM_LOGGING     ((uint32_t)1U)
-	uint32_t has_logging;
+#define AFM_NOLOGGING   ((uint32_t)0U)
+#define AFM_LOGGING     ((uint32_t)1U)
+uint32_t has_logging;
 };
 \end{lstlisting}
-\captionof{code}{Auszug aus der Struktur einer Instanz}
+\captionof{code}{\label{code:afm_device}Auszug aus der Struktur einer Instanz}
+
+In der initialen Funktion der Instanz wird diese Struktur genutzt um spezifische Einstellungen für jede einzelne Instanz festgelegt und in einer entsprechenden Datenstruktur (siehe Codebeispiel~\ref{code:afm_device}) gespeichert. 
+
 
 Der einzige Übergabeparameter der Probefunktion ist die Struktur des \textit{platform\_device}, diese wird in dem Zeiger \textit{*pdev} gespeichert. Auch die, beim Laden des Treibers, angelegte Klasse wird ohne weitere Änderungen unter \textit{*class} abgelegt. 
 
@@ -68,20 +76,27 @@ Damit das Öffnen der Devices auf eine bestimmte Anzahl limitiert ist, wird beim
 
 %todo base/res
 
+\section{Konzeptionierung der \acl{ioctl}s}\label{sec:ioctl}
+%über ioctl zugriff auf das geöffnete Device
+%Auf die ioctl eingehen und die Überlegungen hinter diesen
+In dem Abschnitt soll auf die Konzeptionierung der \ac{ioctl}s eingegangen werden. Wie in Kapitel~\ref{sec:ioctl_t} erläutert werden \ac{ioctl}s benötigt um zwischen Kernel und Userspace Daten auszutauschen. Da der Großteil der Software im Userspace läuft, aber der Treiber im Kernel, wird der hauptsächliche Zugriff auf die Geräte über \ac{ioctl}s geregelt.\\
+
+%todo pid synonym
+Als Erstes \ac{ioctl} ist eine Anmeldung der Anwendung bei dem Gerät notwendig. Um die Eindeutigkeit zu garantieren wird hier die pid übergeben. Allerdings wird auch der Prozessname benötigt, damit eine schnelle Nachvollziehbarkeit vorhanden ist. Wie in Kapitel~\ref{sec:konzept} erläutert, soll die Unterscheidung zwischen Standardapplikation und Debugtool möglich sein. Aus diesem Grund wird bei der Anmeldung zusätzlich zur pid und dem Prozessnamen auch der Typ der Applikation übergeben.
 
 \section{Implementierung im Kernel}\label{sec:kernel}
-
+% Anlegen der Devices, Über Ioctl im Arri fpga treiber, öffnen und schließen des device, im eigenen Verzeichnis
+% ioctl implementierung im kernel, was steht dahinter, wie funktioniert es, auszüge
 \section{Implementierung im Userspace}\label{sec:user}
+%öffnen und schließen der Devices, testprogramm, über namen, (überlegungen zu Test und Backend entscheidung) -> oderr in ioctl implem.
+%Implementierung der ioctls im Userspace, zweites testprogramm, backend!
 
 %testprogramm
 %überlegungen zum testen, backend entscheidung
-\section{\acl{ioctl}}\label{sec:ioctl}
-\subsection{Konzeptionierung}
-\subsection{Implementierung}
 
 \section{Einbindung ins \acl{geo}}\label{sec:soft}
-
-
+%anlegen der Devices in der software, öffnen der devices über den module_idx und abspeichern im entsprechenden handdle, abändern der funktionen von fpga zugriff auf fra zugriff und hw update lediglich über den module_idx des geo module möglich, da über den identischen namen geöffnet wurde und handle unter dem idx gespeichert ist, umstellen des hw update auf die neuen Funktionen
+%Bild?
 
 
 

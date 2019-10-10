@@ -20,16 +20,11 @@ Um die Funktionalität des \ac{fra} zu festzustellen und grobe Fehler rechtzeiti
 \end{figure}  
 \footnotetext[2]{ \url{https://www.arri.com/resource/blob/33916/909908b1643addb99036f132d6b3582c/amira-product-image-data.jpg}}
 
-
-
 Die AMIRA ist eine vielseitige Kamera, die für eine Einmannbedienung ausgelegt ist.
 Zusätzlich ist sie mit einem Audioboard ausgestattet und aus diesem Grund bei Dokumentationsfilmen und der elektronische Berichtserstattung gerne verwendet. Zum Beispiel wird die ARRI AMIRA bei Sportveranstaltungen der NFL in Amerika eingesetzt. \cite{arrinewsamira} 
 
 Für Spielfilm- und Serienproduktionen wird auch manchmal die ARRI AMIRA eingesetzt, wodurch das breite Einsatzspektrum der Kamera noch deutlicher wird.
 Als Beispiele sind hier der bayrische Eberhofer Krimi \glqq Sauerkrautkoma\grqq{} \cite{arrikrimi}, die Netflixserie \glqq The Ivory Game\grqq{} \cite{imdbivory} oder auch das Fernsehmagazin \glqq The Grand Tour\grqq{} \cite{imdbtour} zu nennen.
-
-
-
 
 % Elektronische Berichtserstattung, billigste, neues marktsegement, keine andere arri kamera drinnen, live sendung bis hin zu reportage, viel bei broadcast unternehmen und sportveranstaltungen
 %doku: the ivery game (netflix),  doku & aktion, super bild, und audiopoard, top gear (amazon), serien udn spielfilm (eberhofer filme), veep (us), sportveranstalungen (nfl nba) us, 2 bis 6 Kameras
@@ -80,7 +75,7 @@ Des weiteren müssen die Adressen für die \ac{fpga} Module händisch eingetrage
 Auch die Länge der Register wird in der aktuellen Implementierung nicht weiter berücksichtigt. Natürlich kann es dann passieren, dass über ein Register hinweg geschrieben wird. Auch dann kommt es zum Fehlerfall in der Bildkette, da andere Einstellungen überschrieben werden. 
  
 %v.4.15.9
-\section{Konzept}
+\section{Konzept}\label{sec:konzept}
 Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sollen durch ein neues Framework behoben werden, aber auch die Zugriffe der Software auf den \ac{fpga} sollen übersichtlicher und wartbarer gestaltet werden. \\
 
 Die Zugriffe auf den \ac{fpga} benötigen in der momentanen Implementierung immer die Adressen der Module im \ac{fpga}. Dadurch wird die Fehlersuche in diesen Teilen der Software extrem kompliziert und aufwendig. Durch das \ac{fra} sollen die Firmware Module im Kernel als Gerät angelegt werden und in der Software wird auf die \ac{fpga} Module über die entsprechenden Dateideskriptoren zugegriffen. \\
