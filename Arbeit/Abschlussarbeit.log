@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  10 OCT 2019 15:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  16 OCT 2019 16:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1869,37 +1869,13 @@ although it is yet undefined on input line 90.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 96.
+(caption)                particular \caption on input line 97.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 3701) in paragraph at lines 100--102
-[]\T1/ppl/m/n/10.95 Als ers-ten Pa-ra-me-ter wird ein Zei-ger auf das Pa-rent-d
-e-vi-ce über-
- []
-
-
-Underfull \hbox (badness 1975) in paragraph at lines 100--102
-\T1/ppl/m/n/10.95 ge-ben. \T1/ppl/m/it/10.95 mfd_cell \T1/ppl/m/n/10.95 ist ei-
-ne Struk-tur, wel-che das Child-de-vi-ce nä-her be-
- []
-
-
-Underfull \hbox (badness 2119) in paragraph at lines 100--102
-\T1/ppl/m/n/10.95 schreibt und über die \T1/ppl/m/it/10.95 n_devs \T1/ppl/m/n/1
-0.95 wird die An-zahl der zu re-gis-trie-ren-
- []
-
-
-Underfull \hbox (badness 3724) in paragraph at lines 100--102
-\T1/ppl/m/n/10.95 den Child-de-vi-ces über-ge-ben. Die an-de-ren Über-ga-be-pa-
-ra-me-ter wer-
- []
-
-
-Underfull \hbox (badness 1199) in paragraph at lines 100--102
-\T1/ppl/m/n/10.95 den nicht nä-her be-trach-tet, da sie im fol-gen-den nicht be
--nö-tigt wer-
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+[]\T1/ppl/m/n/10.95 (https://elixir.bootlin.com/linux/v5.2.14/source/drivers/mf
+d/mfd-
  []
 
 ) [17]
@@ -1907,7 +1883,7 @@ Underfull \hbox (badness 1199) in paragraph at lines 100--102
 
  (./chapters/Aktuelle_Implementierung.tex
 Kapitel 4.
-<pictures/amira-product-image-data.jpg, id=320, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=323, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1928,7 +1904,7 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 35.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 35.
-<pictures/bildkette.png, id=333, 2720.75294pt x 630.59117pt>
+<pictures/bildkette.png, id=338, 2720.75294pt x 630.59117pt>
 File: pictures/bildkette.png Graphic file (type png)
 <use pictures/bildkette.png>
 Package pdftex.def Info: pictures/bildkette.png  used on input line 39.
@@ -1942,48 +1918,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--57
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
 [20]
-Underfull \hbox (badness 1215) in paragraph at lines 80--81
+Underfull \hbox (badness 1215) in paragraph at lines 81--82
 []\T1/ppl/m/n/10.95 Die Pro-ble-me in der ak-tu-el-len Im-ple-men-tie-rung (sie
 -he Ka-pi-tel []4.1.4[])
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
@@ -2051,7 +2027,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 104--106
+Underfull \hbox (badness 1038) in paragraph at lines 104--107
+\T1/ppl/m/n/10.95 ge-füllt und dann zu-rück in den User-space über-ge-ben. Re-g
+is-ter über
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--107
 
  []
 
@@ -2100,10 +2082,10 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38359 strings out of 492642
- 701498 string characters out of 6133163
- 957541 words of memory out of 5000000
- 41399 multiletter control sequences out of 15000+600000
+ 38362 strings out of 492642
+ 701600 string characters out of 6133163
+ 957962 words of memory out of 5000000
+ 41401 multiletter control sequences out of 15000+600000
  606478 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,63p,842b,1451s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2115,10 +2097,10 @@ c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/201
 8/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/p
 alatino/uplri8a.pfb>
-Output written on Abschlussarbeit.pdf (29 pages, 812596 bytes).
+Output written on Abschlussarbeit.pdf (29 pages, 814191 bytes).
 PDF statistics:
- 541 PDF objects out of 1000 (max. 8388607)
- 490 compressed objects within 5 object streams
- 150 named destinations out of 1000 (max. 500000)
+ 551 PDF objects out of 1000 (max. 8388607)
+ 500 compressed objects within 5 object streams
+ 151 named destinations out of 1000 (max. 500000)
  265 words of extra memory for PDF output out of 10000 (max. 10000000)
 

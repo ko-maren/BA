@@ -87,7 +87,8 @@ Die Majornummer kennzeichnet hier üblicherweise dem Device zugehörigen Treiber
 
 \section{\acl{mfd}}\label{sec:mfd_t}
 %todo definition mfd quelle
-Normalerweise wird lediglich ein Device angelegt, ohne weitere Unterteilungen zu machen. Es ist allerdings möglich unter einem Parentdevice noch weitere Childdevices zu registrieren. Diese Art wird dann \acf{mfd} genannt.
+Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, benötigt man die Möglichkeit es als \ac{mfd} anzulegen. \cite{bellonimfd}
+
 
 %todo linux kernel code & Unterschrift
 \begin{lstlisting}
@@ -95,9 +96,13 @@ extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cel
 \end{lstlisting}
 \captionof{code}{Funktionsdeklaration in mfd/core.h}
 
-Die obere Funktion legt Childdevices an und beim Entfernen des Parentdevice werden alle Childdevices automatisch aufgelöst.
+Die obere Funktion legt Untergeräte an und beim Entfernen des übergeordneten Gerät  werden alle Untergeräte automatisch aufgelöst.
 
-Als ersten Parameter wird ein Zeiger auf das Parentdevice übergeben. \textit{mfd\_cell} ist eine Struktur, welche das Childdevice näher beschreibt und über die \textit{n\_devs} wird die Anzahl der zu registrierenden Childdevices übergeben. Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. 
+
+%todo mehr zu mfd_cell & warum die Parameter nicht benötigt werden
+Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}. Durch diese wird das anzulegende Gerät näher beschrieben.
+Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräten angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden.
+
 (https://elixir.bootlin.com/linux/v5.2.14/source/drivers/mfd/mfd-core.c)
 
 

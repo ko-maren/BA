@@ -8,7 +8,7 @@ Um einen Überblick über das Umfeld der Arbeit zu bekommen, werden ein paar Gru
 
 \subsection{Kamera}
 Um die Funktionalität des \ac{fra} festzustellen und grobe Fehler rechtzeitig zu erkennen, ist das regelmäßige Testen auf der Zielplattform unerlässlich. 
-Die Wahl der Kamera ist auf eine ARRI AMIRA gefallen, da die Entwicklungsumgebung durch vorherige Arbeit bekannt ist. Zusätzlich ist sie nicht die aktuellste Kamera der Firma \ac{ARRI} und somit ohne Probleme verfügbar.
+Die Wahl der Kamera ist auf eine \ac{ARRI} AMIRA gefallen, da die Entwicklungsumgebung durch vorherige Arbeit bekannt ist. Zusätzlich ist sie nicht die aktuellste Kamera der Firma \ac{ARRI} und somit ohne Probleme verfügbar.
 
 %https://www.arri.com/resource/blob/33916/909908b1643addb99036f132d6b3582c/amira-product-image-data.jpg
 %todo footnote
@@ -22,9 +22,9 @@ Die Wahl der Kamera ist auf eine ARRI AMIRA gefallen, da die Entwicklungsumgebun
 \footnotetext[2]{ \url{https://www.arri.com/resource/blob/33916/909908b1643addb99036f132d6b3582c/amira-product-image-data.jpg}}
 
 Die AMIRA ist eine vielseitige Kamera, die für eine Einmannbedienung ausgelegt ist.
-Zusätzlich ist sie mit einem Audioboard ausgestattet und aus diesem Grund bei Dokumentationsfilmen und der elektronischen Berichtserstattung gerne verwendet. Zum Beispiel wird die ARRI AMIRA bei Sportveranstaltungen der NFL in Amerika eingesetzt. \cite{arrinewsamira} 
+Zusätzlich ist sie mit einem Audioboard ausgestattet und aus diesem Grund bei Dokumentationsfilmen und der elektronischen Berichtserstattung gerne verwendet. Zum Beispiel wird die \ac{ARRI} AMIRA bei Sportveranstaltungen der NFL in Amerika eingesetzt. \cite{arrinewsamira} 
 
-Für Spielfilm- und Serienproduktionen wird auch manchmal die ARRI AMIRA eingesetzt, wodurch das breite Einsatzspektrum der Kamera noch deutlicher wird.
+Für Spielfilm- und Serienproduktionen wird auch manchmal die \ac{ARRI} AMIRA eingesetzt, wodurch das breite Einsatzspektrum der Kamera noch deutlicher wird.
 Als Beispiele sind hier der bayrische Eberhofer Krimi \glqq Sauerkrautkoma\grqq{} \cite{arrikrimi}, die Netflixserie \glqq The Ivory Game\grqq{} \cite{imdbivory} oder auch das Fernsehmagazin \glqq The Grand Tour\grqq{} \cite{imdbtour} zu nennen.
 
 % Elektronische Berichtserstattung, billigste, neues marktsegement, keine andere arri kamera drinnen, live sendung bis hin zu reportage, viel bei broadcast unternehmen und sportveranstaltungen
@@ -47,7 +47,7 @@ Von der Quelle bis zur jeweiligen Senke läuft das Bild durch verschiedene Modul
 
 Direkt nach dem Sensor geht das Bild durch eine \acl{xbar}, hier wird das identische Bild in zwei Bildpfade weitergeführt. Für die \acl{rec} wird das Bild im Crop zugeschnitten, somit wird nur ein bestimmter Bildausschnitt aufgezeichnet. In dem anderen Bildpfad wird, mithilfe des Scalers, das Bild kleiner skaliert. Nachdem eine grafische Benutzeroberfläche hinzugefügt worden ist, wird das Bild am \ac{sdi} ausgegeben. Hier ist durch die Skalierung das komplette Sensorbild einschließlich der eingefügten Oberfläche zu sehen.
 
-In dieser Arbeit wird nur das \ac{fpga}-Modul \ac{xbar} softwareseitig implementiert, da dies sonst den Umfang der Arbeit überschreitet. 
+In dieser Arbeit wird nur das \ac{fpga}-Modul \ac{xbar} softwareseitig implementiert, da weitere Module sonst den Umfang der Arbeit überschreitet. 
 
 
 \subsection{Funktionsweise}
@@ -62,6 +62,7 @@ Nach der Änderung der Größen wird in dem entsprechenden Modul ein Flag gesetz
 
 Beim Updaten des Modules wird an den entsprechenden Offset im \ac{fpga} die übergebenen Einstellungen geschrieben und gleichzeitig das gesetzte Flag wieder gelöscht. 
 
+%todo umschreiben 
 Damit der Zugriff auf den \ac{fpga} möglich ist, wird dieser beim Starten der Software über ein \ac{ioctl} initialisiert und anschließend kann über eine Variable im Shared Memory in allen Prozesseen darauf zugegriffen werden.
 
 \subsection{Problematik}\label{sec:prob}

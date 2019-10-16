@@ -58,6 +58,29 @@
     \field{year}{2015}
   \endentry
 
+  \entry{bellonimfd}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=BA}{%
+         family={Belloni},
+         familyi={B\bibinitperiod},
+         given={Alexandre},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BA1}
+    \strng{fullhash}{BA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{howpublished}{Präsentation}
+    \field{note}{Accessed 2019-10-14}
+    \field{title}{Supporting multi-function devices in the Linux kernel}
+    \verb{url}
+    \verb https://elinux.org/images/9/9a/Belloni-mfd-regmap-syscon.pdf
+    \endverb
+  \endentry
+
   \entry{corbetplatform}{misc}{}
     \name{author}{1}{}{%
       {{hash=CJ}{%
