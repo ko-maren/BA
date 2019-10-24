@@ -24,7 +24,7 @@ Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur V
 \begin{lstlisting}
 int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsigned long arg);
 \end{lstlisting}
-\captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur}
+\captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur \cite[linux/fs.h]{linuxsourceinclude}}
 
 Über die \textit{node} wird der Dateideskriptor und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird meistens als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 90f]{corbet2005linux}
 
@@ -51,11 +51,10 @@ Gerätetreiber, und damit auch Plattformtreiber, sind unter Linux im Kernel ange
 
 Damit die Treiber richtig funktionieren werden müssen gibt es einige Bestandteile, die in jedem Modul wiederzufinden sind. Standardmäßig wird die Registrierung von Treiber und Device an unterschiedlichen Teilen des Programms ausgeführt. \cite{corbetplatform} 
 
-Jedes Kernelmodule besitzt mindestens eine init und exit Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers.
-%todo linux kernel zitieren!
-(https://elixir.bootlin.com/linux/v4.15.9/source/include/linux/module.h ab Zeile 77)
+Jedes Kernelmodule besitzt mindestens eine init und exit Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers. \cite[linux/module.h]{linuxsourceinclude}
+%todo zeile zitieren
 
-%todo linux kernel code & Unterschrift
+%todo zeile zitieren
 \begin{lstlisting}
 struct platform_driver {
 	int (*probe)(struct platform_device *);
@@ -68,7 +67,7 @@ struct platform_driver {
 	bool prevent_deferred_probe;
 };
 \end{lstlisting}
-\captionof{code}{\label{code:platform_driver}Struktur in linux/platform\_device.h}
+\captionof{code}{\label{code:platform_driver}Struktur in \cite[linux/platform\_driver.h]{linuxsourceinclude}}
 
 Beim Laden des Treibers wird die eine \textit{platform\_driver} Struktur übergeben. In dieser Struktur sind Zeiger auf die Funktionen gespeichert, die beim Erzeugen oder Löschen einer Instanz gebraucht werden.  
 In dieser Arbeit werden lediglich die \textit{.probe} und \textit{.remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{.probe} Zeiger aufgerufen und analog beim Auflösen die \textit{.remove} Funktion.\cite{corbetplatform} 
@@ -94,16 +93,15 @@ Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vo
 \begin{lstlisting}
 extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cell *cells, int n_devs, struct resource *mem_base,int irq_base, struct irq_domain *irq_domain);
 \end{lstlisting}
-\captionof{code}{\label{code:mfd}Funktionsdeklaration in mfd/core.h}
+\captionof{code}{\label{code:mfd}Funktionsdeklaration in \cite[mfd/core.h]{linuxsourceinclude}}
 
 Die obere Funktion legt Untergeräte an und beim Entfernen des übergeordneten Gerät  werden alle Untergeräte automatisch aufgelöst.
 
 
 %todo mehr zu mfd_cell & warum die Parameter nicht benötigt werden
 Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}. Durch diese wird das anzulegende Gerät näher beschrieben.
-Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräten angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden.
+Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräten angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. \cite[mfd/mfd-core.h]{linuxsourcedriver}
 
-(https://elixir.bootlin.com/linux/v5.2.14/source/drivers/mfd/mfd-core.c)
 
 
 

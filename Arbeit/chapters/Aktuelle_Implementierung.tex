@@ -45,7 +45,7 @@ Unter einer Bildkette versteht man die Verarbeitungskette der Bilder vom Eingang
 In der Abbildung~\ref{fig:bild} sieht man eine schematische Bildkette, die in dieser Arbeit zur Veranschaulichung weiter detailliert wird. 
 Von der Quelle bis zur jeweiligen Senke läuft das Bild durch verschiedene Module, die für die Anpassung des Bilds sorgen. 
 
-Direkt nach dem Sensor geht das Bild durch eine \acl{xbar}, hier wird das identische Bild in zwei Bildpfade weitergeführt. Für die \acl{rec} wird das Bild im Crop zugeschnitten, somit wird nur ein bestimmter Bildausschnitt aufgezeichnet. In dem anderen Bildpfad wird, mithilfe des Scalers, das Bild kleiner skaliert. Nachdem eine grafische Benutzeroberfläche hinzugefügt worden ist, wird das Bild am \ac{sdi} ausgegeben. Hier ist durch die Skalierung das komplette Sensorbild einschließlich der eingefügten Oberfläche zu sehen.
+Direkt nach dem Sensor geht das Bild durch eine \ac{xbar}, hier wird das identische Bild in zwei Bildpfade weitergeführt. Für die \acl{rec} wird das Bild im Crop zugeschnitten, somit wird nur ein bestimmter Bildausschnitt aufgezeichnet. In dem anderen Bildpfad wird, mithilfe des Scalers, das Bild kleiner skaliert. Nachdem eine grafische Benutzeroberfläche hinzugefügt worden ist, wird das Bild am \ac{sdi} ausgegeben. Hier ist durch die Skalierung das komplette Sensorbild einschließlich der eingefügten Oberfläche zu sehen.
 
 In dieser Arbeit wird nur das \ac{fpga}-Modul \ac{xbar} softwareseitig implementiert, da weitere Module sonst den Umfang der Arbeit überschreitet. 
 
@@ -53,7 +53,7 @@ In dieser Arbeit wird nur das \ac{fpga}-Modul \ac{xbar} softwareseitig implement
 \subsection{Funktionsweise}
 Bevor auf das erarbeitete Konzept eingegangen wird, soll kurz auf die Funktionsweise der Kamera und die aktuelle Implementierung eingegangen werden.
 
-Die bildverarbeitende Hauptfunktionalität liegt im \ac{fpga}. Hier werden die Module entsprechend der Bildkette angeordnet und verbunden. Durch die Software werden bei den \ac{fpga} Module Einstellungen vorgenommen.\\
+Die bildverarbeitende Hauptfunktionalität liegt im \ac{fpga}. Hier werden die Module entsprechend der Bildkette angeordnet und verbunden. Durch die Software werden bei den \ac{fpga} Modulen entsprechende Einstellungen vorgenommen.\\
 
 
 Damit die Einstellungen auch zu dem Sensorbild passen, werden alle Module des \ac{fpga}s in dem \ac{geo} abgebildet. Das objektorientierte Framework führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der abgebildeten Frameworkbildkette geupdatet und entsprechend der voreingestellten Parameter werden die Größen neu berechnet. 
@@ -68,7 +68,7 @@ Damit der Zugriff auf den \ac{fpga} möglich ist, wird dieser beim Starten der S
 \subsection{Problematik}\label{sec:prob}
 Bei der aktuellen Implementierung liegen verschiedene Probleme vor, die durch ein neues Framework eliminiert werden sollen.\\
 
-Zum Einen muss bei den Zugriff auf ein Modul immer der \ac{fpga} gesperrt werden. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind.\\
+Zum Einen muss bei den Zugriff auf ein Modul immer der \ac{fpga} gesperrt werden. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind. Bei einem Livebild der Kamera ist dies besonders störend, da man die aktuelle Änderung erst später sieht. Da man beim Aufnehmen keine Änderungen am Sensorbild vornehmen kann fällt das Problem hier nicht ins Gewicht.\\
 
 
 Des weiteren müssen die Adressen für die \ac{fpga} Module händisch eingetragen werden. Die Fehleranfälligkeit steigt dadurch natürlich weiter, da es passieren kann, dass die Software, Einstellungen an eine Adresse schreibt, hinter der kein Modul liegt. In schlechtesten Fall werden die Register eines anderen Modules beschrieben und es kommt zum Fehlerfall in der Bildkette.\\
@@ -76,11 +76,11 @@ Des weiteren müssen die Adressen für die \ac{fpga} Module händisch eingetrage
 
 Auch die Länge der Register wird in der aktuellen Implementierung nicht weiter berücksichtigt. So kann es dann passieren, dass über ein Register hinweg geschrieben wird. Auch dann kommt es zum Fehlerfall in der Bildkette, da andere Einstellungen überschrieben werden. 
  
-%v.4.15.9
+%todo kernel version kamera v.4.15.9
 \section{Konzept}\label{sec:konzept}
 Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sollen durch ein neues Framework behoben werden, aber die Zugriffe der Software auf den \ac{fpga} sollen auch übersichtlicher und wartbarer gestaltet werden. \\
 
-Die Zugriffe auf den \ac{fpga} benötigen in der momentanen Implementierung immer die Adressen der Module im \ac{fpga}. Dadurch wird die Fehlersuche in diesen Teilen der Software extrem kompliziert und aufwendig. Durch das \ac{fra} sollen die Firmware Module im Kernel als Gerät angelegt werden und in der Software wird auf die \ac{fpga} Module über die entsprechenden Dateideskriptoren zugegriffen. \\
+In der momentanen Implementierung benötigen die Zugriffe auf den \ac{fpga} immer die Adressen der Module dort. Dadurch wird die Fehlersuche in diesen Teilen der Software extrem kompliziert und aufwendig. Durch das \ac{fra} sollen die Firmware Module im Kernel als Gerät angelegt werden und in der Software wird auf die \ac{fpga} Module über die entsprechenden Dateideskriptoren zugegriffen. \\
 
 
 Die Geräte werden mit der Adresse, dem Name, dem Type und der Größe des dahinterstehenden Modul angelegt. Dieser Teil soll generisch generiert werden, aber aufgrund von verschiedenen Abhängigkeiten überschreitet es den Umfang der Arbeit. Deswegen werden die Geräte beim Initialisieren des Bildpfads mit den entsprechenden Parametern angelegt. \\

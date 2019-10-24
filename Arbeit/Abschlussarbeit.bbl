@@ -31,7 +31,7 @@
     \field{sortinit}{A}
     \field{sortinithash}{A}
     \field{howpublished}{Webseite}
-    \field{note}{Accessed 2019-09-06}
+    \field{note}{Besucht 2019-09-06}
     \field{title}{{About ARRI}}
     \verb{url}
     \verb https://www.arri.com/en/company/about-arri
@@ -74,7 +74,7 @@
     \field{sortinit}{B}
     \field{sortinithash}{B}
     \field{howpublished}{Präsentation}
-    \field{note}{Accessed 2019-10-14}
+    \field{note}{Besucht 2019-10-14}
     \field{title}{Supporting multi-function devices in the Linux kernel}
     \verb{url}
     \verb https://elinux.org/images/9/9a/Belloni-mfd-regmap-syscon.pdf
@@ -97,7 +97,7 @@
     \field{sortinit}{C}
     \field{sortinithash}{C}
     \field{howpublished}{Webseite}
-    \field{note}{Accessed 2019-09-13}
+    \field{note}{Besucht 2019-09-13}
     \field{title}{The platform device API}
     \verb{url}
     \verb https://lwn.net/Articles/448499/
@@ -157,7 +157,7 @@
     \field{sortinit}{M}
     \field{sortinithash}{M}
     \field{howpublished}{Webseite}
-    \field{note}{Accessed 2019-09-25}
+    \field{note}{Besucht 2019-09-25}
     \field{title}{{ARRI im SAUERKRAUTKOMA}}
     \verb{url}
     \verb https://www.arrimedia.de/global/detail-news/arri-im-sauerkrautkoma/
@@ -227,11 +227,20 @@
   \endentry
 
   \entry{imdbtour}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={Unbekannt},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{U1}
+    \strng{fullhash}{U1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{T}
-    \field{sortinithash}{T}
+    \field{sortinit}{U}
+    \field{sortinithash}{U}
     \field{howpublished}{Webseite}
-    \field{note}{Accessed 2019-09-25}
+    \field{note}{Besucht 2019-09-25}
     \field{title}{{The Grand Tour, Technical Specifications}}
     \verb{url}
     \verb https://www.imdb.com/title/tt5712554/technical?ref_=tt_dt_spec
@@ -239,14 +248,67 @@
   \endentry
 
   \entry{imdbivory}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=U}{%
+         family={Unbekannt},
+         familyi={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{U1}
+    \strng{fullhash}{U1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{T}
-    \field{sortinithash}{T}
+    \field{sortinit}{U}
+    \field{sortinithash}{U}
     \field{howpublished}{Webseite}
-    \field{note}{Accessed 2019-09-25}
+    \field{note}{Besucht 2019-09-25}
     \field{title}{{The Ivory Game, Technical Specifications}}
     \verb{url}
     \verb https://www.imdb.com/title/tt5952266/technical?ref_=tt_dt_spec
+    \endverb
+  \endentry
+
+  \entry{linuxsourcedriver}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=V}{%
+         family={Verschiedene},
+         familyi={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{V1}
+    \strng{fullhash}{V1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{V}
+    \field{sortinithash}{V}
+    \field{howpublished}{Webseite}
+    \field{note}{Besucht 2019-10-24, v5.3.7}
+    \field{title}{Linuxquellcode /driver}
+    \verb{url}
+    \verb https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree
+    \verb /drivers?h=v5.3.7
+    \endverb
+  \endentry
+
+  \entry{linuxsourceinclude}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=V}{%
+         family={Verschiedene},
+         familyi={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{V1}
+    \strng{fullhash}{V1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{V}
+    \field{sortinithash}{V}
+    \field{howpublished}{Webseite}
+    \field{note}{Besucht 2019-10-24, v5.3.7}
+    \field{title}{Linuxquellcode /include}
+    \verb{url}
+    \verb https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree
+    \verb /include?h=v5.3.7
     \endverb
   \endentry
 \enddatalist

@@ -123,12 +123,12 @@ Der Zugriff der Software auf die \ac{fpga}-Module soll über Geräte stattfinden
 \begin{lstlisting}
 struct arri_fra_mod_init 
 {
-#define ARRIFPGA_FRA_MAX_NAME   ((uint32_t)50)
-char type[ARRIFPGA_FRA_MAX_NAME];
-char name[ARRIFPGA_FRA_MAX_NAME];
-uint32_t offset;
-/* register size in bytes */
-uint32_t size;
+	#define ARRIFPGA_FRA_MAX_NAME   ((uint32_t)50)
+	char type[ARRIFPGA_FRA_MAX_NAME];
+	char name[ARRIFPGA_FRA_MAX_NAME];
+	uint32_t offset;
+	/* register size in bytes */
+	uint32_t size;
 };
 \end{lstlisting}
 \captionof{code}{\label{code:arri_fra_mod_init} Struktur zum Initialisieren des Geräts}
