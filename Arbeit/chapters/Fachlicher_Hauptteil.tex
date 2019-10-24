@@ -111,9 +111,45 @@ Dadurch sind die wichtigsten \ac{ioctl}s erläutert, die notwendig sind um die G
 % Anlegen der Devices (arrifpga), Über Ioctl im Arri fpga treiber, öffnen und schließen des device, im eigenen Verzeichnis
 % ioctl implementierung im kernel, was steht dahinter, wie funktioniert es, auszüge
 
+%todo auf namensgebung afm_ und arri_fra_mod eingehen!
+%todo _static_assert mit aufnehmen
 
+%todo umbennenen der der überschriften. Gerne nur zwei, einmal über geräte einmal über ioctls
+%todo kurzer text vor die überschriften
 \subsection{Anlegen der Geräte}
 %im fpga treiber
+Der Zugriff der Software auf die \ac{fpga}-Module soll über Geräte stattfinden. Durch die unterschiedlichen Funktionalitäten der Module, wie in Kapitel~\ref{sec:bildkette} erläutert, werden diese Geräte als Kindgeräte vom \ac{fpga} angelegt, d.h. kernelseitig wird dieser Bestandteil im vorhandenen \ac{fpga} Treiber implementiert. 
+
+\begin{lstlisting}
+struct arri_fra_mod_init 
+{
+#define ARRIFPGA_FRA_MAX_NAME   ((uint32_t)50)
+char type[ARRIFPGA_FRA_MAX_NAME];
+char name[ARRIFPGA_FRA_MAX_NAME];
+uint32_t offset;
+/* register size in bytes */
+uint32_t size;
+};
+\end{lstlisting}
+\captionof{code}{\label{code:arri_fra_mod_init} Struktur zum Initialisieren des Geräts}
+
+Über ein \ac{ioctl}, mit der obigen Struktur als Übergabeparameter, wird das Gerät angelegt. 
+
+
+Als Erstes wird hier Speicherplatz für die drei Strukturen \textit{resource}, \textit{mfd\_cell} und \textit{arri\_fra\_mod\_config} allokiert. Mithilfe dieser am Ende der Funktion, die durch das \ac{ioctl} aufgerufen wird, das \ac{mfd} angelegt.
+
+
+%todo flag & parent
+In der \textit{resource} Struktur wird der Speicherbereich des \ac{fpga}-Modules abgebildet. Für die Variable \textit{start} wird auf den bereits allokierten \ac{fpga} Bereich noch der im \textit{arri\_fra\_mod\_init} übergebene \textit{offset} aufaddiert. Entsprechend ist wird für den \textit{end} Wert noch die \textit{size} addiert und zusätzlich eins abgezogen, da alles null basiert ist. \textit{parent} ... Anschließend wird der Zeiger auf die \textit{resource} um eins erhöht.
+
+
+Als Nächstes wird die \textit{mfd\_cell} Struktur gefüllt. Hier wird die Variable \textit{id} auf eine globale Variable gesetzt, die bei jedem Funktionsaufruf um eins erhöht wird. \textit{num\_resources} wird auf eins gesetzt, da es für jedes Gerät nur eine Resource gibt. Entsprechend wird in  \textit{resources} der aktuelle Zeiger der Resource übergeben. Analog wird in \textit{platform\_data} der Zeiger auf die \textit{arri\_fra\_mod\_config} Struktur und in \textit{pdata\_size} die Größe der Struktur abgelegt.
+
+%todo struct mfd_cell und struct resource erläutern, evtl an anderer Stelle
+%todo arri_fra_mod_config beschreiben
+Über die im Codebeispiel~\ref{code:mfd} aufgezeigt Funktionsdeklaration wird das Gerät angelegt. Dadurch wird die \textit{.probe} Funktion des Plattformtreibers ausgeführt und das erfolgreich angelegte Gerät ist auf der Kamera unter \textit{/dev/fra} zu finden.
+
+
 \subsection{Öffnen und Schließen der Geräte}
 %kernelseitige  implementierung im Treiber
 \subsection{Implementierung der \acl{ioctl}s}

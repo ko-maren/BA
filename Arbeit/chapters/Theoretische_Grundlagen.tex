@@ -94,7 +94,7 @@ Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vo
 \begin{lstlisting}
 extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cell *cells, int n_devs, struct resource *mem_base,int irq_base, struct irq_domain *irq_domain);
 \end{lstlisting}
-\captionof{code}{Funktionsdeklaration in mfd/core.h}
+\captionof{code}{\label{code:mfd}Funktionsdeklaration in mfd/core.h}
 
 Die obere Funktion legt Untergeräte an und beim Entfernen des übergeordneten Gerät  werden alle Untergeräte automatisch aufgelöst.
 
