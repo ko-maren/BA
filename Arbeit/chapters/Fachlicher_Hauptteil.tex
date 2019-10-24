@@ -42,22 +42,22 @@ Beim Anlegen einer Instanz vom Treiber wird die \textit{.probe} Funktion aufgeru
 \begin{lstlisting}
 struct afm_device 
 {
-struct arri_fra_mod_config *mod_config;
-
-struct class *class;
-struct cdev cdev;
-unsigned int minor_id;
-struct platform_device *pdev;
-struct resource *res;
-u8 __iomem *base;
-
-struct afm_file fdev[AFM_FILE_MAX];
-spinlock_t open_spinlock;
-%atomic_t use_count;
-
-#define AFM_NOLOGGING   ((uint32_t)0U)
-#define AFM_LOGGING     ((uint32_t)1U)
-uint32_t has_logging;
+	struct arri_fra_mod_config *mod_config;
+	
+	struct class *class;
+	struct cdev cdev;
+	unsigned int minor_id;
+	struct platform_device *pdev;
+	struct resource *res;
+	u8 __iomem *base;
+	
+	struct afm_file fdev[AFM_FILE_MAX];
+	spinlock_t open_spinlock;
+	%atomic_t use_count;
+	
+	#define AFM_NOLOGGING   ((uint32_t)0U)
+	#define AFM_LOGGING     ((uint32_t)1U)
+	uint32_t has_logging;
 };
 \end{lstlisting}
 \captionof{code}{\label{code:afm_device}Auszug aus der Struktur einer Instanz}
