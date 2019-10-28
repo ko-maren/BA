@@ -140,25 +140,55 @@ Als Erstes wird hier Speicherplatz für die drei Strukturen \textit{resource}, \
 
 
 %todo flag & parent
-In der \textit{resource} Struktur wird der Speicherbereich des \ac{fpga}-Modules abgebildet. Für die Variable \textit{start} wird auf den bereits allokierten \ac{fpga} Bereich noch der im \textit{arri\_fra\_mod\_init} übergebene \textit{offset} aufaddiert. Entsprechend ist wird für den \textit{end} Wert noch die \textit{size} addiert und zusätzlich eins abgezogen, da alles null basiert ist. \textit{parent} ... Anschließend wird der Zeiger auf die \textit{resource} um eins erhöht.
+In der \textit{resource} Struktur (siehe Codebeispiel~\ref{code:res}) wird der Speicherbereich des \ac{fpga}-Modules abgebildet. Für die Variable \textit{start} wird auf den bereits allokierten \ac{fpga} Bereich noch der im \textit{arri\_fra\_mod\_init} übergebene \textit{offset} aufaddiert. Entsprechend ist wird für den \textit{end} Wert noch die \textit{size} addiert und zusätzlich eins abgezogen, da alles null basiert ist. Durch den Parameter \textit{flags} wird die Ressource als Speicherbereich festgelegt und als \textit{parent} wird die Ressource des gesamten \ac{fpga}s angegeben.
 
 
-Als Nächstes wird die \textit{mfd\_cell} Struktur gefüllt. Hier wird die Variable \textit{id} auf eine globale Variable gesetzt, die bei jedem Funktionsaufruf um eins erhöht wird. \textit{num\_resources} wird auf eins gesetzt, da es für jedes Gerät nur eine Resource gibt. Entsprechend wird in  \textit{resources} der aktuelle Zeiger der Resource übergeben. Analog wird in \textit{platform\_data} der Zeiger auf die \textit{arri\_fra\_mod\_config} Struktur und in \textit{pdata\_size} die Größe der Struktur abgelegt.
+Als Nächstes wird die \textit{mfd\_cell} Struktur (siehe Codebeispiel~\ref{code:mfd_cell}) gefüllt. Hier wird die Variable \textit{id} auf eine globale Variable gesetzt, die bei jedem Funktionsaufruf um eins erhöht wird. \textit{num\_resources} wird auf eins gesetzt, da es für jedes Gerät nur eine Ressource gibt. Entsprechend wird in  \textit{resources} der aktuelle Zeiger der Ressource übergeben. Analog wird in \textit{platform\_data} der Zeiger auf die \textit{arri\_fra\_mod\_config} Struktur und in \textit{pdata\_size} die Größe der Struktur abgelegt.
+Durch die \textit{arri\_fra\_mod\_config} wird der Gerätename und -typ an den Treiber übergeben.
 
-%todo struct mfd_cell und struct resource erläutern, evtl an anderer Stelle
-%todo arri_fra_mod_config beschreiben
+
 Über die im Codebeispiel~\ref{code:mfd} aufgezeigt Funktionsdeklaration wird das Gerät angelegt. Dadurch wird die \textit{.probe} Funktion des Plattformtreibers ausgeführt und das erfolgreich angelegte Gerät ist auf der Kamera unter \textit{/dev/fra} zu finden.
 
 
 \subsection{Öffnen und Schließen der Geräte}
 %kernelseitige  implementierung im Treiber
+Um später im Userspace auf die Geräte zuzugreifen und um initiale Einstellungen vorzunehmen, muss eine \textit{open} Methode implementiert werden. Im Umkehrschluss werden die Einstellungen durch die \textit{release} Funktion rückgängig gemacht. \cite[Seite 58f.]{corbet2005linux} \\
+
+Die Anzahl von offenen Geräten ist durch die Speicherallokierung in der Struktur \textit{afm\_device} (siehe Codebeispiel~\ref{code:afm_device}) auf \textit{AFM\_FILE\_MAX} (hier: 4) begrenzt. Die geöffnete Instanz eines Geräts wird in der Struktur \textit{afm\_file} abgelegt.
+
+\begin{lstlisting}
+struct afm_file {  
+#define AFM_FREE    ((uint8_t)0U)
+#define AFM_USED    ((uint8_t)1U)
+	uint8_t in_use;
+	struct afm_device *dev;
+	int minor;
+	char name[ARRI_FRA_MOD_MAX_NAME];
+	uint32_t type;
+	uint32_t pid;
+#define AFM_UNLOCK  ((uint32_t)0U)
+#define AFM_LOCK    ((uint32_t)1U)
+	uint32_t has_lock;
+	struct file *file;
+};
+\end{lstlisting}
+\captionof{code}{\label{code:afm_file} Struktur zum Ablegen des Geräts}
+%todo caption umbenennen
+
+Beim Öffnen eines Geräts wird, nachdem das entsprechende Spinlock (\textit{open\_spinlock}) gesperrt wurde, nach einem freien Gerät zum Öffnen gesucht. Hierzu wird über eine for-Schleife iteriert, bis die maximale Anzahl erreicht ist. In jedem Durchgang wird die Variable \textit{in\_use} überprüft, entsprechend dem Define kann dann festgestellt werden, ob es noch möglich ist ein Gerät zu öffnen. Wurde eine freie Stelle gefunden, wird der Parameter auf \textit{AFM\_USED} gesetzt und das Spinlock wieder freigegeben.
+Wenn die maximale Anzahl erreicht ist, wird eine Fehlermeldung ausgegeben und ein Fehlercode zurückgehen.
+Die Variable \textit{dev} wird auf das geöffnete Gerät gesetzt, analog wird \textit{minor} auf die verwendete Minornummer und \textit{file} auf die, in der \textit{open} Methode, übergebene Datei gesetzt. 
+\textit{has\_lock} wird beim Öffnen des Geräts initial freigegeben. Die anderen Parameter beschreiben den Prozess, welcher das Gerät öffnet und werden durch ein \ac{ioctl} entsprechend beschrieben.\\
+
+Analog werden in der \textit{release} Funktion, die Inhalte aus \textit{file} und \textit{dev} auf \textit{NULL} gesetzt. Dadurch ist keine Zuordnung mehr möglich und durch das Freigeben der Variable \textit{in\_use} kann beim nächsten Öffnen der Eintrag im Array überschrieben werden.
+
 \subsection{Implementierung der \acl{ioctl}s}
 %umsetzung der konzeptionierung 
 
 
 
 \section{Implementierung im Userspace}\label{sec:user}
-%öffnen und schließen der Devices, testprogramm, über namen, (überlegungen zu Test und Backend entscheidung) -> oderr in ioctl implem.
+%öffnen und schließen der Devices, testprogramm, über namen, (überlegungen zu Test und Backend entscheidung) -> oder in ioctl implem.
 %Implementierung der ioctls im Userspace, zweites testprogramm, backend!
 %testprogramm
 %überlegungen zum testen, backend entscheidung
