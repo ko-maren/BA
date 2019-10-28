@@ -110,12 +110,14 @@ Dadurch sind die wichtigsten \ac{ioctl}s erläutert, die notwendig sind um die G
 \section{Implementierung im Kernel}\label{sec:kernel}
 % Anlegen der Devices (arrifpga), Über Ioctl im Arri fpga treiber, öffnen und schließen des device, im eigenen Verzeichnis
 % ioctl implementierung im kernel, was steht dahinter, wie funktioniert es, auszüge
+Im Kernel gibt es zwei verschiedene Stellen, an welchen der Code implementiert ist. Zum einen muss der \ac{fpga} Treiber entsprechend erweitert werden, damit die Geräte unter Linux angelegt werden und zum anderen der \ac{fra} Treiber, um die angelegten Geräte zu Öffnen bzw. zu Schließen. \\
 
-%todo auf namensgebung afm_ und arri_fra_mod eingehen!
+Zur besseren Übersichtlichkeit wurde sich für zwei Nameskonventionen entschieden. Strukturen und Funktionen, die mit \textit{arri\_fra\_mod} beginnen, werden außerhalb des \ac{fra} Treibers benötigt bzw. angelegt. Mit diesem Prefix werden die Namen recht lang, aus diesem Grund wird treiberintern auf den nicht so aussagekräftigen Prefix \textit{afm} abgekürzt.
+
+
+
 %todo _static_assert mit aufnehmen
 
-%todo umbennenen der der überschriften. Gerne nur zwei, einmal über geräte einmal über ioctls
-%todo kurzer text vor die überschriften
 \subsection{Anlegen der Geräte}
 %im fpga treiber
 Der Zugriff der Software auf die \ac{fpga}-Module soll über Geräte stattfinden. Durch die unterschiedlichen Funktionalitäten der Module, wie in Kapitel~\ref{sec:bildkette} erläutert, werden diese Geräte als Kindgeräte vom \ac{fpga} angelegt, d.h. kernelseitig wird dieser Bestandteil im vorhandenen \ac{fpga} Treiber implementiert. 
@@ -139,7 +141,6 @@ struct arri_fra_mod_init
 Als Erstes wird hier Speicherplatz für die drei Strukturen \textit{resource}, \textit{mfd\_cell} und \textit{arri\_fra\_mod\_config} allokiert. Mithilfe dieser am Ende der Funktion, die durch das \ac{ioctl} aufgerufen wird, das \ac{mfd} angelegt.
 
 
-%todo flag & parent
 In der \textit{resource} Struktur (siehe Codebeispiel~\ref{code:res}) wird der Speicherbereich des \ac{fpga}-Modules abgebildet. Für die Variable \textit{start} wird auf den bereits allokierten \ac{fpga} Bereich noch der im \textit{arri\_fra\_mod\_init} übergebene \textit{offset} aufaddiert. Entsprechend ist wird für den \textit{end} Wert noch die \textit{size} addiert und zusätzlich eins abgezogen, da alles null basiert ist. Durch den Parameter \textit{flags} wird die Ressource als Speicherbereich festgelegt und als \textit{parent} wird die Ressource des gesamten \ac{fpga}s angegeben.
 
 
@@ -182,16 +183,33 @@ Die Variable \textit{dev} wird auf das geöffnete Gerät gesetzt, analog wird \t
 
 Analog werden in der \textit{release} Funktion, die Inhalte aus \textit{file} und \textit{dev} auf \textit{NULL} gesetzt. Dadurch ist keine Zuordnung mehr möglich und durch das Freigeben der Variable \textit{in\_use} kann beim nächsten Öffnen der Eintrag im Array überschrieben werden.
 
-\subsection{Implementierung der \acl{ioctl}s}
-%umsetzung der konzeptionierung 
-
-
 
 \section{Implementierung im Userspace}\label{sec:user}
 %öffnen und schließen der Devices, testprogramm, über namen, (überlegungen zu Test und Backend entscheidung) -> oder in ioctl implem.
 %Implementierung der ioctls im Userspace, zweites testprogramm, backend!
 %testprogramm
+%xbar
 %überlegungen zum testen, backend entscheidung
+
+
+
+
+
+Damit man die Möglichkeit hat, verhältnismäßig einfach die Userspaceimplementierung zu testen und eventuell für andere Schnittstellen zu Verfügung zu stellen, wird über Wrapper Funktionen auf die Grundmethoden zugegriffen.
+
+
+
+
+- Backendentscheidung, damit Unittest möglich sind, 
+
+- fra\_handle
+
+- Anlegen, öffnen und schließen, fra\_init()
+
+- Implementierung der Grundfunktionen
+
+- FRA Lib
+
 
 
 \section{Einbindung ins \acl{geo}}\label{sec:soft}
