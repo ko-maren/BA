@@ -51,6 +51,9 @@ Gerätetreiber, und damit auch Plattformtreiber, sind unter Linux im Kernel ange
 
 Damit die Treiber richtig funktionieren werden müssen gibt es einige Bestandteile, die in jedem Modul wiederzufinden sind. Standardmäßig wird die Registrierung von Treiber und Device an unterschiedlichen Teilen des Programms ausgeführt. \cite{corbetplatform} 
 
+
+
+
 Jedes Kernelmodule besitzt mindestens eine init und exit Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers. \cite[linux/module.h]{linuxsourceinclude}
 %todo zeile zitieren
 
@@ -73,19 +76,14 @@ Beim Laden des Treibers wird die eine \textit{platform\_driver} Struktur überge
 In dieser Arbeit werden lediglich die \textit{.probe} und \textit{.remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{.probe} Zeiger aufgerufen und analog beim Auflösen die \textit{.remove} Funktion.\cite{corbetplatform} 
 
 %todo umformulieren & kapitel zitieren
-Beim Anlegen der Instanz kann ein Zeiger auf ein struct übergeben werden, in welchem Daten übergeben werden. In der probe Funktion sind somit spezielle Daten für ein entsprechendes Device vorhanden. \cite{corbetplatform} 
-
-%\subsection{Klassen}
-%Über eine Klasse werden implementierte Details abstrahiert, dadurch kann im Userspace basierend auf Funktionsweise mit den Devices gearbeitet werden. ldd
+Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der probe Funktion sind somit spezielle Daten für ein entsprechendes Device vorhanden. \cite{corbetplatform} 
 
 %todo schauen wie sotieren!!!
 \subsection{Major- und Minornummern}\label{sec:mmnum_t}
 Jedes Device hat eine Major- und Minornummer mit der sie angelegt werden.
 Die Majornummer kennzeichnet hier üblicherweise dem Device zugehörigen Treiber analog dazu wird die Minornummer vom Kernel genutzt um auf das exakte Device zu referenzieren. \citep[S. 43f]{corbet2005linux} 
 
-
 \section{\acl{mfd}}\label{sec:mfd_t}
-%todo definition mfd quelle
 Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, benötigt man die Möglichkeit es als \ac{mfd} anzulegen. \cite{bellonimfd}\\
 
 Bevor die Funktion zum Anlegen von \ac{mfd} näher betrachtet wird, sollen zunächst zwei benötigte Strukturen erläutert werden.
@@ -96,13 +94,16 @@ struct resource {
 	resource_size_t end;
 	const char *name;
 	unsigned long flags;
-	unsigned long desc;
+[...]
 	struct resource *parent, *sibling, *child;
 };
 \end{lstlisting}
-\captionof{code}{\label{code:res}resource Struktur in \cite[linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}}
+\captionof{code}{\label{code:res}Struktur resource in \cite[linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}}
 
-%todo resource beschreiben
+Als erste Struktur wird die \textit{resource} näher betrachtet. Hier werden Parameter für einen Speicherbereich abgelegt, damit auf diesen zugegriffen werden kann. 
+Die beiden Parameter sind \textit{start} und \textit{end}. Die beiden Werte legen die Größe und den Ort der Ressource fest. 
+In \textit{name} wird der Name der Datenquelle gespeichert und in der Variablen \textit{flags} werden über Defines unter anderem der Datentyp und andere optionale Einstellungen festgelegt.
+In dem letzten drei Parametern können die abhängige Ressource entsprechend ihrem Grad gespeichert werden. \\
 
 \begin{lstlisting}
 struct mfd_cell {
@@ -128,14 +129,14 @@ struct mfd_cell {
 [...]
 };
 \end{lstlisting}
-\captionof{code}{\label{code:mfd_cell}mfd\_cell Struktur in \cite[linux/mfd/core.h, Zeile 29ff.]{linuxsourceinclude}}
+\captionof{code}{\label{code:mfd_cell}Struktur mfd\_cell in \cite[linux/mfd/core.h, Zeile 29ff.]{linuxsourceinclude}}
 
-%todo *of_compatible nötig??
-In der \textit{mfd\_cell} Struktur werden lediglich die benötigten Parameter betrachtet. In der Variable \textit{name} und \textit{id} werden der Name des Treibers und eine spezifische Nummer gespeichert.
-Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Datentyp der an das untergeordnete Gerät weitergereicht wird, da der Typ variieren kann, wird in \textit{pdata\_size} die zugehörige Datengröße übergeben. 
+Die zweite Struktur wird benötigt um einem \ac{mfd} wichtige Parameter zum Anlegen mitzugeben. Aus diesem Grund werden in der \textit{mfd\_cell} Struktur lediglich die benötigten Parameter betrachtet. 
 
-%todo mfd_cell weiter
-
+In der Variable \textit{name} und \textit{id} werden der Name des Treibers und eine spezifische Nummer gespeichert.
+Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Datenzeiger, welcher an das untergeordnete Gerät weitergereicht wird, da der Typ variieren kann, wird in \textit{pdata\_size} die zugehörige Datengröße übergeben. 
+In der Variable \textit{of\_compatible} wird eine sortierte Liste von strings gespeichert. Beginnend mit dem exakten Namen des Geräts folgt dann eine optionale Liste mit weiteren kompatiblen Geräten. \cite[devicetree/usage\_model.txt, Zeile 116ff.]{linuxsourcedocu} 
+Der Zeiger \textit{resources} speichert die zugehörige Ressource ab, bzw. ein Zeiger auf ein Array von Ressourcen. Die Anzahl der abgespeicherten Ressourcen wird in \textit{num\_resources} abgelegt.\\
 
 
 \begin{lstlisting}
@@ -143,17 +144,15 @@ extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cel
 \end{lstlisting}
 \captionof{code}{\label{code:mfd}Funktionsdeklaration in \cite[linux/mfd/core.h, Zeile 130ff.]{linuxsourceinclude}}
 
-Mithilfe der oberen Funktion legt man die Untergeräte an, zusätzlich ist hier implementiert, dass beim Entfernen des übergeordneten Geräts alle Untergeräte automatisch aufgelöst werden. \cite[mfd/mfd-core.h, Zeile 356f.]{linuxsourcedriver}
+
+Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. 
+Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}, wie oben erwähnt wird diese benötigt um das anzulegende Gerät näher zu beschreiben.
+Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräten angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. 
+Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. \cite[mfd/mfd-core.h]{linuxsourcedriver}
 
 
-Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}. Durch diese wird das anzulegende Gerät näher beschrieben.
+In der Funktion ist zusätzlich implementiert, dass beim Entfernen des übergeordneten Gerät alle Untergeräte automatisch aufgelöst werden. \cite[mfd/mfd-core.h, Zeile 356f.]{linuxsourcedriver}
 
 
-
-
-Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräten angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. \cite[mfd/mfd-core.h]{linuxsourcedriver}
-
-
-
-%todo mehr zu mfd_cell & warum die Parameter nicht benötigt werden
+%todo warum die Parameter nicht benötigt werden
 

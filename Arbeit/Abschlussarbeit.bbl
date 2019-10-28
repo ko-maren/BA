@@ -268,6 +268,28 @@
     \endverb
   \endentry
 
+  \entry{linuxsourcedocu}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=V}{%
+         family={Verschiedene},
+         familyi={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{V1}
+    \strng{fullhash}{V1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{V}
+    \field{sortinithash}{V}
+    \field{howpublished}{Webseite}
+    \field{note}{Besucht 2019-10-28, v5.3.7}
+    \field{title}{Linux /Documentation}
+    \verb{url}
+    \verb https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree
+    \verb /Documentation?h=v5.3.7
+    \endverb
+  \endentry
+
   \entry{linuxsourcedriver}{misc}{}
     \name{author}{1}{}{%
       {{hash=V}{%

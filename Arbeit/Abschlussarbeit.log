@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  24 OCT 2019 19:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  28 OCT 2019 08:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1830,34 +1830,50 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 82.
 Package acronym Info: Label `acro:mfd' newly defined as it shall be overridden
-although it is yet undefined on input line 89.
+although it is yet undefined on input line 88.
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 103.
+(caption)                particular \caption on input line 102.
 See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 1178) in paragraph at lines 104--108
+\T1/ppl/m/n/10.95 der Da-ten-quel-le ge-spei-chert und in der Va-ria-blen \T1/p
+pl/m/it/10.95 flags \T1/ppl/m/n/10.95 wer-den über
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--108
+
+ []
 
 [17]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 130.
+(caption)                particular \caption on input line 133.
 See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--141
+
+ []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 142.
+(caption)                particular \caption on input line 146.
 See the caption package documentation for explanation.
 
-) [18]
+[18]) [19]
 \openout2 = `chapters/Aktuelle_Implementierung.aux'.
 
  (./chapters/Aktuelle_Implementierung.tex
 Kapitel 4.
-<pictures/amira-product-image-data.jpg, id=378, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=386, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1869,7 +1885,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--22
 / 909908b1643addb99036f132d6b3582c /
  []
 
-[19
+[20
 
 
 
@@ -1878,7 +1894,7 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 35.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 35.
-<pictures/bildkette.png, id=394, 2720.75294pt x 630.59117pt>
+<pictures/bildkette.png, id=401, 2720.75294pt x 630.59117pt>
 File: pictures/bildkette.png Graphic file (type png)
 <use pictures/bildkette.png>
 Package pdftex.def Info: pictures/bildkette.png  used on input line 39.
@@ -1886,7 +1902,7 @@ Package pdftex.def Info: pictures/bildkette.png  used on input line 39.
 Package acronym Info: Label `acro:xbar' newly defined as it shall be overridden
 
 although it is yet undefined on input line 48.
- [20 <./pictures/Bildkette.png>]
+ [21 <./pictures/Bildkette.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
@@ -1906,7 +1922,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-[21]
+[22]
 Underfull \hbox (badness 1215) in paragraph at lines 81--82
 []\T1/ppl/m/n/10.95 Die Pro-ble-me in der ak-tu-el-len Im-ple-men-tie-rung (sie
 -he Ka-pi-tel []4.1.4[])
@@ -1937,7 +1953,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
-) [22]
+) [23]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
@@ -1952,7 +1968,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 26.
 See the caption package documentation for explanation.
 
-[23
+[24
 
 
 
@@ -1978,7 +1994,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 63.
 See the caption package documentation for explanation.
 
-[24]
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
@@ -2000,7 +2016,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-[25]
+[26]
 Underfull \hbox (badness 1038) in paragraph at lines 104--107
 \T1/ppl/m/n/10.95 ge-füllt und dann zu-rück in den User-space über-ge-ben. Re-g
 is-ter über
@@ -2011,18 +2027,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--107
 
  []
 
-[26]
+[27]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 134.
 See the caption package documentation for explanation.
 
-) [27] [28]
+) [28] [29]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 6.
-) [29
+) [30
 
 
 
@@ -2031,17 +2047,17 @@ Kapitel 6.
 
  (./chapters/Ausblick.tex
 Kapitel 7.
-) [30
+) [31
 
 
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 10.40245pt on input line 112.
- [31
+ [32
 
 
-] [32]
+] [33]
 \openout2 = `chapters/Anhang.aux'.
 
  (./chapters/Anhang.tex)
@@ -2062,13 +2078,13 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38463 strings out of 492642
- 703127 string characters out of 6133163
- 983644 words of memory out of 5000000
+ 38465 strings out of 492642
+ 703233 string characters out of 6133163
+ 978071 words of memory out of 5000000
  41451 multiletter control sequences out of 15000+600000
  606735 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,63p,842b,1923s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,63p,842b,1865s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/h
@@ -2078,10 +2094,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (32 pages, 832858 bytes).
+Output written on Abschlussarbeit.pdf (33 pages, 834489 bytes).
 PDF statistics:
- 653 PDF objects out of 1000 (max. 8388607)
- 592 compressed objects within 6 object streams
- 201 named destinations out of 1000 (max. 500000)
+ 662 PDF objects out of 1000 (max. 8388607)
+ 600 compressed objects within 6 object streams
+ 203 named destinations out of 1000 (max. 500000)
  265 words of extra memory for PDF output out of 10000 (max. 10000000)
 
