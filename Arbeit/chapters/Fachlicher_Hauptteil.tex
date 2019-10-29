@@ -190,17 +190,12 @@ Analog werden in der \textit{release} Funktion, die Inhalte aus \textit{file} un
 %testprogramm
 %xbar
 %überlegungen zum testen, backend entscheidung
+Der Zugriff auf die \ac{fra} Module im Userspace ist in zwei Ebenen gekapselt. Die untere Stufe besteht aus verschiedenen backendspezifischen Funktionen. Entsprechend sind in der anderen Ebene erweiterte Wrapper Funktionen zu finden. Hier werden verschiedene Überprüfungen durchgeführt, damit kein fehlerhafter Zugriff stattfindet. Des Weiteren wird im Wrapper entsprechend dem Backendtyp, die unterliegende Funktion ausgewählt. Damit es den Umfang der Arbeit nicht übersteigt, wird nur das Kernelbackend implementiert. Dies wird benötigt um über die - im Kernel implementierten - \ac{ioctl}s auf die \ac{fpga} Module zuzugreifen. 
 
+Durch die gekapselten Ebenen ist eine Erweiterung um neue Backendtypen einfach gestaltet.  Insbesondere über ein Testbackend sollen Unittest zu den verschiedenen Modulen möglich sein, damit können Fehler frühzeitig erkannt, eingegrenzt und behoben werden. 
+Aufgrund der Kapselung ist die Wartbarkeit erhöht worden. Dadurch müssen bei Änderungen im Kernelzugriff, nur im Backendcode die entsprechenden Stellen geändert werden.\\
 
-
-
-
-Damit man die Möglichkeit hat, verhältnismäßig einfach die Userspaceimplementierung zu testen und eventuell für andere Schnittstellen zu Verfügung zu stellen, wird über Wrapper Funktionen auf die Grundmethoden zugegriffen.
-
-
-
-
-- Backendentscheidung, damit Unittest möglich sind, 
+ 
 
 - fra\_handle
 
