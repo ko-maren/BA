@@ -190,12 +190,44 @@ Analog werden in der \textit{release} Funktion, die Inhalte aus \textit{file} un
 %testprogramm
 %xbar
 %überlegungen zum testen, backend entscheidung
-Der Zugriff auf die \ac{fra} Module im Userspace ist in zwei Ebenen gekapselt. Die untere Stufe besteht aus verschiedenen backendspezifischen Funktionen. Entsprechend sind in der anderen Ebene erweiterte Wrapper Funktionen zu finden. Hier werden verschiedene Überprüfungen durchgeführt, damit kein fehlerhafter Zugriff stattfindet. Des Weiteren wird im Wrapper entsprechend dem Backendtyp, die unterliegende Funktion ausgewählt. Damit es den Umfang der Arbeit nicht übersteigt, wird nur das Kernelbackend implementiert. Dies wird benötigt um über die - im Kernel implementierten - \ac{ioctl}s auf die \ac{fpga} Module zuzugreifen. 
+Der Zugriff auf die \ac{fra} Module im Userspace ist in zwei Ebenen gekapselt. Die untere Stufe besteht aus verschiedenen backendspezifischen Funktionen. Entsprechend sind in der anderen Ebene erweiterte Wrapper Funktionen zu finden. Hier werden verschiedene Überprüfungen durchgeführt, damit kein fehlerhafter Zugriff stattfindet. Des Weiteren wird im Wrapper entsprechend dem Backendtyp, die unterliegende Funktion ausgewählt. Damit es den Umfang der Arbeit nicht übersteigt, wird nur das Kernelbackend implementiert. Dies wird benötigt um über die, im Kernel implementierten, \ac{ioctl}s auf die \ac{fpga} Module zuzugreifen. 
 
 Durch die gekapselten Ebenen ist eine Erweiterung um neue Backendtypen einfach gestaltet.  Insbesondere über ein Testbackend sollen Unittest zu den verschiedenen Modulen möglich sein, damit können Fehler frühzeitig erkannt, eingegrenzt und behoben werden. 
-Aufgrund der Kapselung ist die Wartbarkeit erhöht worden. Dadurch müssen bei Änderungen im Kernelzugriff, nur im Backendcode die entsprechenden Stellen geändert werden.\\
+Durch die Kapselung ist die Wartbarkeit erhöht worden. Dadurch müssen bei Änderungen im Kernelzugriff, nur im Backendcode die entsprechenden Stellen geändert werden.\\
 
- 
+\subsection{\ac{fra} Bibliothek}
+%fra_handle
+%Wrapper
+%fra_init
+%grundfunktionen
+Neben den Wrapper Funktionen wird in der \ac{fra} Bibliothek auch eine Struktur zum Abspeichern der wichtigen Parameter der \ac{fra} Module im Userspace bereitgestellt.
+\begin{lstlisting}
+struct fra_handle
+{
+	int dev;
+	char dev_type[FRA_MAX_NAME];
+	char dev_name[FRA_MAX_NAME];
+	uint32_t type_id;
+	const struct fra_backend_funcs *backend_funcs;
+};
+\end{lstlisting}
+\captionof{code}{\label{code:fra_handle} Struktur zum Abspeichern wichtiger Parameter}
+
+%todo file discrioter deutsch?
+Der erste und wichtigste Parameter in der Struktur ist der File Descriptor. \textit{dev} Hierüber kann nach dem Öffnen des Geräts weiterhin auf dieses zugegriffen werden. Die restlichen Parameter werden beim initiieren des Geräts gesetzt. \textit{dev\_type} und \textit{dev\_name} geben den Modultyp und den Namen an. Für spätere Überprüfungen wird gibt es für jeden Modultyp noch ein Define, dieses wird in der Variablen \textit{type\_id} abgelegt. In der \textit{fra\_backend\_funcs} Struktur sind Prototypen aller backendspezifischen Funktionen abgelegt.\\
+
+Das Öffnen eines Geräts ist nur über die \textit{fra\_init} Funktion möglich. Da neben dem Öffnen auch eine Anmeldung bei dem Gerät stattfinden muss (siehe Kapitel~\ref{sec:ioctl}), wird dies über einen Funktionsaufruf abgedeckt. 
+
+
+Der initiialen Funktion wird auch ein Backendtyp übergeben und anhand von diesem die Funktionsstrukur im \textit{fra\_handle} gesetzt. Anschließend wird das Gerät geöffnet und danach meldet sich der Prozess direkt an. Hierzu werden jeweils die entsprechenden Wrapper Funktionen aufgerufen um die Funktionalität bei allen Backendtypen zu garantieren. Zum Bestimmen von \textit{dev\_type} und \textit{dev\_name} wird auch über eine Wrapper Funktion, diese Parameter vom Gerät geholt und entsprechend im \textit{fra\_handle} gesetzt. Durch das Iterieren über eine \textit{fra\_type\_list} mit Name, ID und Größe und dem Vergleichen der Strings in Name und dem \textit{dev\_name} wird die Variable \textit{type\_id} gesetzt.\\
+
+Die Grundstruktur der Wrapper Funktionen ist für alle identisch, deshalb wird im folgenden nur ein Beispiel näher betrachtet. Grundsätzlich gibt es für jedes konzeptioniertes \ac{ioctl} im Kernel eine Wrapperfunktion, lediglich das Logging ist in einer Funktion zusammengefasst.
+
+
+\subsection{Kernelbackend}
+
+
+
 
 - fra\_handle
 
