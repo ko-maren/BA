@@ -1,0 +1,40 @@
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {3.1}{\ignorespaces Funktionsdeklaration des \ac {ioctl} in der file\_operations Struktur \cite [linux/fs.h]{linuxsourceinclude}\relax }}{15}{code.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {3.2}{\ignorespaces Funktionsdeklaration in asm/uaccess.h\relax }}{15}{code.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {3.3}{\ignorespaces platform\_driver Struktur in \cite [linux/platform\_driver.h]{linuxsourceinclude}\relax }}{16}{code.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {3.4}{\ignorespaces Struktur resource in \cite [linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}\relax }}{17}{code.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {3.5}{\ignorespaces Struktur mfd\_cell in \cite [linux/mfd/core.h, Zeile 29ff.]{linuxsourceinclude}\relax }}{18}{code.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {3.6}{\ignorespaces Funktionsdeklaration in \cite [linux/mfd/core.h, Zeile 130ff.]{linuxsourceinclude}\relax }}{18}{code.3.6}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {5.1}{\ignorespaces Struktur des Treibers\relax }}{24}{code.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {5.2}{\ignorespaces Auszug aus der Struktur einer Instanz\relax }}{25}{code.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {5.3}{\ignorespaces Struktur zum Initialisieren des Ger\IeC {\"a}ts\relax }}{28}{code.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {5.4}{\ignorespaces Struktur zum Ablegen des Ger\IeC {\"a}ts\relax }}{29}{code.5.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {5.5}{\ignorespaces Struktur zum Abspeichern wichtiger Parameter\relax }}{30}{code.5.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {5.6}{\ignorespaces Makro zum \IeC {\"U}berpr\IeC {\"u}fen des Handles\relax }}{31}{code.5.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {code}{\numberline {5.7}{\ignorespaces Funktion zum Setzen eines Registers\relax }}{32}{code.5.7}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

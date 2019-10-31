@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  31 OCT 2019 09:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  31 OCT 2019 12:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2071,32 +2071,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--197
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 214.
+(caption)                particular \caption on input line 215.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 1331) in paragraph at lines 217--218
+Underfull \hbox (badness 1331) in paragraph at lines 218--219
 \T1/ppl/m/n/10.95 zu-ge-grif-fen wer-den. Die rest-li-chen Pa-ra-me-ter wer-den
  beim in-iti-ie-ren
  []
 
 
-Underfull \hbox (badness 3536) in paragraph at lines 217--218
+Underfull \hbox (badness 3536) in paragraph at lines 218--219
 \T1/ppl/m/it/10.95 fra_backend_funcs \T1/ppl/m/n/10.95 Struk-tur sind Pro-to-ty
 -pen al-ler ba-ckend-s-pe-zi-fi-schen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
 
-[30]) [31]
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
+
+ []
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 244.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
+
+ []
+
+[31]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 265.
+See the caption package documentation for explanation.
+
+) [32]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 6.
-) [32
+) [33
 
 
 
@@ -2105,30 +2126,30 @@ Kapitel 6.
 
  (./chapters/Ausblick.tex
 Kapitel 7.
-) [33
+) [34
 
 
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 10.40245pt on input line 113.
- [34
+ [35
 
 
-] [35]
+] [36]
 \openout2 = `chapters/Anhang.aux'.
 
  (./chapters/Anhang.tex)
 No file Abschlussarbeit.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 124.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 124.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
 (./Abschlussarbeit.aux (./chapters/Vorspann.aux)
 (./chapters/Abkuerzungsverzeichnis.aux) (./chapters/Einleitung.aux)
 (./chapters/Theoretische_Grundlagen.aux)
 (./chapters/Aktuelle_Implementierung.aux) (./chapters/Fachlicher_Hauptteil.aux)
 (./chapters/Test.aux) (./chapters/Ausblick.aux) (./chapters/Anhang.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 124.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 124.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: E7C5358D57F989116D44451CED9F8F27;2015.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
@@ -2136,10 +2157,10 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38523 strings out of 492642
- 704036 string characters out of 6133163
- 977199 words of memory out of 5000000
- 41481 multiletter control sequences out of 15000+600000
+ 38581 strings out of 492642
+ 704995 string characters out of 6133163
+ 977330 words of memory out of 5000000
+ 41508 multiletter control sequences out of 15000+600000
  606735 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,63p,842b,1865s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2152,10 +2173,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (35 pages, 843736 bytes).
+Output written on Abschlussarbeit.pdf (36 pages, 849908 bytes).
 PDF statistics:
- 726 PDF objects out of 1000 (max. 8388607)
- 661 compressed objects within 7 object streams
- 231 named destinations out of 1000 (max. 500000)
+ 770 PDF objects out of 1000 (max. 8388607)
+ 703 compressed objects within 8 object streams
+ 262 named destinations out of 1000 (max. 500000)
  273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

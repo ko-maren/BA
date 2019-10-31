@@ -201,6 +201,7 @@ Durch die Kapselung ist die Wartbarkeit erhöht worden. Dadurch müssen bei Änd
 %fra_init
 %grundfunktionen
 Neben den Wrapper Funktionen wird in der \ac{fra} Bibliothek auch eine Struktur zum Abspeichern der wichtigen Parameter der \ac{fra} Module im Userspace bereitgestellt.
+
 \begin{lstlisting}
 struct fra_handle
 {
@@ -221,7 +222,50 @@ Das Öffnen eines Geräts ist nur über die \textit{fra\_init} Funktion möglich
 
 Der initiialen Funktion wird auch ein Backendtyp übergeben und anhand von diesem die Funktionsstrukur im \textit{fra\_handle} gesetzt. Anschließend wird das Gerät geöffnet und danach meldet sich der Prozess direkt an. Hierzu werden jeweils die entsprechenden Wrapper Funktionen aufgerufen um die Funktionalität bei allen Backendtypen zu garantieren. Zum Bestimmen von \textit{dev\_type} und \textit{dev\_name} wird auch über eine Wrapper Funktion, diese Parameter vom Gerät geholt und entsprechend im \textit{fra\_handle} gesetzt. Durch das Iterieren über eine \textit{fra\_type\_list} mit Name, ID und Größe und dem Vergleichen der Strings in Name und dem \textit{dev\_name} wird die Variable \textit{type\_id} gesetzt.\\
 
-Die Grundstruktur der Wrapper Funktionen ist für alle identisch, deshalb wird im folgenden nur ein Beispiel näher betrachtet. Grundsätzlich gibt es für jedes konzeptioniertes \ac{ioctl} im Kernel eine Wrapperfunktion, lediglich das Logging ist in einer Funktion zusammengefasst.
+Die Grundstruktur der Wrapper Funktionen ist für alle identisch, deshalb wird im folgenden beispielhaft die \textit{fra\_set\_reg} näher betrachtet. Grundsätzlich gibt es für jedes konzeptioniertes \ac{ioctl} im Kernel eine Wrapperfunktion, lediglich das Logging ist in einer Funktion zusammengefasst. 
+
+Zu Beginn einer jeden Methode wird über ein Makro verschiedene Überprüfungen durchgeführt. 
+
+\begin{lstlisting}
+#define FRA_CHECK_HANDLE(p_handle)         \
+	if (p_handle == NULL)                    \
+	{                                        \
+		return ERRVALUE_INVALID_PARAMETER;     \
+	}                                        \
+	if (p_handle->dev == -1)                 \
+	{                                        \
+		return ERRVALUE_DEVICE_NOT_OPEN;       \
+	}                                        \
+	if (p_handle->backend_funcs == NULL)     \
+	{                                        \
+		return ERRVALUE_NOT_INITIALIZED;       \
+	}  
+\end{lstlisting}
+\captionof{code}{\label{code:fra_check_handle} Makro zum Überprüfen des Handles}
+
+Ohne ein gültiges Handle machen alle nachfolgenden Aufrufe keinen Sinn, da alles basierend auf diesem Handle erfolgt. Aus diesem Grund wird dies in Zeile 2 als erstes überprüft. Über den File Descriptor kann man herausfinden, ob das Gerät schon geöffnet wird. Hier wird beim initiieren der Struktur \textit{dev} auf -1 gesetzt. Als letztes wird noch überprüft, ob ein Zeiger auf die \textit{fra\_backend\_funcs} Struktur übergeben wurde. Die Funktion, in welcher das Makro aufgerufen wird gibt entsprechende, intern definierte Fehlermeldungen zurück um die Fehlersuche zu erleichtern.\\
+
+In der Funktionssignatur ist immer das \textit{fra\_handle} und die \textit{transid} angeben. Durch das Handle werden alle notwendigen Informationen zum Zugriff auf das Gerät übergeben und die Transaktionsidentifikation ist in der Signatur implementiert, damit bei einer späteren Erweiterung nicht alle Aufrufe geändert werden müssen. Aktuell wird sie lediglich bis zum Ende durchgereicht und nicht weiter beachtet. 
+
+\begin{lstlisting}
+/*  fra_set_reg(handle, transid, num, reg)
+*      sets a register at num
+*/
+int32_t fra_set_reg(struct fra_handle const *handle,
+					const uint32_t transid,
+					const uint32_t num, 
+					uint32_t reg)
+{
+	FRA_CHECK_HANDLE(handle);
+
+	if (!handle->backend_funcs->fra_set_reg) return ERRVALUE_FUNCTION_NOT_AVAILABLE;
+	return handle->backend_funcs->fra_set_reg(handle, transid, num, reg);
+} /* fra_set_reg () */
+\end{lstlisting}
+\captionof{code}{\label{code:fra_set_reg} Funktion zum Setzen eines Registers}
+
+Das Makro in Zeile 9 ist im Codeausschnitt~\ref{code:fra_check_handle} näher ausgeführt. 
+Durch die if - Bedingung in Zeile 11 wird überprüft, ob für das ausgewählte Backend die entsprechende Funktion implementiert ist. Damit wird vermieden, dass beim Aufrufen der Funktion auf \textit{NULL} zugegriffen wird und somit beim laufenden Programm ein Fehler auftritt. Der Rückgabewert in der Funktion in der \ac{fra} Bibliothek entspricht entweder einem entsprechenden Fehlerwert bzw. dem Rückgabewert der Backendfunktion. 
 
 
 \subsection{Kernelbackend}
