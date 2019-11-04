@@ -1,0 +1,30 @@
+\ifglsentryexists{message}{}%
+{%
+\gls@defglossaryentry{message}%
+{%
+name={message},%
+sort={message},%
+type={main},%
+first={message},%
+firstplural={messages},%
+text={message},%
+plural={messages},%
+description={Kommunikationsmedium von Bluetooth Mesh},%
+descriptionplural={Kommunikationsmedium von Bluetooth Mesh},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

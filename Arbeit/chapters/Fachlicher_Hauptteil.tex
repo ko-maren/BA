@@ -312,8 +312,29 @@ Beim initialen Hardwareupdate durch das \ac{geo} werden für alle vorhandenen, i
 
 Damit die Module geupdatet werden können, müssen die vorhandenen Funktionen, welche direkt an die Offsets im \ac{fpga} schreiben geändert werden. Im Rahmen dieser Arbeit wird lediglich die \ac{xbar} näher betrachtet, aber andere Module müssen analog abgeändert werden.
 
+In den Hardwarefunktionen des \ac{geo} werden für die \ac{xbar} die Konfiguration der Ein- und Ausgänge aus dem Framework gezogen und anschließend die \textit{fra\_xbar} Funktion aufgerufen, welche die vorherige \textit{fpga\_xbar} Funktion ersetzt und für die richtige Einstellung in der Hardware zuständig ist.
 
 
+\begin{lstlisting}
+int32_t fra_xbar(struct fra_handle const *handle, const uint32_t transid, const uint32_t setting)
+{
+	int32_t retval = ERRVALUE_SUCCESS;
+	uint32_t num, reg;
+	
+	FRA_CHECK_HANDLE_TYPE(handle, FRA_MOD_TYPE_XBAR);
+	
+	num = AVALONVIDEO_CROSSBAR_MXN_ENABLE_OUTPUT_REG;
+	reg = setting;
+	
+	retval = fra_set_reg(handle, transid, num, reg);  
+	
+	return retval;
+}
+\end{lstlisting}
+\captionof{code}{\label{code:fra_xbar} Funktion zum Setzen der \ac{xbar}}
+
+Die Funktion im Codeausschnitt~\ref{code:fra_xbar} verbindet Ein- und Ausgänge in der \ac{xbar} entsprechend dem übergebenen \textit{setting}. Durch das Makro \textit{FRA\_CHECK\_HANDLE\_TYPE} wird überprüft, ob das Gerät im \textit{handle} eine \ac{xbar} ist. Wenn dies nicht der Fall ist, wird ein entsprechender Fehlercode zurückgegeben und die Funktion ist beendet. 
+Anschließend werden die Übergabeparameter für \textit{fra\_set\_reg} befüllt und die Funktion aufgerufen. 
 
 
 
