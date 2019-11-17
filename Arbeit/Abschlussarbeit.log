@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  17 NOV 2019 15:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  17 NOV 2019 20:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1492,8 +1492,11 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 
 (./Abschlussarbeit.aux (./chapters/Vorspann.aux)
 (./chapters/Abkuerzungsverzeichnis.aux) (./chapters/Einleitung.aux)
-(./chapters/Theoretische_Grundlagen.aux) (./chapters/Fachlicher_Hauptteil.aux)
-(./chapters/Test.aux) (./chapters/Ausblick.aux) (./chapters/Anhang.aux))
+(./chapters/Theoretische_Grundlagen.aux) (./chapters/Fachlicher_Hauptteil.aux
+
+LaTeX Warning: Label `fig:newvsold' multiply defined.
+
+) (./chapters/Test.aux) (./chapters/Ausblick.aux) (./chapters/Anhang.aux))
 \openout1 = `Abschlussarbeit.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
@@ -1802,13 +1805,13 @@ although it is yet undefined on input line 46.
 Package acronym Info: Label `acro:geo' newly defined as it shall be overridden
 although it is yet undefined on input line 53.
  [14 <./pictures/2019-11-17_Bildkette.png>]
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=286, 408.04753pt x 274.626
-pt>
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=286, 412.54124pt x 264.99p
+t>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
 Package pdftex.def Info: pictures/2019-11-17_ImplementierungNewvsOld.png  used 
 on input line 72.
-(pdftex.def)             Requested size: 323.9978pt x 218.06262pt.
+(pdftex.def)             Requested size: 323.9978pt x 208.11868pt.
  [15 <./pictures/2019-11-17_ImplementierungNewvsOld.png>])
 [16]
 \openout2 = `chapters/Theoretische_Grundlagen.aux'.
@@ -1849,63 +1852,60 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10> not available
 (Font)              Font shape `T1/ppl/b/it' tried instead on input line 27.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 42.
+(caption)                particular \caption on input line 41.
 See the caption package documentation for explanation.
 
 [18]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 73.
+(caption)                particular \caption on input line 72.
 See the caption package documentation for explanation.
 
 [19]
 Package acronym Info: Label `acro:mfd' newly defined as it shall be overridden
-although it is yet undefined on input line 87.
+although it is yet undefined on input line 86.
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 101.
+(caption)                particular \caption on input line 100.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 103--107
+Underfull \hbox (badness 1178) in paragraph at lines 102--106
 \T1/ppl/m/n/10.95 der Da-ten-quel-le ge-spei-chert und in der Va-ria-blen \T1/p
 pl/m/it/10.95 flags \T1/ppl/m/n/10.95 wer-den über
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--107
+Underfull \hbox (badness 10000) in paragraph at lines 102--106
 
  []
 
 [20]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 132.
+(caption)                particular \caption on input line 131.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--140
+Underfull \hbox (badness 10000) in paragraph at lines 135--139
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 145.
+(caption)                particular \caption on input line 144.
 See the caption package documentation for explanation.
 
-[21]) [22]
+) [21] [22]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
 Kapitel 4.
-
-LaTeX Warning: Reference `sec:thema' on page 23 undefined on input line 2.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
@@ -1943,170 +1943,174 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
 
  []
 
 Package acronym Info: Label `acro:pid' newly defined as it shall be overridden
-although it is yet undefined on input line 87.
+although it is yet undefined on input line 88.
 
-LaTeX Warning: Reference `sec:konzept' on page 25 undefined on input line 87.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--90
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
+Underfull \hbox (badness 10000) in paragraph at lines 93--95
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 1337) in paragraph at lines 96--97
+\T1/ppl/m/n/10.95 dem Öff-nen des Ge-räts zu-zu-grei-fen. Da-für wird ein ei-ge
+-nes [][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
 [25]
-Underfull \hbox (badness 1038) in paragraph at lines 104--107
+Underfull \hbox (badness 1038) in paragraph at lines 106--109
 \T1/ppl/m/n/10.95 ge-füllt und dann zu-rück in den User-space über-ge-ben. Re-g
 is-ter über
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--107
+Underfull \hbox (badness 10000) in paragraph at lines 106--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
 
  []
 
 [26]
 
-LaTeX Warning: Reference `sec:bildkette' on page 27 undefined on input line 123
-.
-
-
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 136.
+(caption)                particular \caption on input line 138.
 See the caption package documentation for explanation.
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 176.
+(caption)                particular \caption on input line 175.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 179--183
-\T1/ppl/m/n/10.95 Ge-rät ge-setzt, ana-log wird \T1/ppl/m/it/10.95 mi-nor \T1/p
-pl/m/n/10.95 auf die ver-wen-de-te Mi-nor-num-mer
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--183
+Underfull \hbox (badness 10000) in paragraph at lines 178--182
 
  []
 
 [28]
-Underfull \hbox (badness 1342) in paragraph at lines 195--197
-\T1/ppl/m/n/10.95 er-kannt, ein-ge-grenzt und be-ho-ben wer-den. Durch die Kap-
-se-lung ist
+<pictures/2019-11-17_FRA_Overview.png, id=560, 549.85425pt x 536.60475pt>
+File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
+<use pictures/2019-11-17_FRA_Overview.png>
+Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
+ne 196.
+(pdftex.def)             Requested size: 323.9978pt x 316.19284pt.
+ [29 <./pictures/2019-11-17_FRA_Overview.png>]
+Underfull \hbox (badness 1303) in paragraph at lines 207--210
+\T1/ppl/m/n/10.95 wor-den. Da-durch müs-sen bei Än-de-run-gen im Ker-nel-zu-gri
+ff, nur im
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--197
-
- []
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 215.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 1331) in paragraph at lines 218--219
-\T1/ppl/m/n/10.95 zu-ge-grif-fen wer-den. Die rest-li-chen Pa-ra-me-ter wer-den
- beim in-iti-ie-ren
- []
-
-
-Underfull \hbox (badness 3536) in paragraph at lines 218--219
-\T1/ppl/m/it/10.95 fra_backend_funcs \T1/ppl/m/n/10.95 Struk-tur sind Pro-to-ty
--pen al-ler ba-ckend-s-pe-zi-fi-schen
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
-
- []
-
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 223--224
+Underfull \hbox (badness 10000) in paragraph at lines 207--210
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 244.
+(caption)                particular \caption on input line 228.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 
  []
 
 [30]
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
+
+ []
+
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 265.
+(caption)                particular \caption on input line 259.
 See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
+
+ []
 
 [31]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 298.
+(caption)                particular \caption on input line 280.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
-
+Underfull \hbox (badness 2460) in paragraph at lines 287--289
+[]\T1/ppl/m/n/10.95 Da die Wrap-per le-dig-lich al-le be-nö-tig-te Über-ga-be-p
+a-ra-me-ter an die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
+Underfull \hbox (badness 10000) in paragraph at lines 287--289
 
  []
 
 [32]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 334.
+(caption)                particular \caption on input line 313.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 336--338
+Underfull \hbox (badness 10000) in paragraph at lines 319--320
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
+
+ []
+
+[33]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 349.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 2165) in paragraph at lines 351--353
 \T1/ppl/m/n/10.95 der [][] ent-spre-chend dem über-ge-be-nen \T1/ppl/m/it/10.95
  set-ting\T1/ppl/m/n/10.95 . Durch das Ma-kro
  []
 
-) [33]
+) [34]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 5.
-) [34
+) [35
 
 
 
@@ -2115,7 +2119,7 @@ Kapitel 5.
 
  (./chapters/Ausblick.tex
 Kapitel 6.
-) [35
+) [36
 
 
 
@@ -2134,14 +2138,14 @@ Underfull \hbox (badness 4366) in paragraph at lines 114--114
  . arri . com / resource / blob / 33916 /
  []
 
-[36
+[37
 
 
 ] (./Abschlussarbeit.lof)
 \tf@lof=\write9
 \openout9 = `Abschlussarbeit.lof'.
 
- [37]
+ [38]
 \openout2 = `chapters/Anhang.aux'.
 
  (./chapters/Anhang.tex)
@@ -2155,23 +2159,23 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 1D382CC12A3BE2446F9F3D6E6D8271C0;1982.
+(rerunfilecheck)             Checksum: FD6291BC44E0E91417BB1647FC0257E9;1982.
 
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38655 strings out of 492642
- 706359 string characters out of 6133163
- 976293 words of memory out of 5000000
- 41547 multiletter control sequences out of 15000+600000
+ 38652 strings out of 492642
+ 706432 string characters out of 6133163
+ 975345 words of memory out of 5000000
+ 41544 multiletter control sequences out of 15000+600000
  608184 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,63p,842b,1865s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,63p,842b,1919s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/h
@@ -2181,10 +2185,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (37 pages, 828124 bytes).
+Output written on Abschlussarbeit.pdf (38 pages, 864655 bytes).
 PDF statistics:
- 825 PDF objects out of 1000 (max. 8388607)
- 751 compressed objects within 8 object streams
- 299 named destinations out of 1000 (max. 500000)
- 270 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 840 PDF objects out of 1000 (max. 8388607)
+ 762 compressed objects within 8 object streams
+ 298 named destinations out of 1000 (max. 500000)
+ 275 words of extra memory for PDF output out of 10000 (max. 10000000)
 

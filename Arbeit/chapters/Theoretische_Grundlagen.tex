@@ -3,7 +3,7 @@ Zu Beginn sollen einige Grundlagen näher erläutert werden, die zum Erstellen d
 
 \section{Linux - Kernel und Userspace}\label{sec:linux}
 Da das Zielsystem auf Linux läuft, soll zunächst dieses Betriebssystem betrachtet werden. 
-Im Herbst 1991 wurde die erste Version des Systems von Linus Torvalds veröffentlicht und der Gründer kümmert sich, mit Unterstützung, weiterhin um die Entwicklung des frei verfügbaren Betriebssystem.
+Im Herbst 1991 wurde die erste Version des Systems von Linus Torvalds veröffentlicht und der Gründer kümmert sich, mit Unterstützung, weiterhin um die Entwicklung des frei verfügbaren Betriebssystem. %todo quelle
  
 Der Name Linux bezeichnet dabei eigentlich nur den Kern des Systems, auch Kernel genannt. Zusätzlich benötigt man noch System- und Anwendersoftware. Oft wird dieser Teil als Userspace zusammengefasst. \citep[S. 46]{plotner2012linux} 
 
@@ -14,8 +14,8 @@ Die Brücke zwischen der Hardware und dem Benutzer stellt somit der Kernel da.
 
 
 \section{\acl{ioctl}}\label{sec:ioctl_t}
-Um ein zuverlässig arbeitendes Betriebssystem zu haben, muss der Speicherbereich von Kernel und Userspace getrennt sein. \citep[S. 232]{schroder2009embedded}
-Damit entsteht die Notwenigkeit zwischen Userspace und Kernel Daten auszutauschen. Die Anwendungen im Userspace können über das sogenannte Systemcall Interface auf die Funktionen im Kernel zugreifen. In einer Struktur vom Typ \textit{file\_operations} wird die Schnittstelle zu einem Treiber vorgegeben. In dieser Struktur werden treiberabhängige Funktionszeiger gespeichert. \citep[S. 249]{schroder2009embedded}
+Um ein zuverlässig arbeitendes Betriebssystem zu haben, muss der Speicherbereich von Kernel und der vom Userspace getrennt sein. \citep[S. 232]{schroder2009embedded}
+Damit entsteht die Notwenigkeit zwischen Userspace und Kernel aktiv Daten auszutauschen. Die Anwendungen im Userspace können über das sogenannte Systemcall Interface auf die Funktionen im Kernel zugreifen. In einer Struktur vom Typ \textit{file\_operations} wird die Schnittstelle zu einem Treiber vorgegeben. In dieser Struktur werden treiberabhängige Funktionszeiger gespeichert. \citep[S. 249]{schroder2009embedded}
 
 Im folgenden soll lediglich der Zeiger auf das \acf{ioctl} betrachtet werden, da dieser im weiteren Teil der Arbeit eine wichtige Rolle spielt.
 Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur Verfügung gestellt. 
@@ -31,8 +31,7 @@ int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsign
 Mit den Übergabeparametern und dem Dateideskriptor wird die Funktion dann in Anwendungen im Userspace aufgerufen, im Kernel werden die Daten weiterverarbeitet und wieder zurück gegeben.
 
 \section{Datenaustausch zwischen Kernel und Userspace}
-Im vorausgegangen Kapitel wurde schon die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Userspaces erläutert. 
-Dadurch wird der Datenaustausch zwischen den beiden Ebenen natürlich schwieriger. Durch \textit{copy\_from\_user} beziehungsweise \textit{copy\_to\_user} stehen im Linuxkernel zwei Funktionen als hilfreiche Werkzeuge für diesen Austausch zu Verfügung.
+Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Userspaces, wie im vorausgegangen Kapitel erläutert, wird der Datenaustausch zwischen den beiden Ebenen natürlich schwieriger. Durch \textit{copy\_from\_user} beziehungsweise \textit{copy\_to\_user} stehen im Linuxkernel zwei Funktionen als hilfreiche Werkzeuge für diesen Austausch zu Verfügung.
 
 %todo linux kernel code & Unterschrift
 \begin{lstlisting}
@@ -49,12 +48,12 @@ Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der
 \section{Plattformtreiber}\label{sec:plat_t}
 Gerätetreiber, und damit auch Plattformtreiber, sind unter Linux im Kernel angesiedelt. Eigene Treiber werden hierzu meist modular entwickelt und nicht fest in den Kernel integriert. Allerdings muss auch der Programmierer bei den nachgeladenen Kernelmodulen auf die korrekte Nutzung des Speicherplatzes achten, da diese Module ebenfalls im Kernel laufen und somit ein Zugriffsfehler schwerwiegende Folgen hätte. \citep[S. 231ff]{schroder2009embedded}
 
-Damit die Treiber richtig funktionieren werden müssen gibt es einige Bestandteile, die in jedem Modul wiederzufinden sind. Standardmäßig wird die Registrierung von Treiber und Device an unterschiedlichen Teilen des Programms ausgeführt. \cite{corbetplatform} 
+Damit die Treiber richtig funktionieren gibt es einige Bestandteile, die in jedem Modul wiederzufinden sind. Standardmäßig wird die Registrierung von Treiber und Gerät an unterschiedlichen Teilen des Programms ausgeführt. \cite{corbetplatform} 
 
 
 
 
-Jedes Kernelmodule besitzt mindestens eine init und exit Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers. \cite[linux/module.h]{linuxsourceinclude}
+Jedes Kernelmodule besitzt mindestens eine \textit{init} und \textit{exit} Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers platziert. \cite[linux/module.h]{linuxsourceinclude}
 %todo zeile zitieren
 
 %todo zeile zitieren
@@ -76,12 +75,12 @@ Beim Laden des Treibers wird die eine \textit{platform\_driver} Struktur überge
 In dieser Arbeit werden lediglich die \textit{.probe} und \textit{.remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{.probe} Zeiger aufgerufen und analog beim Auflösen die \textit{.remove} Funktion.\cite{corbetplatform} 
 
 %todo umformulieren & kapitel zitieren
-Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der probe Funktion sind somit spezielle Daten für ein entsprechendes Device vorhanden. \cite{corbetplatform} 
+Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{.probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} 
 
 %todo schauen wie sotieren!!!
 \subsection{Major- und Minornummern}\label{sec:mmnum_t}
-Jedes Device hat eine Major- und Minornummer mit der sie angelegt werden.
-Die Majornummer kennzeichnet hier üblicherweise dem Device zugehörigen Treiber analog dazu wird die Minornummer vom Kernel genutzt um auf das exakte Device zu referenzieren. \citep[S. 43f]{corbet2005linux} 
+Zusätzlich hat bekommt jedes Gerät eine Major- und Minornummer mit der es angelegt wird.
+Die Majornummer kennzeichnet hier üblicherweise den Treiber, zu welchem das Gerät gehört, analog dazu wird die Minornummer vom Kernel genutzt um auf das exakte Gerät zu referenzieren. \citep[S. 43f]{corbet2005linux} 
 
 \section{\acl{mfd}}\label{sec:mfd_t}
 Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, benötigt man die Möglichkeit es als \ac{mfd} anzulegen. \cite{bellonimfd}\\
@@ -102,8 +101,8 @@ struct resource {
 
 Als erste Struktur wird die \textit{resource} näher betrachtet. Hier werden Parameter für einen Speicherbereich abgelegt, damit auf diesen zugegriffen werden kann. 
 Die beiden Parameter sind \textit{start} und \textit{end}. Die beiden Werte legen die Größe und den Ort der Ressource fest. 
-In \textit{name} wird der Name der Datenquelle gespeichert und in der Variablen \textit{flags} werden über Defines unter anderem der Datentyp und andere optionale Einstellungen festgelegt.
-In dem letzten drei Parametern können die abhängige Ressource entsprechend ihrem Grad gespeichert werden. \\
+In \textit{name} wird der Name der Datenquelle gespeichert und in der Variablen \textit{flags} werden über Defines unter anderem der Datentyp und weitere optionale Einstellungen festgelegt.
+In dem letzten drei Parametern können abhängige Ressources entsprechend ihrem Grad gespeichert werden. \\
 
 \begin{lstlisting}
 struct mfd_cell {

@@ -38,7 +38,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Konzeptionierung der \acl {ioctl}s}{25}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Implementierung im Kernel}{26}{section.4.3}
+\contentsline {section}{\numberline {4.3}Implementierung im Kernel}{27}{section.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3.1}Anlegen der Ger\IeC {\"a}te}{27}{subsection.4.3.1}
 \defcounter {refsection}{0}\relax 
@@ -46,14 +46,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.4}Implementierung im Userspace}{29}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.1}\ac {fra} Bibliothek}{29}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.1}\ac {fra} Middleware}{30}{subsection.4.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.2}Kernelbackend}{31}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.2}Kernelbackend}{32}{subsection.4.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}Einbindung ins \acl {geo}}{32}{section.4.5}
+\contentsline {section}{\numberline {4.5}Einbindung ins \acl {geo}}{33}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Qualit\IeC {\"a}tssicherung}{34}{chapter.5}
+\contentsline {chapter}{\numberline {5}Qualit\IeC {\"a}tssicherung}{35}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Ausblick}{35}{chapter.6}
+\contentsline {chapter}{\numberline {6}Ausblick}{36}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Abbildungsverzeichnis}{37}{section.6.1}
+\contentsline {section}{\numberline {6.1}Abbildungsverzeichnis}{38}{section.6.1}

@@ -30,7 +30,7 @@ Als Beispiele sind hier der bayrische Eberhofer Krimi \glqq Sauerkrautkoma\grqq{
  
 Die Kamera ist ein wichtiger Bestandteil in der Entwicklungsarbeit, da das regelmäßige Testen von Änderungen unerlässlich ist, um die Funktionalität festzustellen und grobe Fehler rechtzeitig zu erkennen.
 
-\subsection{Bildkette}
+\subsection{Bildkette}\label{sec:bildkette}
 In jeder Kamera wird das Eingangsbild von einem Sensor aufgenommen. Durch die Verarbeitungskette werden die Bilder vom Eingang bis zum Ausgang geleitet. In dieser Arbeit wird eine schematische Bildkette (siehe Abbildung) zur Veranschaulichung weiter detailliert. Von der Quelle bis zu Senke läuft das Bild durch verschiedene Module, die für die Anpassung des Bilds sorgen. Die Ausgänge sind in diesem Fall die \ac{rec} und das \ac{sdi}.
 
 \begin{figure}[!hbtp]
@@ -64,7 +64,7 @@ Auch die Länge der Register wird in der aktuellen Implementierung nicht weiter 
 Da die Fehlerfälle im normalen Umgang mit der Kamera auftreten können und somit in Produktionen zu Ausfällen sorgen, ist es wichtig die Probleme zu beheben.
 
 %todo gloasar: framework, Dateideskriptoren, Handle, Middleware
-\section{Konzept}
+\section{Konzept}\label{sec:konzept}
 Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sollen durch ein neues Framework behoben werden, zusätzlich sollen die Zugriffe der Software auf den \ac{fpga} übersichtlicher und wartbarer gestaltet werden.
 
 \begin{figure}[!hbtp]
