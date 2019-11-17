@@ -18,42 +18,42 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Konzept}{15}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Grundlagen Linux}{16}{chapter.3}
+\contentsline {chapter}{\numberline {3}Grundlagen Linux}{17}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Linux - Kernel und Userspace}{16}{section.3.1}
+\contentsline {section}{\numberline {3.1}Linux - Kernel und Userspace}{17}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}\acl {ioctl}}{17}{section.3.2}
+\contentsline {section}{\numberline {3.2}\acl {ioctl}}{18}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Datenaustausch zwischen Kernel und Userspace}{17}{section.3.3}
+\contentsline {section}{\numberline {3.3}Datenaustausch zwischen Kernel und Userspace}{18}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Plattformtreiber}{18}{section.3.4}
+\contentsline {section}{\numberline {3.4}Plattformtreiber}{19}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.1}Major- und Minornummern}{19}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.1}Major- und Minornummern}{20}{subsection.3.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}\acl {mfd}}{19}{section.3.5}
+\contentsline {section}{\numberline {3.5}\acl {mfd}}{20}{section.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}\acl {fra}}{22}{chapter.4}
+\contentsline {chapter}{\numberline {4}\acl {fra}}{23}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Generischer Plattformtreiber}{22}{section.4.1}
+\contentsline {section}{\numberline {4.1}Generischer Plattformtreiber}{23}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Konzeptionierung der \acl {ioctl}s}{24}{section.4.2}
+\contentsline {section}{\numberline {4.2}Konzeptionierung der \acl {ioctl}s}{25}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Implementierung im Kernel}{25}{section.4.3}
+\contentsline {section}{\numberline {4.3}Implementierung im Kernel}{26}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Anlegen der Ger\IeC {\"a}te}{26}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.1}Anlegen der Ger\IeC {\"a}te}{27}{subsection.4.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}\IeC {\"O}ffnen und Schlie\IeC {\ss }en der Ger\IeC {\"a}te}{27}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.2}\IeC {\"O}ffnen und Schlie\IeC {\ss }en der Ger\IeC {\"a}te}{28}{subsection.4.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Implementierung im Userspace}{28}{section.4.4}
+\contentsline {section}{\numberline {4.4}Implementierung im Userspace}{29}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.1}\ac {fra} Bibliothek}{28}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.1}\ac {fra} Bibliothek}{29}{subsection.4.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.2}Kernelbackend}{30}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.2}Kernelbackend}{31}{subsection.4.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}Einbindung ins \acl {geo}}{31}{section.4.5}
+\contentsline {section}{\numberline {4.5}Einbindung ins \acl {geo}}{32}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Qualit\IeC {\"a}tssicherung}{33}{chapter.5}
+\contentsline {chapter}{\numberline {5}Qualit\IeC {\"a}tssicherung}{34}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Ausblick}{34}{chapter.6}
+\contentsline {chapter}{\numberline {6}Ausblick}{35}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Abbildungsverzeichnis}{36}{section.6.1}
+\contentsline {section}{\numberline {6.1}Abbildungsverzeichnis}{37}{section.6.1}

@@ -35,7 +35,7 @@ In jeder Kamera wird das Eingangsbild von einem Sensor aufgenommen. Durch die Ve
 
 \begin{figure}[!hbtp]
 	\centering
-	\includegraphics[width = \linewidth]{pictures/bildkette.png}
+	\includegraphics[width = \linewidth]{pictures/2019-11-17_Bildkette.png}
 	\smallskip
 	\caption{Schematische Bildkette}
 	\label{fig:bild}
@@ -52,7 +52,7 @@ Die bildverarbeitende Hauptfunktionalität liegt im \ac{fpga}. Hier werden die M
 
 Damit die Einstellungen auch zu dem Sensorbild passen, werden alle Module des \ac{fpga}s in dem \ac{geo} abgebildet. Das objektorientierte Framework führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der abgebildeten Frameworkbildkette geupdatet und entsprechend der voreingestellten Parameter werden die Größen neu berechnet. In dem Update werden verschiedenen Funktionen aufgerufen, welche die Register im \ac{fpga} entsprechend der Einstellungen gesetzt.
 
-\subsection{Problematiken}
+\subsection{Problematiken}\label{sec:prob}
 In der aktuellen Implementierung liegen verschiedene Probleme vor, die durch ein neues Framework eliminiert werden soll.
 
 Zum Einen muss bei den Zugriff auf ein Modul immer der \ac{fpga} gesperrt werden. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind. Bei einem Livebild der Kamera ist dies besonders störend, da man die aktuelle Änderung erst später sieht. Da man beim Aufnehmen keine Änderungen am Sensorbild vornehmen kann fällt das Problem hier nicht ins Gewicht.
@@ -63,7 +63,32 @@ Auch die Länge der Register wird in der aktuellen Implementierung nicht weiter 
 
 Da die Fehlerfälle im normalen Umgang mit der Kamera auftreten können und somit in Produktionen zu Ausfällen sorgen, ist es wichtig die Probleme zu beheben.
 
+%todo gloasar: framework, Dateideskriptoren, Handle, Middleware
 \section{Konzept}
+Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sollen durch ein neues Framework behoben werden, zusätzlich sollen die Zugriffe der Software auf den \ac{fpga} übersichtlicher und wartbarer gestaltet werden.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width = 0.9\linewidth]{pictures/2019-11-17_ImplementierungNewvsOld.png}
+	\smallskip
+	\caption{Vereinfachte Darstellung des Zugriffs auf den \ac{fpga} in der aktuellen und der neuen Implementierung}
+	\label{fig:newvsold}
+\end{figure} 
+
+
+
+Aktuell benötigen die Zugriffe auf den \ac{fpga} jedes Mal die Adressen der Module. Dadurch wird die Fehlersuche in diesen Teilen der Software extrem kompliziert und aufwendig. Durch eine weitere Abstraktionsebene soll eine modulare Ansteuerung möglich werden und so die direkten Hardwarezugriffe über die Adressen aus dem Hauptcode eliminiert werden. In dem \ac{fra} werden die Module im Kernel als Gerät angelegt und über Dateideskriptoren greift die Software auf den \ac{fpga} zu.
+
+
+Die Geräte werden mit der Adresse, der Größe, dem Namen und Type des dahinterliegenden Modul beim Initialisieren des Bildpfads angelegt. Dieser Teil soll generisch generiert werden, aber aufgrund von verschiedenen Abhängigkeiten überschreitet es den Umfang der Arbeit.
+
+
+Über den Namen im vorhandenen \ac{geo} werden die Dateideskriptoren in der Software geöffnet und in einem Handle gespeichert. Damit wird im Hauptteil des Codes ein Zugriff ohne Adresse gewährleistet. Jeder laufende Prozess muss seinen eigenen Dateideskriptor öffnen und verwaltet somit sein eigenes Handle. Pro Gerät kann lediglich eine begrenzte Anzahl von Deskriptoren geöffnet werden, geregelt wird dies durch den Kernel. 
+Bei jedem Schreib- oder Lesezugriff auf ein Register wird überprüft, ob dieser innerhalb der angegebenen Modulgröße liegt. Damit ist es nicht mehr möglich über ein Register hinweg zuschreiben und somit falsche Module zu beschreiben.
+
+
+Durch die neue Abstraktionsebene soll die Wartbarkeit sowie die Erweiterung der Kamerasoftware in Zukunft ohne tiefere Kenntnisse vom \ac{fpga} durch unterschiedliche Entwickler möglich werden.
+
 
 
 %\section{Hinführung zum Thema}\label{sec:thema}
