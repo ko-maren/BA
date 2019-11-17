@@ -111,9 +111,9 @@
 \include{chapters/Test}
 \include{chapters/Ausblick}
 
-\printbibliography[title=Literaturverzeichnis]
 
-\listoffigures
+
+
 %% Beim Anhang gibt es eine Musterdatei, die 
 %% erg�nzt werden kann
 \include{chapters/Anhang}
@@ -122,6 +122,9 @@
 %% Stichwortverzeichnis ausgeben.
 %% falls nicht notwendig, die folgende Zeile loeschen
 \printindex
+\listoffigures
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\printbibliography[title=Literaturverzeichnis]
 
 
 \end{document}
