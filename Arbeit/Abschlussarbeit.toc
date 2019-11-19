@@ -52,7 +52,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.5}Einbindung ins \acl {geo}}{33}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Qualit\IeC {\"a}tssicherung}{35}{chapter.5}
+\contentsline {chapter}{\numberline {5}Frameworktest}{35}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Plattformunabh\IeC {\"a}ngige Tests}{35}{section.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Tools f\IeC {\"u}r die Entwicklungsumgebung}{35}{section.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Ausblick}{36}{chapter.6}
 \defcounter {refsection}{0}\relax 

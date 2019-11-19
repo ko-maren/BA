@@ -1,8 +1,20 @@
 %todo kapitel ändern!
-\chapter{Qualitätssicherung} \label{sec:test}
+\chapter{Frameworktest} \label{sec:test}
 % testbackend muss noch geschrieben werden
 % überlegungen zum testen aufschreiben 
-Im Ra....
+Überprüfen der Funktionalität von den einzelnen Bestandteilen außerhalb der eigentlichen Anwendung gehört zum Entwickeln von Software dazu. %todo Quelle
+Allerdings werden auch Tools zum Testen und Debuggen auf der Zielentwicklungsumgegung benötigt. 
+In diesem Kapitel sollen beide Varianten näher beschrieben werden.
+
+%todo titel!!
+\section{Plattformunabhängige Tests}
+
+
+\section{Tools für die Entwicklungsumgebung}
+Unabhängig von der Funktionstests des vorherigen Kapitels sollten dem Entwickler kleine Programme zur Verfügung gestellt werden, mit denen man für Testprogramme oder zur Fehlersuche im laufenden Betrieb ein Gerät anlegen kann oder das Logging für eins aktivieren kann.\\
+
+
+Besonders für die Kalibrierung der Kamera ist es notwendig ein Gerät über die Kommandozeile anzulegen, da es hier keinen Codeteil gibt in welchem man das Anlegen integrieren kann. Dadurch das die benötigten Geräte vor dem Starten der Kalibiersoftware angelegt werden, können in der Software über die Funktionen der \ac{fra} Bibliothek die Geräte geöffnet werden und auf diese zugegriffen werden.
 
 
 %fra_set_logging
