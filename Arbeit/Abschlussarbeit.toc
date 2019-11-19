@@ -59,5 +59,3 @@
 \contentsline {chapter}{\numberline {7}Anhang}{37}{chapter.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7.1}Abbildungsverzeichnis}{38}{section.7.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Literaturverzeichnis}{38}{section.7.1}
