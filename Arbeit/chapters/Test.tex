@@ -11,11 +11,21 @@ In diesem Kapitel sollen beide Varianten näher beschrieben werden.
 
 
 \section{Tools für die Entwicklungsumgebung}
-Unabhängig von der Funktionstests des vorherigen Kapitels sollten dem Entwickler kleine Programme zur Verfügung gestellt werden, mit denen man für Testprogramme oder zur Fehlersuche im laufenden Betrieb ein Gerät anlegen kann oder das Logging für eins aktivieren kann.\\
+Unabhängig von der Funktionstests des vorherigen Kapitels sollten dem Entwickler kleine Programme zur Verfügung gestellt werden, mit denen man für Testprogramme oder zur Fehlersuche im laufenden Betrieb ein Gerät anlegen oder das Logging aktivieren kann.\\
 
 
-Besonders für die Kalibrierung der Kamera ist es notwendig ein Gerät über die Kommandozeile anzulegen, da es hier keinen Codeteil gibt in welchem man das Anlegen integrieren kann. Dadurch das die benötigten Geräte vor dem Starten der Kalibiersoftware angelegt werden, können in der Software über die Funktionen der \ac{fra} Bibliothek die Geräte geöffnet werden und auf diese zugegriffen werden.
+Besonders für die Kalibrierung der Kamera ist es notwendig ein Gerät über die Kommandozeile anzulegen, da es hier keinen Codeteil gibt in welchem man das Anlegen integrieren könnte. Dadurch das die benötigten Geräte vor dem Starten der Kalibiersoftware angelegt werden, können in der Software über die Funktionen der \ac{fra} Bibliothek die Geräte geöffnet und auf diese zugegriffen werden.
 
 
-%fra_set_logging
-%fra_create_device
+Beim Ausführen des Programms \textit{fra\_create\_device} werden in der Kommandozeile über Optionen die benötigten Parameter übergeben. Hier gibt es neben dem Namen, dem Type, der Adresse und der Größe auch die Möglichkeit eine Hilfe auszugeben, in welcher genauer erläutert wird, wie das Programm zu nutzen ist. 
+Nach dem Ausführen des Programms werden die programminternen Parameter mithilfe der Optionen gefüllt und nach der Überprüfung auf Dateninkonsistenz wird das entsprechende Gerät angelegt. 
+Danach ist dieses Gerät in Linux unter \textit{dev/fra} zu finden und weitere Programme oder Testtools können darauf zugreifen.\\
+
+Ein weiteres nützliches Tool für die Entwicklungsarbeit ist das \textit{fra\_set\_logging}. Da das Logging standardmäßig deaktiviert ist, muss dieses bei Bedarf aktiviert werden. Damit der Entwickler nicht im entsprechenden Code die Aktivierung vornehmen und neu kompilieren muss, welches recht zeitaufwendig ist, wird durch das Testtool ein entsprechendes Werkzeug bereitgestellt. Durch das Programm kann im laufenden Betrieb der Kamera die Protokollierung eines Geräts aktiviert oder deaktiviert werden.
+
+
+Hier werden beim Starten des Programms auf der Kommandozeile entsprechend den Optionen der Name des Geräts und ein Setparameter übergeben. 
+Über den Setparameter wird entschieden, ob das Logging aktiviert (\textit{set=1}) oder deaktiviert (\textit{set=0}) werden soll. Anschließend wird das Gerät über den Namen geöffnet und über das entsprechende \ac{ioctl} wird des Logging gesetzt. Nach dem Schließen des Geräts wird das Programm beendet. \\
+
+
+Beide Tools sind für den Einsatz auf der Entwicklungsumgebung gedacht und sollen Entwicklern und Testern vor allem die Fehlersuche auf der Kamera erleichtern. Bei Bedarf können die Programme einfach erweitert werden oder weitere Tools in Anlehnung an die Codestruktur geschrieben werden. 
