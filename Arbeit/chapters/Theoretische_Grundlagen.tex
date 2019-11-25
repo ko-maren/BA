@@ -21,10 +21,12 @@ Im folgenden soll lediglich der Zeiger auf das \acf{ioctl} betrachtet werden, da
 Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur Verfügung gestellt. 
 
 %todo zeile zitieren
+\begin{lstfloat}
 \begin{lstlisting}
 int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsigned long arg);
 \end{lstlisting}
 \captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur \cite[linux/fs.h]{linuxsourceinclude}}
+\end{lstfloat}
 
 Über die \textit{node} wird der Dateideskriptor und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird meistens als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 90f]{corbet2005linux}
 
@@ -34,11 +36,13 @@ Mit den Übergabeparametern und dem Dateideskriptor wird die Funktion dann in An
 Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Userspaces, wie im vorausgegangen Kapitel erläutert, wird der Datenaustausch zwischen den beiden Ebenen natürlich schwieriger. Durch \textit{copy\_from\_user} beziehungsweise \textit{copy\_to\_user} stehen im Linuxkernel zwei Funktionen als hilfreiche Werkzeuge für diesen Austausch zu Verfügung.
 
 %todo linux kernel code & Unterschrift
+\begin{lstfloat}
 \begin{lstlisting}
 unsigned long copy_from_user(void *to, const void *from, unsigned long num);
 unsigned long copy_to_user(void *to, const void *from, unsigned long num);
 \end{lstlisting}
 \captionof{code}{Funktionsdeklaration in asm/uaccess.h}
+\end{lstfloat}
 
 Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
 In der \textit{copy\_from\_user} werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
@@ -57,6 +61,7 @@ Jedes Kernelmodule besitzt mindestens eine \textit{init} und \textit{exit} Funkt
 %todo zeile zitieren
 
 %todo zeile zitieren
+\begin{lstfloat}
 \begin{lstlisting}
 struct platform_driver {
 	int (*probe)(struct platform_device *);
@@ -70,12 +75,13 @@ struct platform_driver {
 };
 \end{lstlisting}
 \captionof{code}{\label{code:platform_driver}platform\_driver Struktur in \cite[linux/platform\_driver.h]{linuxsourceinclude}}
+\end{lstfloat}
 
 Beim Laden des Treibers wird die eine \textit{platform\_driver} Struktur übergeben. In dieser Struktur sind Zeiger auf die Funktionen gespeichert, die beim Erzeugen oder Löschen einer Instanz gebraucht werden.  
 In dieser Arbeit werden lediglich die \textit{.probe} und \textit{.remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{.probe} Zeiger aufgerufen und analog beim Auflösen die \textit{.remove} Funktion.\cite{corbetplatform} 
 
 %todo umformulieren & kapitel zitieren
-Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{.probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} 
+Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} 
 
 %todo schauen wie sotieren!!!
 \subsection{Major- und Minornummern}\label{sec:mmnum_t}
@@ -87,6 +93,7 @@ Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vo
 
 Bevor die Funktion zum Anlegen von \ac{mfd} näher betrachtet wird, sollen zunächst zwei benötigte Strukturen erläutert werden.
 
+\begin{lstfloat}
 \begin{lstlisting}
 struct resource {
 	resource_size_t start;
@@ -98,12 +105,14 @@ struct resource {
 };
 \end{lstlisting}
 \captionof{code}{\label{code:res}Struktur resource in \cite[linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}}
+\end{lstfloat}
 
 Als erste Struktur wird die \textit{resource} näher betrachtet. Hier werden Parameter für einen Speicherbereich abgelegt, damit auf diesen zugegriffen werden kann. 
 Die beiden Parameter sind \textit{start} und \textit{end}. Die beiden Werte legen die Größe und den Ort der Ressource fest. 
 In \textit{name} wird der Name der Datenquelle gespeichert und in der Variablen \textit{flags} werden über Defines unter anderem der Datentyp und weitere optionale Einstellungen festgelegt.
 In dem letzten drei Parametern können abhängige Ressources entsprechend ihrem Grad gespeichert werden. \\
 
+\begin{lstfloat}
 \begin{lstlisting}
 struct mfd_cell {
 	const char		*name;
@@ -129,6 +138,7 @@ struct mfd_cell {
 };
 \end{lstlisting}
 \captionof{code}{\label{code:mfd_cell}Struktur mfd\_cell in \cite[linux/mfd/core.h, Zeile 29ff.]{linuxsourceinclude}}
+\end{lstfloat}
 
 Die zweite Struktur wird benötigt um einem \ac{mfd} wichtige Parameter zum Anlegen mitzugeben. Aus diesem Grund werden in der \textit{mfd\_cell} Struktur lediglich die benötigten Parameter betrachtet. 
 
@@ -137,12 +147,12 @@ Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Dat
 In der Variable \textit{of\_compatible} wird eine sortierte Liste von strings gespeichert. Beginnend mit dem exakten Namen des Geräts folgt dann eine optionale Liste mit weiteren kompatiblen Geräten. \cite[devicetree/usage\_model.txt, Zeile 116ff.]{linuxsourcedocu} 
 Der Zeiger \textit{resources} speichert die zugehörige Ressource ab, bzw. ein Zeiger auf ein Array von Ressourcen. Die Anzahl der abgespeicherten Ressourcen wird in \textit{num\_resources} abgelegt.\\
 
-
+\begin{lstfloat}
 \begin{lstlisting}
 extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cell *cells, int n_devs, struct resource *mem_base,int irq_base, struct irq_domain *irq_domain);
 \end{lstlisting}
 \captionof{code}{\label{code:mfd}Funktionsdeklaration in \cite[linux/mfd/core.h, Zeile 130ff.]{linuxsourceinclude}}
-
+\end{lstfloat}
 
 Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. 
 Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}, wie oben erwähnt wird diese benötigt um das anzulegende Gerät näher zu beschreiben.

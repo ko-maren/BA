@@ -3,13 +3,31 @@
 % testbackend muss noch geschrieben werden
 % überlegungen zum testen aufschreiben 
 Überprüfen der Funktionalität von den einzelnen Bestandteilen außerhalb der eigentlichen Anwendung gehört zum Entwickeln von Software dazu. %todo Quelle
-Allerdings werden auch Tools zum Testen und Debuggen auf der Zielentwicklungsumgegung benötigt. 
+Allerdings werden auch Tools zum Testen und Debuggen auf der Zielentwicklungsumgebung benötigt. 
 In diesem Kapitel sollen beide Varianten näher beschrieben werden.
 
 %todo titel!!
+%todo glossar unittest
 \section{Plattformunabhängige Tests}
+Zunächst sollen auf die Tests eingegangen werden, die unabhängig von der Entwicklungsumgebung durchgeführt werden können. 
+Damit dies möglich ist, muss die Struktur des \ac{fra} Handle angepasst werden sowie ein entsprechendes Testbackend implementiert werden. Anschließend können verschiedene Tests erstellt werden, wobei die Unittest im Vordergrund stehen. Hierdurch kann die \ac{fra} Middleware und Bibliothek getestet werden und bei Änderungen überprüft werden, ob die beiden Teile korrekt arbeiten.
 
 
+\begin{lstlisting}
+struct fra_test_mod
+{
+	char type[FRA_MAX_NAME];
+	char name[FRA_MAX_NAME];
+	uint32_t  size;
+	uint32_t *reg;
+};
+\end{lstlisting}
+\captionof{code}{\label{code:fra_test_mod} Modulstruktur im Testbackend}
+
+
+Durch das Anlegen eines Geräts im Kernelbackend können alle benötigten Informationen und Register über dieses Gerät abgefragt und gesetzt werden. Da das Testbackend unabhängig laufen soll, ist das Anlegen von Geräten nicht möglich. Um eine ähnliche Funktionalität wie im Kernel zu haben wird das Modul über die \textit{fra\_mod\_test} Struktur abgebildet. Hier werden alle notwendigen Informationen angelegt und auch ein Register abgebildet, damit man diese beschreiben und auch auslesen kann.
+
+ 
 \section{Tools für die Entwicklungsumgebung}
 Unabhängig von der Funktionstests des vorherigen Kapitels sollten dem Entwickler kleine Programme zur Verfügung gestellt werden, mit denen man für Testprogramme oder zur Fehlersuche im laufenden Betrieb ein Gerät anlegen oder das Logging aktivieren kann.\\
 

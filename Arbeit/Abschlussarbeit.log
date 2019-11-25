@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  21 NOV 2019 11:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  25 NOV 2019 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1368,7 +1368,17 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip100
 )
-(./Abschlussarbeit.sty
+(c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count428
+\float@exts=\toks51
+\float@box=\box59
+\@float@everytoks=\toks52
+\@floatcapt=\box60
+)
+\@float@every@lstfloat=\toks53
+\c@lstfloat=\count429
+ (./Abschlussarbeit.sty
 Package: Abschlussarbeit 2013/03/13
 
 (c:/texlive/2018/texmf-dist/tex/latex/graphics/epsfig.sty
@@ -1378,33 +1388,31 @@ Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
 )
 (c:/texlive/2018/texmf-dist/tex/latex/eurosym/eurosym.sty
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
-\@eurobox=\box59
+\@eurobox=\box61
 )
 (c:/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
-\c@tracingmulticols=\count428
-\mult@box=\box60
+\c@tracingmulticols=\count430
+\mult@box=\box62
 \multicol@leftmargin=\dimen281
-\c@unbalance=\count429
-\c@collectmore=\count430
-\doublecol@number=\count431
-\multicoltolerance=\count432
-\multicolpretolerance=\count433
+\c@unbalance=\count431
+\c@collectmore=\count432
+\doublecol@number=\count433
+\multicoltolerance=\count434
+\multicolpretolerance=\count435
 \full@width=\dimen282
 \page@free=\dimen283
 \premulticols=\dimen284
 \postmulticols=\dimen285
 \multicolsep=\skip101
 \multicolbaselineskip=\skip102
-\partial@page=\box61
-\last@line=\box62
+\partial@page=\box63
+\last@line=\box64
 \maxbalancingoverflow=\dimen286
-\mult@rightbox=\box63
-\mult@grightbox=\box64
-\mult@gfirstbox=\box65
-\mult@firstbox=\box66
-\@tempa=\box67
-\@tempa=\box68
+\mult@rightbox=\box65
+\mult@grightbox=\box66
+\mult@gfirstbox=\box67
+\mult@firstbox=\box68
 \@tempa=\box69
 \@tempa=\box70
 \@tempa=\box71
@@ -1420,14 +1428,16 @@ Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \@tempa=\box81
 \@tempa=\box82
 \@tempa=\box83
-\c@columnbadness=\count434
-\c@finalcolumnbadness=\count435
+\@tempa=\box84
+\@tempa=\box85
+\c@columnbadness=\count436
+\c@finalcolumnbadness=\count437
 \last@try=\dimen287
 \multicolovershoot=\dimen288
 \multicolundershoot=\dimen289
-\mult@nat@firstbox=\box84
-\colbreak@box=\box85
-\mc@col@check@num=\count436
+\mult@nat@firstbox=\box86
+\colbreak@box=\box87
+\mc@col@check@num=\count438
 )
 (c:/texlive/2018/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -1443,39 +1453,31 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTright=\skip105
 \LTpre=\skip106
 \LTpost=\skip107
-\LTchunksize=\count437
+\LTchunksize=\count439
 \LTcapwidth=\dimen294
-\LT@head=\box86
-\LT@firsthead=\box87
-\LT@foot=\box88
-\LT@lastfoot=\box89
-\LT@cols=\count438
-\LT@rows=\count439
-\c@LT@tables=\count440
-\c@LT@chunks=\count441
-\LT@p@ftn=\toks51
-)
-(c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count442
-\float@exts=\toks52
-\float@box=\box90
-\@float@everytoks=\toks53
-\@floatcapt=\box91
+\LT@head=\box88
+\LT@firsthead=\box89
+\LT@foot=\box90
+\LT@lastfoot=\box91
+\LT@cols=\count440
+\LT@rows=\count441
+\c@LT@tables=\count442
+\c@LT@chunks=\count443
+\LT@p@ftn=\toks54
 )
 (c:/texlive/2018/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2018-05-12 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count443
-\g__xparse_grabber_int=\count444
-\l__xparse_m_args_int=\count445
-\l__xparse_mandatory_args_int=\count446
-\l__xparse_v_nesting_int=\count447
+\l__xparse_current_arg_int=\count444
+\g__xparse_grabber_int=\count445
+\l__xparse_m_args_int=\count446
+\l__xparse_mandatory_args_int=\count447
+\l__xparse_v_nesting_int=\count448
 )
 \mybox=\box92
-\laenge=\count448
-\laengehalbe=\count449
-\@float@every@floatcode=\toks54
-\c@floatcode=\count450
+\laenge=\count449
+\laengehalbe=\count450
+\@float@every@floatcode=\toks55
+\c@floatcode=\count451
 )
 \@indexfile=\write6
 \openout6 = `Abschlussarbeit.idx'.
@@ -1487,8 +1489,8 @@ Package biblatex Info: ... file 'english.lbx' found.
 (c:/texlive/2018/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 )
-\@quotelevel=\count451
-\@quotereset=\count452
+\@quotelevel=\count452
+\@quotereset=\count453
 
 (./Abschlussarbeit.aux (./chapters/Vorspann.aux)
 (./chapters/Abkuerzungsverzeichnis.aux) (./chapters/Einleitung.aux)
@@ -1496,45 +1498,45 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 (./chapters/Test.aux) (./chapters/Ausblick.aux) (./chapters/Anhang.aux))
 \openout1 = `Abschlussarbeit.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 68.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 (c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count453
+\scratchcounter=\count454
 \scratchdimen=\dimen295
 \scratchbox=\box93
-\nofMPsegments=\count454
-\nofMParguments=\count455
-\everyMPshowfont=\toks55
-\MPscratchCnt=\count456
+\nofMPsegments=\count455
+\nofMParguments=\count456
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count457
 \MPscratchDim=\dimen296
-\MPnumerator=\count457
-\makeMPintoPDFobject=\count458
-\everyMPtoPDFconversion=\toks56
+\MPnumerator=\count458
+\makeMPintoPDFobject=\count459
+\everyMPtoPDFconversion=\toks57
 ) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1562,7 +1564,7 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count459
+\c@lstlisting=\count460
 
 ABD: EveryShipout initializing macros
 Package biblatex Info: Input encoding 'utf8' detected.
@@ -1576,10 +1578,10 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Abschlussarbeit.bbl' found.
  (./Abschlussarbeit.bbl)
-Package biblatex Info: Reference section=0 on input line 68.
-Package biblatex Info: Reference segment=0 on input line 68.
+Package biblatex Info: Reference section=0 on input line 70.
+Package biblatex Info: Reference segment=0 on input line 70.
 \AtBeginShipoutBox=\box94
-Package hyperref Info: Link coloring OFF on input line 68.
+Package hyperref Info: Link coloring OFF on input line 70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1587,11 +1589,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count460
+\c@section@level=\count461
 )
-LaTeX Info: Redefining \ref on input line 68.
-LaTeX Info: Redefining \pageref on input line 68.
-LaTeX Info: Redefining \nameref on input line 68.
+LaTeX Info: Redefining \ref on input line 70.
+LaTeX Info: Redefining \pageref on input line 70.
+LaTeX Info: Redefining \nameref on input line 70.
 
 (./Abschlussarbeit.out) (./Abschlussarbeit.out)
 \@outlinefile=\write7
@@ -1600,7 +1602,7 @@ LaTeX Info: Redefining \nameref on input line 68.
 
 
 Package hyperref Warning: Option `colorlinks' has already been used,
-(hyperref)                setting the option has no effect on input line 76.
+(hyperref)                setting the option has no effect on input line 78.
 
 (c:/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -1612,13 +1614,13 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 
 
 (./chapters/Vorspann.tex
-<pictures/Hochschule_Muenchen_Logo.png, id=135, 1796.7125pt x 779.91376pt>
+<pictures/Hochschule_Muenchen_Logo.png, id=139, 1796.7125pt x 779.91376pt>
 File: pictures/Hochschule_Muenchen_Logo.png Graphic file (type png)
 <use pictures/Hochschule_Muenchen_Logo.png>
 Package pdftex.def Info: pictures/Hochschule_Muenchen_Logo.png  used on input l
 ine 4.
 (pdftex.def)             Requested size: 128.0374pt x 55.57538pt.
-<pictures/ARRI_AG_Corporate_Logo.png, id=137, 1284.8pt x 474.77374pt>
+<pictures/ARRI_AG_Corporate_Logo.png, id=141, 1284.8pt x 474.77374pt>
 File: pictures/ARRI_AG_Corporate_Logo.png Graphic file (type png)
 <use pictures/ARRI_AG_Corporate_Logo.png>
 Package pdftex.def Info: pictures/ARRI_AG_Corporate_Logo.png  used on input lin
@@ -1713,15 +1715,24 @@ Package acronym Info: Label `acro:fra' newly defined as it shall be overridden
 although it is yet undefined on input line 49.
  [9
 
-])
+]
+Package acronym Info: Label `acro:FRA' newly defined as it shall be overridden
+although it is yet undefined on input line 53.
+
+
+Package acronym Warning: Acronym `FRA' is not defined on input line 53.
+
+
+Package acronym Warning: Acronym `FRA' is not defined on input line 53.
+
+)
 \tf@toc=\write8
 \openout8 = `Abschlussarbeit.toc'.
 
  [10])
 \openout2 = `chapters/Abkuerzungsverzeichnis.aux'.
 
-
-(./chapters/Abkuerzungsverzeichnis.tex
+ (./chapters/Abkuerzungsverzeichnis.tex
 Kapitel 1.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 47.49985pt on input line 2.
@@ -1774,7 +1785,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 
 
 ]
-<pictures/amira-product-image-data.jpg, id=256, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=263, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1786,7 +1797,7 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
-<pictures/2019-11-17_Bildkette.png, id=265, 700.41675pt x 186.09525pt>
+<pictures/2019-11-17_Bildkette.png, id=272, 700.41675pt x 186.09525pt>
 File: pictures/2019-11-17_Bildkette.png Graphic file (type png)
 <use pictures/2019-11-17_Bildkette.png>
 Package pdftex.def Info: pictures/2019-11-17_Bildkette.png  used on input line 
@@ -1802,7 +1813,7 @@ although it is yet undefined on input line 46.
 Package acronym Info: Label `acro:geo' newly defined as it shall be overridden
 although it is yet undefined on input line 53.
  [14 <./pictures/2019-11-17_Bildkette.png>]
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=301, 412.54124pt x 264.99p
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=309, 412.54124pt x 264.99p
 t>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
@@ -1829,76 +1840,39 @@ a-ben, muss der
 Package acronym Info: Label `acro:ioctl' newly defined as it shall be overridde
 n
 although it is yet undefined on input line 20.
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 25.
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 26.
  (c:/texlive/2018/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-
-Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 27.
-See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 27.
-See the caption package documentation for explanation.
-
 Package hyperref Info: bookmark level for unknown code defaults to 0 on input l
-ine 27.
+ine 28.
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 27.
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 41.
-See the caption package documentation for explanation.
-
-[18]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 72.
-See the caption package documentation for explanation.
-
-[19]
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 28.
+ [18] [19]
 Package acronym Info: Label `acro:mfd' newly defined as it shall be overridden
-although it is yet undefined on input line 86.
+although it is yet undefined on input line 92.
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 100.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 1178) in paragraph at lines 102--106
+Underfull \hbox (badness 1178) in paragraph at lines 110--114
 \T1/ppl/m/n/10.95 der Da-ten-quel-le ge-spei-chert und in der Va-ria-blen \T1/p
 pl/m/it/10.95 flags \T1/ppl/m/n/10.95 wer-den über
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--106
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
 
  []
 
 [20]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 131.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--139
+Underfull \hbox (badness 10000) in paragraph at lines 145--149
 
  []
 
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 144.
-See the caption package documentation for explanation.
-
-) [21] [22]
+[21]) [22]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
@@ -1908,266 +1882,238 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 26.
-See the caption package documentation for explanation.
-
 [23
 
 
 
 ]
-Underfull \hbox (badness 1275) in paragraph at lines 37--38
+Underfull \hbox (badness 1275) in paragraph at lines 39--40
 \T1/ppl/m/n/10.95 frei-ge-ge-ben, der Platt-form-trei-ber ab-ge-mel-det und die
  er-stell-te Klas-se
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 65.
-See the caption package documentation for explanation.
-
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 83--85
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
 Package acronym Info: Label `acro:pid' newly defined as it shall be overridden
-although it is yet undefined on input line 87.
+although it is yet undefined on input line 90.
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--91
+Underfull \hbox (badness 10000) in paragraph at lines 90--94
 
  []
 
 
-Underfull \hbox (badness 1360) in paragraph at lines 92--94
+Underfull \hbox (badness 1360) in paragraph at lines 95--97
 \T1/ppl/m/n/10.95 wer-den. Auf-grund der Zu-grif-fe durch ver-schie-de-ne Pro-z
 es-se be-steht
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 92--94
+Underfull \hbox (badness 2096) in paragraph at lines 95--97
 \T1/ppl/m/n/10.95 oh-ne Pro-to-kol-lie-rung kein ein-heit-li-cher Über-blick üb
 er die Zu-grif-fe.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
 
  []
 
-
-Underfull \hbox (badness 1337) in paragraph at lines 95--96
+[25]
+Underfull \hbox (badness 1337) in paragraph at lines 98--99
 \T1/ppl/m/n/10.95 dem Öff-nen des Ge-räts zu-zu-grei-fen. Da-für wird ein ei-ge
 -nes [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
-[25]
-Underfull \hbox (badness 1038) in paragraph at lines 105--108
+
+Underfull \hbox (badness 1038) in paragraph at lines 108--111
 \T1/ppl/m/n/10.95 ge-füllt und dann zu-rück in den User-space über-ge-ben. Re-g
 is-ter über
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--108
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
+Underfull \hbox (badness 10000) in paragraph at lines 108--111
 
  []
 
 [26]
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 138.
-See the caption package documentation for explanation.
+ []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 175.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--182
+Underfull \hbox (badness 10000) in paragraph at lines 185--189
 
  []
 
 [28]
-<pictures/2019-11-17_FRA_Overview.png, id=573, 549.85425pt x 536.60475pt>
+<pictures/2019-11-17_FRA_Overview.png, id=567, 549.85425pt x 536.60475pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
-ne 196.
-(pdftex.def)             Requested size: 288.0011pt x 281.05849pt.
- [29 <./pictures/2019-11-17_FRA_Overview.png>]
-Underfull \hbox (badness 1303) in paragraph at lines 207--210
+ne 203.
+(pdftex.def)             Requested size: 360.0pt x 351.3272pt.
+
+Underfull \hbox (badness 1303) in paragraph at lines 214--217
 \T1/ppl/m/n/10.95 wor-den. Da-durch müs-sen bei Än-de-run-gen im Ker-nel-zu-gri
 ff, nur im
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--210
+Underfull \hbox (badness 10000) in paragraph at lines 214--217
+
+ []
+
+[29] [30 <./pictures/2019-11-17_FRA_Overview.png>]
+Underfull \hbox (badness 1342) in paragraph at lines 242--243
+\T1/ppl/m/n/10.95 zu-rück ge-ge-ben. Da in al-len Funk-tio-nen haupt-säch-lich 
+auf die [][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
 
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 228.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
-
- []
-
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
-
- []
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 259.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
+Underfull \hbox (badness 10000) in paragraph at lines 244--247
 
  []
 
 [31]
+Underfull \hbox (badness 10000) in paragraph at lines 272--275
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 280.
-See the caption package documentation for explanation.
+ []
 
 
-Underfull \hbox (badness 2460) in paragraph at lines 287--289
+Underfull \hbox (badness 1742) in paragraph at lines 278--280
+[]\T1/ppl/m/n/10.95 In der in-itia-len Funk-ti-on \T1/ppl/m/it/10.95 fra_init \
+T1/ppl/m/n/10.95 wer-den ver-schie-de-ne Ein-stel-lun-gen
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--283
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
+
+ []
+
+
+Underfull \hbox (badness 2460) in paragraph at lines 334--336
 []\T1/ppl/m/n/10.95 Da die Wrap-per le-dig-lich al-le be-nö-tig-te Über-ga-be-p
 a-ra-me-ter an die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--289
-
- []
-
-[32]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 313.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 319--320
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
 
  []
 
 [33]
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 349.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 2165) in paragraph at lines 351--353
-\T1/ppl/m/n/10.95 der [][] ent-spre-chend dem über-ge-be-nen \T1/ppl/m/it/10.95
- set-ting\T1/ppl/m/n/10.95 . Durch das Ma-kro
  []
 
-) [34]
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
+
+ []
+
+[34]) [35]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Package caption Warning: \captionsetup{type*=...} or \captionof
+(caption)                outside box or environment on input line 25.
+See the caption package documentation for explanation.
 
- []
 
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 25.
+See the caption package documentation for explanation.
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--23
-
- []
-
-[35
+[36
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 24--25
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--41
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
 []\T1/ppl/m/n/10.95 Ein wei-te-res nütz-li-ches Tool für die Ent-wick-lungs-ar-
 beit ist das
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 24--25
+Underfull \hbox (badness 2173) in paragraph at lines 42--43
 \T1/ppl/m/it/10.95 fra_set_logging\T1/ppl/m/n/10.95 . Da das Log-ging stan-dard
 -mä-ÿig de-ak-ti-viert ist, muss
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 24--25
+Underfull \hbox (badness 1215) in paragraph at lines 42--43
 \T1/ppl/m/n/10.95 spre-chen-den Co-de die Ak-ti-vie-rung vor-neh-men und neu ko
 m-pi-lie-ren
  []
 
 
-Underfull \hbox (badness 1817) in paragraph at lines 24--25
+Underfull \hbox (badness 1817) in paragraph at lines 42--43
 \T1/ppl/m/n/10.95 muss, wel-ches recht zeit-auf-wen-dig ist, wird durch das Tes
 t-tool ein
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 27--29
+Underfull \hbox (badness 1997) in paragraph at lines 45--47
 []\T1/ppl/m/n/10.95 Hier wer-den beim Star-ten des Pro-gramms auf der Kom-man-d
 o-zei-le
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--29
+Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
-) [36]
+[37]) [38]
 \openout2 = `chapters/Ausblick.aux'.
 
  (./chapters/Ausblick.tex
 Kapitel 6.
-) [37
+) [39
 
 
 
@@ -2176,7 +2122,7 @@ Kapitel 6.
 
  (./chapters/Anhang.tex
 Kapitel 7.
-) [38
+) [40
 
 
 
@@ -2186,48 +2132,55 @@ No file Abschlussarbeit.ind.
 \tf@lof=\write9
 \openout9 = `Abschlussarbeit.lof'.
 
- [39
+ [41
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 10.40245pt on input line 126.
+(Font)              scaled to size 10.40245pt on input line 128.
 
-Underfull \hbox (badness 4291) in paragraph at lines 126--126
+Underfull \hbox (badness 4291) in paragraph at lines 128--128
 []\T1/ppl/m/n/10.95 ARRI. \T1/ppl/m/sl/10.95 Bild der AR-RI AMI-RA\T1/ppl/m/n/1
 0.95 . Web-sei-te. Be-sucht 2019-11-04.
  []
 
 
-Underfull \hbox (badness 4366) in paragraph at lines 126--126
+Underfull \hbox (badness 4366) in paragraph at lines 128--128
 \T1/ppl/m/sc/10.95 url\T1/ppl/m/n/10.95 : []$\T1/phv/m/sl/10.95 https : / / www
  . arri . com / resource / blob / 33916 /
  []
 
-[40
+[42
 
-] [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
+] [43]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
  (./Abschlussarbeit.aux (./chapters/Vorspann.aux)
 (./chapters/Abkuerzungsverzeichnis.aux) (./chapters/Einleitung.aux)
 (./chapters/Theoretische_Grundlagen.aux) (./chapters/Fachlicher_Hauptteil.aux)
 (./chapters/Test.aux) (./chapters/Ausblick.aux) (./chapters/Anhang.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
-Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 1A89C029BEE370049FE80D69A00AE514;2176.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
+
+
+Package rerunfilecheck Warning: File `Abschlussarbeit.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Abschlussarbeit.out':
+(rerunfilecheck)             Before: 0667E8FB91F459110F12474AEFE1860A;2249
+(rerunfilecheck)             After:  92C0A66FEFCB60B8D345679C98458923;2248.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38662 strings out of 492642
- 706535 string characters out of 6133163
- 975438 words of memory out of 5000000
- 41548 multiletter control sequences out of 15000+600000
+ 38703 strings out of 492642
+ 707064 string characters out of 6133163
+ 1001800 words of memory out of 5000000
+ 41576 multiletter control sequences out of 15000+600000
  608184 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,63p,864b,1919s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,63p,864b,1817s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/h
@@ -2237,10 +2190,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (41 pages, 869188 bytes).
+Output written on Abschlussarbeit.pdf (43 pages, 873033 bytes).
 PDF statistics:
- 868 PDF objects out of 1000 (max. 8388607)
- 787 compressed objects within 8 object streams
- 304 named destinations out of 1000 (max. 500000)
- 299 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 910 PDF objects out of 1000 (max. 8388607)
+ 826 compressed objects within 9 object streams
+ 317 named destinations out of 1000 (max. 500000)
+ 307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
