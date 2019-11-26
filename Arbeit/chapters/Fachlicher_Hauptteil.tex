@@ -233,7 +233,7 @@ Durch die gekapselten Ebenen ist eine Erweiterung um neue Backendtypen einfach g
 %Insbesondere über ein Testbackend sollen Unittest zu den verschiedenen Modulen möglich sein, damit können Fehler frühzeitig erkannt, eingegrenzt und behoben werden. 
 Aufgrund der Kapselung ist die Wartbarkeit erhöht worden. Dadurch müssen bei Änderungen im Kernelzugriff, nur im Backendcode die entsprechenden Stellen geändert werden.\\
 
-\subsection{\ac{fra} Bibliothek}
+\subsection{\acs{fra} Bibliothek}
 Um das \ac{fra} vollständig nutzen zu können, müssen die Geräte geöffnet, geupdatet und auch wieder geschlossen werden. Dies passiert in der sogenannten \ac{fra} Bibliothek. 
 Für jeden Modultyp gibt es im \ac{fra} eigene, spezifische Funktionen. Diese Funktionen ersetzen die vorherigen Funktionen, welche direkt in den \ac{fpga} geschrieben haben. Im Rahmen dieser Arbeit wird nur die \ac{xbar} betrachtet und somit auch nur die Implementierung dieser in der Bibliothek.
 
@@ -266,7 +266,7 @@ Ist der Modultyp korrekt werden die Übergabeparameter für \textit{fra\_set\_re
 Finden mehrere Aufrufe in die Middleware statt, wird nach jedem Aufruf der Rückgabewert überprüft und im Fehlerfall direkt die Funktion abgebrochen.
 
 
-\subsection{\ac{fra} Middleware}
+\subsection{\acs{fra} Middleware}
 %fra_handle
 %Wrapper
 %fra_init
@@ -348,7 +348,7 @@ Das Makro in Zeile 9 ist im Codeausschnitt~\ref{code:fra_check_handle} näher au
 Durch die if - Bedingung in Zeile 11 wird überprüft, ob für das ausgewählte Backend die entsprechende Funktion implementiert ist. Ist die Funktion nicht implementiert, liegt an der Stelle ein \textit{NULL} Zeiger. Durch die Überprüfung wird vermieden, dass beim Aufrufen der Funktion auf \textit{NULL} zugegriffen wird und somit beim laufenden Programm ein Fehler auftritt. Der Rückgabewert in der Funktion in der \ac{fra} Middleware entspricht entweder einem entsprechenden Fehlerwert oder dem Rückgabewert der Backendfunktion. 
 
 
-\subsection{\ac{fra} Kernelbackend}
+\subsection{\acs{fra} Kernelbackend}
 Da die Wrapper lediglich alle benötigte Übergabeparameter an die Backendfunktionen weiterreichen, haben diese eine identische Funktionssignatur. 
 Die einzelnen Funktionen unterscheiden sich im Kernelbackend nur durch die aufgerufenen \ac{ioctl}s und entsprechenden den übergebenden Strukturen dazu. Beispielhaft soll hier wieder die Funktion zum Setzen eines Registers betrachtet werden. \\
 
