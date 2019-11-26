@@ -78,7 +78,7 @@ struct platform_driver {
 \end{lstfloat}
 
 Beim Laden des Treibers wird die eine \textit{platform\_driver} Struktur übergeben. In dieser Struktur sind Zeiger auf die Funktionen gespeichert, die beim Erzeugen oder Löschen einer Instanz gebraucht werden.  
-In dieser Arbeit werden lediglich die \textit{.probe} und \textit{.remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{.probe} Zeiger aufgerufen und analog beim Auflösen die \textit{.remove} Funktion.\cite{corbetplatform} 
+In dieser Arbeit werden lediglich die \textit{probe} und \textit{remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{probe} Zeiger aufgerufen und analog beim Auflösen die \textit{remove} Funktion.\cite{corbetplatform} 
 
 %todo umformulieren & kapitel zitieren
 Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} 

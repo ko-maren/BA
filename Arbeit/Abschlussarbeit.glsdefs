@@ -1,16 +1,76 @@
-\ifglsentryexists{message}{}%
+\ifglsentryexists{OWD}{}%
 {%
-\gls@defglossaryentry{message}%
+\gls@defglossaryentry{OWD}%
 {%
-name={message},%
-sort={message},%
+name={OWD},%
+sort={OWD},%
 type={main},%
-first={message},%
-firstplural={messages},%
-text={message},%
-plural={messages},%
-description={Kommunikationsmedium von Bluetooth Mesh},%
-descriptionplural={Kommunikationsmedium von Bluetooth Mesh},%
+first={One-Way Delay\glsadd {gls-OWD}\glsspace (OWD)},%
+firstplural={One-Way Delay\glsadd {gls-OWD}\acrpluralsuffix \glsspace (OWD\acrpluralsuffix )},%
+text={OWD},%
+plural={OWD\acrpluralsuffix },%
+description={One-Way Delay\glsadd {gls-OWD}},%
+descriptionplural={One-Way Delay\glsadd {gls-OWD}\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={One-Way Delay\glsadd {gls-OWD}},%
+longplural={One-Way Delay\glsadd {gls-OWD}s},%
+short={OWD},%
+shortplural={OWDs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{gls-OWD}{}%
+{%
+\gls@defglossaryentry{gls-OWD}%
+{%
+name={One-Way Delay},%
+sort={One-Way Delay},%
+type={main},%
+first={One-Way Delay},%
+firstplural={One-Way Delays},%
+text={One-Way Delay},%
+plural={One-Way Delays},%
+description={The time a packet uses through a network from one host to another},%
+descriptionplural={The time a packet uses through a network from one host to another},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{latex}{}%
+{%
+\gls@defglossaryentry{latex}%
+{%
+name={latex},%
+sort={latex},%
+type={main},%
+first={latex},%
+firstplural={latexs},%
+text={latex},%
+plural={latexs},%
+description={Is a mark up language specially suited for scientific documents},%
+descriptionplural={Is a mark up language specially suited for scientific documents},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%

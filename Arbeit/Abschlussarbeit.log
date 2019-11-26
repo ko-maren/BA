@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  26 NOV 2019 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  26 NOV 2019 18:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1929,118 +1929,118 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 108--111
+Underfull \hbox (badness 1038) in paragraph at lines 124--127
 \T1/ppl/m/n/10.95 ge-füllt und dann zu-rück in den User-space über-ge-ben. Re-g
 is-ter über
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--111
+Underfull \hbox (badness 10000) in paragraph at lines 124--127
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--189
+Underfull \hbox (badness 10000) in paragraph at lines 201--205
 
  []
 
 [28]
-<pictures/2019-11-17_FRA_Overview.png, id=567, 502.87875pt x 517.33275pt>
+<pictures/2019-11-17_FRA_Overview.png, id=570, 502.87875pt x 517.33275pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
-ne 204.
+ne 220.
 (pdftex.def)             Requested size: 360.0pt x 370.34795pt.
-
-Underfull \hbox (badness 1303) in paragraph at lines 215--218
+ [29]
+Underfull \hbox (badness 1303) in paragraph at lines 232--235
 \T1/ppl/m/n/10.95 wor-den. Da-durch müs-sen bei Än-de-run-gen im Ker-nel-zu-gri
 ff, nur im
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--218
+Underfull \hbox (badness 10000) in paragraph at lines 232--235
 
  []
 
-[29] [30 <./pictures/2019-11-17_FRA_Overview.png>]
-Underfull \hbox (badness 1342) in paragraph at lines 243--244
+[30 <./pictures/2019-11-17_FRA_Overview.png>]
+Underfull \hbox (badness 1342) in paragraph at lines 260--261
 \T1/ppl/m/n/10.95 zu-rück ge-ge-ben. Da in al-len Funk-tio-nen haupt-säch-lich 
 auf die [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--244
+Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--248
+Underfull \hbox (badness 10000) in paragraph at lines 262--265
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 273--276
+Underfull \hbox (badness 10000) in paragraph at lines 290--293
 
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 279--281
+Underfull \hbox (badness 1742) in paragraph at lines 296--298
 []\T1/ppl/m/n/10.95 In der in-itia-len Funk-ti-on \T1/ppl/m/it/10.95 fra_init \
 T1/ppl/m/n/10.95 wer-den ver-schie-de-ne Ein-stel-lun-gen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--281
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 296--298
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
 
-Underfull \hbox (badness 2460) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
+
+ []
+
+[33]
+Underfull \hbox (badness 2460) in paragraph at lines 352--354
 []\T1/ppl/m/n/10.95 Da die Wrap-per le-dig-lich al-le be-nö-tig-te Über-ga-be-p
 a-ra-me-ter an die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
-
- []
-
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
-[34]) [35]
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
+
+ []
+
+[35]) [36]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 5.
-[36
+[37
 
 
 
@@ -2083,7 +2083,7 @@ Underfull \hbox (badness 1817) in paragraph at lines 49--50
 t-tool ein
  []
 
-[37]
+[38]
 Underfull \hbox (badness 1997) in paragraph at lines 52--54
 []\T1/ppl/m/n/10.95 Hier wer-den beim Star-ten des Pro-gramms auf der Kom-man-d
 o-zei-le
@@ -2094,12 +2094,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
-) [38]
+) [39]
 \openout2 = `chapters/Ausblick.aux'.
 
  (./chapters/Ausblick.tex
 Kapitel 6.
-) [39
+) [40
 
 
 
@@ -2108,7 +2108,7 @@ Kapitel 6.
 
  (./chapters/Anhang.tex
 Kapitel 7.
-) [40
+) [41
 
 
 
@@ -2118,7 +2118,7 @@ No file Abschlussarbeit.ind.
 \tf@lof=\write9
 \openout9 = `Abschlussarbeit.lof'.
 
- [41
+ [42
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
@@ -2135,9 +2135,9 @@ Underfull \hbox (badness 4366) in paragraph at lines 128--128
  . arri . com / resource / blob / 33916 /
  []
 
-[42
+[43
 
-] [43]
+] [44]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
  (./Abschlussarbeit.aux (./chapters/Vorspann.aux)
@@ -2153,10 +2153,10 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38697 strings out of 492642
- 707011 string characters out of 6133163
+ 38700 strings out of 492642
+ 707051 string characters out of 6133163
  1001765 words of memory out of 5000000
- 41571 multiletter control sequences out of 15000+600000
+ 41572 multiletter control sequences out of 15000+600000
  608184 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,63p,864b,1817s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2169,10 +2169,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (43 pages, 857084 bytes).
+Output written on Abschlussarbeit.pdf (44 pages, 857497 bytes).
 PDF statistics:
- 910 PDF objects out of 1000 (max. 8388607)
- 826 compressed objects within 9 object streams
- 316 named destinations out of 1000 (max. 500000)
+ 917 PDF objects out of 1000 (max. 8388607)
+ 831 compressed objects within 9 object streams
+ 318 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
