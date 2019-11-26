@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  25 NOV 2019 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  26 NOV 2019 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1715,24 +1715,15 @@ Package acronym Info: Label `acro:fra' newly defined as it shall be overridden
 although it is yet undefined on input line 49.
  [9
 
-]
-Package acronym Info: Label `acro:FRA' newly defined as it shall be overridden
-although it is yet undefined on input line 53.
-
-
-Package acronym Warning: Acronym `FRA' is not defined on input line 53.
-
-
-Package acronym Warning: Acronym `FRA' is not defined on input line 53.
-
-)
+])
 \tf@toc=\write8
 \openout8 = `Abschlussarbeit.toc'.
 
  [10])
 \openout2 = `chapters/Abkuerzungsverzeichnis.aux'.
 
- (./chapters/Abkuerzungsverzeichnis.tex
+
+(./chapters/Abkuerzungsverzeichnis.tex
 Kapitel 1.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 47.49985pt on input line 2.
@@ -1797,12 +1788,12 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
-<pictures/2019-11-17_Bildkette.png, id=272, 700.41675pt x 186.09525pt>
+<pictures/2019-11-17_Bildkette.png, id=272, 662.475pt x 155.98276pt>
 File: pictures/2019-11-17_Bildkette.png Graphic file (type png)
 <use pictures/2019-11-17_Bildkette.png>
 Package pdftex.def Info: pictures/2019-11-17_Bildkette.png  used on input line 
 38.
-(pdftex.def)             Requested size: 360.0pt x 95.64844pt.
+(pdftex.def)             Requested size: 360.0pt x 84.76257pt.
 Package acronym Info: Label `acro:xbar' newly defined as it shall be overridden
 
 although it is yet undefined on input line 44.
@@ -1813,13 +1804,13 @@ although it is yet undefined on input line 46.
 Package acronym Info: Label `acro:geo' newly defined as it shall be overridden
 although it is yet undefined on input line 53.
  [14 <./pictures/2019-11-17_Bildkette.png>]
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=309, 412.54124pt x 264.99p
-t>
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=309, 408.3255pt x 258.9675
+pt>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
 Package pdftex.def Info: pictures/2019-11-17_ImplementierungNewvsOld.png  used 
 on input line 72.
-(pdftex.def)             Requested size: 323.9978pt x 208.11868pt.
+(pdftex.def)             Requested size: 323.9978pt x 205.4909pt.
  [15 <./pictures/2019-11-17_ImplementierungNewvsOld.png>])
 [16]
 \openout2 = `chapters/Theoretische_Grundlagen.aux'.
@@ -1964,83 +1955,83 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--189
  []
 
 [28]
-<pictures/2019-11-17_FRA_Overview.png, id=567, 549.85425pt x 536.60475pt>
+<pictures/2019-11-17_FRA_Overview.png, id=567, 502.87875pt x 517.33275pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
-ne 203.
-(pdftex.def)             Requested size: 360.0pt x 351.3272pt.
+ne 204.
+(pdftex.def)             Requested size: 360.0pt x 370.34795pt.
 
-Underfull \hbox (badness 1303) in paragraph at lines 214--217
+Underfull \hbox (badness 1303) in paragraph at lines 215--218
 \T1/ppl/m/n/10.95 wor-den. Da-durch müs-sen bei Än-de-run-gen im Ker-nel-zu-gri
 ff, nur im
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--217
+Underfull \hbox (badness 10000) in paragraph at lines 215--218
 
  []
 
 [29] [30 <./pictures/2019-11-17_FRA_Overview.png>]
-Underfull \hbox (badness 1342) in paragraph at lines 242--243
+Underfull \hbox (badness 1342) in paragraph at lines 243--244
 \T1/ppl/m/n/10.95 zu-rück ge-ge-ben. Da in al-len Funk-tio-nen haupt-säch-lich 
 auf die [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--247
+Underfull \hbox (badness 10000) in paragraph at lines 245--248
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 272--275
+Underfull \hbox (badness 10000) in paragraph at lines 273--276
 
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 278--280
+Underfull \hbox (badness 1742) in paragraph at lines 279--281
 []\T1/ppl/m/n/10.95 In der in-itia-len Funk-ti-on \T1/ppl/m/it/10.95 fra_init \
 T1/ppl/m/n/10.95 wer-den ver-schie-de-ne Ein-stel-lun-gen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--280
+Underfull \hbox (badness 10000) in paragraph at lines 279--281
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--283
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
 
 
-Underfull \hbox (badness 2460) in paragraph at lines 334--336
+Underfull \hbox (badness 2460) in paragraph at lines 335--337
 []\T1/ppl/m/n/10.95 Da die Wrap-per le-dig-lich al-le be-nö-tig-te Über-ga-be-p
 a-ra-me-ter an die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--336
+Underfull \hbox (badness 10000) in paragraph at lines 335--337
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
 
  []
 
@@ -2049,66 +2040,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 370--371
 
  (./chapters/Test.tex
 Kapitel 5.
-
-Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 25.
-See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 25.
-See the caption package documentation for explanation.
-
 [36
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--41
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
 []\T1/ppl/m/n/10.95 Ein wei-te-res nütz-li-ches Tool für die Ent-wick-lungs-ar-
 beit ist das
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 42--43
+Underfull \hbox (badness 2173) in paragraph at lines 49--50
 \T1/ppl/m/it/10.95 fra_set_logging\T1/ppl/m/n/10.95 . Da das Log-ging stan-dard
 -mä-ÿig de-ak-ti-viert ist, muss
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 42--43
+Underfull \hbox (badness 1215) in paragraph at lines 49--50
 \T1/ppl/m/n/10.95 spre-chen-den Co-de die Ak-ti-vie-rung vor-neh-men und neu ko
 m-pi-lie-ren
  []
 
 
-Underfull \hbox (badness 1817) in paragraph at lines 42--43
+Underfull \hbox (badness 1817) in paragraph at lines 49--50
 \T1/ppl/m/n/10.95 muss, wel-ches recht zeit-auf-wen-dig ist, wird durch das Tes
 t-tool ein
  []
 
-
-Underfull \hbox (badness 1997) in paragraph at lines 45--47
+[37]
+Underfull \hbox (badness 1997) in paragraph at lines 52--54
 []\T1/ppl/m/n/10.95 Hier wer-den beim Star-ten des Pro-gramms auf der Kom-man-d
 o-zei-le
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--47
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
-[37]) [38]
+) [38]
 \openout2 = `chapters/Ausblick.aux'.
 
  (./chapters/Ausblick.tex
@@ -2160,24 +2146,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
 (./chapters/Test.aux) (./chapters/Ausblick.aux) (./chapters/Anhang.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
-
-
-Package rerunfilecheck Warning: File `Abschlussarbeit.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Abschlussarbeit.out':
-(rerunfilecheck)             Before: 0667E8FB91F459110F12474AEFE1860A;2249
-(rerunfilecheck)             After:  92C0A66FEFCB60B8D345679C98458923;2248.
+Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
+(rerunfilecheck)             Checksum: 92C0A66FEFCB60B8D345679C98458923;2248.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38703 strings out of 492642
- 707064 string characters out of 6133163
- 1001800 words of memory out of 5000000
- 41576 multiletter control sequences out of 15000+600000
+ 38697 strings out of 492642
+ 707011 string characters out of 6133163
+ 1001765 words of memory out of 5000000
+ 41571 multiletter control sequences out of 15000+600000
  608184 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,63p,864b,1817s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2190,10 +2169,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (43 pages, 873033 bytes).
+Output written on Abschlussarbeit.pdf (43 pages, 857084 bytes).
 PDF statistics:
  910 PDF objects out of 1000 (max. 8388607)
  826 compressed objects within 9 object streams
- 317 named destinations out of 1000 (max. 500000)
+ 316 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
