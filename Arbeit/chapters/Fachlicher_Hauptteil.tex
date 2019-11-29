@@ -212,7 +212,7 @@ Analog werden in der \textit{release} Funktion, die Inhalte aus \textit{file} un
 %testprogramm
 %xbar
 %überlegungen zum testen, backend entscheidung
-Der Zugriff auf die \ac{fra} Module im Userspace ist in drei Ebenen gekapselt. In diesem Kapitel werden auf die Bibliothek, die Middleware und das Backend eingegangen und somit ein Überblick über alle drei Ebenen gegeben.
+Der Zugriff auf die \ac{fra} Module im Userspace ist in drei Ebenen gekapselt. In diesem Kapitel werden auf die Bibliothek, die \gls{middleware} und das Backend eingegangen und somit ein Überblick über alle drei Ebenen gegeben.
 
 
 \begin{figure}[!hbtp]
@@ -226,7 +226,7 @@ Der Zugriff auf die \ac{fra} Module im Userspace ist in drei Ebenen gekapselt. I
 Die untere Stufe besteht aus verschiedenen backendspezifischen Funktionen. Im folgenden wird nur auf das Kernelbackend eingegangen und das Testbackend wird im Kapitel~\ref{sec:test} erläutert. Im Kernelbackend werden mit den übergebenen Parametern die \ac{ioctl}s (siehe Kapitel~\ref{sec:ioctl}) abgesetzt und somit im Kernel die Hardware gelesen oder beschrieben werden.
 
 %todo glossar middleware
-In der \ac{fra} Middleware sind erweiterte Wrapperfunktionen zu finden. Hier werden verschiedene Überprüfungen durchgeführt, damit kein fehlerhafter Zugriff stattfindet. Des Weiteren wird im Wrapper entsprechend dem Backendtyp, die Funktion aus der unteren Ebene ausgewählt. 
+In der \ac{fra} \gls{middleware} sind erweiterte Wrapperfunktionen zu finden. Hier werden verschiedene Überprüfungen durchgeführt, damit kein fehlerhafter Zugriff stattfindet. Des Weiteren wird im Wrapper entsprechend dem Backendtyp, die Funktion aus der unteren Ebene ausgewählt. 
 
 
 Durch die gekapselten Ebenen ist eine Erweiterung um neue Backendtypen einfach gestaltet. 
@@ -257,13 +257,13 @@ Für jeden Modultyp gibt es im \ac{fra} eigene, spezifische Funktionen. Diese Fu
 	\captionof{code}{\label{code:fra_xbar} Funktion zum Setzen der \ac{xbar}}
 \end{lstfloat}
 
-Für die \ac{xbar} sind fünf spezifische Funktionen implementiert. In diesen Funktionen werden die Einstellungen gesetzt, die aktuellen Registerwerte protokolliert, auf aktuelle Fehlercodes überprüft und der aktuelle Status zurück gegeben. Da in allen Funktionen hauptsächlich auf die \ac{fra} Middleware zugegriffen wird und abgesehen von diesem Zugriff, die Daten aufbereitet werden, wird nur die \textit{fra\_xbar} Funktion exemplarisch betrachtet.\\
+Für die \ac{xbar} sind fünf spezifische Funktionen implementiert. In diesen Funktionen werden die Einstellungen gesetzt, die aktuellen Registerwerte protokolliert, auf aktuelle Fehlercodes überprüft und der aktuelle Status zurück gegeben. Da in allen Funktionen hauptsächlich auf die \ac{fra} \gls{middleware} zugegriffen wird und abgesehen von diesem Zugriff, die Daten aufbereitet werden, wird nur die \textit{fra\_xbar} Funktion exemplarisch betrachtet.\\
 
 In der Funktion im Codeausschnitt~\ref{code:fra_xbar} werden die Ein- und Ausgänge einer \ac{xbar} entsprechend dem übergebenen \textit{setting} verbunden.
 Durch das Makro \textit{FRA\_CHECK\_HANDLE\_TYPE} wird überprüft, ob das Gerät im \textit{handle} eine \ac{xbar} ist. Wenn dies nicht der Fall ist, wird ein entsprechender Fehlercode zurückgegeben und die Funktion ist beendet. Diese Überprüfung findet auch bei den restlichen Funktionen in der \ac{fra} Bibliothek statt.
-Ist der Modultyp korrekt werden die Übergabeparameter für \textit{fra\_set\_reg} befüllt und die Funktion aufgerufen. Mit dem Zurückgeben des Rückgabewerts der Middleware Funktion ist die Funktion beendet.\\
+Ist der Modultyp korrekt werden die Übergabeparameter für \textit{fra\_set\_reg} befüllt und die Funktion aufgerufen. Mit dem Zurückgeben des Rückgabewerts der \gls{middleware} Funktion ist die Funktion beendet.\\
 
-Finden mehrere Aufrufe in die Middleware statt, wird nach jedem Aufruf der Rückgabewert überprüft und im Fehlerfall direkt die Funktion abgebrochen.
+Finden mehrere Aufrufe in die \gls{middleware} statt, wird nach jedem Aufruf der Rückgabewert überprüft und im Fehlerfall direkt die Funktion abgebrochen.
 
 
 \subsection{\acs{fra} Middleware}\label{sec:middleware}
@@ -271,7 +271,7 @@ Finden mehrere Aufrufe in die Middleware statt, wird nach jedem Aufruf der Rück
 %Wrapper
 %fra_init
 %grundfunktionen
-Damit die Funktionsaufrufe in der \ac{fra} Bibliothek unabhängig vom Backendtyp funktionieren, werden in der \ac{fra} Middleware Wrapper Funktionen zur Verfügung gestellt. Daneben wird auch eine Struktur zum Verwalten der wichtigen Parameter der \ac{fra} Module im Userspace bereitgestellt.
+Damit die Funktionsaufrufe in der \ac{fra} Bibliothek unabhängig vom Backendtyp funktionieren, werden in der \ac{fra} \gls{middleware} Wrapper Funktionen zur Verfügung gestellt. Daneben wird auch eine Struktur zum Verwalten der wichtigen Parameter der \ac{fra} Module im Userspace bereitgestellt.
 
 
 \begin{lstfloat}
@@ -287,7 +287,7 @@ struct fra_handle
 \end{lstlisting}
 \captionof{code}{\label{code:fra_handle} Struktur zum Abspeichern wichtiger Parameter}
 \end{lstfloat}
-Der erste und wichtigste Parameter in der Struktur ist der Dateideskriptor \textit{dev}. Hierüber kann nach dem Öffnen des Geräts weiterhin auf dieses zugegriffen werden. Die restlichen Parameter werden beim Initialisieren des Geräts gesetzt. \textit{dev\_type} und \textit{dev\_name} geben den Modultyp und den Namen an. 
+Der erste und wichtigste Parameter in der Struktur ist der \gls{dateideskriptor} \textit{dev}. Hierüber kann nach dem Öffnen des Geräts weiterhin auf dieses zugegriffen werden. Die restlichen Parameter werden beim Initialisieren des Geräts gesetzt. \textit{dev\_type} und \textit{dev\_name} geben den Modultyp und den Namen an. 
 %todo gibt es ersetzen?
 Für spätere Überprüfungen gibt es für jeden Modultyp noch eine ID, dieses wird in der Variablen \textit{type\_id} abgelegt. In der \textit{fra\_backend\_funcs} Struktur sind Prototypen aller backendspezifischen Funktionen abgelegt.\\
 
@@ -318,10 +318,10 @@ Zu Beginn einer jeden Methode wird über ein Makro verschiedene Überprüfungen 
 		return ERRVALUE_NOT_INITIALIZED;       \
 	}  
 \end{lstlisting}
-\captionof{code}{\label{code:fra_check_handle} Makro zum Überprüfen des Handles}
+\captionof{code}{\label{code:fra_check_handle} Makro zum Überprüfen des \glspl{handle}}
 \end{lstfloat}
 
-Ohne ein gültiges Handle würden alle nachfolgenden Aufrufe einen Fehler zurück geben, da alles basierend auf diesem Handle erfolgt. Aus diesem Grund wird in Zeile 2 als Erstes überprüft, ob das \textit{fra\_handle} valid ist. Über den Dateideskriptor kann man herausfinden, ob das Gerät schon geöffnet wurde. Hier wird beim Initiieren der Struktur \textit{dev} auf -1 gesetzt, bei einem geöffneten Gerät ist eine Zahl größer 0 abgespeichert. Als Letztes wird noch überprüft, ob ein Zeiger auf die \textit{fra\_backend\_funcs} Struktur übergeben wurde. Die Funktion, in welcher das Makro aufgerufen wird gibt entsprechende, softwareintern definierte Fehlermeldungen zurück um die Fehlersuche zu erleichtern.\\
+Ohne ein gültiges Handle würden alle nachfolgenden Aufrufe einen Fehler zurück geben, da alles basierend auf diesem Handle erfolgt. Aus diesem Grund wird in Zeile 2 als Erstes überprüft, ob das \textit{fra\_handle} valid ist. Über den \gls{dateideskriptor} kann man herausfinden, ob das Gerät schon geöffnet wurde. Hier wird beim Initiieren der Struktur \textit{dev} auf -1 gesetzt, bei einem geöffneten Gerät ist eine Zahl größer 0 abgespeichert. Als Letztes wird noch überprüft, ob ein Zeiger auf die \textit{fra\_backend\_funcs} Struktur übergeben wurde. Die Funktion, in welcher das Makro aufgerufen wird gibt entsprechende, softwareintern definierte Fehlermeldungen zurück um die Fehlersuche zu erleichtern.\\
 
 In der Funktionssignatur ist immer das \textit{fra\_handle} und die \textit{transid} angeben. Durch das Handle werden alle notwendigen Informationen zum Zugriff auf das Gerät übergeben und die Transaktionsidentifikation \textit{transid} ist in der Signatur implementiert, damit bei einer späteren Erweiterung nicht alle Aufrufe geändert werden müssen. Durch die Nummer soll es später möglich sein, Kernel- und damit Hardwarezugriffe zu gruppieren und direkt hintereinander abzuarbeiten. Aktuell wird sie lediglich bis zum Ende durchgereicht und nicht weiter betrachtet, da es kein Teil der Arbeit ist. 
 
@@ -345,7 +345,7 @@ int32_t fra_set_reg(struct fra_handle const *handle,
 \end{lstfloat}
 
 Das Makro in Zeile 9 ist im Codeausschnitt~\ref{code:fra_check_handle} näher ausgeführt und im vorhergehenden Absatz genauer erläutert.
-Durch die if - Bedingung in Zeile 11 wird überprüft, ob für das ausgewählte Backend die entsprechende Funktion implementiert ist. Ist die Funktion nicht implementiert, liegt an der Stelle ein \textit{NULL} Zeiger. Durch die Überprüfung wird vermieden, dass beim Aufrufen der Funktion auf \textit{NULL} zugegriffen wird und somit beim laufenden Programm ein Fehler auftritt. Der Rückgabewert in der Funktion in der \ac{fra} Middleware entspricht entweder einem entsprechenden Fehlerwert oder dem Rückgabewert der Backendfunktion. 
+Durch die if - Bedingung in Zeile 11 wird überprüft, ob für das ausgewählte Backend die entsprechende Funktion implementiert ist. Ist die Funktion nicht implementiert, liegt an der Stelle ein \textit{NULL} Zeiger. Durch die Überprüfung wird vermieden, dass beim Aufrufen der Funktion auf \textit{NULL} zugegriffen wird und somit beim laufenden Programm ein Fehler auftritt. Der Rückgabewert in der Funktion in der \ac{fra} \gls{middleware} entspricht entweder einem entsprechenden Fehlerwert oder dem Rückgabewert der Backendfunktion. 
 
 
 \subsection{\acs{fra} Kernelbackend}
@@ -387,11 +387,10 @@ Um das \ac{fra} vollständig in der Kamerasoftware zum Implementieren müssen di
 
 Angelegt werden die Geräte aktuell beim Laden des \ac{fpga}s. An dieser Stelle ist bekannt, welche Firmware geladen wurde und entsprechend kann über eine Struktur bestimmt werden, ob und an welcher Stelle ein bestimmtes Modul vorhanden ist. Mit einem vorgegebenen Namen und Modultyp werden so die Geräte im Kernel angelegt. Anschließend kann in der kompletten Kamerasoftware davon ausgegangen werden, dass, sofern kein Fehler aufgetreten ist, die Geräte verfügbar sind. Das Anlegen der Geräte soll autark von der Software stattfinden, da dieses in Zukunft ohne die Adressen der Module im \ac{fpga} auskommen soll. Da dieses Konzept den Rahmen der Arbeit übersteigen würde, wird es nicht näher betrachtet. \\
 
-%todo glossar framework
-Im \ac{geo} sind die Module der Bildkette in der entsprechenden Reihenfolge abgebildet und über einen Modulindex ist jedes Modul individuell zu unterscheiden. So kann beim initialen Hardwareupdate des \ac{geo} für alle in diesem Framework abgebildeten und vorhandenen Module ein Gerät geöffnet und entsprechend dem Modulindex in ein \textit{fra\_handle} Array abgelegt werden. In beiden Frameworks wird somit über den identischen Modulindex auf das gleiche Modul zugegriffen. Dies spielt vor allem beim Updaten der Module eine wichtige Rolle.
+Im \ac{geo} sind die Module der Bildkette in der entsprechenden Reihenfolge abgebildet und über einen Modulindex ist jedes Modul individuell zu unterscheiden. So kann beim initialen Hardwareupdate des \ac{geo} für alle in diesem \gls{framework} abgebildeten und vorhandenen Module ein Gerät geöffnet und entsprechend dem Modulindex in ein \textit{fra\_handle} Array abgelegt werden. In beiden \glspl{framework} wird somit über den identischen Modulindex auf das gleiche Modul zugegriffen. Dies spielt vor allem beim Updaten der Module eine wichtige Rolle.
 
 
-In den Hardwarefunktionen des \ac{geo} werden für die \ac{xbar} die Konfigurationen des Ein- und Ausgänge aus dem Framework abgeholt und anschließend die \textit{fra\_xbar} Funktion (siehe Codeaussschnitt~\ref{code:fra_xbar}) aufgerufen. Analog sollen auch für andere Module die Hardwarefunktionen abgeändert werden.
+In den Hardwarefunktionen des \ac{geo} werden für die \ac{xbar} die Konfigurationen des Ein- und Ausgänge aus dem \gls{framework} abgeholt und anschließend die \textit{fra\_xbar} Funktion (siehe Codeaussschnitt~\ref{code:fra_xbar}) aufgerufen. Analog sollen auch für andere Module die Hardwarefunktionen abgeändert werden.
 
 
 

@@ -13,7 +13,7 @@ In diesem Kapitel soll ein Fazit über das in der Arbeit behandelte \ac{fra} gez
 % testen möglich
 % über verschiedene ebenen
 
-Ein wichtiger Punkt für das \ac{fra} war die Abstraktion der Hardware. Durch die direkten Zugriffe von der Kamerasoftware auf den \ac{fpga} ist die Fehlersuche recht zeitaufwendig gewesen. Durch das neue Framework wird nicht mehr über direkte Adressen auf die Hardware zugegriffen. Dadurch ist es einfacher nachzuvollziehen, aus welchem Prozess die Funktionsaufrufe kommen und kann so im Fehlerfall auch einfach protokolliert werden.
+Ein wichtiger Punkt für das \ac{fra} war die Abstraktion der Hardware. Durch die direkten Zugriffe von der Kamerasoftware auf den \ac{fpga} ist die Fehlersuche recht zeitaufwendig gewesen. Durch das neue \gls{framework} wird nicht mehr über direkte Adressen auf die Hardware zugegriffen. Dadurch ist es einfacher nachzuvollziehen, aus welchem Prozess die Funktionsaufrufe kommen und kann so im Fehlerfall auch einfach protokolliert werden.
 
 
 Des weiteren wird durch die Einteilung in drei verschiedene Ebenen im Userspace eine einfache Möglichkeit gegeben um Tests zu implementieren. Durch das Testbackend und die \ac{fra} Middleware können die modulspezifischen Funktionen identisch wie in der Kamerasoftware aufgerufen werden und somit überprüft werden, ob die \ac{fra} Bibliothek richtig funktioniert. So können durch die Unittests bei jeder Neuerung und Änderung in der Bibliothek oder Middleware frühzeitig Fehler gefunden und behoben werden.
@@ -29,7 +29,7 @@ Durch das \ac{fra} ist der letzte Schritt in einer Umstrukturierung der Software
 %abhängigkeit von händischen offset noch vorhanden, muss noch raus
 % transids mit funktionalität belegen
 
-Damit des \ac{fra} vollständig in der Software eingebunden ist, müssen noch weitere Schritte gemacht werden. Zum Einen müssen die restlichen Module der Bildkette samt ihrer spezifischen Funktionen in die \ac{fra} Bibliothek umgezogen werden und zum Anderen haben ein paar Module in \ac{fpga} Speicherbereiche um die Bilder zwischen zu speichern, auch diese müssen für die komplette Umstellung im \ac{fra} abgebildet werden. Der Arbeitsaufwand für den kompletten Umzug der Software auf das Framework wird auf ungefähr ein halbes Jahr geschätzt.
+Damit des \ac{fra} vollständig in der Software eingebunden ist, müssen noch weitere Schritte gemacht werden. Zum Einen müssen die restlichen Module der Bildkette samt ihrer spezifischen Funktionen in die \ac{fra} Bibliothek umgezogen werden und zum Anderen haben ein paar Module in \ac{fpga} Speicherbereiche um die Bilder zwischen zu speichern, auch diese müssen für die komplette Umstellung im \ac{fra} abgebildet werden. Der Arbeitsaufwand für den kompletten Umzug der Software auf das \gls{framework} wird auf ungefähr ein halbes Jahr geschätzt.
 
 Auch die Abhängigkeit von händisch eingetragenen Adressen ist noch immer vorhanden (siehe Kapitel~\ref{sec:konzept}). Diese soll in Zukunft durch ein generisches Modell ersetzt werden und somit eine komplette Unabhängigkeit von den \ac{fpga} Adressen in der Software schaffen. Dies ist vor allem in Anbetracht der Wartbarkeit der Software ein wichtiges Thema.
 
