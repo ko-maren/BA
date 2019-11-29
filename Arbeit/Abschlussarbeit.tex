@@ -55,22 +55,26 @@
 \usepackage{hyperref}
 \usepackage{float}
 \newfloat{lstfloat}{htbp}{lop}
-
-\usepackage[nonumberlist, toc]{glossaries}  
+\usepackage[texindy]{imakeidx}
+\usepackage[nonumberlist, numberedsection, toc, section=chapter]{glossaries}  
 \renewcommand*{\glspostdescription}{}
+
+%% spezielles Zeug
+\usepackage{Abschlussarbeit}
 
 \usepackage{thmtools}
 \declaretheorem[style=Definition, title=Definition, numberwithin=chapter]{dfn}
 
 
-\makeglossaries 
-%% spezielles Zeug
-\usepackage{Abschlussarbeit}
-\input{chapters/Glossar}
+
+
+
 
 %% Index erzeugen
 \makeindex
+\input{chapters/Glossar}
 
+\setcounter{secnumdepth}{4}
 
 %% jetzt geht's los
 \begin{document}
@@ -113,6 +117,10 @@
 %% sinnvoll ist, f�r jedes Kapitel eine eigene 
 %% Datei zu nehmen, verk�rzt die Zeit beim LaTeX-Durchlauf
 %% Erst am Schluss alle Dateien verwenden.
+
+\renewcommand{\thechapter}{\arabic{chapter}} 
+\setcounter{chapter}{0}
+\pagenumbering{arabic}
 
 \include{chapters/Einleitung}
 \include{chapters/Theoretische_Grundlagen}
