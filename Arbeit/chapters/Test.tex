@@ -3,15 +3,24 @@
 % testbackend muss noch geschrieben werden
 % überlegungen zum testen aufschreiben 
 Überprüfen der Funktionalität von den einzelnen Bestandteilen außerhalb der eigentlichen Anwendung gehört zum Entwickeln von Software dazu. %todo Quelle
-Allerdings werden auch Tools zum Testen und Debuggen auf der Zielentwicklungsumgebung benötigt. 
-In diesem Kapitel sollen beide Varianten näher beschrieben werden.
+Zusätzlich werden auch Tools zum Testen und Debuggen auf der Zielentwicklungsumgebung benötigt. 
+In diesem Kapitel sollen beide Varianten näher betrachtet werden.
 
 %todo titel!!
 %todo glossar unittest
 %todo bild
 \section{Plattformunabhängige Tests}
 Zunächst sollen auf die Tests eingegangen werden, die unabhängig von der Entwicklungsumgebung durchgeführt werden können. 
-Damit dies möglich ist, muss die Struktur des \ac{fra} Handle angepasst sowie ein entsprechendes Testbackend implementiert werden. Anschließend können verschiedene Tests erstellt werden, wobei die Unittest im Vordergrund stehen. Hierdurch kann die \ac{fra} Middleware und Bibliothek getestet und bei Änderungen überprüft werden, ob die beiden Teile korrekt arbeiten.
+Damit dies möglich ist, muss die Struktur des \ac{fra} Handle angepasst sowie ein entsprechendes Testbackend implementiert werden. Anschließend können verschiedene Tests erstellt werden, wobei die Unittest im Vordergrund stehen. Hier durch kann die \ac{fra} Middleware und Bibliothek unabhängig von der Software getestet und bei Änderungen überprüft werden, ob die beiden Teile korrekt arbeiten.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width = \linewidth]{pictures/2019-11-28-testbackend.png}
+	\smallskip
+	\caption{Beispielhaftes Sequenzdiagramm zum Unittest}
+	\label{fig:testbackend}
+\end{figure} 
+
 
 \begin{lstfloat}
 \begin{lstlisting}
@@ -23,19 +32,19 @@ struct fra_test_mod
 	uint32_t *reg;
 };
 \end{lstlisting}
-\captionof{code}{\label{code:fra_test_mod} Modulstruktur im Testbackend}
+\captionof{code}{\label{code:fra_test_mod} Struktur zum Abbilden der vituellen Hardware}
 \end{lstfloat}
 
-Durch das Anlegen eines Geräts im Kernelbackend können alle benötigten Informationen und Register über dieses Gerät abgefragt und gesetzt werden. Da das Testbackend unabhängig laufen soll, ist das Anlegen von Geräten nicht möglich. Um eine ähnliche Funktionalität wie im Kernel zu haben, wird das Modul über die \textit{fra\_mod\_test} Struktur abgebildet. Hier werden alle notwendigen Informationen angelegt und auch entsprechende Register abgebildet, damit man diese beschreiben und auch auslesen kann.
-Die \textit{fra\_mod\_test} Struktur wird als statisches Array im Testbackend angelegt. Damit ist die maximale Anzahl an Modulen vorgegeben, aber auch das Überprüfen der Register ist später möglich.
-%todo mehr oder anders
+Durch das Anlegen eines Geräts im Kernelbackend können alle benötigten Informationen und Register über dieses Gerät abgefragt und gesetzt werden. Da das Testbackend unabhängig laufen soll, ist das Anlegen von Geräten so nicht möglich. Um eine ähnliche Funktionalität wie im Kernel zu haben, wird das Modul über die \textit{fra\_mod\_test} Struktur abgebildet. Hier werden alle notwendigen Informationen angelegt und auch entsprechende Register abgebildet, damit man diese beschreiben und auch auslesen kann.
+Die \textit{fra\_mod\_test} Struktur wird als statisches Array im Testbackend angelegt und bildet so die virtuelle Hardware für das Testprogramm. Dadurch ist das Überprüfen der Register später möglich und auch eine maximale Anzahl der Module ist vorgegeben. 
 
-Damit die Module richtig initialisiert werden, muss für die Register entsprechender Speicherplatz allokiert, aber auch die restlichen Parameter gesetzt werden. Analog dazu muss der Speicherbereich der Register beim Beenden des Programms wieder freigegeben werden. Dafür gibt es im Testbackend zusätzliche Funktionen, die sich ums initialisieren und deinitialisieren kümmern.\\
+
+Damit die virtuelle Hardware richtig initialisiert wird, muss für die Register entsprechender Speicherplatz allokiert, aber auch die restlichen Parameter gesetzt werden. Analog dazu muss der Speicherbereich der Register beim Beenden des Programms wieder freigegeben werden. Dafür gibt es im Testbackend zusätzliche Funktionen, die sich um das initialisieren und deinitialisieren kümmern.\\
 
  
-Beim Starten des Test wird der \textit{fra\_test\_init} Funktion drei Parameter übergeben. Zum einen der Typ und der Name des Moduls und zum anderen die Größe des Registers. Ist die maximale Anzahl der Module noch nicht überschritten, wird mithilfe der Größe ein Register allokiert. Anschließend wird die \textit{fra\_mod\_test} Struktur mit allen vier Parametern gefüllt und eine statische Variable \textit{mod\_count} erhöht.
+Beim Starten des Test wird der \textit{fra\_test\_init} Funktion drei Parameter übergeben. Zum Einen wird der Name sowie der Typ des Moduls und zum Anderen wird die Größe des Registers in die Funktion gereicht. Ist die maximale Anzahl der Module noch nicht überschritten, wird mithilfe der Größe ein Registerblock allokiert. Anschließend wird die \textit{fra\_mod\_test} Struktur mit allen vier Parametern gefüllt und eine statische Variable \textit{mod\_count} erhöht.
 
-Wenn der Test am Ende angelangt ist, werden in der \textit{fra\_test\_deinit} Funktion mithilfe der Variablen \textit{mod\_count} alle allokierten Module wieder freigegeben.\\
+Wenn der Test am Ende angelangt ist, werden in der \textit{fra\_test\_deinit} Funktion mithilfe der Variablen \textit{mod\_count} alle allokierten virtuellen Geräte wieder freigegeben.\\
 
 
 Zum Öffnen eines Moduls im Testbackend wird analog zum Kernelbackend die Funktion \textit{fra\_init} aufgerufen. Hier wird allerdings ein anderer Backendtyp übergeben und somit in den Wrapperfunktionen entsprechend ins Testbackend weitergeleitet. 
@@ -43,12 +52,12 @@ Die Funktionalität der einzelnen Backendfunktionen sind, im Vergleich zum Kerne
 
 
 
-Damit überprüft werden kann, ob die Register richtig beschrieben oder ausgelesen worden sind, gibt es zwei Funktionen. Diese sind, wie die \textit{fra\_test\_init} und \textit{fra\_test\_deinit} Funktion, im Testbackend, aber werden ohne Wrapperfunktion aufgerufen, da sie sehr spezifisch sind und lediglich beim Testen genötigt werden.
-Der \textit{fra\_test\_check} Funktion werden neben dem Handle noch die Registernummer und der Sollwert des Registers übergeben. Über den Namen wird die Zuordnung des Handles zu dem statischen Modularray gemacht und anschließend der Registerwert mit dem Sollwert verglichen. Bei einem fehlerhaften Wert wird eine Fehlermeldung ausgegeben und der Rückgabewert \textit{1}.
-Durch eine weitere Funktion (\textit{fra\_test\_check\_all}) wird das gesamte Register überprüft. Allerdings muss hier neben dem Handle noch ein Array mit der gleichen Größe wie dem Register übergeben werden. In diesem Array müssen die Sollwerte in richtiger Reihenfolge gespeichert sein. Anschließend wird für jede einzelne Registerstelle die \textit{fra\_test\_check} Funktion aufgerufen. Am Ende wird die Gesamtanzahl der Fehler zurückgegeben.\\
+Damit überprüft werden kann, ob die Register richtig beschrieben bzw. ausgelesen worden sind, gibt es zwei Funktionen. Diese sind, wie die \textit{fra\_test\_init} und \textit{fra\_test\_deinit} Funktion, im Testbackend, aber werden ohne Wrapperfunktion aufgerufen, da sie spezifisch sind und lediglich beim Testen genötigt werden.
+Der \textit{fra\_test\_check} Funktion werden neben dem Handle noch die Registernummer und der Sollwert des Registers übergeben. Über den Namen wird die Zuordnung des Handles zu der virtuellen Hardware gemacht und anschließend der Registerwert mit dem Sollwert verglichen. Bei einem fehlerhaften Wert wird eine Fehlermeldung ausgegeben und der Rückgabewert \textit{1}.
+Durch eine weitere Funktion (\textit{fra\_test\_check\_all}) kann das gesamte Register überprüft. Allerdings muss hier neben dem Handle noch ein Array der Registergröße übergeben werden. In diesem Array müssen die Sollwerte in richtiger Reihenfolge gespeichert sein. Anschließend wird für jede einzelne Registerstelle die \textit{fra\_test\_check} Funktion aufgerufen. Am Ende wird die Gesamtanzahl der Fehler zurückgegeben, welche im Test ausgewertet wird.\\
 
 
-Im Unittest werden die modulspezifischen Funktionen aufgerufen und direkt danach die Überprüfung durchgeführt. Dadurch kann man die Funktionalität überprüfen und im Fehlerfall direkt handeln. Wichtig ist dies vor allem bei Änderungen an der \ac{fra} Bibliothek, da so vor Inbetriebnahme auf der Kamera Fehler gefunden und ausgebessert werden können.
+Im Unittest wird zunächst die virtuelle Hardware angelegt und geöffnet, anschließend werden modulspezifische Funktionen aufgerufen und direkt danach der Check durchgeführt (siehe Abbildung~\ref{fig:testbackend}). Dadurch kann die Funktionalität der einzelnen Module überprüft und im Fehlerfall direkt gehandelt werden. Vor allem bei Änderungen an der \ac{fra} Bibliothek können so vor der Inbetriebnahme auf der Kamera Fehler gefunden und ausgebessert werden.
 
 
 \section{Tools für die Entwicklungsumgebung}
@@ -58,7 +67,7 @@ Unabhängig von der Funktionstests des vorherigen Kapitels sollten dem Entwickle
 Besonders für die Kalibrierung der Kamera ist es notwendig ein Gerät über die Kommandozeile anzulegen, da es hier keinen Codeteil gibt in welchem man das Anlegen integrieren könnte. Dadurch das die benötigten Geräte vor dem Starten der Kalibiersoftware angelegt werden, können in der Software über die Funktionen der \ac{fra} Bibliothek die Geräte geöffnet und auf diese zugegriffen werden.
 
 
-Beim Ausführen des Programms \textit{fra\_create\_device} werden in der Kommandozeile über Optionen die benötigten Parameter übergeben. Hier gibt es neben dem Namen, dem Type, der Adresse und der Größe auch die Möglichkeit eine Hilfe auszugeben, in welcher genauer erläutert wird, wie das Programm zu nutzen ist. 
+Beim Ausführen des Programms \textit{fra\_create\_device} werden in der Kommandozeile über Optionen die benötigten Parameter übergeben. Hier gibt es neben dem Namen, dem Typ, der Adresse und der Größe auch die Möglichkeit eine Hilfe auszugeben, in welcher genauer erläutert wird, wie das Programm zu nutzen ist. 
 Nach dem Ausführen des Programms werden die programminternen Parameter mithilfe der Optionen gefüllt und nach der Überprüfung auf Dateninkonsistenz wird das entsprechende Gerät angelegt. 
 Danach ist dieses Gerät in Linux unter \textit{dev/fra} zu finden und weitere Programme oder Testtools können darauf zugreifen.\\
 
