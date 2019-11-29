@@ -15,6 +15,7 @@
 \usepackage{mathpazo}
 \usepackage[scaled=.95]{helvet}
 \usepackage{courier}
+
 \usepackage[figuresright]{rotating}
 %% fast immer benoetigte Pakete
 \usepackage{acronym}
@@ -33,8 +34,6 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage{thmtools}
-\declaretheorem[style=Definition, title=Definition, numberwithin=chapter]{dfn}
 \newtheorem{axiom}{Axiom}
 \usepackage{tikz}
 \usepackage{multirow}
@@ -57,14 +56,21 @@
 \usepackage{float}
 \newfloat{lstfloat}{htbp}{lop}
 
+\usepackage[nonumberlist, toc]{glossaries}  
+\renewcommand*{\glspostdescription}{}
+
+\usepackage{thmtools}
+\declaretheorem[style=Definition, title=Definition, numberwithin=chapter]{dfn}
 
 
+\makeglossaries 
 %% spezielles Zeug
 \usepackage{Abschlussarbeit}
-%\input{chapters/Abkuerzungsverzeichnis}
+\input{chapters/Glossar}
 
 %% Index erzeugen
 \makeindex
+
 
 %% jetzt geht's los
 \begin{document}
@@ -98,8 +104,10 @@
 					  	  belowskip=0.5cm}
 
 %% Die Datei "Vorspann.tex"  bitte ausf�llen!
+
 \include{chapters/Vorspann}  
 \include{chapters/Abkuerzungsverzeichnis}
+\printglossary[title={Glossar}]
 
 %% Hier kommt der eigentlich Text der Arbeit
 %% sinnvoll ist, f�r jedes Kapitel eine eigene 
@@ -123,9 +131,7 @@
 
 %% Stichwortverzeichnis ausgeben.
 %% falls nicht notwendig, die folgende Zeile loeschen
-\printindex
-\listoffigures
-\printbibliography[title=Literaturverzeichnis]
+
 
 
 \end{document}

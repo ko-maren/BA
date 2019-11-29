@@ -6,7 +6,6 @@ A level-1 auxiliary file: chapters/Vorspann.aux
 A level-1 auxiliary file: chapters/Abkuerzungsverzeichnis.aux
 A level-1 auxiliary file: chapters/Einleitung.aux
 A level-1 auxiliary file: chapters/Theoretische_Grundlagen.aux
-A level-1 auxiliary file: chapters/Aktuelle_Implementierung.aux
 A level-1 auxiliary file: chapters/Fachlicher_Hauptteil.aux
 A level-1 auxiliary file: chapters/Test.aux
 A level-1 auxiliary file: chapters/Ausblick.aux
@@ -32,7 +31,7 @@ Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 You've used 15 entries,
             6268 wiz_defined-function locations,
-            1253 strings with 10675 characters,
+            1252 strings with 10638 characters,
 and the built_in function-call counts, 54775 in all, are:
 = -- 2917
 > -- 1409
