@@ -66,7 +66,7 @@ lfd. Nr. gem\"a{\ss}  Belegschein: \> %
 
 \vspace*{10mm}
 {\huge \bfseries{%
-		\par Modular control of an image processing FPGA via generic kernelmodul \par
+		\par Modular control of an image processing FPGA via generic kernelmoduls \par
 }} % englischer Langtitel
 
 \vspace*{15mm}
@@ -144,7 +144,8 @@ S\"amtliche benutzte Quellen und Hilfsmittel sind angegeben, w\"ortliche und sin
 %In dem vorliegenden Bericht geht es um die Verbesserung einer Kamerasoftware. Es wird hierzu eine Abstraktionsebene vorgestellt, die aus mehreren Modulen besteht. Um das Verst\"andnis zu erleichtern wird au\ss{}erdem eine kurze Einf\"uhrung zur Bildkette gegeben und anschlie\ss{}end auf ausgew\"ahlte Module eingegangen. Durch die Abstraktionsebene wird die \"Ubersichtlichkeit und Erweiterung der Software in Zukunft erleichtert werden.
 
 %todo noch ein bissl mehr dazu schreiben
-In dem vorliegenden Bericht geht es um die Verbesserung einer Kamerasoftware im Zusammenspiel mit der Hardware. Es wird hierzu eine Abstraktionsebene vorgestellt, die die Zugriffe von der Software auf den FPGA \"ubersichtlicher und einfacher gestalten soll. Der Zugriff auf die Hardware soll nicht mehr direkt \"uber die Adresse stattfinden, sondern abstrahiert werden, sodass die Software lediglich den Namen ben\"otigt um auf das richtige Modul zuzugreifen. Zum Erleichteren des Verst\"andins wird ein kurzer \"Uberblick \"uber die aktuelle Implementierung und eine kurze Einf\"uhrung zur Bildkette gegeben. Au\ss{}erdem wird auf das Betriebssystem Linux und ben\"otigte Komponenten eingegangen. Durch die Abstraktionsebene soll die Wartbarkeit und Erweiterung der Software in Zukunft erleichtert werden.
+In dem vorliegenden Bericht geht es um die Verbesserung einer Kamerasoftware im Zusammenspiel mit der Hardware. Es wird hierzu eine Abstraktionsebene vorgestellt, welche die Zugriffe von der Software auf den FPGA \"ubersichtlicher und einfacher gestalten soll. Der Zugriff auf die Hardware findet aktuell direkt \"uber die Adresse statt und soll abstrahiert werden, sodass die Software lediglich den Namen ben\"otigt um auf des richtige Modul zuzugreifen. Zum Erleichtern des Verst\"andins wird ein kurzer \"Uberblick \"uber die aktuelle Implementierung und eine kurze Einf\"uhrung zur Bildkette gegeben. Au\ss{}erdem wird auf das Betriebssystem Linux und ben\"otigte Komponenten eingegangen. Im Anschluss wird die Implementierung der Abstraktionsebene n\"aher erkl\"art. Die Wartbarkeit und die Erweiterung der Software soll durch die Abstraktionsebene in Zukunft erleichtert werden.
+
 
 Dieser Bericht ist f\"ur Leser aus dem Bereich der Elektrotechnik geschrieben.
 
@@ -155,6 +156,9 @@ Dieser Bericht ist f\"ur Leser aus dem Bereich der Elektrotechnik geschrieben.
 
 %% Hier die Kurzfassung in Englisch ein
 %This report handle the improvement of an camera software. For this, an abstraction level will be introduce, which consists out of a few modules. At first there is a short intorduction to the image processing chain to make the understanding easier and then go into details of selected modules. Because of the abstraction level the clarity and extensions of the software will be easier in future. 
+
+This report handles the improvement of an camera software in interaction with the hardware. For this, an abstraction level will be introduce, which should simplify and clearer the accesses from the software to the FPGA.
+
 
 This report targets readers having an electric engineering background.
 
