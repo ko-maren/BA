@@ -50,22 +50,21 @@ Bevor auf das erarbeitete Konzept eingegangen wird, soll kurz auf die Funktionsw
 
 Die bildverarbeitende Hauptfunktionalität liegt im \ac{fpga}. Hier sind die Module entsprechend der Bildkette angeordnet und verbunden. Durch die Software werden bei den \ac{fpga} Modulen entsprechende Einstellungen vorgenommen.
 
-Damit die Einstellungen auch zu dem Sensorbild passen, werden alle Module des \ac{fpga}s in dem \ac{geo} abgebildet. Das objektorientierte \gls{framework} führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der abgebildeten \gls{framework}bildkette geupdatet und entsprechend der voreingestellten Parameter werden die Größen neu berechnet. Ab Ende des Updates werden verschiedenen Funktionen aufgerufen, welche die Register im \ac{fpga} entsprechend der Einstellungen gesetzt.
+Damit die Einstellungen auch zu dem Sensorbild passen, werden alle Module des \ac{fpga}s in dem \ac{geo} abgebildet. Das objektorientierte \gls{framework} führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der abgebildeten \gls{framework}bildkette geupdatet und entsprechend der voreingestellten Parameter werden die Größen neu berechnet. Am Ende des Updates werden verschiedenen Funktionen aufgerufen, welche die Register im \ac{fpga} entsprechend der Einstellungen gesetzt.
 
 
 \subsection{Problematiken}\label{sec:prob}
 In der aktuellen Implementierung liegen verschiedene Probleme vor, die durch ein neues \gls{framework} eliminiert werden soll.
 
-Zum Einen muss bei den Zugriff auf ein Modul immer der \ac{fpga} gesperrt werden. Dadurch kann es passieren, dass es einen oder zwei Frames dauert, bis alle Einstellungen in der Bildkette aktuell sind. Bei einem Livebild der Kamera ist dies besonders störend, da man die aktuelle Änderung erst später sieht. Da man beim Aufnehmen keine Änderungen am Sensorbild vornehmen kann fällt das Problem hier nicht ins Gewicht.
+Zum Einen muss bei den Zugriff auf ein Modul immer der \ac{fpga} gesperrt werden. Dadurch kann es passieren, dass es einen oder zwei \glspl{frame} dauert, bis alle Einstellungen in der Bildkette aktuell sind. Bei einem Livebild der Kamera ist dies besonders störend, da man die aktuelle Änderung erst später sieht. Da man beim Aufnehmen keine Änderungen am Sensorbild vornehmen kann fällt das Problem hier nicht ins Gewicht.
 
-Des weiteren müssen die Adressen für die \ac{fpga} Module händisch eingetragen werden. Die Fehleranfälligkeit steigt dadurch natürlich weiter an, da es passieren kann, dass die Software, Einstellungen an eine Adresse schreibt, hinter der kein Modul liegt. In schlechtesten Fall werden die Register eines anderen Moduls beschrieben und es kommt zum Fehlerfall in der Bildkette.
+Des weiteren müssen die Adressen für die \ac{fpga} Module händisch eingetragen werden. Die Fehleranfälligkeit steigt dadurch weiter an, da es passieren kann, dass die Software, Einstellungen an eine Adresse schreibt, hinter der kein Modul liegt. In schlechtesten Fall werden die Register eines anderen Moduls beschrieben und es kommt zum Fehlerfall in der Bildkette.
 
 Auch die Länge der Register wird in der aktuellen Implementierung nicht weiter berücksichtigt. So kann es passieren, dass über ein Register hinweg geschrieben wird. Auch dann kommt es zum Fehlerfall in der Bildkette, da andere Einstellungen überschrieben werden und so verloren gehen. 
 
-Da die Fehlerfälle im normalen Umgang mit der Kamera auftreten können und somit in Filmproduktionen zu Ausfällen sorgen, ist es wichtig die Probleme zu beheben.
+Im normalen Betrieb der Kamera können diese Fehlerfälle auftreten und somit in Filmproduktionen für Ausfällen sorgen. Dies ist mit der wichtigste Grund um die Software entsprechend anzupassen, sodass die Problematiken verschwinden oder zumindest minimiert werden.
 
 
-%todo ab hier weiter korrektieren
 \section{Konzept}\label{sec:konzept}
 Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sollen durch ein neues \gls{framework} behoben werden, zusätzlich sollen die Zugriffe der Software auf den \ac{fpga} übersichtlicher und wartbarer gestaltet werden.
 
@@ -79,10 +78,10 @@ Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sol
 
 
 
-Aktuell benötigen die Zugriffe auf den \ac{fpga} jedes Mal die Adressen der Module. Dadurch wird die Fehlersuche in diesen Teilen der Software extrem kompliziert und aufwendig. Durch eine weitere Abstraktionsebene soll eine modulare Ansteuerung möglich werden und so die direkten Hardwarezugriffe über die Adressen aus dem Hauptcode eliminiert werden. In dem \ac{fra} werden die Module im Kernel als Gerät angelegt und über \glspl{dateideskriptor} greift die Software auf den \ac{fpga} zu.
+Aktuell benötigen die Zugriffe auf den \ac{fpga} jedes Mal die Adressen der Module. So ist es nicht nachvollziehbar welcher Prozess in der Hardware Änderungen durchführt. Dadurch wird die Fehlersuche in diesen Teilen der Software extrem kompliziert und aufwendig. Durch eine weitere Abstraktionsebene soll eine modulare Ansteuerung möglich werden und so die direkten Hardwarezugriffe über die Adressen aus dem Hauptcode eliminiert werden. In der \ac{fra} werden die Module im Kernel als Gerät angelegt und über \glspl{dateideskriptor} greift die Software auf den \ac{fpga} zu.
 
 
-Die Geräte werden mit der Adresse, der Größe, dem Namen und Type des dahinterliegenden Modul beim Initialisieren des Bildpfads angelegt. Dieser Teil soll generisch generiert werden, aber aufgrund von verschiedenen Abhängigkeiten überschreitet es den Umfang der Arbeit.
+Die Geräte werden mit der Adresse, der Größe, dem Namen und Typ des dahinterliegenden Modul beim Initialisieren des Bildpfads angelegt. Dieser Teil soll generisch generiert werden, aber aufgrund von verschiedenen Abhängigkeiten überschreitet es den Umfang der Arbeit.
 
 
 Über den Namen im vorhandenen \ac{geo} werden die \glspl{dateideskriptor} in der Software geöffnet und in einem \gls{handle} gespeichert. Damit wird im Hauptteil des Codes ein Zugriff ohne Adresse gewährleistet. Jeder laufende Prozess muss seinen eigenen \gls{dateideskriptor} öffnen und verwaltet somit sein eigenes \gls{handle}. Pro Gerät kann lediglich eine begrenzte Anzahl von Deskriptoren geöffnet werden, geregelt wird dies durch den Kernel. 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  1 DEC 2019 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  2 DEC 2019 10:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1998,7 +1998,7 @@ been already used, duplicate ignored
                    \relax 
 l.62 
       [4 <./pictures/2019-11-17_Bildkette.png>]
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=346, 408.3255pt x 258.9675
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=348, 408.3255pt x 258.9675
 pt>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
@@ -2167,7 +2167,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--205
  []
 
 [18]
-<pictures/2019-11-17_FRA_Overview.png, id=613, 502.87875pt x 517.33275pt>
+<pictures/2019-11-17_FRA_Overview.png, id=615, 502.87875pt x 517.33275pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
@@ -2252,7 +2252,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 388--389
 
  (./chapters/Test.tex
 Kapitel 4.
-<pictures/2019-11-28-testbackend.png, id=801, 550.4565pt x 461.92575pt>
+<pictures/2019-11-28-testbackend.png, id=803, 550.4565pt x 461.92575pt>
 File: pictures/2019-11-28-testbackend.png Graphic file (type png)
 <use pictures/2019-11-28-testbackend.png>
 Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
@@ -2389,26 +2389,29 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44582 strings out of 492642
- 819587 string characters out of 6133163
- 1300557 words of memory out of 5000000
- 47318 multiletter control sequences out of 15000+600000
+ 44613 strings out of 492642
+ 820084 string characters out of 6133163
+ 1300751 words of memory out of 5000000
+ 47348 multiletter control sequences out of 15000+600000
  608184 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,79p,2017b,1886s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fo
-nts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/h
-elvetic/uhvr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvro8a
-.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texliv
-e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
-ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
-/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
-plri8a.pfb>
-Output written on Abschlussarbeit.pdf (46 pages, 893744 bytes).
+pdfTeX warning (dest): name{glo:frame} has been referenced but does not exist
+, replaced by a fixed one
+
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/font
+s/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/hel
+vetic/uhvr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.p
+fb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/
+2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-dis
+t/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/u
+rw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/upl
+ri8a.pfb>
+Output written on Abschlussarbeit.pdf (46 pages, 893803 bytes).
 PDF statistics:
- 1017 PDF objects out of 1200 (max. 8388607)
- 924 compressed objects within 10 object streams
- 324 named destinations out of 1000 (max. 500000)
+ 1021 PDF objects out of 1200 (max. 8388607)
+ 928 compressed objects within 10 object streams
+ 325 named destinations out of 1000 (max. 500000)
  352 words of extra memory for PDF output out of 10000 (max. 10000000)
 
