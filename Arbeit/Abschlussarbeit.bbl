@@ -80,6 +80,29 @@
     \endverb
   \endentry
 
+  \entry{beck1994linux}{book}{}
+    \name{author}{1}{}{%
+      {{hash=BM}{%
+         family={Beck},
+         familyi={B\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Addison-Wesley}%
+    }
+    \strng{namehash}{BM1}
+    \strng{fullhash}{BM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{Linux-Kernel-Programmierung: Algorithmen und Struktur der
+  Version 1.0}
+    \field{year}{1994}
+  \endentry
+
   \entry{bellonimfd}{misc}{}
     \name{author}{1}{}{%
       {{hash=BA}{%

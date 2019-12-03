@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  3 DEC 2019 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  3 DEC 2019 17:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1937,7 +1937,7 @@ l.18
 
 
 ]
-<pictures/amira-product-image-data.jpg, id=300, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=302, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1949,7 +1949,7 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
-<pictures/2019-11-17_Bildkette.png, id=309, 662.475pt x 155.98276pt>
+<pictures/2019-11-17_Bildkette.png, id=311, 662.475pt x 155.98276pt>
 File: pictures/2019-11-17_Bildkette.png Graphic file (type png)
 <use pictures/2019-11-17_Bildkette.png>
 Package pdftex.def Info: pictures/2019-11-17_Bildkette.png  used on input line 
@@ -1978,7 +1978,7 @@ been already used, duplicate ignored
                    \relax 
 l.60 
       [3 <./pictures/2019-11-17_Bildkette.png>]
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=352, 408.3255pt x 258.9675
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=354, 408.3255pt x 258.9675
 pt>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
@@ -2161,7 +2161,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--205
  []
 
 [17]
-<pictures/2019-11-17_FRA_Overview.png, id=623, 502.87875pt x 517.33275pt>
+<pictures/2019-11-17_FRA_Overview.png, id=625, 502.87875pt x 517.33275pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
@@ -2252,7 +2252,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 388--389
 
  (./chapters/Test.tex
 Kapitel 4.
-<pictures/2019-11-28-testbackend.png, id=804, 550.4565pt x 461.92575pt>
+<pictures/2019-11-28-testbackend.png, id=806, 550.4565pt x 461.92575pt>
 File: pictures/2019-11-28-testbackend.png Graphic file (type png)
 <use pictures/2019-11-28-testbackend.png>
 Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
@@ -2354,6 +2354,12 @@ Underfull \hbox (badness 4366) in paragraph at lines 7--7
  . arri . com / resource / blob / 33916 /
  []
 
+
+Underfull \hbox (badness 2334) in paragraph at lines 7--7
+[]\T1/ppl/m/n/10.95 Michael Beck. \T1/ppl/m/sl/10.95 Linux-Kernel-Programmierun
+g: Al-go-rith-men und
+ []
+
 [32
 
 
@@ -2392,10 +2398,10 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44610 strings out of 492642
- 820122 string characters out of 6133163
- 1300751 words of memory out of 5000000
- 47345 multiletter control sequences out of 15000+600000
+ 44613 strings out of 492642
+ 820233 string characters out of 6133163
+ 1301001 words of memory out of 5000000
+ 47347 multiletter control sequences out of 15000+600000
  600220 words of font info for 140 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,79p,2017b,1886s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2408,10 +2414,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (46 pages, 898382 bytes).
+Output written on Abschlussarbeit.pdf (46 pages, 898824 bytes).
 PDF statistics:
- 1060 PDF objects out of 1200 (max. 8388607)
- 966 compressed objects within 10 object streams
- 325 named destinations out of 1000 (max. 500000)
+ 1062 PDF objects out of 1200 (max. 8388607)
+ 968 compressed objects within 10 object streams
+ 326 named destinations out of 1000 (max. 500000)
  360 words of extra memory for PDF output out of 10000 (max. 10000000)
 
