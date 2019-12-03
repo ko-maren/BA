@@ -20,15 +20,16 @@ Damit entsteht die Notwenigkeit zwischen Userspace und Kernel aktiv Daten auszut
 Im folgenden soll lediglich der Zeiger auf das \acf{ioctl} betrachtet werden, da dieser im weiteren Teil der Arbeit eine wichtige Rolle spielt.
 Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur Verfügung gestellt. 
 
-%todo zeile zitieren
+%todo zeile zitieren, QUELLE
 \begin{lstfloat}
 \begin{lstlisting}
-int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsigned long arg);
+long (*unlocked_ioctl) (struct file *, unsigned int, unsigned long);
 \end{lstlisting}
-\captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur \cite[linux/fs.h]{linuxsourceinclude}}
+\captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur \cite[linux/fs.h, Zeile 1800]{linuxsourceinclude}}
 \end{lstfloat}
 
-Über die \textit{node} wird der Dateideskriptor und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird meistens als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 90f]{corbet2005linux}
+Über den ersten Übergabeparameter wird ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das auszuführende Kommando wird durch eine Nummer wieder gespiegelt und ist in der Funktionsdeklaration an der zweiten Stelle zu finden. Das letzte Argument ist optional und wird meistens als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 90f]{corbet2005linux} 
+%todo QUELLE -> unlocked_ioctl
 
 Mit den Übergabeparametern und dem Dateideskriptor wird die Funktion dann in Anwendungen im Userspace aufgerufen, im Kernel werden die Daten weiterverarbeitet und wieder zurück gegeben.
 
@@ -41,10 +42,10 @@ Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Use
 unsigned long copy_from_user(void *to, const void *from, unsigned long num);
 unsigned long copy_to_user(void *to, const void *from, unsigned long num);
 \end{lstlisting}
-\captionof{code}{Funktionsdeklaration in asm/uaccess.h}
+\captionof{code}{Vereinfachte Funktionsdeklaration aus \cite[linux/uaccess.h, Zeile 140ff.]{linuxsourceinclude}}
 \end{lstfloat}
 
-Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
+Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, aber zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
 In der \textit{copy\_from\_user} werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
 Analog arbeitet das Gegenstück \textit{copy\_to\_user}. Hier gibt \textit{from} allerdings die Speicherstelle im Kernel an und somit ist \textit{to} die Stelle im Userspace.
 Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der nicht kopierten Bytes zurückgegeben. \citep[S. 250f]{schroder2009embedded}
@@ -57,7 +58,7 @@ Damit die Treiber richtig funktionieren gibt es einige Bestandteile, die in jede
 
 
 
-Jedes Kernelmodule besitzt mindestens eine \textit{init} und \textit{exit} Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers platziert. \cite[linux/module.h]{linuxsourceinclude}
+Jedes Kernelmodule besitzt mindestens eine \textit{init} und \textit{exit} Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers platziert. \cite[linux/module.h, Zeile 79ff.]{linuxsourceinclude}
 %todo zeile zitieren
 
 %todo zeile zitieren
@@ -74,16 +75,16 @@ struct platform_driver {
 	bool prevent_deferred_probe;
 };
 \end{lstlisting}
-\captionof{code}{\label{code:platform_driver}platform\_driver Struktur in \cite[linux/platform\_driver.h]{linuxsourceinclude}}
+\captionof{code}{\label{code:platform_driver}platform\_driver Struktur in \cite[linux/platform\_device.h, Zeile 184ff.]{linuxsourceinclude}}
 \end{lstfloat}
 
-Beim Laden des Treibers wird die eine \textit{platform\_driver} Struktur übergeben. In dieser Struktur sind Zeiger auf die Funktionen gespeichert, die beim Erzeugen oder Löschen einer Instanz gebraucht werden.  
+Beim Laden des Treibers wird eine \textit{platform\_driver} Struktur übergeben. In dieser Struktur sind Zeiger auf die Funktionen gespeichert, die beim Erzeugen oder Löschen einer Instanz benötigt werden.  
 In dieser Arbeit werden lediglich die \textit{probe} und \textit{remove} Funktionszeiger betrachtet. Beim Registrieren einer Instanz wird die Funktion hinter dem \textit{probe} Zeiger aufgerufen und analog beim Auflösen die \textit{remove} Funktion.\cite{corbetplatform} 
 
 %todo umformulieren & kapitel zitieren
 Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} 
 
-%todo schauen wie sotieren!!!
+%todo warum, siehe embeddedlinux seite 244
 \subsection{Major- und Minornummern}\label{sec:mmnum_t}
 Zusätzlich hat bekommt jedes Gerät eine Major- und Minornummer mit der es angelegt wird.
 Die Majornummer kennzeichnet hier üblicherweise den Treiber, zu welchem das Gerät gehört, analog dazu wird die Minornummer vom Kernel genutzt um auf das exakte Gerät zu referenzieren. \citep[S. 43f]{corbet2005linux} 
