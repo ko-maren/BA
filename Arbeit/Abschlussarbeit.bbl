@@ -248,6 +248,28 @@
     \field{year}{2009}
   \endentry
 
+  \entry{smpte}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=S}{%
+         family={SMPTE},
+         familyi={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{S1}
+    \strng{fullhash}{S1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{howpublished}{Webseite}
+    \field{note}{Besucht 2019-12-03}
+    \field{title}{{ST 292-1:2012 - SMPTE Standard - 1.5 Gb/s Signal/Data Serial
+  Interface}}
+    \verb{url}
+    \verb https://ieeexplore.ieee.org/servlet/opac?punumber=7291768
+    \endverb
+  \endentry
+
   \entry{imdbtour}{misc}{}
     \name{author}{1}{}{%
       {{hash=U}{%

@@ -67,7 +67,7 @@ struct afm_device
 \captionof{code}{\label{code:afm_device}Auszug aus der Struktur einer Instanz}
 \end{lstfloat}
 
-Der einzige Übergabeparameter der Probefunktion ist die Struktur des \textit{platform\_device}, diese wird in dem Zeiger \textit{pdev} gespeichert. Auch die, beim Laden des Treibers, angelegte Klasse wird ohne weitere Änderungen unter \textit{class} abgelegt. 
+Der einzige Übergabeparameter der Probefunktion ist die Struktur des \textit{platform\_device}, diese wird in dem Zeiger \textit{pdev} gespeichert. 
 
 Aus der Liste der Minornummern (siehe Codeausschnitt~\ref{code:afm_data}) wird nach dem Sperren des zugehörigen Spinlocks eine freie Nummer ausgewählt und als \textit{minor\_id} gespeichert, sowie in der Liste als verwendet gesetzt. Danach wird das Spinlock wieder freigegeben.
 
