@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  3 DEC 2019 14:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  3 DEC 2019 15:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2156,92 +2156,98 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--133
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 200--204
+Underfull \hbox (badness 10000) in paragraph at lines 201--205
 
  []
 
-<pictures/2019-11-17_FRA_Overview.png, id=618, 502.87875pt x 517.33275pt>
+<pictures/2019-11-17_FRA_Overview.png, id=617, 502.87875pt x 517.33275pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
-ne 219.
+ne 220.
 (pdftex.def)             Requested size: 360.0pt x 370.34795pt.
 [19]
-Underfull \hbox (badness 1303) in paragraph at lines 231--234
-\T1/ppl/m/n/10.95 wor-den. Da-durch müs-sen bei Än-de-run-gen im Ker-nel-zu-gri
-ff, nur im
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--234
+Underfull \hbox (badness 10000) in paragraph at lines 232--235
 
  []
 
 [20 <./pictures/2019-11-17_FRA_Overview.png>]
-Underfull \hbox (badness 1342) in paragraph at lines 259--260
+Underfull \hbox (badness 1342) in paragraph at lines 260--261
 \T1/ppl/m/n/10.95 zu-rück ge-ge-ben. Da in al-len Funk-tio-nen haupt-säch-lich 
 auf die [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--264
+Underfull \hbox (badness 1297) in paragraph at lines 262--265
+\T1/ppl/m/n/10.95 ei-ner [][] ent-spre-chend dem über-ge-be-nen \T1/ppl/m/it/10
+.95 set-ting \T1/ppl/m/n/10.95 ver-bun-den. Durch
+ []
+
+
+Underfull \hbox (badness 2591) in paragraph at lines 262--265
+\T1/ppl/m/n/10.95 das Ma-kro \T1/ppl/m/it/10.95 FRA_CHECK_HANDLE_TYPE \T1/ppl/m
+/n/10.95 wird vor-her über-prüft, ob
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--265
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 289--292
+Underfull \hbox (badness 10000) in paragraph at lines 290--293
 
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 295--297
+Underfull \hbox (badness 1742) in paragraph at lines 296--298
 []\T1/ppl/m/n/10.95 In der in-itia-len Funk-ti-on \T1/ppl/m/it/10.95 fra_init \
 T1/ppl/m/n/10.95 wer-den ver-schie-de-ne Ein-stel-lun-gen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--297
+Underfull \hbox (badness 10000) in paragraph at lines 296--298
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
 [23]
-Underfull \hbox (badness 2460) in paragraph at lines 351--353
+Underfull \hbox (badness 2460) in paragraph at lines 352--354
 []\T1/ppl/m/n/10.95 Da die Wrap-per le-dig-lich al-le be-nö-tig-te Über-ga-be-p
 a-ra-me-ter an die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 
  []
 
@@ -2250,7 +2256,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 387--388
 
  (./chapters/Test.tex
 Kapitel 4.
-<pictures/2019-11-28-testbackend.png, id=806, 550.4565pt x 461.92575pt>
+<pictures/2019-11-28-testbackend.png, id=803, 550.4565pt x 461.92575pt>
 File: pictures/2019-11-28-testbackend.png Graphic file (type png)
 <use pictures/2019-11-28-testbackend.png>
 Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
@@ -2274,6 +2280,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--41
 [28 <./pictures/2019-11-28-testbackend.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 48--50
+\T1/ppl/m/n/10.95 Ba-ckend-funk-tio-nen ist, im Ver-gleich zum Ker-nel-ba-ckend
+, ver-ein-facht
  []
 
 
@@ -2306,18 +2318,6 @@ beit ist das
 Underfull \hbox (badness 2173) in paragraph at lines 72--73
 \T1/ppl/m/it/10.95 fra_set_logging\T1/ppl/m/n/10.95 . Da das Log-ging stan-dard
 -mä-ÿig de-ak-ti-viert ist, muss
- []
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 72--73
-\T1/ppl/m/n/10.95 spre-chen-den Co-de die Ak-ti-vie-rung vor-neh-men und neu ko
-m-pi-lie-ren
- []
-
-
-Underfull \hbox (badness 1817) in paragraph at lines 72--73
-\T1/ppl/m/n/10.95 muss, wel-ches recht zeit-auf-wen-dig ist, wird durch das Tes
-t-tool ein
  []
 
 
@@ -2406,10 +2406,10 @@ fb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/
 t/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/u
 rw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/upl
 ri8a.pfb>
-Output written on Abschlussarbeit.pdf (46 pages, 894938 bytes).
+Output written on Abschlussarbeit.pdf (46 pages, 894733 bytes).
 PDF statistics:
- 1022 PDF objects out of 1200 (max. 8388607)
- 928 compressed objects within 10 object streams
+ 1020 PDF objects out of 1200 (max. 8388607)
+ 926 compressed objects within 10 object streams
  324 named destinations out of 1000 (max. 500000)
  352 words of extra memory for PDF output out of 10000 (max. 10000000)
 
