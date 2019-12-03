@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  3 DEC 2019 15:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  3 DEC 2019 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1915,12 +1915,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 
 ] (./Abschlussarbeit.gls
 Kapitel II.
-)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.125 \include{chapters/Einleitung}
-                                    [1
+) [6
 
 
 
@@ -1949,16 +1944,16 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 15.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 15.
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.18 
-      [2
+      [1
 
 
 ]
-<pictures/amira-product-image-data.jpg, id=295, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=296, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1970,7 +1965,7 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
-<pictures/2019-11-17_Bildkette.png, id=304, 662.475pt x 155.98276pt>
+<pictures/2019-11-17_Bildkette.png, id=305, 662.475pt x 155.98276pt>
 File: pictures/2019-11-17_Bildkette.png Graphic file (type png)
 <use pictures/2019-11-17_Bildkette.png>
 Package pdftex.def Info: pictures/2019-11-17_Bildkette.png  used on input line 
@@ -1981,24 +1976,25 @@ Package acronym Info: Label `acro:xbar' newly defined as it shall be overridden
 although it is yet undefined on input line 44.
 Package acronym Info: Label `acro:gui' newly defined as it shall be overridden
 although it is yet undefined on input line 44.
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.46 I
+      n dieser Arbeit wird nur das \ac{fpga}-Modul \ac{xbar} softwareseitig ...
+[2 <./pictures/amira-product-image-data.jpg>]
 Package acronym Info: Label `acro:fpga' newly defined as it shall be overridden
 
 although it is yet undefined on input line 46.
+Package acronym Info: Label `acro:geo' newly defined as it shall be overridden
+although it is yet undefined on input line 53.
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.48 \subsection
-                {Implementierung} [3 <./pictures/amira-product-image-data.jpg>]
-Package acronym Info: Label `acro:geo' newly defined as it shall be overridden
-although it is yet undefined on input line 53.
-pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.62 
-      [4 <./pictures/2019-11-17_Bildkette.png>]
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=348, 408.3255pt x 258.9675
+l.60 
+      [3 <./pictures/2019-11-17_Bildkette.png>]
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=349, 408.3255pt x 258.9675
 pt>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
@@ -2007,18 +2003,18 @@ on input line 73.
 (pdftex.def)             Requested size: 323.9978pt x 205.4909pt.
 Package acronym Info: Label `acro:fra' newly defined as it shall be overridden
 although it is yet undefined on input line 81.
-pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.82 
-      [5 <./pictures/2019-11-17_ImplementierungNewvsOld.png>])pdfTeX warning (e
-xt4): destination with the same identifier (name{page.6}) has been already used
+      [4 <./pictures/2019-11-17_ImplementierungNewvsOld.png>])pdfTeX warning (e
+xt4): destination with the same identifier (name{page.5}) has been already used
 , duplicate ignored
 <to be read again> 
                    \relax 
 l.125 \include{chapters/Einleitung}
-                                    [6]
+                                    [5]
 \openout2 = `chapters/Theoretische_Grundlagen.aux'.
 
  (./chapters/Theoretische_Grundlagen.texpdfTeX warning (ext4): destination with
@@ -2035,7 +2031,12 @@ Underfull \hbox (badness 1888) in paragraph at lines 17--19
 a-ben, muss der
  []
 
-[7
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.19 
+      [6
 
 
 
@@ -2051,7 +2052,7 @@ Package hyperref Info: bookmark level for unknown code defaults to 0 on input l
 ine 28.
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10> not available
 (Font)              Font shape `T1/ppl/b/it' tried instead on input line 28.
- [8] [9]
+ [7] [8]
 Package acronym Info: Label `acro:mfd' newly defined as it shall be overridden
 although it is yet undefined on input line 93.
 
@@ -2070,12 +2071,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--115
 
  []
 
-[10]
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 146--150
 
  []
 
-[11]) [12]
+[10]) [11]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
@@ -2085,7 +2086,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-[13
+[12
 
 
 
@@ -2100,7 +2101,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
-[14]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 85--87
 
  []
@@ -2129,7 +2130,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--96
 
  []
 
-[15]
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
@@ -2150,17 +2151,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--126
 
  []
 
-[16]
+[15]
 Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-[17]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 178--180
 
  []
 
-[18]
+[17]
 Underfull \hbox (badness 10000) in paragraph at lines 201--205
 
  []
@@ -2171,12 +2172,12 @@ File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
 ne 220.
 (pdftex.def)             Requested size: 360.0pt x 370.34795pt.
-[19]
+[18]
 Underfull \hbox (badness 10000) in paragraph at lines 232--235
 
  []
 
-[20 <./pictures/2019-11-17_FRA_Overview.png>]
+[19 <./pictures/2019-11-17_FRA_Overview.png>]
 Underfull \hbox (badness 1342) in paragraph at lines 260--261
 \T1/ppl/m/n/10.95 zu-rück ge-ge-ben. Da in al-len Funk-tio-nen haupt-säch-lich 
 auf die [][]
@@ -2204,7 +2205,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 262--265
 
  []
 
-[21]
+[20]
 Underfull \hbox (badness 10000) in paragraph at lines 290--293
 
  []
@@ -2220,7 +2221,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 296--298
 
  []
 
-[22]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
@@ -2230,7 +2231,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
-[23]
+[22]
 Underfull \hbox (badness 2460) in paragraph at lines 352--354
 []\T1/ppl/m/n/10.95 Da die Wrap-per le-dig-lich al-le be-nö-tig-te Über-ga-be-p
 a-ra-me-ter an die
@@ -2246,12 +2247,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
-[24]
+[23]
 Underfull \hbox (badness 10000) in paragraph at lines 388--389
 
  []
 
-[25]) [26]
+[24]) [25]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
@@ -2262,7 +2263,7 @@ File: pictures/2019-11-28-testbackend.png Graphic file (type png)
 Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
 e 16.
 (pdftex.def)             Requested size: 360.0pt x 302.10896pt.
-[27
+[26
 
 
 
@@ -2277,7 +2278,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
-[28 <./pictures/2019-11-28-testbackend.png>]
+[27 <./pictures/2019-11-28-testbackend.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
@@ -2298,7 +2299,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--56
 
  []
 
-[29]
+[28]
 Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
@@ -2331,16 +2332,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
-[30]) [31]
+[29]) [30]
 \openout2 = `chapters/Ausblick.aux'.
 
  (./chapters/Ausblick.tex
 Kapitel 5.
-[32
+[31
 
 
 
-]) [33]
+]) [32]
 \openout2 = `chapters/Anhang.aux'.
 
  (./chapters/Anhang.tex
@@ -2358,7 +2359,7 @@ Underfull \hbox (badness 4366) in paragraph at lines 7--7
  . arri . com / resource / blob / 33916 /
  []
 
-[34
+[33
 
 
 
@@ -2370,7 +2371,7 @@ Underfull \hbox (badness 4366) in paragraph at lines 7--7
 \tf@lot=\write12
 \openout12 = `Abschlussarbeit.lot'.
 
-) [35]
+) [34]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
 
@@ -2380,22 +2381,32 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
 (./chapters/Test.aux) (./chapters/Ausblick.aux) (./chapters/Anhang.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 145.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 145.
-Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: B908C9173D77A6189B85B1A165FBBB44;2578.
+
+
+Package rerunfilecheck Warning: File `Abschlussarbeit.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Abschlussarbeit.out':
+(rerunfilecheck)             Before: BC7B748E5CDB9AA2942AA364547AC97A;2572
+(rerunfilecheck)             After:  F6F8F32BB144856D8912FF669D181233;2572.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44601 strings out of 492642
- 819970 string characters out of 6133163
+ 44605 strings out of 492642
+ 820012 string characters out of 6133163
  1300751 words of memory out of 5000000
- 47337 multiletter control sequences out of 15000+600000
+ 47340 multiletter control sequences out of 15000+600000
  608184 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,79p,2017b,1886s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{glo:frame} has been referenced but does not exist
 , replaced by a fixed one
+
+pdfTeX warning (dest): name{appendix*.22} has been referenced but does not exis
+t, replaced by a fixed one
 
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/font
@@ -2406,10 +2417,10 @@ fb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/
 t/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/u
 rw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/upl
 ri8a.pfb>
-Output written on Abschlussarbeit.pdf (46 pages, 894733 bytes).
+Output written on Abschlussarbeit.pdf (46 pages, 895206 bytes).
 PDF statistics:
- 1020 PDF objects out of 1200 (max. 8388607)
- 926 compressed objects within 10 object streams
- 324 named destinations out of 1000 (max. 500000)
+ 1024 PDF objects out of 1200 (max. 8388607)
+ 930 compressed objects within 10 object streams
+ 325 named destinations out of 1000 (max. 500000)
  352 words of extra memory for PDF output out of 10000 (max. 10000000)
 

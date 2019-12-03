@@ -13,13 +13,13 @@ In diesem Kapitel soll ein Fazit über das in der Arbeit behandelte \ac{fra} gez
 % testen möglich
 % über verschiedene ebenen
 
-Ein wichtiger Punkt für das \ac{fra} war die Abstraktion der Hardware. Durch die direkten Zugriffe von der Kamerasoftware auf den \ac{fpga} ist die Fehlersuche recht zeitaufwendig gewesen. Durch das neue \gls{framework} wird nicht mehr über direkte Adressen auf die Hardware zugegriffen. Dadurch ist es einfacher nachzuvollziehen, aus welchem Prozess die Funktionsaufrufe kommen und kann so im Fehlerfall auch einfach protokolliert werden.
+Ein wichtiger Punkt für das \ac{fra} war die Abstraktion der Hardware. Durch die direkten Zugriffe von der Kamerasoftware auf den \ac{fpga} ist die Fehlersuche recht zeitaufwendig gewesen. Aufgrund des neuen \glspl{framework} wird nicht mehr über direkte Adressen auf die Hardware zugegriffen. Dadurch ist es einfacher nachzuvollziehen, aus welchem Prozess die Funktionsaufrufe kommen und kann so im Fehlerfall auch einfach protokolliert werden.
 
 
-Des weiteren wird durch die Einteilung in drei verschiedene Ebenen im Userspace eine einfache Möglichkeit gegeben um Tests zu implementieren. Durch das Testbackend und die \ac{fra} Middleware können die modulspezifischen Funktionen identisch wie in der Kamerasoftware aufgerufen werden und somit überprüft werden, ob die \ac{fra} Bibliothek richtig funktioniert. So können durch die Unittests bei jeder Neuerung und Änderung in der Bibliothek oder Middleware frühzeitig Fehler gefunden und behoben werden.
+Des weiteren wird durch die Einteilung in drei verschiedene Ebenen im Userspace eine einfache Möglichkeit gegeben um Tests zu implementieren. Durch das Testbackend und die \ac{fra} Middleware können die modulspezifischen Funktionen identisch wie in der Kamerasoftware aufgerufen werden und somit überprüft werden, ob die \ac{fra} Middleware und Bibliothek richtig funktioniert. So können durch die Unittests bei jeder Neuerung und Änderung in der Bibliothek oder Middleware frühzeitig Fehler gefunden und behoben werden.
 
 
-Durch das \ac{fra} ist der letzte Schritt in einer Umstrukturierung der Software gemacht worden. Die letzten Jahre wurde die Software bereits funktional durch die Implementierung des \ac{geo} abstrahiert. Durch das Zusammenspiel der beiden Abstraktionsebenen ist es nun möglich ohne tiefere Kenntnisse von \ac{fpga} und Bildkette die Kamerasoftware durch unterschiedliche Entwickler zu Pflegen und zu Erweitern.
+Durch das \ac{fra} ist der letzte Schritt in einer Umstrukturierung der Software gemacht worden. Die letzten Jahre wurde die Software bereits funktional durch die Implementierung des \ac{geo} abstrahiert. Aufgrund des Zusammenspiels der beiden Abstraktionsebenen ist es nun möglich ohne tiefere Kenntnisse von \ac{fpga} und Bildkette die Kamerasoftware durch unterschiedliche Entwickler zu Pflegen und zu Erweitern.
 
 
 \section{Ausblick}
@@ -34,6 +34,10 @@ Damit des \ac{fra} vollständig in der Software eingebunden ist, müssen noch we
 Auch die Abhängigkeit von händisch eingetragenen Adressen ist noch immer vorhanden (siehe Kapitel~\ref{sec:konzept}). Diese soll in Zukunft durch ein generisches Modell ersetzt werden und somit eine komplette Unabhängigkeit von den \ac{fpga} Adressen in der Software schaffen. Dies ist vor allem in Anbetracht der Wartbarkeit der Software ein wichtiges Thema.
 
 Wie in Kapitel~\ref{sec:middleware} erwähnt, wird in der aktuellen Implementierung des \ac{fra} die Transaktionsidentifikation durch alle Funktionsaufrufe durchgereicht. Bei bestimmten Teilen der Bildkette hängen die Einstellungen der Module stark voneinander ab, aus diesem Grund ist es sinnvoll die Zugriffe auf die Module zu gruppieren. Dadurch können die \ac{fpga} Zugriffe direkt hintereinander aufgerufen werden und so Bildfehler vermieden werden.
+Die Erweiterung ist relativ zeitaufwendig und auch mit Änderungen im Kernel verbunden.
+
+
+Der aktuelle Stand des \ac{fra} ist bereits funktional in der Software integriert und muss noch über die obigen Teile erweitert werden, damit die Umstrukturierung komplett abgeschlossen ist.
 
 
 

@@ -12,8 +12,8 @@ Das Thema dieser Bachelorarbeit wurde im Bereich Kamerasysteme in der Forschungs
 Um einen Überblick über das Umfeld der Arbeit zu bekommen, werden zunächst ein paar Grundlagen und auch die Funktionsweise einer Kamera betrachtet.
 
 
-\subsection{Entwicklungsplattform}
-Als Erstes soll auf die Zielplattform eingegangen werden. Die Wahl der Kamera ist auf eine \ac{ARRI} AMIRA gefallen, da die Entwicklungsumgebung durch vorherige Arbeit bekannt ist. Zusätzlich ist sie nicht die aktuellste Kamera der Firma und somit ohne Probleme verfügbar.
+\subsection{Arbeitsumgebung}
+Als Erstes soll auf die Zielplattform eingegangen werden. Die Wahl der Kamera ist auf eine \ac{ARRI} AMIRA gefallen, da die Entwicklungsumgebung durch vorherige Arbeit bekannt ist. Zusätzlich ist sie nicht die aktuellste Kamera der Firma und somit ohne Probleme verfügbar. Allerdings ist die Hard- und Softwarearchitektur identisch zu den aktuellen Kameras. 
 Die AMIRA ist eine vielseitige Kamera, die für eine Einmannbedienung ausgelegt ist und mit einem Audioboard ausgestattet. Aus diesem Grund wird sie bei Dokumentationsfilmen und der elektronischen Berichtserstattung gerne verwendet. Zum Beispiel wird die \ac{ARRI} AMIRA bei Sportveranstaltungen der National Football League (NFL) in Amerika eingesetzt.\cite{arrinewsamira} 
 
 \begin{figure}[!hbtp]
@@ -28,7 +28,7 @@ Die AMIRA ist eine vielseitige Kamera, die für eine Einmannbedienung ausgelegt 
 Für Spielfilm- und Serienproduktionen wird auch manchmal die \ac{ARRI} AMIRA eingesetzt, wodurch das breite Einsatzspektrum der Kamera noch deutlicher wird.
 Als Beispiele sind hier der bayrische Eberhofer Krimi \glqq Sauerkrautkoma\grqq{} \cite{arrikrimi}, die Netflixserie \glqq The Ivory Game\grqq{} \cite{imdbivory} oder auch das Fernsehmagazin \glqq The Grand Tour\grqq{} \cite{imdbtour} zu nennen.
  
-Die Kamera ist ein wichtiger Bestandteil in der Entwicklungsarbeit, da das regelmäßige Testen von Änderungen unerlässlich ist, um die Funktionalität beizubehalten und grobe Fehler rechtzeitig zu erkennen.
+Die Kamera ist ein wichtiger Bestandteil in der Entwicklungsarbeit, da das regelmäßige Testen von Änderungen unerlässlich ist, um die Funktionalität beizubehalten und grobe Fehler rechtzeitig zu erkennen. Die aktuelle Software läuft mit Linux auf der Kernelversion 5.3.7.
 
 \subsection{Bildkette}\label{sec:bildkette}
 In jeder Kamera wird das Eingangsbild von einem Sensor aufgenommen. Durch die Verarbeitungskette werden die Bilder vom Eingang bis zum Ausgang geleitet. In dieser Arbeit wird eine schematische Bildkette (siehe Abbildung) zur Veranschaulichung weiter detailliert. Von der Quelle bis zur Senke läuft das Bild durch verschiedene Module, die für die Anpassung des Bilds sorgen. Die Ausgänge sind in diesem Fall die \ac{rec} und das \ac{sdi}.
@@ -103,4 +103,4 @@ Durch die neue Abstraktionsebene soll die Wartbarkeit sowie die Erweiterung der 
 %Durch die neue Abstraktionsebene soll die Wartbarkeit sowie die Erweiterung der Kamerasoftware in Zukunft ohne tiefere Kenntnisse von \ac{fpga} durch unterschiedliche Entwickler möglich werden. 
 
 
-%todo kernelversion der kamera und der zitate, erklärung das unterschiedliche nummern, da grundlegend identisch, neuere versionen allerdings mit mehr und ausfühlicheren kommentaren
+%todo  und der zitate, erklärung das unterschiedliche nummern, da grundlegend identisch, neuere versionen allerdings mit mehr und ausfühlicheren kommentaren
