@@ -186,6 +186,63 @@
     \field{year}{2005}
   \endentry
 
+  \entry{gumm2011einfuhrung}{book}{}
+    \name{author}{2}{}{%
+      {{hash=GHP}{%
+         family={Gumm},
+         familyi={G\bibinitperiod},
+         given={Heinz\bibnamedelima Peter},
+         giveni={H\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Sommer},
+         familyi={S\bibinitperiod},
+         given={Manfred},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Oldenbourg Verlag}%
+    }
+    \strng{namehash}{GHPSM1}
+    \strng{fullhash}{GHPSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{edition}{9. Auflage}
+    \field{title}{Einf{\"u}hrung in die Informatik}
+    \field{year}{2011}
+  \endentry
+
+  \entry{hunt2004unit}{book}{}
+    \name{author}{2}{}{%
+      {{hash=HA}{%
+         family={Hunt},
+         familyi={H\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=TD}{%
+         family={Thomas},
+         familyi={T\bibinitperiod},
+         given={Dave},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Hanser Verlag}%
+    }
+    \strng{namehash}{HATD1}
+    \strng{fullhash}{HATD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{title}{Unit-tests mit JUnit}
+    \field{year}{2004}
+  \endentry
+
   \entry{arrikrimi}{misc}{}
     \name{author}{1}{}{%
       {{hash=MA}{%
@@ -291,6 +348,28 @@
     \verb{url}
     \verb https://ieeexplore.ieee.org/servlet/opac?punumber=7291768
     \endverb
+  \endentry
+
+  \entry{sommerville2011software}{book}{}
+    \name{author}{1}{}{%
+      {{hash=SI}{%
+         family={Sommerville},
+         familyi={S\bibinitperiod},
+         given={Ian},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Addison-Wesley/Pearson}%
+    }
+    \strng{namehash}{SI1}
+    \strng{fullhash}{SI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Software engineering}
+    \field{year}{2011}
   \endentry
 
   \entry{imdbtour}{misc}{}
