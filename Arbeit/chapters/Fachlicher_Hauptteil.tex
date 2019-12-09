@@ -48,8 +48,7 @@ Beim Anlegen einer Instanz vom Treiber wird die \textit{probe} Funktion des Plat
 struct afm_device 
 {
 	struct arri_fra_mod_config *mod_config;
-	
-	struct class *class;
+
 	struct cdev cdev;
 	unsigned int minor_id;
 	struct platform_device *pdev;
@@ -104,7 +103,7 @@ Die Größe eines Registers ist auf 4 Byte normiert. Damit werden zum einfachen 
 Allerdings besteht auch die Notwendigkeit einzelne Bits oder mehrere hintereinander liegende Register über einen Aufruf zu setzen. Für beide Sonderfälle gibt es ein gesondertes \ac{ioctl}. Zum Setzen von einzelnen Bits wird zusätzlich zu den beiden oben genannten Parametern noch eine Bitmaske übergeben. Mithilfe der Bitmaske werden im Register erst die entsprechenden Bits gelöscht und danach die übergebenen Bits gesetzt. Dadurch ist es nicht mehr notwendig erst das entsprechende Register auszulesen, anschließend zu verändern und dann in das gleiche Register zu setzen. So werden überflüssige \ac{ioctl} und Registerzugriffe dezimiert.
 Der zweite Sonderfall benötigt andere Übergabeparameter als das einfache Setzen. Zusätzlich zu der Registernummer wird hier eine Registeranzahl gebraucht. Des Weiteren muss der Inhalt für die Register in einem Array mit der Größe der Anzahl übergeben werden. Damit kann dann der Reihe nach jedes Register einzeln mit dem entsprechenden Inhalt beschrieben werden.\\
 
-%todo stern erklären und im text erwähnen
+
 \begin{table}
 \centering	
 \begin{tabular}[h]{c|c|c}

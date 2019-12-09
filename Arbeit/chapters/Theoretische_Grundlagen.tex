@@ -150,7 +150,7 @@ struct mfd_cell {
 
 Die zweite Struktur wird benötigt um einem \ac{mfd} wichtige Parameter zum Anlegen mitzugeben. Aus diesem Grund werden in der \textit{mfd\_cell} Struktur lediglich die benötigten Parameter betrachtet. 
 
-In der Variable \textit{name} und \textit{id} werden der Name des Treibers und eine spezifische Nummer gespeichert.
+In der Variable \textit{name} wird der Name des Treibers gespeichert. Durch die \textit{id} bekommt jede Plattformtreiberinstanz beim Allokieren eine spezifische Nummer.
 Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Datenzeiger, welcher an das untergeordnete Gerät weitergereicht wird, da der Typ variieren kann, wird in \textit{pdata\_size} die zugehörige Datengröße übergeben. 
 In der Variable \textit{of\_compatible} wird eine sortierte Liste von strings gespeichert. Beginnend mit dem exakten Namen des Geräts folgt dann eine optionale Liste mit weiteren kompatiblen Geräten. \cite[devicetree/usage\_model.txt, Zeile 116ff.]{linuxsourcedocu} %überprüft am 3.12. 
 Der Zeiger \textit{resources} speichert die zugehörige Ressource ab, bzw. ein Zeiger auf ein Array von Ressourcen. Die Anzahl der abgespeicherten Ressourcen wird in \textit{num\_resources} abgelegt.\\
