@@ -10,8 +10,8 @@ Der Name Linux bezeichnet dabei eigentlich nur den Kern des Systems, auch Kernel
 Der Kernel hat verschiedene Aufgaben. Unter anderem ist er für die Prozess- und die Speicherverwaltung sowie das Gerätemanagement zuständig. \citep[S. 234]{schroder2009embedded} 
 %überprüft am 3.12.
 
-Im Normalfall hat der Nutzer aus dem Userspace keinen direkten Zugriff auf die Kernelfunktionen und der Hardware. Nur über Systemaufrufe, auch Syscalls, hat ein Programm im Userspace die Möglichkeit Änderungen an der Hardware zu kommunizieren beziehungsweise bestimmte Funktionen im Kernel zu nutzen. \citep[S. 124]{plotner2012linux} 
-Die Brücke zwischen der Hardware und dem Benutzer stellt somit der Kernel da.
+Im Normalfall hat der Nutzer aus dem Userspace keinen direkten Zugriff auf die Kernelfunktionen und die Hardware. Nur über Systemaufrufe, auch Syscalls, hat ein Programm im Userspace die Möglichkeit Änderungen an der Hardware zu kommunizieren beziehungsweise bestimmte Funktionen im Kernel zu nutzen. \citep[S. 124]{plotner2012linux} 
+Die Brücke zwischen der Hardware und dem Benutzer stellt somit der Kernel dar.
 
 
 \section{\acl{ioctl}}\label{sec:ioctl_t}
@@ -25,21 +25,18 @@ Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur V
 %todo zeile zitieren, QUELLE
 \begin{lstfloat}
 \begin{lstlisting}
-int (*ioctl) (struct inode *node, struct file *instatnz, unsigned int cmd, unsigned long arg);
+int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsigned long arg);
 \end{lstlisting}
 \captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur \citep[S. 249f.]{schroder2009embedded}} %überprüft am 3.12.
 \end{lstfloat}
 
-Über die \textit{node} wird der \gls{dateideskriptor} und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird meistens als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 249f.]{schroder2009embedded} %überprüft am 3.12.
-
-
-Über den ersten Übergabeparameter wird ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das auszuführende Kommando wird durch eine Nummer wieder gespiegelt und ist in der Funktionsdeklaration an der zweiten Stelle zu finden. Das letzte Argument ist optional und wird meistens als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 90f.]{corbet2005linux} %überprüft am 3.12.
+Über die \textit{node} wird der \gls{dateideskriptor} und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 249f.]{schroder2009embedded} %überprüft am 3.12.
 
 
 Mit den Übergabeparametern und dem Dateideskriptor wird die Funktion dann in Anwendungen im Userspace aufgerufen, im Kernel werden die Daten weiterverarbeitet und wieder zurück gegeben.
 
 \section{Datenaustausch zwischen Kernel und Userspace}
-Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Userspaces, wie im vorausgegangen Kapitel erläutert, wird der Datenaustausch zwischen den beiden Ebenen natürlich schwieriger. Durch \textit{copy\_from\_user} beziehungsweise \textit{copy\_to\_user} stehen im Linuxkernel zwei Funktionen als hilfreiche Werkzeuge für diesen Austausch zu Verfügung.
+Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Userspaces, wie im vorausgegangen Kapitel erläutert, wird der Datenaustausch zwischen den beiden Ebenen natürlich schwieriger. Durch \textit{copy\_from\_user} beziehungsweise \textit{copy\_to\_user} stehen im Linuxkernel zwei Funktionen als hilfreiche Werkzeuge für diesen Austausch zu Verfügung. %todo quelle!
 
 
 \begin{lstfloat}
@@ -63,7 +60,7 @@ Damit die Treiber richtig funktionieren gibt es einige Bestandteile, die in jede
 
 
 
-Jedes Kernelmodule besitzt mindestens eine \textit{init} und \textit{exit} Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers platziert. \cite[linux/module.h, Zeile 79ff.]{linuxsourceinclude}
+Jedes Kernelmodul besitzt mindestens eine \textit{init} und \textit{exit} Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers platziert. \cite[linux/module.h, Zeile 79ff.]{linuxsourceinclude}
 %überprüft am 3.12.
 
 
@@ -115,8 +112,8 @@ struct resource {
 \end{lstfloat}
 
 Als erste Struktur wird die \textit{resource} näher betrachtet. Hier werden Parameter für einen Speicherbereich abgelegt, damit auf diesen zugegriffen werden kann. 
-Die beiden Parameter sind \textit{start} und \textit{end}. Die beiden Werte legen die Größe und den Ort der Ressource fest. 
-In \textit{name} wird der Name der Datenquelle gespeichert und in der Variablen \textit{flags} werden über Defines unter anderem der Datentyp und weitere optionale Einstellungen festgelegt.
+Die beiden Parameter sind \textit{start} und \textit{end}. Die beiden Werte legen die Größe und den Ort des Speicherbereichs fest. 
+In \textit{name} wird der Name der Datenquelle gespeichert und in der Variable \textit{flags} werden über Defines unter anderem der Datentyp und weitere optionale Einstellungen festgelegt.
 In dem letzten drei Parametern können abhängige Ressources entsprechend ihrem Grad gespeichert werden. \\
 
 %todo id klären
@@ -151,7 +148,7 @@ struct mfd_cell {
 Die zweite Struktur wird benötigt um einem \ac{mfd} wichtige Parameter zum Anlegen mitzugeben. Aus diesem Grund werden in der \textit{mfd\_cell} Struktur lediglich die benötigten Parameter betrachtet. 
 
 In der Variable \textit{name} wird der Name des Treibers gespeichert. Durch die \textit{id} bekommt jede Plattformtreiberinstanz beim Allokieren eine spezifische Nummer.
-Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Datenzeiger, welcher an das untergeordnete Gerät weitergereicht wird, da der Typ variieren kann, wird in \textit{pdata\_size} die zugehörige Datengröße übergeben. 
+Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Datenzeiger, welcher an das untergeordnete Gerät weitergereicht wird. Da der Typ variieren kann, wird in \textit{pdata\_size} die zugehörige Datengröße übergeben. 
 In der Variable \textit{of\_compatible} wird eine sortierte Liste von strings gespeichert. Beginnend mit dem exakten Namen des Geräts folgt dann eine optionale Liste mit weiteren kompatiblen Geräten. \cite[devicetree/usage\_model.txt, Zeile 116ff.]{linuxsourcedocu} %überprüft am 3.12. 
 Der Zeiger \textit{resources} speichert die zugehörige Ressource ab, bzw. ein Zeiger auf ein Array von Ressourcen. Die Anzahl der abgespeicherten Ressourcen wird in \textit{num\_resources} abgelegt.\\
 
@@ -164,7 +161,7 @@ extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cel
 
 Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. 
 Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}, wie oben erwähnt wird diese benötigt um das anzulegende Gerät näher zu beschreiben.
-Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräten angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. 
+Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräte angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. 
 Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. \cite[mfd/mfd-core.c, Zeile 359ff.]{linuxsourcedriver} %überprüft am 3.12.
 
 
