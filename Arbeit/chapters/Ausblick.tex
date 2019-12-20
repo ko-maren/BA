@@ -4,8 +4,6 @@
 %Die Abhängigkeit von einem händisch eingetragenen Offset ist so immer noch vorhanden!!!
 % weitere vorgehensweise, weitere module, speicherbereiche, arbeitsaufwand: ca halbes jahr
 
-In diesem Kapitel soll ein Fazit über das in der Arbeit behandelte \ac{fra} gezogen werden und zusätzlich ein Ausblick auf die weitere Vorgehensweise zur Einbindung in die Software und notwendige Erweiterungen gegeben werden.
-
 
 \section{Zusammenfassung der Ergebnisse}
 %letzes framework zum umstrukturieren der software, 
@@ -19,7 +17,7 @@ Ein wichtiger Punkt für das \ac{fra} war die Abstraktion der Hardware. Durch di
 Des weiteren wird durch die Einteilung in drei verschiedene Ebenen im Userspace eine einfache Möglichkeit gegeben um Tests zu implementieren. Durch das Testbackend und die \ac{fra} Middleware können die modulspezifischen Funktionen identisch wie in der Kamerasoftware aufgerufen werden und somit überprüft werden, ob die \ac{fra} Middleware und Bibliothek richtig funktioniert. So können durch die Unittests bei jeder Neuerung und Änderung in der Bibliothek oder Middleware frühzeitig Fehler gefunden und behoben werden.
 
 
-Durch das \ac{fra} ist der letzte Schritt in einer Umstrukturierung der Software gemacht worden. Die letzten Jahre wurde die Software bereits funktional durch die Implementierung des \ac{geo} abstrahiert. Aufgrund des Zusammenspiels der beiden Abstraktionsebenen ist es nun möglich ohne tiefere Kenntnisse von \ac{fpga} und Bildkette die Kamerasoftware durch unterschiedliche Entwickler zu Pflegen und zu Erweitern.
+Durch das \ac{fra} ist der letzte Schritt in einer Umstrukturierung der Software gemacht worden. Die letzten Jahre wurde die Software bereits funktional durch die Implementierung des \ac{geo} abstrahiert. Aufgrund des Zusammenspiels der beiden Abstraktionsebenen ist es nun möglich ohne tiefere Kenntnisse von \ac{fpga} und Bildkette die Kamerasoftware durch unterschiedliche Entwickler zu pflegen und zu erweitern.
 
 
 \section{Ausblick}
@@ -31,7 +29,7 @@ Durch das \ac{fra} ist der letzte Schritt in einer Umstrukturierung der Software
 
 Damit des \ac{fra} vollständig in der Software eingebunden ist, müssen noch weitere Schritte gemacht werden. Zum Einen müssen die restlichen Module der Bildkette samt ihrer spezifischen Funktionen in die \ac{fra} Bibliothek umgezogen werden und zum Anderen haben ein paar Module in \ac{fpga} Speicherbereiche um die Bilder zwischen zu speichern, auch diese müssen für die komplette Umstellung im \ac{fra} abgebildet werden. Der Arbeitsaufwand für den kompletten Umzug der Software auf das \gls{framework} wird auf ungefähr ein halbes Jahr geschätzt.
 
-Auch die Abhängigkeit von händisch eingetragenen Adressen ist noch immer vorhanden (siehe Kapitel~\ref{sec:konzept}). Diese soll in Zukunft durch ein generisches Modell ersetzt werden und somit eine komplette Unabhängigkeit von den \ac{fpga} Adressen in der Software schaffen. Dies ist vor allem in Anbetracht der Wartbarkeit der Software ein wichtiges Thema.
+Auch die Abhängigkeit von händisch eingetragenen Adressen ist noch immer vorhanden (siehe Kapitel~\ref{sec:konzept}). Diese soll in Zukunft durch eine Generierung aus der \ac{fpga} Systemkette ersetzt werden und somit eine komplette Unabhängigkeit von den \ac{fpga} Adressen in der Software schaffen. Dies ist vor allem in Anbetracht der Wartbarkeit der Software ein wichtiges Thema.
 
 Wie in Kapitel~\ref{sec:middleware} erwähnt, wird in der aktuellen Implementierung des \ac{fra} die Transaktionsidentifikation durch alle Funktionsaufrufe durchgereicht. Bei bestimmten Teilen der Bildkette hängen die Einstellungen der Module stark voneinander ab, aus diesem Grund ist es sinnvoll die Zugriffe auf die Module zu gruppieren. Dadurch können die \ac{fpga} Zugriffe direkt hintereinander aufgerufen werden und so Bildfehler vermieden werden.
 Die Erweiterung ist relativ zeitaufwendig und auch mit Änderungen im Kernel verbunden.
