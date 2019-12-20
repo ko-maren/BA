@@ -3,7 +3,7 @@ Zu Beginn sollen einige Grundlagen näher erläutert werden, die zum Erstellen d
 
 \section{Linux - Kernel und Userspace}\label{sec:linux}
 Da das Zielsystem auf Linux läuft, soll zunächst dieses Betriebssystem betrachtet werden. 
-Im Herbst 1991 wurde die erste Version des Systems von Linus Torvalds veröffentlicht und der Gründer kümmert sich, mit Unterstützung, weiterhin um die Entwicklung des frei verfügbaren Betriebssystem. %todo quelle
+Im Herbst 1991 wurde die erste Version des Systems von Linus Torvalds veröffentlicht und der Gründer kümmert sich, mit Unterstützung, weiterhin um die Entwicklung des frei verfügbaren Betriebssystem. \citep[S. 53f.]{plotner2012linux}
  
 Der Name Linux bezeichnet dabei eigentlich nur den Kern des Systems, auch Kernel genannt. Zusätzlich benötigt man noch System- und Anwendersoftware. Oft wird dieser Teil als Userspace zusammengefasst. \citep[S. 46]{plotner2012linux} 
 
@@ -85,12 +85,6 @@ In dieser Arbeit werden lediglich die \textit{probe} und \textit{remove} Funktio
 
 %todo umformulieren & kapitel zitieren
 Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} %überprüft am 3.12.
-
-
-\subsection{Major- und Minornummern}\label{sec:mmnum_t}
-In Linux bekommt jedes Gerät in dem Ordner \textit{/dev/} eine Major- und Minornummer, d.h. es wird bereits mit diesen Nummern angelegt.
-Die Majornummer kennzeichnet hier üblicherweise den Treiber, zu welchem das Gerät gehört, analog dazu wird die Minornummer vom Kernel genutzt um auf das exakte Gerät zu referenzieren. \citep[S. 43f.]{corbet2005linux} %überprüft am 3.12. 
-Seit der Kernelverion 2.6 arbeitet dieser intern nicht mehr mit Major- und Minornummern, sondern mit Gerätenummern. Die 32-Bit Variable setzt sich aus den beiden Nummern zusammen. \citep[Seite 244]{schroder2009embedded}%überprüft am 3.12. 
 
 \section{\acl{mfd}}\label{sec:mfd_t}
 Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, benötigt man die Möglichkeit es als \ac{mfd} anzulegen. \cite{bellonimfd} %überprüft am 3.12.\\

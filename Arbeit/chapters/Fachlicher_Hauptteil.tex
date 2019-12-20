@@ -1,15 +1,32 @@
 \chapter{\acl{fra}} \label{sec:haupt}
-In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des, in Kapitel~\ref{sec:konzept} vorgestellten, \ac{fra} eingegangen werden. Die Schwerpunkte liegen hierbei bei der Beschreibung des generischen Plattformtreibers, den \ac{ioctl}s, der Kernel- bzw. Userspaceimplementierung sowie der Einbindung in die bestehende Software. Damit es der Umfang der Arbeit nicht übersteigt, wird nur die \ac{xbar} softwareseitig implementiert.
+In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des in Kapitel~\ref{sec:konzept} vorgestellten \ac{fra} eingegangen werden. Die Schwerpunkte liegen hierbei bei der Beschreibung des generischen Plattformtreibers, den \ac{ioctl}s, der Kernel- bzw. Userspaceimplementierung sowie der Einbindung in die bestehende Software. Damit es den Umfang der Arbeit nicht übersteigt, wird nur die \ac{xbar} softwareseitig implementiert.
 
 %Aktuelle Implementierung
 %Theoretische Grundlagen o.ä.
 %Umsetzung
+\section{Einführung}
+Die Konzeptionierung wurde bereits in Kapitel~\ref{sec:konzept} vorgestellt und soll mithilfe der theoretischen Grundlagen vertieft werden. Für die Umsetzung des \gls{framework} wird dies in verschiedene Ebenen aufgeteilt (siehe Abbildung~\ref{fig:overview}). 
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width = \linewidth]{pictures/2019-11-17_FRA_Overview.png}
+	\smallskip
+	\caption{Darstellung des Aufbaus des \ac{fra}}
+	\label{fig:overview}
+\end{figure} 
+
+Die Kamerasoftware läuft mit mehreren Prozessen, die parallel auf die Hardware zugreifen. Mit ein \gls{handle} greifen die Prozesse über die \ac{fra} Bibliothek auf die einzelnen Module zu. Durch die Abstraktion ist es möglich, alle Zugriffe zu protokollieren und eine schnellere Fehlersuche durchzuführen. 
+Alle elementaren \ac{fra} Funktionen sind als Wrapper in der \ac{fra} \gls{middleware} abgebildet. Beim Öffnen eines Geräts wird ein \ac{fra} Backend übergeben und abgespeichert. In der \gls{middleware} werden im Wrapper, die entsprechenden Funktionen im richtigen Backend aufgerufen. 
+Auf das Testbackend wird in Kapitel~\ref{sec:test} näher eingegangen. Im Kernelbackend werden \ac{ioctl}s aufgerufen, welche im generischen Kerneltreiber die Speicherbereiche im \ac{fpga} setzt oder ausliest.
+Damit es möglich ist die Geräte zu öffnen, müssen diese vorher erstellt werden. Dies geschieht beim Laden des \ac{fpga}s im bestehenden \ac{fpga} Treiber. Zum Anlegen werden der Modulname, der Typ, die Speicheradresse und die Größe benötigt. 
+
+
 
 \section{Generischer Plattformtreiber} \label{sec:plat}
 Zunächst soll auf den Plattformtreiber eingegangen werden, der eine einwandfreie Kommunikation zwischen den Firmware Modulen im \ac{fpga} und dem Kernel gewährleisten soll.
 
 
-Wie in dem Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Treibers eingegangen werden.\\
+Wie in Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Treibers eingegangen werden.\\
 
 
 Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz allokiert. 
@@ -27,21 +44,23 @@ struct afm_driver
 \captionof{code}{\label{code:afm_data}Struktur des Treibers}
 \end{lstfloat}
 
-Desweitern wird beim Laden als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Diese Klasse wird in der, dem Treiber, zugehörigen Struktur \textit{afm\_driver} in der Variablen \textit{class} abgespeichert. 
+Des Weitern wird beim Laden als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Diese Klasse wird in der, dem Treiber, zugehörigen Struktur \textit{afm\_driver} in der Variablen \textit{class} abgespeichert. 
 
+In Linux werden die Geräte mit einer Major- und Minornummer in dem Ordner\textit{/dev/} erstellt, d.h. sie werden bereits mit diesen Nummern angelegt.
+Die Majornummer kennzeichnet üblicherweise den Treiber, zu welchem das Gerät gehört. Analog wird die Minornummer genutzt um auf das exakte Gerät zu referenzieren. \citep[S. 43f.]{corbet2005linux} %überprüft am 3.12. 
+Seit der Kernelverion 2.6 arbeitet dieser intern nicht mehr mit Major- und Minornummern, sondern mit Gerätenummern. Die 32-Bit Variable setzt sich aus den beiden Nummern zusammen. \citep[Seite 244]{schroder2009embedded}%überprüft am 3.12.
 
-Da die Majornummer den Treiber kennzeichnet (siehe Kapitel~\ref{sec:mmnum_t}) wird diese in der globalen Treiberstruktur als \textit{major\_id} gespeichert. Für die Minornummer wird in der Datenstruktur eine Liste \textit{minor\_list[AFM\_MAX]} und ein zugehöriges Spinlock \textit{minor\_spinlock} initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die bei jedem Module individuell ist und gleichzeitig wird dadurch die Anzahl der möglichen Module auf \textit{AFM\_MAX} begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen konfliktfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. 
+Die Majornummer kennzeichnet den Treiber und wird in der globalen Treiberstruktur als \textit{major\_id} gespeichert. Für die Minornummer wird in der Datenstruktur eine Liste \textit{minor\_list[AFM\_MAX]} und ein zugehöriges Spinlock \textit{minor\_spinlock} initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die bei jedem Module individuell ist und gleichzeitig wird dadurch die Anzahl der möglichen Module auf \textit{AFM\_MAX} begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen konfliktfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. 
 
 
 Am Ende der initialen Funktion wird der Plattformtreiber mit der \textit{platfrom\_driver} Struktur (siehe Codeausschnitt~\ref{code:platform_driver}) registriert. Damit werden die initiale Funktion zum Anlegen, aber auch die Funktion zum Deinitialisieren der Geräte übergeben.
 
 
-Analog wird beim Freigeben des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstellte Klasse zerstört.\\
+Analog wird beim Freigeben des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstellte Klasse aufgelöst.\\
 
 
-Beim Anlegen einer Instanz vom Treiber wird die \textit{probe} Funktion des Plattformtreibers aufgerufen und es wird der Modultyp und der Name in einer \textit{arri\_fra\_mod\_config} Struktur zur Verfügung gestellt. In der initialen Funktion der Instanz wird diese Struktur genutzt um spezifische Einstellungen für jede einzelnes Gerät festgelegt und in einer entsprechenden Datenstruktur (siehe Codeausschnitt~\ref{code:afm_device}) gespeichert. 
+Beim Anlegen einer Instanz vom Treiber wird die \textit{probe} Funktion des Plattformtreibers aufgerufen und es wird der Modultyp und der Name in einer \textit{arri\_fra\_mod\_config} Struktur zur Verfügung gestellt. In der initialen Funktion der Instanz wird diese Struktur genutzt um spezifische Einstellungen für jedes einzelnes Gerät festgelegt und in einer entsprechenden Datenstruktur (siehe Codeausschnitt~\ref{code:afm_device}) gespeichert. 
 %todo evtl tabelle zur erklärung!
-
 %todo aussotieren
 \begin{lstfloat}
 \begin{lstlisting}
@@ -67,11 +86,8 @@ struct afm_device
 \end{lstfloat}
 
 Der einzige Übergabeparameter der Probefunktion ist die Struktur des \textit{platform\_device}, diese wird in dem Zeiger \textit{pdev} gespeichert. 
-
 Aus der Liste der Minornummern (siehe Codeausschnitt~\ref{code:afm_data}) wird nach dem Sperren des zugehörigen Spinlocks eine freie Nummer ausgewählt und als \textit{minor\_id} gespeichert, sowie in der Liste als verwendet gesetzt. Danach wird das Spinlock wieder freigegeben.
-
 Anschließend wird mit Hilfe der Majornummer und der Minornummer ein Gerät erstellt und als \textit{cdev} gespeichert. 
-
 %todo vorteile statischer speicher
 Damit das Öffnen der Geräte auf eine bestimmte Anzahl limitiert ist, wird beim Initialisieren der Instanz ein Array der \textit{afm\_file} Struktur angelegt. Dadurch wird gleichzeitig der Speicherplatz statisch zur Kompilierzeit reserviert. Durch den Spinlock \textit{open\_spinlock} wird später dafür gesorgt, dass Kollisionen und Raceconditions vermieden werden.
 
@@ -81,32 +97,32 @@ Damit das Öffnen der Geräte auf eine bestimmte Anzahl limitiert ist, wird beim
 %über ioctl zugriff auf das geöffnete Device
 %Auf die ioctl eingehen und die Überlegungen hinter diesen
 %hello, logging/unlogging?, get id, get reg, get reg bitmask, get reg block, set reg, set reg bitmask, set reg block, 
-Damit der Zugriff und die Steuerung der Geräte, welche man über den generischen Treiber angelegt hat möglich ist, soll dieser Abschnitt auf die Konzeptionierung der \ac{ioctl}s eingehen.
-Wie in Kapitel~\ref{sec:ioctl_t} erläutert werden diese benötigt, um zwischen Kernel und Userspace Daten auszutauschen. Da der Großteil der Software im Userspace läuft, aber der Treiber im Kernel, wird der hauptsächliche Zugriff auf die Geräte über \ac{ioctl}s geregelt. Die Überlegungen hinter den einzelnen \ac{ioctl}s werden im Folgenden näher erläutert.\\
+Damit der Zugriff und die Steuerung der Geräte, welche man über den generischen Treiber angelegt hat, möglich ist, werden \ac{ioctl}s benötigt. 
+Wie in Kapitel~\ref{sec:ioctl_t} erläutert dienen diese zum Datenaustausch zwischen Userspace und Kernel. Da der Großteil der Software im Userspace läuft, aber der Treiber im Kernel, wird der hauptsächliche Zugriff auf die Geräte über \ac{ioctl}s geregelt. Die Überlegungen hinter den einzelnen \ac{ioctl}s werden im Folgenden näher erläutert.\\
 
 
 Als Erstes ist eine Anmeldung der Anwendung bei dem Gerät notwendig. Um die Eindeutigkeit zu garantieren wird hier die \ac{pid} übergeben. Allerdings wird auch der Prozessname benötigt, damit eine schnelle Nachvollziehbarkeit bei der Fehlersuche auf der Kamera vorhanden ist.
 %Wie in Kapitel~\ref{sec:konzept} erläutert, soll die Unterscheidung zwischen Standardapplikation und Debugtool möglich sein. Aus diesem Grund wird bei der Anmeldung zusätzlich zur \ac{pid} und dem Prozessnamen auch der Typ der Applikation übergeben. 
 %todo satz hier oder wo anders?
-Ohne die Ausführung von \textit{ARRI\_FRA\_MOD\_HELLO} bleibt der weitere Zugriff auf das Gerät über \ac{ioctl}s verwehrt, da die Anmeldung notwendig is,t um im laufenden Betrieb eine Analyse vorzunehmen.\\
+Ohne die Ausführung von \mbox{\textit{ARRI\_FRA\_MOD\_HELLO}} bleibt der weitere Zugriff auf das Gerät über \ac{ioctl}s verwehrt, da die Anmeldung notwendig ist, um im laufenden Betrieb Analysen vorzunehmen.\\
 
 Die Protokollierung der Zugriffe auf ein Gerät ist ein notwendiger Bestandteil. Dadurch soll, vor allem im Fehlerfall, die Suche erleichtert werden. Aufgrund der Zugriffe durch verschiedene Prozesse besteht ohne Protokollierung kein einheitlicher Überblick über die Zugriffe.
-In dem Zusammenhang werden zwei \ac{ioctl}s angelegt. Dabei ist \textit{ARRI\_FRA\_MOD\_LOGGING} zum Aktivieren der Nachrichten zuständig und analog werden diese durch \textit{ARRI\_FRA\_MOD\_NOLOGGING} deaktiviert. \\
+In dem Zusammenhang werden zwei \ac{ioctl}s angelegt. Dabei ist \mbox{\textit{ARRI\_FRA\_MOD\_LOGGING}} zum Aktivieren der Nachrichten zuständig und analog werden diese durch \mbox{\textit{ARRI\_FRA\_MOD\_NOLOGGING}} deaktiviert. \\
 
-Beim Anlegen des Geräts werden der Gerätetyp und der Name abgelegt. Im Userspace besteht die Notwendigkeit auf diese Informationen nach dem Öffnen des Geräts zuzugreifen. Dafür wird ein eigenes \ac{ioctl} (\textit{ARRI\_FRA\_MOD\_GET\_ID}) benötigt, welches lediglich den Typ und Namen aus der Instanzstruktur (siehe Codebeispiel~\ref{code:afm_device}) zurück gibt.\\
+Beim Anlegen des Geräts werden der Gerätetyp und der Name abgelegt. Im Userspace besteht die Notwendigkeit auf diese Informationen nach dem Öffnen des Geräts zuzugreifen, z.B. zur Unterscheidung der Modulvarianten. Dafür wird ein eigenes \ac{ioctl} (\mbox{\textit{ARRI\_FRA\_MOD\_GET\_ID}}) benötigt, welches lediglich den Typ und Namen aus der Instanzstruktur (siehe Codebeispiel~\ref{code:afm_device}) zurück gibt.\\
 
-Die essenziellen Funktionen des Treibers sind das Setzen bzw. Auslesen von Register. Basierend auf den, in der aktuellen Implementierung genutzten Funktionen und den entsprechenden Registerzugriffen, gibt es bis zu drei verschiedene Arten. Jede soll durch ein eigenes \ac{ioctl} abgebildet werden, da so die spätere Verwendung vereinfacht wird.  In der Tabelle~\ref{tab:ioctl} sind die Namen zu den Zugriffen dargestellt. Aus Platzgründen wurde auf den identischen Prefix \textit{ARRI\_FRA\_MOD\_} verzichtet.
+Die essenziellen Funktionen des Treibers sind das Setzen bzw. Auslesen von Registern. Basierend auf den in der aktuellen Implementierung genutzten Funktionen und den entsprechenden Registerzugriffen, gibt es bis zu drei verschiedene Arten. Jede soll durch ein eigenes \ac{ioctl} abgebildet werden, da so die spätere Verwendung vereinfacht wird.  In der Tabelle~\ref{tab:ioctl} sind die Namen zu den Zugriffen dargestellt. Aus Platzgründen wurde auf den identischen Prefix \mbox{\textit{ARRI\_FRA\_MOD\_}} verzichtet.
 
 
 
 Die Größe eines Registers ist auf 4 Byte normiert. Damit werden zum einfachen Setzen eines Registers lediglich zwei Parameter benötigt. Zum Einen die Stelle des Registers im Gerät (auch Registernummer) und zum Anderen der Inhalt. 
-Allerdings besteht auch die Notwendigkeit einzelne Bits oder mehrere hintereinander liegende Register über einen Aufruf zu setzen. Für beide Sonderfälle gibt es ein gesondertes \ac{ioctl}. Zum Setzen von einzelnen Bits wird zusätzlich zu den beiden oben genannten Parametern noch eine Bitmaske übergeben. Mithilfe der Bitmaske werden im Register erst die entsprechenden Bits gelöscht und danach die übergebenen Bits gesetzt. Dadurch ist es nicht mehr notwendig erst das entsprechende Register auszulesen, anschließend zu verändern und dann in das gleiche Register zu setzen. So werden überflüssige \ac{ioctl} und Registerzugriffe dezimiert.
-Der zweite Sonderfall benötigt andere Übergabeparameter als das einfache Setzen. Zusätzlich zu der Registernummer wird hier eine Registeranzahl gebraucht. Des Weiteren muss der Inhalt für die Register in einem Array mit der Größe der Anzahl übergeben werden. Damit kann dann der Reihe nach jedes Register einzeln mit dem entsprechenden Inhalt beschrieben werden.\\
+Allerdings besteht auch die Notwendigkeit einzelne Bits oder mehrere hintereinander liegende Register über einen Aufruf zu setzen. Für beide Sonderfälle gibt es ein gesondertes \ac{ioctl}. Zum Setzen von einzelnen Bits wird zusätzlich zu den beiden oben genannten Parametern noch eine Bitmaske übergeben. Mithilfe der Bitmaske werden im Register erst die entsprechenden Bits gelöscht und danach die übergebenen Bits gesetzt. Dadurch ist es nicht mehr notwendig erst das entsprechende Register auszulesen, anschließend zu verändern und dann in das gleiche Register zu setzen. Die Hardwarezugriffe werden nicht verhindert, aber es werden überflüssige \ac{ioctl}s gespart.
+Der zweite Sonderfall benötigt andere Übergabeparameter als das einfache Setzen. Zusätzlich zu der Registernummer wird hier eine Registeranzahl gebraucht. Des Weiteren muss der Inhalt für die Register in einem Array mit einer Größe entsprechend der Anzahl übergeben werden. Damit kann dann der Reihe nach jedes Register einzeln mit dem entsprechenden Inhalt beschrieben werden.\\
 
 
 \begin{table}
 \centering	
-\begin{tabular}[h]{c|c|c}
+\begin{tabular}[h]{l|l|l}
 	& Schreibend & Lesend \\
 	\hline
 	Einzeln & *SET\_REG & *GET\_REG\\
@@ -120,17 +136,17 @@ Der zweite Sonderfall benötigt andere Übergabeparameter als das einfache Setze
 
 
 Das Auslesen der Register erfolgt nahezu analog zu dem Setzen. Der Parameter für den Registerinhalt wird hier allerdings über das \ac{ioctl} gefüllt und dann zurück in den Userspace übergeben. 
-Register über eine Bitmaske auszulesen würde keine weiteren Vorteile gegenüber den Auslesen des ganzen Registers bieten. Aus diesem Grund wird es nicht implementiert.  
+Register über eine Bitmaske auszulesen würde keine weiteren Vorteile gegenüber dem Auslesen des ganzen Registers bieten. Aus diesem Grund wird es nicht implementiert.  
 Damit man einen ganzen Block an Registern zurück lesen kann, muss durch das Übergeben eines Arrays mit der richtigen Größe des Speicherbereich zu Verfügung gestellt werden.\\
 
-Dadurch sind die wichtigsten \ac{ioctl}s erläutert, die notwendig sind um die Grundfunktionen des Geräte abzudecken und zusätzlich eine triviale Möglichkeit zur Fehlersuche bieten.
+Dadurch sind die wichtigsten \ac{ioctl}s erläutert, die notwendig sind um die Grundfunktionen der Geräte abzudecken und zusätzlich eine triviale Möglichkeit zur Fehlersuche zu bieten.
 
 \section{Implementierung im Kernel}\label{sec:kernel}
 % Anlegen der Devices (arrifpga), Über Ioctl im Arri fpga treiber, öffnen und schließen des device, im eigenen Verzeichnis
 % ioctl implementierung im kernel, was steht dahinter, wie funktioniert es, auszüge
-Im Kernel gibt es zwei verschiedene Stellen, an welchen der Code implementiert ist. Zum Einen muss der bestehende \ac{fpga} Treiber entsprechend erweitert werden, sodass die Geräte unter Linux angelegt werden können und zum Anderen muss ein \ac{fra} Treiber implementiert werden, um die angelegten Geräte zu öffnen und zu schließen. \\
+Im Kernel gibt es zwei verschiedene Stellen, an welchen der Code implementiert ist. Zum Einen muss der bestehende \ac{fpga} Treiber entsprechend erweitert werden, sodass die Geräte unter Linux angelegt werden können und zum Anderen muss ein \ac{fra} Treiber implementiert werden, um die angelegten Geräte zu instanziieren und zu schließen. \\
 
-Zur besseren Übersichtlichkeit wurde sich für zwei Nameskonventionen entschieden. Strukturen und Funktionen, die mit \textit{arri\_fra\_mod} beginnen, werden außerhalb des \ac{fra} Treibers benötigt bzw. angelegt. Mit diesem Prefix werden die Namen recht lang, aus diesem Grund wird treiberintern auf den nicht so aussagekräftigen Prefix \textit{afm} abgekürzt.
+Zur besseren Übersichtlichkeit wurde sich für zwei Nameskonventionen eingeführt. Strukturen und Funktionen, die mit \textit{arri\_fra\_mod} beginnen, werden außerhalb des \ac{fra} Treibers benötigt bzw. angelegt. Mit diesem Prefix werden die Namen recht lang, aus diesem Grund wird treiberintern auf den nicht so aussagekräftigen Prefix \textit{afm} abgekürzt, um den Code übersichtlich zu halten.
 
 
 
@@ -162,19 +178,19 @@ struct arri_fra_mod_init
 Als Erstes wird hier Speicherplatz für die drei Strukturen \textit{resource}, \textit{mfd\_cell} und \textit{arri\_fra\_mod\_config} allokiert. Mithilfe dieser Strukturen wird am Ende der Funktion das Gerät angelegt.
 
 
-In der \textit{resource} Struktur (siehe Codeausschnitt~\ref{code:res}) wird der Speicherbereich des \ac{fpga}-Modules abgebildet. Für die Variable \textit{start} wird auf den bereits gemapten Registerbereich im \ac{fpga} noch der, im \textit{arri\_fra\_mod\_init} übergebene, \textit{offset} aufaddiert. Die Variable \textit{end} wird aus dem Startwert (\textit{start}) und der Größe des Speicherbereichs (\textit{size}) bestimmt. Durch den Parameter \textit{flags} wird die Ressource als Speicherbereich festgelegt und als \textit{parent} wird die Ressource des gesamten \ac{fpga}s angegeben.
+In der \textit{resource} Struktur (siehe Codeausschnitt~\ref{code:res}) wird der Speicherbereich des \ac{fpga}-Modules abgebildet. Für die Variable \textit{start} wird auf den bereits gemappten Registerbereich im \ac{fpga} noch der, im \textit{arri\_fra\_mod\_init} übergebene, \textit{offset} aufaddiert. Die Variable \textit{end} wird aus dem Startwert (\textit{start}) und der Größe des Speicherbereichs (\textit{size}) bestimmt. Durch den Parameter \textit{flags} wird die Ressource als Speicherbereich festgelegt und als \textit{parent} wird die Ressource des gesamten \ac{fpga}s angegeben.
 
 
-Als Nächstes wird die \textit{mfd\_cell} Struktur (siehe Codeausschnitt~\ref{code:mfd_cell}) gefüllt. Hier wird die Variable \textit{id} auf eine globale Variable gesetzt, die bei jedem Funktionsaufruf um eins erhöht wird. \textit{num\_resources} wird auf eins gesetzt, da es für jedes Gerät nur eine Ressource gibt. Entsprechend wird in  \textit{resources} der Zeiger der oben angebenden Ressource übergeben. Analog wird in \textit{platform\_data} der Zeiger auf die \textit{arri\_fra\_mod\_config} Struktur und in \textit{pdata\_size} die Größe der Struktur abgelegt.
+Als Nächstes wird die \textit{mfd\_cell} Struktur (siehe Codeausschnitt~\ref{code:mfd_cell}) gefüllt. Hier wird die Variable \textit{id} auf eine globale Variable gesetzt, die bei jedem Funktionsaufruf um eins erhöht wird. Damit kann jede \textit{mfd\_cell} eindeutig zugeordnet werden. \textit{num\_resources} wird auf eins gesetzt, da es für jedes Gerät nur eine Ressource gibt. Entsprechend wird in  \textit{resources} der Zeiger der oben angebenden Ressource übergeben. Analog wird in \textit{platform\_data} der Zeiger auf die \textit{arri\_fra\_mod\_config} Struktur und in \textit{pdata\_size} die Größe der Struktur abgelegt.
 Durch die \textit{arri\_fra\_mod\_config} wird der Gerätename und -typ an den Treiber übergeben. Bei Bedarf kann die Struktur zum Übergeben der internen Daten des Modules angepasst werden.
 
 %todo sequenzdiagramm!
-Über die, im Codeausschnitt~\ref{code:mfd} aufgezeigt Funktionsdeklaration wird das Gerät angelegt. Dadurch wird die \textit{probe} Funktion des Plattformtreibers ausgeführt und das erfolgreich angelegte Gerät ist auf der Kamera unter \textit{/dev/fra/} zu finden.
+Über die im Codeausschnitt~\ref{code:mfd} aufgezeigte Funktionsdeklaration wird das Gerät angelegt. Dadurch wird die \textit{probe} Funktion des Plattformtreibers ausgeführt und das erfolgreich angelegte Gerät ist auf der Kamera unter \textit{/dev/fra/} zu finden.
 
 
 \subsection{Öffnen und Schließen der Geräte}
 %kernelseitige  implementierung im Treiber
-Um später im Userspace auf die Geräte zuzugreifen und initiale Einstellungen vorzunehmen, muss eine \textit{open} Methode implementiert werden. Im Umkehrschluss werden die Einstellungen durch die \textit{release} Funktion zurückgesetzt. \cite[Seite 58f.]{corbet2005linux} \\
+Um später im Userspace auf die Geräte zuzugreifen und initiale, prozessspezifische Einstellungen vorzunehmen, muss die \textit{open} Funktion implementiert werden. Im Umkehrschluss werden die Einstellungen durch die \textit{release} Funktion zurückgesetzt. \cite[Seite 58f.]{corbet2005linux} \\
 %Quelle gecheckt am 3.12
 
 Die Anzahl von offenen Geräten ist durch die Speicherallokierung in der Struktur \textit{afm\_device} (siehe Codeausschnitt~\ref{code:afm_device}) auf \textit{AFM\_FILE\_MAX} (hier: 4) begrenzt. Die geöffnete Instanz eines Geräts wird in der Struktur \textit{afm\_file} abgelegt.
@@ -193,11 +209,11 @@ struct afm_file {
 	struct file *file;
 };
 \end{lstlisting}
-\captionof{code}{\label{code:afm_file} Struktur zum Ablegen des Geräts}
+\captionof{code}{\label{code:afm_file} Struktur eines Dateieintrags}
 %todo caption umbenennen
 \end{lstfloat}
 
-Beim Öffnen eines Geräts wird, nachdem das entsprechende Spinlock (\textit{open\_spinlock}) gesperrt wurde, nach einem freien Gerät zum Öffnen gesucht. Hierzu wird über eine for-Schleife iteriert, bis die maximale Anzahl erreicht ist. In jedem Durchgang wird die Variable \textit{in\_use} überprüft, entsprechend dem Define kann dann festgestellt werden, ob es noch möglich ist ein Gerät zu öffnen. Wurde eine freie Stelle gefunden, wird der Parameter auf \textit{AFM\_USED} gesetzt und das Spinlock wieder freigegeben.
+Beim Öffnen eines Geräts wird, nachdem das entsprechende Spinlock (\textit{open\_spinlock}) gesperrt wurde, nach einem freien Dateieintrag zum Öffnen gesucht. In jedem Durchgang wird die Variable \textit{in\_use} überprüft, entsprechend dem Define kann dann festgestellt werden, ob es noch möglich ist ein Gerät zu öffnen. Wurde eine freie Stelle gefunden, wird der Parameter auf \textit{AFM\_USED} gesetzt und das Spinlock wieder freigegeben.
 Wenn die maximale Anzahl erreicht ist, wird eine Fehlermeldung ausgegeben und ein Fehlercode zurückgegeben.
 Die Variable \textit{dev} wird auf das geöffnete Gerät gesetzt, analog wird \textit{minor} auf die verwendete Minornummer und \textit{file} auf die, in der \textit{open} Methode, übergebene Datei gesetzt. 
 Die anderen Parameter beschreiben den Prozess, welcher das Gerät öffnet und werden durch ein \ac{ioctl} entsprechend beschrieben.\\
@@ -211,52 +227,44 @@ Analog wird beim Schließen eines Geräts in der \textit{release} Funktion, die 
 %testprogramm
 %xbar
 %überlegungen zum testen, backend entscheidung
-Der Zugriff auf die \ac{fra} Module im Userspace ist in drei Ebenen gekapselt. In diesem Kapitel werden auf die Bibliothek, die \gls{middleware} und das Backend eingegangen und somit ein Überblick über alle drei Ebenen gegeben.
+Der Zugriff auf die \ac{fra} Module im Userspace ist in drei Ebenen gekapselt. In diesem Kapitel wird auf die Bibliothek, die \gls{middleware} und das Backend eingegangen und somit ein Überblick über alle drei Ebenen gegeben.
 
 
-\begin{figure}[!hbtp]
-	\centering
-	\includegraphics[width = \linewidth]{pictures/2019-11-17_FRA_Overview.png}
-	\smallskip
-	\caption{Darstellung des Aufbaus des \ac{fra}}
-	\label{fig:overview}
-\end{figure} 
-
-Die untere Stufe besteht aus verschiedenen backendspezifischen Funktionen. Im Folgenden wird nur auf das Kernelbackend eingegangen und das Testbackend wird im Kapitel~\ref{sec:test} erläutert. Im Kernelbackend werden mit den übergebenen Parametern die \ac{ioctl}s (siehe Kapitel~\ref{sec:ioctl}) abgesetzt und somit im Kernel die Hardware gelesen oder beschrieben.
+Die untere Stufe besteht aus verschiedenen backendspezifischen Funktionen. Im Folgenden wird nur auf das Kernelbackend eingegangen, das Testbackend wird im Kapitel~\ref{sec:test} erläutert. Im Kernelbackend werden mit den übergebenen Parametern die \ac{ioctl}s (siehe Kapitel~\ref{sec:ioctl}) abgesetzt und somit im Kernel die Hardware gelesen oder beschrieben.
 
 %todo glossar middleware
-In der \ac{fra} \gls{middleware} sind erweiterte Wrapperfunktionen zu finden. Hier werden verschiedene Überprüfungen durchgeführt, damit kein fehlerhafter Zugriff stattfindet. Des Weiteren wird im Wrapper entsprechend dem Backendtyp, die Funktion aus der unteren Ebene ausgewählt. 
+In der \ac{fra} \gls{middleware} sind erweiterte Wrapperfunktionen zu finden. Hier werden verschiedene Überprüfungen durchgeführt, damit kein fehlerhafter Zugriff stattfindet. Des Weiteren wird im Wrapper entsprechend dem Backendtyp die Funktion aus der unteren Ebene ausgewählt. 
 
 
 Durch die gekapselten Ebenen ist eine Erweiterung um neue Backendtypen einfach gestaltet und zusätzlich die Wartbarkeit erhöht worden. 
 %Insbesondere über ein Testbackend sollen Unittest zu den verschiedenen Modulen möglich sein, damit können Fehler frühzeitig erkannt, eingegrenzt und behoben werden. 
-Dadurch müssen bei Änderungen im Kernelzugriff, nur im Backendcode die entsprechenden Stellen geändert werden.\\
+Dadurch müssen bei Änderungen im Kernelzugriff nur im Backendcode die entsprechenden Stellen geändert werden.\\
 
 \subsection{\acs{fra} Bibliothek}
-Um das \ac{fra} vollständig nutzen zu können, müssen die Geräte geöffnet, geupdatet und auch wieder geschlossen werden. Dies passiert in der sogenannten \ac{fra} Bibliothek. 
-Für jeden Modultyp gibt es im \ac{fra} eigene, spezifische Funktionen. Diese Funktionen ersetzen die vorherigen Funktionen, welche direkt in den \ac{fpga} geschrieben haben. Im Rahmen dieser Arbeit wird nur die \ac{xbar} betrachtet und somit auch nur die Implementierung dieser in der Bibliothek.
+Um das \ac{fra} vollständig nutzen zu können, müssen die Geräte geöffnet, konfiguriert und auch wieder geschlossen werden. Dies passiert in der sogenannten \ac{fra} Bibliothek. 
+Für jeden Modultyp gibt es im \ac{fra} eigene, spezifische Funktionen. Diese Funktionen ersetzen die Funktionen der bisherigen Implementierung, welche direkt in den \ac{fpga} geschrieben haben. Im Rahmen dieser Arbeit wird nur die \ac{xbar} betrachtet und somit auch nur die Implementierung dieser in der Bibliothek.
 
 \begin{lstfloat}
-	\begin{lstlisting}
-	int32_t fra_xbar(struct fra_handle const *handle, const uint32_t transid, const uint32_t setting)
-	{
-		int32_t retval = ERRVALUE_SUCCESS;
-		uint32_t num, reg;
-		
-		FRA_CHECK_HANDLE_TYPE(handle, FRA_MOD_TYPE_XBAR);
-		
-		num = AVALONVIDEO_CROSSBAR_MXN_ENABLE_OUTPUT_REG;
-		reg = setting;
-		
-		retval = fra_set_reg(handle, transid, num, reg);  
-		
-		return retval;
-	}
-	\end{lstlisting}
-	\captionof{code}{\label{code:fra_xbar} Funktion zum Setzen der \ac{xbar}}
+\begin{lstlisting}
+int32_t fra_xbar(struct fra_handle const *handle, const uint32_t transid, const uint32_t setting)
+{
+	int32_t retval = ERRVALUE_SUCCESS;
+	uint32_t num, reg;
+	
+	FRA_CHECK_HANDLE_TYPE(handle, FRA_MOD_TYPE_XBAR);
+	
+	num = AVALONVIDEO_CROSSBAR_MXN_ENABLE_OUTPUT_REG;
+	reg = setting;
+	
+	retval = fra_set_reg(handle, transid, num, reg);  
+	
+	return retval;
+}
+\end{lstlisting}
+\captionof{code}{\label{code:fra_xbar} Funktion zum Setzen der \ac{xbar}}
 \end{lstfloat}
 
-Für die \ac{xbar} sind fünf spezifische Funktionen implementiert. In diesen Funktionen werden die Einstellungen gesetzt, die aktuellen Registerwerte protokolliert, auf aktuelle Fehlercodes überprüft und der aktuelle Status zurück gegeben. Da in allen Funktionen hauptsächlich auf die \ac{fra} \gls{middleware} zugegriffen wird und abgesehen von diesem Zugriff, die Daten aufbereitet werden, wird nur die \textit{fra\_xbar} Funktion exemplarisch betrachtet.\\
+Für die \ac{xbar} sind fünf spezifische Funktionen implementiert. In diesen Funktionen werden die Einstellungen gesetzt, die aktuellen Registerwerte protokolliert, auf aktuelle Fehlercodes überprüft und der aktuelle Status zurück gegeben. Da in allen Funktionen hauptsächlich auf die \ac{fra} \gls{middleware} zugegriffen wird und abgesehen von diesem Zugriff, nu die Daten aufbereitet werden, wird nur die \textit{fra\_xbar} Funktion exemplarisch betrachtet.\\
 
 In der Funktion im Codeausschnitt~\ref{code:fra_xbar} werden die Ein- und Ausgänge einer \ac{xbar} entsprechend dem übergebenen \textit{setting} verbunden.
 Durch das Makro \textit{FRA\_CHECK\_HANDLE\_TYPE} wird vorher überprüft, ob das Gerät im \textit{handle} eine \ac{xbar} ist. Wenn dies nicht der Fall ist, wird ein entsprechender Fehlercode zurückgegeben und die Funktion ist beendet. Diese Überprüfung findet auch bei den restlichen Funktionen in der \ac{fra} Bibliothek statt.
@@ -286,17 +294,20 @@ struct fra_handle
 \end{lstlisting}
 \captionof{code}{\label{code:fra_handle} Struktur zum Abspeichern wichtiger Parameter}
 \end{lstfloat}
-Der erste und wichtigste Parameter in der Struktur ist der \gls{dateideskriptor} \textit{dev}. Hierüber kann nach dem Öffnen des Geräts weiterhin auf dieses zugegriffen werden. Die restlichen Parameter werden beim Initialisieren des Geräts gesetzt. \textit{dev\_type} und \textit{dev\_name} geben den Modultyp und den Namen an. 
+Der erste und wichtigste Parameter in der Struktur ist der \gls{dateideskriptor} \textit{dev}. Hierüber kann nach dem Öffnen des Geräts auf dieses zugegriffen werden. Die restlichen Parameter werden beim Initialisieren des Geräts gesetzt. \textit{dev\_type} und \textit{dev\_name} geben den Modultyp und den Namen an. Diese werden beim Anlegen der Geräte über den \ac{fpga} Treiber als Geräteeigenschaften abgespeichert und über ein \ac{ioctl} hier ausgelesen.
 %todo gibt es ersetzen?
-Für spätere Überprüfungen gibt es für jeden Modultyp noch eine ID, dieses wird in der Variablen \textit{type\_id} abgelegt. In der \textit{fra\_backend\_funcs} Struktur sind Prototypen aller backendspezifischen Funktionen abgelegt.\\
+Für spätere Überprüfungen gibt es für jeden Modultyp noch eine ID, dieses wird in der Variablen \textit{type\_id} abgelegt. In der \textit{fra\_backend\_funcs} Struktur sind Prototypen aller backendspezifischen Funktionen abgelegt. \\
 
-Das Öffnen eines Geräts ist nur über die \textit{fra\_init} Funktion möglich. Da neben dem Öffnen auch eine Anmeldung bei dem Gerät stattfinden muss (siehe Kapitel~\ref{sec:ioctl}), wird dies über einen Funktionsaufruf abgedeckt. 
+Das Öffnen eines Geräts ist über die \textit{fra\_init} Funktion möglich. Da neben dem Öffnen auch eine Anmeldung der Anwendung bei dem Gerät stattfinden muss (siehe Kapitel~\ref{sec:ioctl}), wird dies über einen einheitlichen Funktionsaufruf abgedeckt. 
 
 In der initialen Funktion \textit{fra\_init} werden verschiedene Einstellungen vorgenommen und Funktionen aufgerufen. Zum Einen wird der Funktion ein Backendtyp übergeben und anhand von diesem die Funktionsstruktur im \textit{fra\_handle} gesetzt.
 Zum Anderen muss neben dem Öffnen des Geräts auch eine Anmeldung vom Prozess stattfinden (siehe Kapitel~\ref{sec:ioctl}). Hierzu werden jeweils die entsprechenden Wrapper Funktionen aufgerufen um die Funktionalität bei allen Backendtypen zu garantieren. Zum Bestimmen von \textit{dev\_type} und \textit{dev\_name} werden auch über eine Wrapper Funktion die Parameter vom Gerät geholt und entsprechend im \textit{fra\_handle} gesetzt. Mithilfe einer Liste, in welcher Name, ID und Größe der einzelnen Module hinterlegt sind, wird die Variable \textit{type\_id} gesetzt. Hierfür wird \textit{dev\_type} mit den Namen der Liste verglichen und bei einem Treffer die entsprechende ID abgespeichert.\\
 
 
-Die Grundstruktur der Wrapper Funktionen ist für alle identisch, deshalb wird im folgenden beispielhaft die \textit{fra\_set\_reg} näher betrachtet. Grundsätzlich gibt es für jedes konzeptionierte \ac{ioctl} (siehe Kapitel~\ref{sec:ioctl}) im Kernel eine Wrapper Funktion, lediglich für das Logging sind beide \ac{ioctl}s in einer Funktion zusammen gefasst.\\ 
+Die Grundstruktur der Wrapper Funktionen ist für alle identisch, deshalb wird im folgenden beispielhaft die \textit{fra\_set\_reg} näher betrachtet (siehe Codebeispiel~\ref{code:fra_set_reg}). Grundsätzlich gibt es für jedes konzeptionierte \ac{ioctl} (siehe Kapitel~\ref{sec:ioctl}) im Kernel eine Wrapper Funktion, lediglich für das Logging sind beide \ac{ioctl}s in einer Funktion zusammen gefasst.\\ 
+
+
+In der Funktionssignatur sind immer das \textit{fra\_handle} und die \textit{transid} angegeben. Durch das Handle werden alle notwendigen Informationen zum Zugriff auf das Gerät übergeben und die Transaktionsidentifikation \textit{transid} ist in der Signatur implementiert, damit bei einer späteren Erweiterung nicht alle Aufrufe geändert werden müssen. Durch die Nummer soll es später möglich sein, Kernel- und damit Hardwarezugriffe zu gruppieren und ereignisgesteuert abzuarbeiten. Aktuell wird sie lediglich bis zum Ende durchgereicht und nicht weiter betrachtet, da die Transaktionsidentifikation kein Teil der Arbeit ist. 
 
 
 Zu Beginn einer jeden Methode werden über ein Makro verschiedene Überprüfungen durchgeführt. 
@@ -320,9 +331,8 @@ Zu Beginn einer jeden Methode werden über ein Makro verschiedene Überprüfunge
 \captionof{code}{\label{code:fra_check_handle} Makro zum Überprüfen des \glspl{handle}}
 \end{lstfloat}
 
-Ohne ein gültiges Handle würden alle nachfolgenden Aufrufe einen Fehler zurück geben, da alles basierend auf diesem Handle erfolgt. Aus diesem Grund wird in Zeile 2 als Erstes überprüft, ob das \textit{fra\_handle} valid ist. Über den \gls{dateideskriptor} kann man herausfinden, ob das Gerät schon geöffnet wurde. Hier wird beim Initiieren der Struktur \textit{dev} auf -1 gesetzt, bei einem geöffneten Gerät ist eine Zahl größer 0 abgespeichert. Als Letztes wird noch überprüft, ob ein Zeiger auf die \textit{fra\_backend\_funcs} Struktur übergeben wurde. Die Funktion, in welcher das Makro aufgerufen wird gibt entsprechende, softwareintern definierte Fehlermeldungen zurück um die Fehlersuche zu erleichtern.\\
+Ohne ein gültiges Handle würden alle nachfolgenden Aufrufe einen Fehler zurück geben, da alles basierend auf diesem Handle erfolgt. Aus diesem Grund wird in Zeile 2 als Erstes überprüft, ob das \textit{fra\_handle} valid ist. Über den \gls{dateideskriptor} kann man herausfinden, ob das Gerät schon geöffnet wurde. Hier wird beim Initialisieren der Struktur \textit{dev} auf -1 gesetzt, bei einem geöffneten Gerät ist eine Zahl größer 0 abgespeichert. Als Letztes wird noch überprüft, ob ein Zeiger auf die \textit{fra\_backend\_funcs} Struktur übergeben wurde. Die Funktion, in welcher das Makro aufgerufen wird gibt entsprechende softwareintern definierte Fehlermeldungen zurück um die Fehlersuche zu erleichtern.\\
 
-In der Funktionssignatur ist immer das \textit{fra\_handle} und die \textit{transid} angeben. Durch das Handle werden alle notwendigen Informationen zum Zugriff auf das Gerät übergeben und die Transaktionsidentifikation \textit{transid} ist in der Signatur implementiert, damit bei einer späteren Erweiterung nicht alle Aufrufe geändert werden müssen. Durch die Nummer soll es später möglich sein, Kernel- und damit Hardwarezugriffe zu gruppieren und direkt hintereinander abzuarbeiten. Aktuell wird sie lediglich bis zum Ende durchgereicht und nicht weiter betrachtet, da es kein Teil der Arbeit ist. 
 
 \begin{lstfloat}
 \begin{lstlisting}
@@ -343,17 +353,17 @@ int32_t fra_set_reg(struct fra_handle const *handle,
 \captionof{code}{\label{code:fra_set_reg} Funktion zum Setzen eines Registers}
 \end{lstfloat}
 
-Das Makro im Codeausschnitt~\ref{code:fra_set_reg} Zeile 9 ist im vorhergehenden Absatz genauer erläutert.
-Durch die if - Bedingung in Zeile 11 wird überprüft, ob für das ausgewählte Backend die entsprechende Funktion implementiert ist. Ist die Funktion nicht implementiert, liegt an der Stelle ein \textit{NULL} Zeiger. Durch die Überprüfung wird vermieden, dass beim Aufrufen der Funktion auf \textit{NULL} zugegriffen wird und somit beim laufenden Programm ein Fehler auftritt. Der Rückgabewert in der Funktion in der \ac{fra} \gls{middleware} entspricht entweder einem entsprechenden Fehlerwert oder dem Rückgabewert der Backendfunktion. 
+Durch die if - Bedingung in Zeile 11 wird überprüft, ob für das ausgewählte Backend die entsprechende Funktion implementiert ist. Ist die Funktion nicht implementiert, liegt an der Stelle ein \textit{NULL} Zeiger. Durch die Überprüfung wird vermieden, dass beim Aufrufen der Funktion auf \textit{NULL} zugegriffen wird und somit beim laufenden Programm ein Fehler auftritt. Der Rückgabewert der \ac{fra} \gls{middleware} entspricht entweder einem entsprechenden Fehlerwert oder dem Rückgabewert der Backendfunktion. 
 
 
 \subsection{\acs{fra} Kernelbackend}
 Da die Wrapper lediglich alle benötigte Übergabeparameter an die Backendfunktionen weiterreichen, haben diese eine identische Funktionssignatur. 
-Die einzelnen Funktionen unterscheiden sich im Kernelbackend nur durch die aufgerufenen \ac{ioctl}s und entsprechenden den übergebenden Strukturen dazu. Beispielhaft soll hier wieder die Funktion zum Setzen eines Registers betrachtet werden. \\
+Die einzelnen Funktionen unterscheiden sich im Kernelbackend nur durch die aufgerufenen \ac{ioctl}s und entsprechenden übergebenen Strukturen dazu. Beispielhaft soll hier wieder die Funktion zum Setzen eines Registers betrachtet werden. \\
 
 
 Im Backend finden keine weiteren Überprüfungen statt, da dies bereits eine Ebene höher geschehen ist. Nach dem Füllen der Übergabestruktur wird das \ac{ioctl} aufgerufen und anschließend auf Fehler überprüft. 
-Im Fehlerfall wird eine Meldung ausgegeben und der Fehlerwert zurückgegeben. 
+Im Fehlerfall wird eine Meldung ausgegeben und der Fehlerwert zurückgegeben (siehe Codebeispiel~\ref{code:fra_kernel_set_reg}). 
+
 
 \begin{lstfloat}
 \begin{lstlisting}
@@ -381,12 +391,12 @@ int32_t fra_kernel_set_reg(struct fra_handle const *handle, const uint32_t trans
 \section{Einbindung ins \acl{geo}}\label{sec:soft}
 %anlegen der Devices in der software, öffnen der devices über den module_idx und abspeichern im entsprechenden handdle, abändern der funktionen von fpga zugriff auf fra zugriff und hw update lediglich über den module_idx des geo module möglich, da über den identischen namen geöffnet wurde und handle unter dem idx gespeichert ist, umstellen des hw update auf die neuen Funktionen
 %Bild?
-Um das \ac{fra} vollständig in der Kamerasoftware zum Implementieren müssen die Geräte angelegt, geöffnet, geupdatet und auch wieder geschlossen werden. Dies geschieht an verschiedenen Stellen in der Software und zum Großteil eng verknüpft mit dem \ac{geo}.\\
+Um das \ac{fra} vollständig in der Kamerasoftware zu Implementieren müssen die Geräte angelegt, geöffnet, geupdatet und auch wieder geschlossen werden. Dies geschieht an verschiedenen Stellen in der Software und zum Großteil eng verknüpft mit dem \ac{geo}. Das \ac{geo} ist eine Softwarerepräsentation der Bildkette (siehe Abbildung~\ref{fig:bild}) und bildet die Module des \ac{fpga}s mit ihren Einstellungen ab..\\
 
 
-Angelegt werden die Geräte aktuell beim Laden des \ac{fpga}s. An dieser Stelle ist bekannt, welche Firmware geladen wurde und entsprechend kann über eine Struktur bestimmt werden, ob und an welcher Stelle ein bestimmtes Modul vorhanden ist. Mit einem vorgegebenen Namen und Modultyp werden so die Geräte im Kernel angelegt. Anschließend kann in der kompletten Kamerasoftware davon ausgegangen werden, dass, sofern kein Fehler aufgetreten ist, die Geräte verfügbar sind. Das Anlegen der Geräte soll autark von der Software stattfinden, da dieses in Zukunft ohne die Adressen der Module im \ac{fpga} auskommen soll. Da dieses Konzept den Rahmen der Arbeit übersteigen würde, wird es nicht näher betrachtet. \\
+Angelegt werden die Geräte aktuell beim Laden des \ac{fpga}s. An dieser Stelle ist bekannt, welche Firmware geladen wurde und entsprechend kann über eine Struktur bestimmt werden, ob und an welcher Stelle ein bestimmtes Modul vorhanden ist. Mit einem vorgegebenen Namen und Modultyp werden so die Geräte im Kernel angelegt. Anschließend kann in der kompletten Kamerasoftware davon ausgegangen werden, dass, sofern kein Fehler aufgetreten ist, die Geräte verfügbar sind. Das Anlegen der Geräte soll autark von der Software stattfinden, da diese in Zukunft ohne die Adressen der Module im \ac{fpga} auskommen soll. Da dieses Konzept den Rahmen der Arbeit übersteigen würde, wird es nicht näher betrachtet. \\
 
-Im \ac{geo} sind die Module der Bildkette in der entsprechenden Reihenfolge abgebildet und über einen Modulindex ist jedes Modul individuell zu unterscheiden. So kann beim initialen Hardwareupdate des \ac{geo} für alle, in diesem \gls{framework} abgebildeten und vorhandenen Module, ein Gerät geöffnet und entsprechend dem Modulindex in ein \textit{fra\_handle} Array abgelegt werden. In beiden \glspl{framework} wird somit über den identischen Modulindex auf das gleiche Modul zugegriffen. Dies spielt vor allem beim Updaten der Module eine wichtige Rolle.
+Im \ac{geo} sind die Module der Bildkette in der entsprechenden Reihenfolge abgebildet und über einen Modulindex ist jedes Modul individuell zu unterscheiden. So kann beim initialen Hardwareupdate des \ac{geo} für alle in diesem \gls{framework} abgebildeten und vorhandenen Module ein Gerät geöffnet und entsprechend dem Modulindex in ein \textit{fra\_handle} Array abgelegt werden. In beiden \glspl{framework} wird somit über den identischen Modulindex auf das gleiche Modul zugegriffen. Dies spielt vor allem beim Updaten der Module eine wichtige Rolle.
 
 
 In den Hardwarefunktionen des \ac{geo} werden für die \ac{xbar} die Konfigurationen des Ein- und Ausgänge aus dem \gls{framework} abgeholt und anschließend die \textit{fra\_xbar} Funktion (siehe Codeaussschnitt~\ref{code:fra_xbar}) aufgerufen. Analog sollen auch für andere Module die Hardwarefunktionen abgeändert werden.

@@ -50,7 +50,7 @@ Bevor auf das erarbeitete Konzept eingegangen wird, soll kurz auf die Funktionsw
 
 Die bildverarbeitende Hauptfunktionalität liegt im \ac{fpga}. Hier sind die Module entsprechend der Bildkette angeordnet und verbunden. Durch die Software werden bei den \ac{fpga} Modulen entsprechende Einstellungen vorgenommen.
 
-Damit die Einstellungen auch zu dem Sensorbild passen, werden alle Module des \ac{fpga}s in dem \ac{geo} abgebildet. Das objektorientierte \gls{framework} führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der abgebildeten \gls{framework}bildkette geupdatet und entsprechend der voreingestellten Parameter werden die Größen neu berechnet. Am Ende des Updates werden verschiedenen Funktionen aufgerufen, welche die Register im \ac{fpga} entsprechend der Einstellungen setzen.
+Damit die Einstellungen auch zu dem Sensorbild passen, werden alle Module des \ac{fpga}s softwareseitig in dem \ac{geo} abgebildet. Das objektorientierte \gls{framework} führt hauptsächlich Berechnungen der Bildgrößen und Offsets durch. Nach der Änderung einer Größe in der Quelle oder Senke werden alle Module in der abgebildeten \gls{framework}bildkette geupdatet und entsprechend der voreingestellten Parameter werden die Größen neu berechnet. Am Ende des Updates werden verschiedenen Funktionen aufgerufen, welche die Register im \ac{fpga} entsprechend der Einstellungen setzen.
 
 
 \subsection{Problematiken}\label{sec:prob}
@@ -83,7 +83,7 @@ Die Probleme in der aktuellen Implementierung (siehe Kapitel~\ref{sec:prob}) sol
 Aktuell benötigen die Zugriffe auf den \ac{fpga} jedes Mal die Adressen der Module. Durch eine weitere Abstraktionsebene soll eine modulare Ansteuerung möglich werden und so die direkten Hardwarezugriffe über die Adressen aus dem Hauptcode eliminiert werden. Dadurch ist es möglich, jedes Modul individuell zu sperren und das Problem 1 (Locking) aus Kapitel~\ref{sec:prob} behoben.
 
 
-In der neuen Abstraktionsebene, dem \ac{fra}, werden die Module im Kernel asl Gerät angelegt und über über \glspl{dateideskriptor} greift die Software auf den \ac{fpga} zu. Die Geräte werden mit der Adresse, der Größe, dem Namen und Typ des dahinterliegenden Modul beim Initialisieren des Bildpfads angelegt. Dieser Teil soll später generisch generiert werden und somit das zweite Problem (Adressierung) im vorangegangenen Kapitel gelöst werden. Aber aufgrund von Abhängigkeiten zu anderen Team überschreitet es den Umfang der Arbeit.
+In der neuen Abstraktionsebene, dem \ac{fra}, werden die Module im Kernel als Gerät angelegt und über über \glspl{dateideskriptor} greift die Software auf den \ac{fpga} zu. Die Geräte werden mit der Adresse, der Größe, dem Namen und Typ des dahinterliegenden Modul beim Laden des \ac{fpga}s angelegt. Dieser Teil soll später generisch generiert werden und somit das zweite Problem (Adressierung) im vorangegangenen Kapitel gelöst werden. Aber aufgrund von Abhängigkeiten zu anderen Team überschreitet es den Umfang der Arbeit.
 
 
 

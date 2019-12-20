@@ -11,36 +11,36 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {code}{\numberline {2.2}{\ignorespaces Vereinfachte Funktionsdeklaration aus \cite [linux/uaccess.h, Zeile 140ff.]{linuxsourceinclude}\relax }}{8}{code.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.3}{\ignorespaces platform\_driver Struktur in \cite [linux/platform\_device.h, Zeile 184ff.]{linuxsourceinclude}\relax }}{9}{code.2.3}
+\contentsline {code}{\numberline {2.3}{\ignorespaces platform\_driver Struktur in \cite [linux/platform\_device.h, Zeile 184ff.]{linuxsourceinclude}\relax }}{8}{code.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.4}{\ignorespaces Struktur resource in \cite [linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}\relax }}{10}{code.2.4}
+\contentsline {code}{\numberline {2.4}{\ignorespaces Struktur resource in \cite [linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}\relax }}{9}{code.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {code}{\numberline {2.5}{\ignorespaces Struktur mfd\_cell in \cite [linux/mfd/core.h, Zeile 29ff.]{linuxsourceinclude}\relax }}{10}{code.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.6}{\ignorespaces Funktionsdeklaration in \cite [linux/mfd/core.h, Zeile 130ff.]{linuxsourceinclude}\relax }}{11}{code.2.6}
+\contentsline {code}{\numberline {2.6}{\ignorespaces Funktionsdeklaration in \cite [linux/mfd/core.h, Zeile 130ff.]{linuxsourceinclude}\relax }}{10}{code.2.6}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.1}{\ignorespaces Struktur des Treibers\relax }}{13}{code.3.1}
+\contentsline {code}{\numberline {3.1}{\ignorespaces Struktur des Treibers\relax }}{14}{code.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.2}{\ignorespaces Auszug aus der Struktur einer Instanz\relax }}{14}{code.3.2}
+\contentsline {code}{\numberline {3.2}{\ignorespaces Auszug aus der Struktur einer Instanz\relax }}{15}{code.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.3}{\ignorespaces Struktur zum Initialisieren des Ger\IeC {\"a}ts\relax }}{16}{code.3.3}
+\contentsline {code}{\numberline {3.3}{\ignorespaces Struktur zum Initialisieren des Ger\IeC {\"a}ts\relax }}{18}{code.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.4}{\ignorespaces Struktur zum Ablegen des Ger\IeC {\"a}ts\relax }}{18}{code.3.4}
+\contentsline {code}{\numberline {3.4}{\ignorespaces Struktur eines Dateieintrags\relax }}{19}{code.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.5}{\ignorespaces Funktion zum Setzen der \ac {xbar}\relax }}{20}{code.3.5}
+\contentsline {code}{\numberline {3.5}{\ignorespaces Funktion zum Setzen der \ac {xbar}\relax }}{21}{code.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.6}{\ignorespaces Struktur zum Abspeichern wichtiger Parameter\relax }}{21}{code.3.6}
+\contentsline {code}{\numberline {3.6}{\ignorespaces Struktur zum Abspeichern wichtiger Parameter\relax }}{22}{code.3.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.7}{\ignorespaces Makro zum \IeC {\"U}berpr\IeC {\"u}fen des \glspl {handle}\relax }}{22}{code.3.7}
+\contentsline {code}{\numberline {3.7}{\ignorespaces Makro zum \IeC {\"U}berpr\IeC {\"u}fen des \glspl {handle}\relax }}{23}{code.3.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.8}{\ignorespaces Funktion zum Setzen eines Registers\relax }}{23}{code.3.8}
+\contentsline {code}{\numberline {3.8}{\ignorespaces Funktion zum Setzen eines Registers\relax }}{24}{code.3.8}
 \defcounter {refsection}{0}\relax 
 \contentsline {code}{\numberline {3.9}{\ignorespaces Funktion im Kernelbackend zum Setzen eines Registers\relax }}{24}{code.3.9}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {4.1}{\ignorespaces Struktur zum Abbilden der vituellen Hardware\relax }}{25}{code.4.1}
+\contentsline {code}{\numberline {4.1}{\ignorespaces Struktur zum Abbilden der vituellen Hardware\relax }}{26}{code.4.1}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }

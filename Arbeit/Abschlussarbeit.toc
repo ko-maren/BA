@@ -30,50 +30,50 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}Plattformtreiber}{8}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.1}Major- und Minornummern}{9}{subsection.2.4.1}
-\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.5}\acl {mfd}}{9}{section.2.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}\acl {fra}}{12}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Generischer Plattformtreiber}{12}{section.3.1}
+\contentsline {section}{\numberline {3.1}Einf\IeC {\"u}hrung}{12}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Konzeptionierung der \acl {ioctl}s}{14}{section.3.2}
+\contentsline {section}{\numberline {3.2}Generischer Plattformtreiber}{13}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Implementierung im Kernel}{16}{section.3.3}
+\contentsline {section}{\numberline {3.3}Konzeptionierung der \acl {ioctl}s}{15}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Anlegen der Ger\IeC {\"a}te}{16}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Implementierung im Kernel}{17}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}\IeC {\"O}ffnen und Schlie\IeC {\ss }en der Ger\IeC {\"a}te}{17}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4.1}Anlegen der Ger\IeC {\"a}te}{18}{subsection.3.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Implementierung im Userspace}{18}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.2}\IeC {\"O}ffnen und Schlie\IeC {\ss }en der Ger\IeC {\"a}te}{19}{subsection.3.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.1}\acs {fra} Bibliothek}{19}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Implementierung im Userspace}{20}{section.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.2}\acs {fra} Middleware}{20}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.5.1}\acs {fra} Bibliothek}{20}{subsection.3.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.3}\acs {fra} Kernelbackend}{23}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.5.2}\acs {fra} Middleware}{21}{subsection.3.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Einbindung ins \acl {geo}}{23}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.3}\acs {fra} Kernelbackend}{23}{subsection.3.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Frameworktest}{25}{chapter.4}
+\contentsline {section}{\numberline {3.6}Einbindung ins \acl {geo}}{25}{section.3.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Plattformunabh\IeC {\"a}ngige Tests}{25}{section.4.1}
+\contentsline {chapter}{\numberline {4}Frameworktest}{26}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Tools f\IeC {\"u}r die Entwicklungsumgebung}{28}{section.4.2}
+\contentsline {section}{\numberline {4.1}Plattformunabh\IeC {\"a}ngige Tests}{26}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Fazit und Ausblick}{30}{chapter.5}
+\contentsline {section}{\numberline {4.2}Tools f\IeC {\"u}r die Entwicklungsumgebung}{29}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Zusammenfassung der Ergebnisse}{30}{section.5.1}
+\contentsline {chapter}{\numberline {5}Fazit und Ausblick}{31}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Ausblick}{31}{section.5.2}
+\contentsline {section}{\numberline {5.1}Zusammenfassung der Ergebnisse}{31}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Anhang}{32}{appendix*.24}
+\contentsline {section}{\numberline {5.2}Ausblick}{32}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.1}Literaturverzeichnis}{32}{section.A.1}
+\contentsline {chapter}{Anhang}{33}{appendix*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.2}Abbildungsverzeichnis}{33}{section.A.2}
+\contentsline {section}{\numberline {A.1}Literaturverzeichnis}{33}{section.A.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.3}Tabellenverzeichnis}{33}{section.A.3}
+\contentsline {section}{\numberline {A.2}Abbildungsverzeichnis}{34}{section.A.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.4}Liste der Codeausschnitte}{34}{section.A.4}
+\contentsline {section}{\numberline {A.3}Tabellenverzeichnis}{34}{section.A.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.4}Liste der Codeausschnitte}{35}{section.A.4}
