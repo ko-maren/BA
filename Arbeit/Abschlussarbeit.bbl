@@ -372,6 +372,35 @@
     \field{year}{2011}
   \endentry
 
+  \entry{spillner2005basiswissen}{book}{}
+    \name{author}{2}{}{%
+      {{hash=SA}{%
+         family={Spillner},
+         familyi={S\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=LT}{%
+         family={Linz},
+         familyi={L\bibinitperiod},
+         given={Tilo},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {dpunkt. verlag}%
+    }
+    \strng{namehash}{SALT1}
+    \strng{fullhash}{SALT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Basiswissen Softwaretest: Aus-und Weiterbildung zum Certified
+  Tester--Foundation Level nach ISTQB{\textregistered}-Standard}
+    \field{year}{2005}
+  \endentry
+
   \entry{imdbtour}{misc}{}
     \name{author}{1}{}{%
       {{hash=U}{%

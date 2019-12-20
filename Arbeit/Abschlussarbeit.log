@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  20 DEC 2019 12:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  20 DEC 2019 13:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1777,13 +1777,13 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 
 
 (./chapters/Vorspann.tex
-<pictures/Hochschule_Muenchen_Logo.png, id=161, 1796.7125pt x 779.91376pt>
+<pictures/Hochschule_Muenchen_Logo.png, id=165, 1796.7125pt x 779.91376pt>
 File: pictures/Hochschule_Muenchen_Logo.png Graphic file (type png)
 <use pictures/Hochschule_Muenchen_Logo.png>
 Package pdftex.def Info: pictures/Hochschule_Muenchen_Logo.png  used on input l
 ine 4.
 (pdftex.def)             Requested size: 128.0374pt x 55.57538pt.
-<pictures/ARRI_AG_Corporate_Logo.png, id=163, 1284.8pt x 474.77374pt>
+<pictures/ARRI_AG_Corporate_Logo.png, id=167, 1284.8pt x 474.77374pt>
 File: pictures/ARRI_AG_Corporate_Logo.png Graphic file (type png)
 <use pictures/ARRI_AG_Corporate_Logo.png>
 Package pdftex.def Info: pictures/ARRI_AG_Corporate_Logo.png  used on input lin
@@ -1937,7 +1937,7 @@ l.18
 
 
 ]
-<pictures/amira-product-image-data.jpg, id=308, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=314, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1949,7 +1949,7 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
-<pictures/2019-11-17_Bildkette.png, id=318, 668.4975pt x 144.54pt>
+<pictures/2019-11-17_Bildkette.png, id=324, 668.4975pt x 144.54pt>
 File: pictures/2019-11-17_Bildkette.png Graphic file (type png)
 <use pictures/2019-11-17_Bildkette.png>
 Package pdftex.def Info: pictures/2019-11-17_Bildkette.png  used on input line 
@@ -1993,20 +1993,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=360, 408.3255pt x 258.9675
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=367, 408.3255pt x 258.9675
 pt>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
 Package pdftex.def Info: pictures/2019-11-17_ImplementierungNewvsOld.png  used 
-on input line 75.
+on input line 77.
 (pdftex.def)             Requested size: 323.9978pt x 205.4909pt.
 Package acronym Info: Label `acro:fra' newly defined as it shall be overridden
-although it is yet undefined on input line 86.
+although it is yet undefined on input line 88.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.87 
+l.89 
       [4])pdfTeX warning (ext4): destination with the same identifier (name{pag
 e.5}) has been already used, duplicate ignored
 <to be read again> 
@@ -2082,7 +2082,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 144--148
 
  (./chapters/Fachlicher_Hauptteil.tex
 Kapitel 3.
-<pictures/2019-11-17_FRA_Overview.png, id=530, 502.87875pt x 517.33275pt>
+<pictures/2019-11-17_FRA_Overview.png, id=535, 502.87875pt x 517.33275pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
@@ -2270,82 +2270,83 @@ Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
  (./chapters/Test.tex
 Kapitel 4.
-<pictures/2019-11-28-testbackend.png, id=846, 550.4565pt x 461.92575pt>
-File: pictures/2019-11-28-testbackend.png Graphic file (type png)
-<use pictures/2019-11-28-testbackend.png>
-Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
-e 16.
-(pdftex.def)             Requested size: 360.0pt x 302.10896pt.
 [26
 
 
 
 ]
-Underfull \hbox (badness 1292) in paragraph at lines 40--41
+<pictures/2019-11-28-testbackend.png, id=867, 550.4565pt x 461.92575pt>
+File: pictures/2019-11-28-testbackend.png Graphic file (type png)
+<use pictures/2019-11-28-testbackend.png>
+Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
+e 34.
+(pdftex.def)             Requested size: 360.0pt x 302.10896pt.
+ [27 <./pictures/2019-11-28-testbackend.png>]
+Underfull \hbox (badness 1292) in paragraph at lines 58--59
 []\T1/ppl/m/n/10.95 Damit die vir-tu-el-le Hard-wa-re rich-tig in-itia-li-siert
  wird, muss für die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
-
- []
-
-[27 <./pictures/2019-11-28-testbackend.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 48--50
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 66--68
 \T1/ppl/m/n/10.95 Ba-ckend-funk-tio-nen ist, im Ver-gleich zum Ker-nel-ba-ckend
 , ver-ein-facht
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--50
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--56
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--71
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
+Underfull \hbox (badness 10000) in paragraph at lines 85--88
+
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 []\T1/ppl/m/n/10.95 Ein wei-te-res nütz-li-ches Tool für die Ent-wick-lungs-ar-
 beit ist das
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 72--73
+Underfull \hbox (badness 2173) in paragraph at lines 89--90
 \T1/ppl/m/it/10.95 fra_set_logging\T1/ppl/m/n/10.95 . Da das Log-ging stan-dard
 -mä-ÿig de-ak-ti-viert ist, muss
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 75--77
+Underfull \hbox (badness 1997) in paragraph at lines 92--94
 []\T1/ppl/m/n/10.95 Hier wer-den beim Star-ten des Pro-gramms auf der Kom-man-d
 o-zei-le
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--77
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
 
  []
 
-[29]) [30]
+) [30]
 \openout2 = `chapters/Ausblick.aux'.
 
  (./chapters/Ausblick.tex
@@ -2410,17 +2411,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: D1746E0290C193E604EA0F1CCDB64619;2630.
+(rerunfilecheck)             Checksum: 6C55F5C5A4B3820116CBC771E0FE9F12;2705.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44624 strings out of 492642
- 820608 string characters out of 6133163
+ 44633 strings out of 492642
+ 820821 string characters out of 6133163
  1300674 words of memory out of 5000000
- 47352 multiletter control sequences out of 15000+600000
- 600220 words of font info for 140 fonts, out of 8000000 for 9000
+ 47357 multiletter control sequences out of 15000+600000
+ 600828 words of font info for 142 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,79p,2017b,1886s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
@@ -2432,10 +2433,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (47 pages, 902234 bytes).
+Output written on Abschlussarbeit.pdf (47 pages, 906368 bytes).
 PDF statistics:
- 1103 PDF objects out of 1200 (max. 8388607)
- 1007 compressed objects within 11 object streams
- 332 named destinations out of 1000 (max. 500000)
- 360 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1116 PDF objects out of 1200 (max. 8388607)
+ 1020 compressed objects within 11 object streams
+ 334 named destinations out of 1000 (max. 500000)
+ 368 words of extra memory for PDF output out of 10000 (max. 10000000)
 
