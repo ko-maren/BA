@@ -402,18 +402,9 @@
   \endentry
 
   \entry{imdbtour}{misc}{}
-    \name{author}{1}{}{%
-      {{hash=U}{%
-         family={Unbekannt},
-         familyi={U\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{U1}
-    \strng{fullhash}{U1}
-    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{U}
-    \field{sortinithash}{U}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
     \field{howpublished}{Webseite}
     \field{note}{Besucht 2019-09-25}
     \field{title}{{The Grand Tour, Technical Specifications}}
@@ -423,18 +414,9 @@
   \endentry
 
   \entry{imdbivory}{misc}{}
-    \name{author}{1}{}{%
-      {{hash=U}{%
-         family={Unbekannt},
-         familyi={U\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{U1}
-    \strng{fullhash}{U1}
-    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{U}
-    \field{sortinithash}{U}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
     \field{howpublished}{Webseite}
     \field{note}{Besucht 2019-09-25}
     \field{title}{{The Ivory Game, Technical Specifications}}
@@ -458,10 +440,10 @@
     \field{sortinithash}{V}
     \field{howpublished}{Webseite}
     \field{note}{Besucht 2019-10-28, v5.3.7}
-    \field{title}{Linux /Documentation}
+    \field{title}{Linux/Documentation/devicetree/usage-model.txt}
     \verb{url}
     \verb https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree
-    \verb /Documentation?h=v5.3.7
+    \verb /Documentation/devicetree/usage-model.txt?h=v5.3.7
     \endverb
   \endentry
 
@@ -480,10 +462,10 @@
     \field{sortinithash}{V}
     \field{howpublished}{Webseite}
     \field{note}{Besucht 2019-10-24, v5.3.7}
-    \field{title}{Linuxquellcode /driver}
+    \field{title}{Linuxquellcode /driver/mfd/mfd-core.c}
     \verb{url}
     \verb https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree
-    \verb /drivers?h=v5.3.7
+    \verb /drivers/mfd/mfd-core.c?h=v5.3.7
     \endverb
   \endentry
 
@@ -502,10 +484,10 @@
     \field{sortinithash}{V}
     \field{howpublished}{Webseite}
     \field{note}{Besucht 2019-10-24, v5.3.7}
-    \field{title}{Linuxquellcode /include}
+    \field{title}{Linuxquellcode /include/linux}
     \verb{url}
     \verb https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree
-    \verb /include?h=v5.3.7
+    \verb /include/linux?h=v5.3.7
     \endverb
   \endentry
 \enddatalist

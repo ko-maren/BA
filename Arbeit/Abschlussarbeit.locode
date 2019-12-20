@@ -9,15 +9,15 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {code}{\numberline {2.1}{\ignorespaces Funktionsdeklaration des \ac {ioctl} in der file\_operations Struktur \citep [S. 249f.]{schroder2009embedded}\relax }}{7}{code.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.2}{\ignorespaces Vereinfachte Funktionsdeklaration aus \cite [linux/uaccess.h, Zeile 140ff.]{linuxsourceinclude}\relax }}{8}{code.2.2}
+\contentsline {code}{\numberline {2.2}{\ignorespaces Vereinfachte Funktionsdeklaration aus \cite [uaccess.h, Zeile 140ff.]{linuxsourceinclude}\relax }}{8}{code.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.3}{\ignorespaces platform\_driver Struktur in \cite [linux/platform\_device.h, Zeile 184ff.]{linuxsourceinclude}\relax }}{8}{code.2.3}
+\contentsline {code}{\numberline {2.3}{\ignorespaces platform\_driver Struktur in \cite [platform\_device.h, Zeile 184ff.]{linuxsourceinclude}\relax }}{9}{code.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.4}{\ignorespaces Struktur resource in \cite [linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}\relax }}{9}{code.2.4}
+\contentsline {code}{\numberline {2.4}{\ignorespaces Struktur resource in \cite [ioport.h, Zeile 20ff.]{linuxsourceinclude}\relax }}{9}{code.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.5}{\ignorespaces Struktur mfd\_cell in \cite [linux/mfd/core.h, Zeile 29ff.]{linuxsourceinclude}\relax }}{10}{code.2.5}
+\contentsline {code}{\numberline {2.5}{\ignorespaces Struktur mfd\_cell in \cite [mfd/core.h, Zeile 29ff.]{linuxsourceinclude}\relax }}{10}{code.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {2.6}{\ignorespaces Funktionsdeklaration in \cite [linux/mfd/core.h, Zeile 130ff.]{linuxsourceinclude}\relax }}{10}{code.2.6}
+\contentsline {code}{\numberline {2.6}{\ignorespaces Funktionsdeklaration in \cite [mfd/core.h, Zeile 130ff.]{linuxsourceinclude}\relax }}{11}{code.2.6}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

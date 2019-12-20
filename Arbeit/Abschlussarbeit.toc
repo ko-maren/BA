@@ -62,7 +62,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Plattformunabh\IeC {\"a}ngige Tests}{27}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Tools f\IeC {\"u}r die Entwicklungsumgebung}{29}{section.4.3}
+\contentsline {section}{\numberline {4.3}Tools f\IeC {\"u}r die Zielplattform}{29}{section.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Fazit und Ausblick}{31}{chapter.5}
 \defcounter {refsection}{0}\relax 
@@ -70,12 +70,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.2}Ausblick}{32}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Anhang}{33}{appendix*.24}
+\contentsline {chapter}{Anhang}{33}{appendix*.25}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {A.1}Literaturverzeichnis}{33}{section.A.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {A.2}Abbildungsverzeichnis}{34}{section.A.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.3}Tabellenverzeichnis}{34}{section.A.3}
+\contentsline {section}{\numberline {A.3}Tabellenverzeichnis}{35}{section.A.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {A.4}Liste der Codeausschnitte}{35}{section.A.4}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  20 DEC 2019 13:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  20 DEC 2019 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1891,7 +1891,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 47.49985pt on input line 2.
 Package acronym Info: Label `acro:smpte' newly defined as it shall be overridde
 n
-although it is yet undefined on input line 19.
+although it is yet undefined on input line 20.
 ) [5
 
 
@@ -1937,7 +1937,7 @@ l.18
 
 
 ]
-<pictures/amira-product-image-data.jpg, id=314, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=315, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1949,7 +1949,7 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
-<pictures/2019-11-17_Bildkette.png, id=324, 668.4975pt x 144.54pt>
+<pictures/2019-11-17_Bildkette.png, id=325, 668.4975pt x 144.54pt>
 File: pictures/2019-11-17_Bildkette.png Graphic file (type png)
 <use pictures/2019-11-17_Bildkette.png>
 Package pdftex.def Info: pictures/2019-11-17_Bildkette.png  used on input line 
@@ -1993,7 +1993,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=367, 408.3255pt x 258.9675
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=368, 408.3255pt x 258.9675
 pt>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
@@ -2052,37 +2052,40 @@ Package hyperref Info: bookmark level for unknown code defaults to 0 on input l
 ine 30.
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10> not available
 (Font)              Font shape `T1/ppl/b/it' tried instead on input line 30.
- [7] [8]
+ [7]
+Package acronym Info: Label `acro:pci' newly defined as it shall be overridden
+although it is yet undefined on input line 58.
+ [8]
 Package acronym Info: Label `acro:mfd' newly defined as it shall be overridden
-although it is yet undefined on input line 90.
+although it is yet undefined on input line 92.
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--112
-
- []
-
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 126.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 126.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 126.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 126.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 126.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 126.
-
-Underfull \hbox (badness 10000) in paragraph at lines 144--148
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
 
  []
 
-[9] [10]) [11]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 128.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 128.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 128.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 128.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 128.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 128.
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 146--150
+
+ []
+
+[10]) [11]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
 Kapitel 3.
-<pictures/2019-11-17_FRA_Overview.png, id=535, 502.87875pt x 517.33275pt>
+<pictures/2019-11-17_FRA_Overview.png, id=541, 502.87875pt x 517.33275pt>
 File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
 <use pictures/2019-11-17_FRA_Overview.png>
 Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
@@ -2275,7 +2278,7 @@ Kapitel 4.
 
 
 ]
-<pictures/2019-11-28-testbackend.png, id=867, 550.4565pt x 461.92575pt>
+<pictures/2019-11-28-testbackend.png, id=872, 550.4565pt x 461.92575pt>
 File: pictures/2019-11-28-testbackend.png Graphic file (type png)
 <use pictures/2019-11-28-testbackend.png>
 Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
@@ -2383,7 +2386,19 @@ g: Al-go-rith-men und
 
 
 
-] (./Abschlussarbeit.lof)
+]
+Underfull \hbox (badness 7944) in paragraph at lines 7--7
+[]\T1/ppl/m/n/10.95 Verschiedene. \T1/ppl/m/sl/10.95 Linux/Documentation/device
+tree/usage-model.txt\T1/ppl/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 7--7
+[]\T1/ppl/m/n/10.95 Verschiedene. \T1/ppl/m/sl/10.95 Li-nuxquell-co-de /in-clu-
+de/-li-nux\T1/ppl/m/n/10.95 . Web-sei-te. Be-sucht
+ []
+
+(./Abschlussarbeit.lof)
 \tf@lof=\write11
 \openout11 = `Abschlussarbeit.lof'.
 
@@ -2391,13 +2406,13 @@ g: Al-go-rith-men und
 \tf@lot=\write12
 \openout12 = `Abschlussarbeit.lot'.
 
- (./Abschlussarbeit.locode
+ [34] (./Abschlussarbeit.locode
 Underfull \hbox (badness 2662) in paragraph at lines 10--10
  [][] [][]\T1/ppl/m/n/10.95 Funktionsdeklaration des [][] in der fi-le_operatio
 ns 
  []
 
-[34])
+)
 \tf@locode=\write13
 \openout13 = `Abschlussarbeit.locode'.
 
@@ -2411,16 +2426,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 6C55F5C5A4B3820116CBC771E0FE9F12;2705.
+(rerunfilecheck)             Checksum: C6755ED3B0F00E6A367E8D46B58645FA;2698.
 Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 \openout1 = `Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44633 strings out of 492642
- 820821 string characters out of 6133163
- 1300674 words of memory out of 5000000
- 47357 multiletter control sequences out of 15000+600000
+ 44640 strings out of 492642
+ 820877 string characters out of 6133163
+ 1313674 words of memory out of 5000000
+ 47362 multiletter control sequences out of 15000+600000
  600828 words of font info for 142 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,79p,2017b,1886s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2433,10 +2448,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (47 pages, 906368 bytes).
+Output written on Abschlussarbeit.pdf (47 pages, 907101 bytes).
 PDF statistics:
- 1116 PDF objects out of 1200 (max. 8388607)
- 1020 compressed objects within 11 object streams
- 334 named destinations out of 1000 (max. 500000)
+ 1122 PDF objects out of 1200 (max. 8388607)
+ 1026 compressed objects within 11 object streams
+ 336 named destinations out of 1000 (max. 500000)
  368 words of extra memory for PDF output out of 10000 (max. 10000000)
 

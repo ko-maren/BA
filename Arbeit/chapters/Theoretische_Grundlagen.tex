@@ -44,7 +44,7 @@ Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Use
 unsigned long copy_from_user(void *to, const void *from, unsigned long num);
 unsigned long copy_to_user(void *to, const void *from, unsigned long num);
 \end{lstlisting}
-\captionof{code}{Vereinfachte Funktionsdeklaration aus \cite[linux/uaccess.h, Zeile 140ff.]{linuxsourceinclude}} %überprüft am 3.12.
+\captionof{code}{Vereinfachte Funktionsdeklaration aus \cite[uaccess.h, Zeile 140ff.]{linuxsourceinclude}} %überprüft am 3.12.
 \end{lstfloat}
 
 Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, aber zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
@@ -53,14 +53,16 @@ Analog arbeitet das Gegenstück \textit{copy\_to\_user}. Hier gibt \textit{from}
 Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der nicht kopierten Bytes zurückgegeben. \citep[S. 250f.]{schroder2009embedded}%überprüft am 3.12.
 
 \section{Plattformtreiber}\label{sec:plat_t}
-Gerätetreiber, und damit auch Plattformtreiber, sind unter Linux im Kernel angesiedelt. Eigene Treiber werden hierzu meist modular entwickelt und nicht fest in den Kernel integriert. Allerdings muss auch der Programmierer bei den nachgeladenen Kernelmodulen auf die korrekte Nutzung des Speicherplatzes achten, da diese Module ebenfalls im Kernel laufen und somit ein Zugriffsfehler schwerwiegende Folgen hätte. \citep[S. 231ff.]{schroder2009embedded}%überprüft am 3.12.
+Gerätetreiber sind unter Linux im Kernel angesiedelt. Eigene Treiber werden hierzu meist modular entwickelt und nicht fest in den Kernel integriert. Allerdings muss auch der Programmierer bei den nachgeladenen Kernelmodulen auf die korrekte Nutzung des Speicherplatzes achten, da diese Module ebenfalls im Kernel laufen und somit ein Zugriffsfehler schwerwiegende Folgen hätte. \citep[S. 231ff.]{schroder2009embedded}%überprüft am 3.12.
+
+Es gibt im Kernel verschiedene Treiberarten, z.B. den Plattformtreiber und den \ac{pci}-Treiber. Bei letzterem kann das Gerät an einem \ac{pci} Bus mitteilen, von welchem Typ es ist und welche Speicherbereich es hat. Anderen Geräten ist dies nicht möglich, dann muss dem Kernel mitgeteilt werden, dass die Hardware vorhanden ist. Für diesen Fall werden Plattformtreiber verwendet. \cite{corbet2005linux}
 
 Damit die Treiber richtig funktionieren gibt es einige Bestandteile, die in jedem Modul wiederzufinden sind. Standardmäßig wird die Registrierung von Treiber und Gerät an unterschiedlichen Teilen des Programms ausgeführt. \cite{corbetplatform} %überprüft am 3.12.
 
 
 
 
-Jedes Kernelmodul besitzt mindestens eine \textit{init} und \textit{exit} Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers platziert. \cite[linux/module.h, Zeile 79ff.]{linuxsourceinclude}
+Jedes Kernelmodul besitzt mindestens eine \textit{init} und \textit{exit} Funktion. Hierzu gibt es eigene Makros, in welchen die Funktionen übergeben werden und somit den Kernel mit dem Treiber bekannt machen. Der Aufruf ist dann entweder beim Kernelboot bzw. beim Laden oder beim Entfernen des Treibers platziert. \cite[module.h, Zeile 79ff.]{linuxsourceinclude}
 %überprüft am 3.12.
 
 
@@ -77,7 +79,7 @@ struct platform_driver {
 	bool prevent_deferred_probe;
 };
 \end{lstlisting}
-\captionof{code}{\label{code:platform_driver}platform\_driver Struktur in \cite[linux/platform\_device.h, Zeile 184ff.]{linuxsourceinclude}}%überprüft am 3.12.
+\captionof{code}{\label{code:platform_driver}platform\_driver Struktur in \cite[platform\_device.h, Zeile 184ff.]{linuxsourceinclude}}%überprüft am 3.12.
 \end{lstfloat}
 
 Beim Laden des Treibers wird eine \textit{platform\_driver} Struktur übergeben. In dieser Struktur sind Zeiger auf die Funktionen gespeichert, die beim Erzeugen oder Löschen einer Instanz benötigt werden.  
@@ -102,7 +104,7 @@ struct resource {
 	struct resource *parent, *sibling, *child;
 };
 \end{lstlisting}
-\captionof{code}{\label{code:res}Struktur resource in \cite[linux/ioport.h, Zeile 20ff.]{linuxsourceinclude}}%überprüft am 3.12.
+\captionof{code}{\label{code:res}Struktur resource in \cite[ioport.h, Zeile 20ff.]{linuxsourceinclude}}%überprüft am 3.12.
 \end{lstfloat}
 
 Als erste Struktur wird die \textit{resource} näher betrachtet. Hier werden Parameter für einen Speicherbereich abgelegt, damit auf diesen zugegriffen werden kann. 
@@ -136,30 +138,30 @@ struct mfd_cell {
 [...]
 };
 \end{lstlisting}
-\captionof{code}{\label{code:mfd_cell}Struktur mfd\_cell in \cite[linux/mfd/core.h, Zeile 29ff.]{linuxsourceinclude}} %überprüft am 3.12.
+\captionof{code}{\label{code:mfd_cell}Struktur mfd\_cell in \cite[mfd/core.h, Zeile 29ff.]{linuxsourceinclude}} %überprüft am 3.12.
 \end{lstfloat}
 
 Die zweite Struktur wird benötigt um einem \ac{mfd} wichtige Parameter zum Anlegen mitzugeben. Aus diesem Grund werden in der \textit{mfd\_cell} Struktur lediglich die benötigten Parameter betrachtet. 
 
 In der Variable \textit{name} wird der Name des Treibers gespeichert. Durch die \textit{id} bekommt jede Plattformtreiberinstanz beim Allokieren eine spezifische Nummer.
 Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Datenzeiger, welcher an das untergeordnete Gerät weitergereicht wird. Da der Typ variieren kann, wird in \textit{pdata\_size} die zugehörige Datengröße übergeben. 
-In der Variable \textit{of\_compatible} wird eine sortierte Liste von strings gespeichert. Beginnend mit dem exakten Namen des Geräts folgt dann eine optionale Liste mit weiteren kompatiblen Geräten. \cite[devicetree/usage\_model.txt, Zeile 116ff.]{linuxsourcedocu} %überprüft am 3.12. 
+In der Variable \textit{of\_compatible} wird eine sortierte Liste von strings gespeichert. Beginnend mit dem exakten Namen des Geräts folgt dann eine optionale Liste mit weiteren kompatiblen Geräten. \cite[Zeile 116ff.]{linuxsourcedocu} %überprüft am 3.12. 
 Der Zeiger \textit{resources} speichert die zugehörige Ressource ab, bzw. ein Zeiger auf ein Array von Ressourcen. Die Anzahl der abgespeicherten Ressourcen wird in \textit{num\_resources} abgelegt.\\
 
 \begin{lstfloat}
 \begin{lstlisting}
 extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cell *cells, int n_devs, struct resource *mem_base,int irq_base, struct irq_domain *irq_domain);
 \end{lstlisting}
-\captionof{code}{\label{code:mfd}Funktionsdeklaration in \cite[linux/mfd/core.h, Zeile 130ff.]{linuxsourceinclude}}%überprüft am 3.12.
+\captionof{code}{\label{code:mfd}Funktionsdeklaration in \cite[mfd/core.h, Zeile 130ff.]{linuxsourceinclude}}%überprüft am 3.12.
 \end{lstfloat}
 
 Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. 
 Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}, wie oben erwähnt wird diese benötigt um das anzulegende Gerät näher zu beschreiben.
 Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräte angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. 
-Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. \cite[mfd/mfd-core.c, Zeile 359ff.]{linuxsourcedriver} %überprüft am 3.12.
+Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. \cite[Zeile 359ff.]{linuxsourcedriver} %überprüft am 3.12.
 
 
-In der Funktion ist zusätzlich implementiert, dass beim Entfernen des übergeordneten Gerät alle Untergeräte automatisch aufgelöst werden. \cite[mfd/mfd-core.c, Zeile 356f.]{linuxsourcedriver}%überprüft am 3.12.
+In der Funktion ist zusätzlich implementiert, dass beim Entfernen des übergeordneten Gerät alle Untergeräte automatisch aufgelöst werden. \cite[Zeile 356f.]{linuxsourcedriver}%überprüft am 3.12.
 
 
 %todo warum die Parameter nicht benötigt werden
