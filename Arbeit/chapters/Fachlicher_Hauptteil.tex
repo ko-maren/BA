@@ -1,5 +1,5 @@
 \chapter{\acl{fra}} \label{sec:haupt}
-In diesem Kapitel soll auf die  Vorgehensweise und die Implementierung des in Kapitel~\ref{sec:konzept} vorgestellten \ac{fra} eingegangen werden. Die Schwerpunkte liegen hierbei bei der Beschreibung des generischen Plattformtreibers, den \ac{ioctl}s, der Kernel- bzw. Userspaceimplementierung sowie der Einbindung in die bestehende Software. Damit es den Umfang der Arbeit nicht übersteigt, wird nur die \ac{xbar} softwareseitig implementiert.
+In diesem Kapitel wird auf die  Vorgehensweise und die Implementierung des in Kapitel~\ref{sec:konzept} vorgestellten \ac{fra} eingegangen werden. Die Schwerpunkte liegen hierbei bei der Beschreibung des generischen Plattformtreibers, den \ac{ioctl}s, der Kernel- bzw. Userspaceimplementierung sowie der Einbindung in die bestehende Software. Damit es den Umfang der Arbeit nicht übersteigt, wird nur die \ac{xbar} softwareseitig implementiert.
 
 %Aktuelle Implementierung
 %Theoretische Grundlagen o.ä.
@@ -44,7 +44,7 @@ struct afm_driver
 \captionof{code}{\label{code:afm_data}Struktur des Treibers}
 \end{lstfloat}
 
-Des Weitern wird beim Laden als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Diese Klasse wird in der, dem Treiber, zugehörigen Struktur \textit{afm\_driver} in der Variablen \textit{class} abgespeichert. 
+Des Weiteren wird beim Laden als Erstes eine Klasse erstellt, der später die einzelnen Module zugeordnet werden. Diese Klasse wird in der, dem Treiber, zugehörigen Struktur \textit{afm\_driver} in der Variablen \textit{class} abgespeichert. 
 
 In Linux werden die Geräte mit einer Major- und Minornummer in dem Ordner\textit{/dev/} erstellt, d.h. sie werden bereits mit diesen Nummern angelegt.
 Die Majornummer kennzeichnet üblicherweise den Treiber, zu welchem das Gerät gehört. Analog wird die Minornummer genutzt um auf das exakte Gerät zu referenzieren. \citep[S. 43f.]{corbet2005linux} %überprüft am 3.12. 
@@ -155,13 +155,13 @@ Zur besseren Übersichtlichkeit wurde sich für zwei Nameskonventionen eingefüh
 \subsection{Anlegen der Geräte}
 %im fpga treiber
 %todo evtl noch ein paar worte zum FRA, wofür werden die Strukturen benötigt
-Der Zugriff der Software auf die \ac{fpga}-Module soll über Geräte stattfinden. Durch die unterschiedlichen Funktionalitäten der Module, wie in Kapitel~\ref{sec:bildkette} erläutert, werden diese Geräte als Kindgeräte vom \ac{fpga} angelegt, d.h. kernelseitig wird dieser Bestandteil im vorhandenen \ac{fpga} Treiber implementiert. 
+Der Zugriff der Software auf die \ac{fpga}-Module soll über Geräte stattfinden. Durch die unterschiedlichen Funktionalitäten der Module (siehe Kapitel~\ref{sec:bildkette}) werden diese Geräte als Kindgeräte vom \ac{fpga} angelegt, d.h. kernelseitig wird dieser Bestandteil im vorhandenen \ac{fpga} Treiber implementiert. 
 
 \begin{lstfloat}
 \begin{lstlisting}
 struct arri_fra_mod_init 
 {
-	#define ARRIFPGA_FRA_MAX_NAME   ((uint32_t)50)
+#define ARRIFPGA_FRA_MAX_NAME   ((uint32_t)50)
 	char type[ARRIFPGA_FRA_MAX_NAME];
 	char name[ARRIFPGA_FRA_MAX_NAME];
 	uint32_t offset;
@@ -264,7 +264,7 @@ int32_t fra_xbar(struct fra_handle const *handle, const uint32_t transid, const 
 \captionof{code}{\label{code:fra_xbar} Funktion zum Setzen der \ac{xbar}}
 \end{lstfloat}
 
-Für die \ac{xbar} sind fünf spezifische Funktionen implementiert. In diesen Funktionen werden die Einstellungen gesetzt, die aktuellen Registerwerte protokolliert, auf aktuelle Fehlercodes überprüft und der aktuelle Status zurück gegeben. Da in allen Funktionen hauptsächlich auf die \ac{fra} \gls{middleware} zugegriffen wird und abgesehen von diesem Zugriff, nu die Daten aufbereitet werden, wird nur die \textit{fra\_xbar} Funktion exemplarisch betrachtet.\\
+Für die \ac{xbar} sind fünf spezifische Funktionen implementiert. In diesen Funktionen werden die Einstellungen gesetzt, die aktuellen Registerwerte protokolliert, auf aktuelle Fehlercodes überprüft und der aktuelle Status zurück gegeben. Da in allen Funktionen hauptsächlich auf die \ac{fra} \gls{middleware} zugegriffen wird und abgesehen von diesem Zugriff, nur die Daten aufbereitet werden, wird nur die \textit{fra\_xbar} Funktion exemplarisch betrachtet.\\
 
 In der Funktion im Codeausschnitt~\ref{code:fra_xbar} werden die Ein- und Ausgänge einer \ac{xbar} entsprechend dem übergebenen \textit{setting} verbunden.
 Durch das Makro \textit{FRA\_CHECK\_HANDLE\_TYPE} wird vorher überprüft, ob das Gerät im \textit{handle} eine \ac{xbar} ist. Wenn dies nicht der Fall ist, wird ein entsprechender Fehlercode zurückgegeben und die Funktion ist beendet. Diese Überprüfung findet auch bei den restlichen Funktionen in der \ac{fra} Bibliothek statt.
@@ -357,7 +357,7 @@ Durch die if - Bedingung in Zeile 11 wird überprüft, ob für das ausgewählte 
 
 
 \subsection{\acs{fra} Kernelbackend}
-Da die Wrapper lediglich alle benötigte Übergabeparameter an die Backendfunktionen weiterreichen, haben diese eine identische Funktionssignatur. 
+Da die Wrapper lediglich alle benötigten Übergabeparameter an die Backendfunktionen weiterreichen, haben diese eine identische Funktionssignatur. 
 Die einzelnen Funktionen unterscheiden sich im Kernelbackend nur durch die aufgerufenen \ac{ioctl}s und entsprechenden übergebenen Strukturen dazu. Beispielhaft soll hier wieder die Funktion zum Setzen eines Registers betrachtet werden. \\
 
 
@@ -391,7 +391,7 @@ int32_t fra_kernel_set_reg(struct fra_handle const *handle, const uint32_t trans
 \section{Einbindung ins \acl{geo}}\label{sec:soft}
 %anlegen der Devices in der software, öffnen der devices über den module_idx und abspeichern im entsprechenden handdle, abändern der funktionen von fpga zugriff auf fra zugriff und hw update lediglich über den module_idx des geo module möglich, da über den identischen namen geöffnet wurde und handle unter dem idx gespeichert ist, umstellen des hw update auf die neuen Funktionen
 %Bild?
-Um das \ac{fra} vollständig in der Kamerasoftware zu Implementieren müssen die Geräte angelegt, geöffnet, geupdatet und auch wieder geschlossen werden. Dies geschieht an verschiedenen Stellen in der Software und zum Großteil eng verknüpft mit dem \ac{geo}. Das \ac{geo} ist eine Softwarerepräsentation der Bildkette (siehe Abbildung~\ref{fig:bild}) und bildet die Module des \ac{fpga}s mit ihren Einstellungen ab..\\
+Um das \ac{fra} vollständig in der Kamerasoftware zu implementieren müssen die Geräte angelegt, geöffnet, geupdatet und auch wieder geschlossen werden. Dies geschieht an verschiedenen Stellen in der Software und zum Großteil eng verknüpft mit dem \ac{geo}. Das \ac{geo} ist eine Softwarerepräsentation der Bildkette (siehe Abbildung~\ref{fig:bild}) und bildet die Module des \ac{fpga}s mit ihren Einstellungen ab..\\
 
 
 Angelegt werden die Geräte aktuell beim Laden des \ac{fpga}s. An dieser Stelle ist bekannt, welche Firmware geladen wurde und entsprechend kann über eine Struktur bestimmt werden, ob und an welcher Stelle ein bestimmtes Modul vorhanden ist. Mit einem vorgegebenen Namen und Modultyp werden so die Geräte im Kernel angelegt. Anschließend kann in der kompletten Kamerasoftware davon ausgegangen werden, dass, sofern kein Fehler aufgetreten ist, die Geräte verfügbar sind. Das Anlegen der Geräte soll autark von der Software stattfinden, da diese in Zukunft ohne die Adressen der Module im \ac{fpga} auskommen soll. Da dieses Konzept den Rahmen der Arbeit übersteigen würde, wird es nicht näher betrachtet. \\

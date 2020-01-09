@@ -22,7 +22,7 @@ Damit entsteht die Notwenigkeit zwischen Userspace und Kernel aktiv Daten auszut
 Im folgenden soll lediglich der Zeiger auf das \acf{ioctl} betrachtet werden, da dieser im weiteren Teil der Arbeit eine wichtige Rolle spielt.
 Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur Verfügung gestellt. 
 
-%todo zeile zitieren, QUELLE
+
 \begin{lstfloat}
 \begin{lstlisting}
 int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsigned long arg);
@@ -44,18 +44,18 @@ Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Use
 unsigned long copy_from_user(void *to, const void *from, unsigned long num);
 unsigned long copy_to_user(void *to, const void *from, unsigned long num);
 \end{lstlisting}
-\captionof{code}{Vereinfachte Funktionsdeklaration aus \cite[uaccess.h, Zeile 140ff.]{linuxsourceinclude}} %überprüft am 3.12.
+\captionof{code}{\label{code:copy}Vereinfachte Funktionsdeklaration aus \cite[uaccess.h, Zeile 140ff.]{linuxsourceinclude}} %überprüft am 3.12.
 \end{lstfloat}
 
 Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, aber zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
-In der \textit{copy\_from\_user} werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
+In der \textit{copy\_from\_user} (siehe Codeausschnitt~\ref{code:code}) werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
 Analog arbeitet das Gegenstück \textit{copy\_to\_user}. Hier gibt \textit{from} allerdings die Speicherstelle im Kernel an und somit ist \textit{to} die Stelle im Userspace.
 Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der nicht kopierten Bytes zurückgegeben. \citep[S. 250f.]{schroder2009embedded}%überprüft am 3.12.
 
 \section{Plattformtreiber}\label{sec:plat_t}
 Gerätetreiber sind unter Linux im Kernel angesiedelt. Eigene Treiber werden hierzu meist modular entwickelt und nicht fest in den Kernel integriert. Allerdings muss auch der Programmierer bei den nachgeladenen Kernelmodulen auf die korrekte Nutzung des Speicherplatzes achten, da diese Module ebenfalls im Kernel laufen und somit ein Zugriffsfehler schwerwiegende Folgen hätte. \citep[S. 231ff.]{schroder2009embedded}%überprüft am 3.12.
 
-Es gibt im Kernel verschiedene Treiberarten, z.B. den Plattformtreiber und den \ac{pci}-Treiber. Bei letzterem kann das Gerät an einem \ac{pci} Bus mitteilen, von welchem Typ es ist und welche Speicherbereich es hat. Anderen Geräten ist dies nicht möglich, dann muss dem Kernel mitgeteilt werden, dass die Hardware vorhanden ist. Für diesen Fall werden Plattformtreiber verwendet. \cite{corbet2005linux}
+Es gibt im Kernel verschiedene Treiberarten, z.B. den Plattformtreiber und den \ac{pci}-Treiber. Bei letzterem kann das Gerät an einem \ac{pci} Bus mitteilen, von welchem Typ es ist und welchen Speicherbereich es hat. Anderen Geräten ist dies nicht möglich, dann muss dem Kernel mitgeteilt werden, dass die Hardware vorhanden ist. Für diesen Fall werden Plattformtreiber verwendet. \cite{corbet2005linux}
 
 Damit die Treiber richtig funktionieren gibt es einige Bestandteile, die in jedem Modul wiederzufinden sind. Standardmäßig wird die Registrierung von Treiber und Gerät an unterschiedlichen Teilen des Programms ausgeführt. \cite{corbetplatform} %überprüft am 3.12.
 
