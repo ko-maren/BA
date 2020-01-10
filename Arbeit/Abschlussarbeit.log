@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  9 JAN 2020 10:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.9)  10 JAN 2020 13:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1937,7 +1937,7 @@ l.18
 
 
 ]
-<pictures/amira-product-image-data.jpg, id=315, 1927.2pt x 836.12375pt>
+<pictures/amira-product-image-data.jpg, id=318, 1927.2pt x 836.12375pt>
 File: pictures/amira-product-image-data.jpg Graphic file (type jpg)
 <use pictures/amira-product-image-data.jpg>
 Package pdftex.def Info: pictures/amira-product-image-data.jpg  used on input l
@@ -1949,12 +1949,12 @@ Package acronym Info: Label `acro:rec' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 Package acronym Info: Label `acro:sdi' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
-<pictures/2019-11-17_Bildkette.png, id=325, 668.4975pt x 144.54pt>
-File: pictures/2019-11-17_Bildkette.png Graphic file (type png)
-<use pictures/2019-11-17_Bildkette.png>
-Package pdftex.def Info: pictures/2019-11-17_Bildkette.png  used on input line 
-38.
-(pdftex.def)             Requested size: 360.0pt x 77.8409pt.
+<pictures/2020-10-01-Bildkette_ohne.png, id=328, 531.78674pt x 151.767pt>
+File: pictures/2020-10-01-Bildkette_ohne.png Graphic file (type png)
+<use pictures/2020-10-01-Bildkette_ohne.png>
+Package pdftex.def Info: pictures/2020-10-01-Bildkette_ohne.png  used on input 
+line 38.
+(pdftex.def)             Requested size: 360.0pt x 102.73933pt.
 Package acronym Info: Label `acro:xbar' newly defined as it shall be overridden
 
 although it is yet undefined on input line 44.
@@ -1987,33 +1987,40 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.60 
-      [3 <./pictures/2019-11-17_Bildkette.png>]
+l.59 \paragraph
+               *{Problem 1: Locking} Bei dem Zugriff auf ein Modul muss imme...
+[3 <./pictures/2020-10-01-Bildkette_ohne.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<pictures/2019-11-17_ImplementierungNewvsOld.png, id=370, 408.3255pt x 258.9675
+<pictures/2019-11-17_ImplementierungNewvsOld.png, id=373, 408.3255pt x 258.9675
 pt>
 File: pictures/2019-11-17_ImplementierungNewvsOld.png Graphic file (type png)
 <use pictures/2019-11-17_ImplementierungNewvsOld.png>
 Package pdftex.def Info: pictures/2019-11-17_ImplementierungNewvsOld.png  used 
 on input line 77.
 (pdftex.def)             Requested size: 323.9978pt x 205.4909pt.
-Package acronym Info: Label `acro:fra' newly defined as it shall be overridden
-although it is yet undefined on input line 88.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.89 
-      [4])pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.5}) has been already used, duplicate ignored
+l.86 
+      [4]
+Package acronym Info: Label `acro:fra' newly defined as it shall be overridden
+although it is yet undefined on input line 88.
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.98 
+      [5 <./pictures/2019-11-17_ImplementierungNewvsOld.png>])pdfTeX warning (e
+xt4): destination with the same identifier (name{page.6}) has been already used
+, duplicate ignored
 <to be read again> 
                    \relax 
 l.121 \include{chapters/Einleitung}
-                                    [5 <./pictures/2019-11-17_ImplementierungNe
-wvsOld.png>]
+                                    [6]
 \openout2 = `chapters/Theoretische_Grundlagen.aux'.
 
  (./chapters/Theoretische_Grundlagen.texpdfTeX warning (ext4): destination with
@@ -2030,13 +2037,7 @@ Underfull \hbox (badness 1888) in paragraph at lines 18--19
 a-ben, muss der
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.20 D
-      amit entsteht die Notwenigkeit zwischen Userspace und Kernel aktiv Dat...
-[6
+[7
 
 
 
@@ -2054,241 +2055,240 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10> not available
 (Font)              Font shape `T1/ppl/b/it' tried instead on input line 30.
 
 
-LaTeX Warning: Reference `code:code' on page 7 undefined on input line 51.
+LaTeX Warning: Reference `code:code' on page 8 undefined on input line 51.
 
-[7]
+[8]
 Package acronym Info: Label `acro:pci' newly defined as it shall be overridden
 although it is yet undefined on input line 58.
- [8]
+ [9]
 Package acronym Info: Label `acro:mfd' newly defined as it shall be overridden
 although it is yet undefined on input line 92.
+<pictures/2020-01-10-MFD.png, id=466, 358.33875pt x 326.4195pt>
+File: pictures/2020-01-10-MFD.png Graphic file (type png)
+<use pictures/2020-01-10-MFD.png>
+Package pdftex.def Info: pictures/2020-01-10-MFD.png  used on input line 98.
+(pdftex.def)             Requested size: 143.9978pt x 131.17313pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--114
-
- []
-
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 128.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 128.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 128.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 128.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 128.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 128.
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 146--150
+Underfull \hbox (badness 10000) in paragraph at lines 121--125
 
  []
 
-[10]) [11]
+[10 <./pictures/2020-01-10-MFD.png>]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 139.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 139.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 139.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 139.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 139.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 139.
+ [11]
+Underfull \hbox (badness 10000) in paragraph at lines 157--161
+
+ []
+
+) [12]
 \openout2 = `chapters/Fachlicher_Hauptteil.aux'.
 
  (./chapters/Fachlicher_Hauptteil.tex
 Kapitel 3.
-<pictures/2019-11-17_FRA_Overview.png, id=543, 502.87875pt x 517.33275pt>
-File: pictures/2019-11-17_FRA_Overview.png Graphic file (type png)
-<use pictures/2019-11-17_FRA_Overview.png>
-Package pdftex.def Info: pictures/2019-11-17_FRA_Overview.png  used on input li
-ne 12.
-(pdftex.def)             Requested size: 360.0pt x 370.34795pt.
-[12
+<pictures/2020-01-10_FRA_Overview.png, id=553, 542.62724pt x 516.12825pt>
+File: pictures/2020-01-10_FRA_Overview.png Graphic file (type png)
+<use pictures/2020-01-10_FRA_Overview.png>
+Package pdftex.def Info: pictures/2020-01-10_FRA_Overview.png  used on input li
+ne 11.
+(pdftex.def)             Requested size: 360.0pt x 342.41768pt.
+<pictures/2020-01-10-SequKernel.png, id=556, 552.8655pt x 367.3725pt>
+File: pictures/2020-01-10-SequKernel.png Graphic file (type png)
+<use pictures/2020-01-10-SequKernel.png>
+Package pdftex.def Info: pictures/2020-01-10-SequKernel.png  used on input line
+ 19.
+(pdftex.def)             Requested size: 360.0pt x 239.22092pt.
+[13
 
 
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
-
- []
-
-[13 <./pictures/2019-11-17_FRA_Overview.png>]
-Underfull \hbox (badness 1275) in paragraph at lines 59--60
-\T1/ppl/m/n/10.95 frei-ge-ge-ben, der Platt-form-trei-ber ab-ge-mel-det und die
- er-stell-te Klas-se
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+] [14 <./pictures/2020-01-10_FRA_Overview.png>]
+LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 50.
+ [15 <./pictures/2020-01-10-SequKernel.png>] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 126--128
 
  []
 
 Package acronym Info: Label `acro:pid' newly defined as it shall be overridden
-although it is yet undefined on input line 104.
+although it is yet undefined on input line 130.
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--108
+Underfull \hbox (badness 10000) in paragraph at lines 130--134
 
  []
 
-[15]
-Underfull \hbox (badness 1360) in paragraph at lines 109--111
+
+Underfull \hbox (badness 1360) in paragraph at lines 135--137
 \T1/ppl/m/n/10.95 wer-den. Auf-grund der Zu-grif-fe durch ver-schie-de-ne Pro-z
 es-se be-steht
  []
 
 
-Underfull \hbox (badness 4048) in paragraph at lines 109--111
+Underfull \hbox (badness 4048) in paragraph at lines 135--137
 \T1/ppl/m/n/10.95 oh-ne Pro-to-kol-lie-rung kein ein-heit-li-cher Über-blick üb
 er die Zu-grif-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--111
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
+Underfull \hbox (badness 10000) in paragraph at lines 144--147
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--121
-
- []
-
-[16]
-Underfull \hbox (badness 1038) in paragraph at lines 138--141
+Underfull \hbox (badness 1038) in paragraph at lines 164--167
 \T1/ppl/m/n/10.95 ge-füllt und dann zu-rück in den User-space über-ge-ben. Re-g
 is-ter über
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--141
+Underfull \hbox (badness 10000) in paragraph at lines 164--167
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 147--148
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
 
  []
 
-[17] [18]
-Underfull \hbox (badness 2221) in paragraph at lines 193--195
+[19]
+Underfull \hbox (badness 2221) in paragraph at lines 219--221
 \T1/ppl/m/n/10.95 zess-s-pe-zi-fi-sche Ein-stel-lun-gen vor-zu-neh-men, muss di
 e \T1/ppl/m/it/10.95 open \T1/ppl/m/n/10.95 Funk-ti-on
  []
 
 
-Underfull \hbox (badness 2229) in paragraph at lines 193--195
+Underfull \hbox (badness 2229) in paragraph at lines 219--221
 \T1/ppl/m/n/10.95 im-ple-men-tiert wer-den. Im Um-kehrschluss wer-den die Ein-s
 tel-lun-gen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--195
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 242--246
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 265--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--220
-
- []
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 239--242
-
- []
-
-
-Underfull \hbox (badness 1342) in paragraph at lines 267--268
+Underfull \hbox (badness 1342) in paragraph at lines 293--294
 \T1/ppl/m/n/10.95 zu-rück ge-ge-ben. Da in al-len Funk-tio-nen haupt-säch-lich 
 auf die [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--268
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
-
-Underfull \hbox (badness 1297) in paragraph at lines 269--272
+[22]
+Underfull \hbox (badness 1297) in paragraph at lines 295--298
 \T1/ppl/m/n/10.95 ei-ner [][] ent-spre-chend dem über-ge-be-nen \T1/ppl/m/it/10
 .95 set-ting \T1/ppl/m/n/10.95 ver-bun-den. Durch
  []
 
 
-Underfull \hbox (badness 2591) in paragraph at lines 269--272
+Underfull \hbox (badness 2591) in paragraph at lines 295--298
 \T1/ppl/m/n/10.95 das Ma-kro \T1/ppl/m/it/10.95 FRA_CHECK_HANDLE_TYPE \T1/ppl/m
 /n/10.95 wird vor-her über-prüft, ob
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--272
+Underfull \hbox (badness 10000) in paragraph at lines 295--298
 
  []
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 297--300
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
 
  []
 
-[21]
-Underfull \hbox (badness 1742) in paragraph at lines 303--305
+[23]
+Underfull \hbox (badness 1742) in paragraph at lines 329--331
 []\T1/ppl/m/n/10.95 In der in-itia-len Funk-ti-on \T1/ppl/m/it/10.95 fra_init \
 T1/ppl/m/n/10.95 wer-den ver-schie-de-ne Ein-stel-lun-gen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--305
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
-
- []
-
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 360--362
+Underfull \hbox (badness 10000) in paragraph at lines 360--361
+
+ []
+
+[24]
+Underfull \hbox (badness 1424) in paragraph at lines 386--388
 []\T1/ppl/m/n/10.95 Da die Wrap-per le-dig-lich al-le be-nö-tig-ten Über-ga-be-
 pa-ra-me-ter an die
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--362
+Underfull \hbox (badness 10000) in paragraph at lines 386--388
 
  []
 
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
-[24]
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
-) [25]
+[26]) [27]
 \openout2 = `chapters/Test.aux'.
 
  (./chapters/Test.tex
 Kapitel 4.
-[26
+[28
 
 
 
 ]
-<pictures/2019-11-28-testbackend.png, id=874, 550.4565pt x 461.92575pt>
+<pictures/2019-11-28-testbackend.png, id=908, 559.49025pt x 560.69475pt>
 File: pictures/2019-11-28-testbackend.png Graphic file (type png)
 <use pictures/2019-11-28-testbackend.png>
 Package pdftex.def Info: pictures/2019-11-28-testbackend.png  used on input lin
 e 34.
-(pdftex.def)             Requested size: 360.0pt x 302.10896pt.
- [27 <./pictures/2019-11-28-testbackend.png>]
+(pdftex.def)             Requested size: 360.0pt x 360.7855pt.
+
 Underfull \hbox (badness 1292) in paragraph at lines 58--59
 []\T1/ppl/m/n/10.95 Damit die vir-tu-el-le Hard-wa-re rich-tig in-itia-li-siert
  wird, muss für die
@@ -2299,12 +2299,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
-
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-
+[30 <./pictures/2019-11-28-testbackend.png>]
 Underfull \hbox (badness 1596) in paragraph at lines 66--68
 \T1/ppl/m/n/10.95 Ba-ckend-funk-tio-nen ist, im Ver-gleich zum Ker-nel-ba-ckend
 , ver-ein-facht
@@ -2315,7 +2315,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
-[28]
+
 Underfull \hbox (badness 10000) in paragraph at lines 71--74
 
  []
@@ -2325,12 +2325,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-
+[31]
 Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
  []
 
-[29]
+
 Underfull \hbox (badness 10000) in paragraph at lines 89--90
 []\T1/ppl/m/n/10.95 Ein wei-te-res nütz-li-ches Tool für die Ent-wick-lungs-ar-
 beit ist das
@@ -2353,16 +2353,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--94
 
  []
 
-) [30]
+) [32]
 \openout2 = `chapters/Ausblick.aux'.
 
  (./chapters/Ausblick.tex
 Kapitel 5.
-[31
+[33
 
 
 
-]) [32]
+]) [34]
 \openout2 = `chapters/Anhang.aux'.
 
  (./chapters/Anhang.tex
@@ -2386,7 +2386,7 @@ Underfull \hbox (badness 2334) in paragraph at lines 7--7
 g: Al-go-rith-men und
  []
 
-[33
+[35
 
 
 
@@ -2410,7 +2410,7 @@ de/-li-nux\T1/ppl/m/n/10.95 . Web-sei-te. Be-sucht
 \tf@lot=\write12
 \openout12 = `Abschlussarbeit.lot'.
 
- [34] (./Abschlussarbeit.locode
+ [36] (./Abschlussarbeit.locode
 Underfull \hbox (badness 2662) in paragraph at lines 10--10
  [][] [][]\T1/ppl/m/n/10.95 Funktionsdeklaration des [][] in der fi-le_operatio
 ns 
@@ -2420,7 +2420,7 @@ ns
 \tf@locode=\write13
 \openout13 = `Abschlussarbeit.locode'.
 
-) [35]
+) [37]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
  (./Abschlussarbeit.aux (./chapters/Vorspann.aux)
@@ -2430,7 +2430,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: C6755ED3B0F00E6A367E8D46B58645FA;2698.
+(rerunfilecheck)             Checksum: A946764EBBF6750321BDFD6ED7A87C6B;2698.
 
 
 LaTeX Warning: There were undefined references.
@@ -2440,11 +2440,11 @@ Package logreq Info: Writing requests to 'Abschlussarbeit.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44642 strings out of 492642
- 820899 string characters out of 6133163
- 1313674 words of memory out of 5000000
- 47364 multiletter control sequences out of 15000+600000
- 600828 words of font info for 142 fonts, out of 8000000 for 9000
+ 44696 strings out of 492642
+ 821996 string characters out of 6133163
+ 1288148 words of memory out of 5000000
+ 47406 multiletter control sequences out of 15000+600000
+ 602424 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,79p,2017b,1886s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
@@ -2456,10 +2456,10 @@ e/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on Abschlussarbeit.pdf (47 pages, 907545 bytes).
+Output written on Abschlussarbeit.pdf (49 pages, 962136 bytes).
 PDF statistics:
- 1122 PDF objects out of 1200 (max. 8388607)
- 1026 compressed objects within 11 object streams
- 336 named destinations out of 1000 (max. 500000)
- 368 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1163 PDF objects out of 1200 (max. 8388607)
+ 1059 compressed objects within 11 object streams
+ 345 named destinations out of 1000 (max. 500000)
+ 378 words of extra memory for PDF output out of 10000 (max. 10000000)
 

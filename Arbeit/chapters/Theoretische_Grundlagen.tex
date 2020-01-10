@@ -89,7 +89,18 @@ In dieser Arbeit werden lediglich die \textit{probe} und \textit{remove} Funktio
 Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} %überprüft am 3.12.
 
 \section{\acl{mfd}}\label{sec:mfd_t}
-Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, benötigt man die Möglichkeit es als \ac{mfd} anzulegen. \cite{bellonimfd} %überprüft am 3.12.\\
+Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, benötigt man die Möglichkeit es als \ac{mfd} anzulegen. \cite{bellonimfd} %überprüft am 3.12.\\ 
+
+Auf der Abbildung~\ref{fig:mfd} sieht man die Beziehung zwischen dem Elterngerät (links) und den Kindergeräten (rechts), die jeweils verschiedene Funktionalitäten haben können.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width = 0.4\linewidth]{pictures/2020-01-10-MFD.png}
+	\smallskip
+	\caption{Schema zur Funktionsweise des \ac{mfd}}
+	\label{fig:mfd}
+\end{figure} 
+
 
 Bevor die Funktion zum Anlegen von \ac{mfd} näher betrachtet wird, sollen zunächst zwei benötigte Strukturen erläutert werden.
 

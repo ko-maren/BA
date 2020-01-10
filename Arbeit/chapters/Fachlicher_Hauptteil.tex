@@ -5,31 +5,51 @@ In diesem Kapitel wird auf die  Vorgehensweise und die Implementierung des in Ka
 %Theoretische Grundlagen o.ä.
 %Umsetzung
 \section{Einführung}
-Die Konzeptionierung wurde bereits in Kapitel~\ref{sec:konzept} vorgestellt und soll mithilfe der theoretischen Grundlagen vertieft werden. Für die Umsetzung des \gls{framework} wird dies in verschiedene Ebenen aufgeteilt (siehe Abbildung~\ref{fig:overview}). 
 
 \begin{figure}[!hbtp]
 	\centering
-	\includegraphics[width = \linewidth]{pictures/2019-11-17_FRA_Overview.png}
+	\includegraphics[width = \linewidth]{pictures/2020-01-10_FRA_Overview.png}
 	\smallskip
 	\caption{Darstellung des Aufbaus des \ac{fra}}
 	\label{fig:overview}
 \end{figure} 
 
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width = \linewidth]{pictures/2020-01-10-SequKernel.png}
+	\smallskip
+	\caption{Sequenzdiagramm des \ac{fra}}
+	\label{fig:sequkern}
+\end{figure} 
+
+Die Konzeptionierung wurde bereits in Kapitel~\ref{sec:konzept} vorgestellt und soll mithilfe der theoretischen Grundlagen vertieft werden. Für die Umsetzung des \gls{framework} wird dies in verschiedene Ebenen aufgeteilt (siehe Abbildung~\ref{fig:overview}). 
+
+
 Die Kamerasoftware läuft mit mehreren Prozessen, die parallel auf die Hardware zugreifen. Mit ein \gls{handle} greifen die Prozesse über die \ac{fra} Bibliothek auf die einzelnen Module zu. Durch die Abstraktion ist es möglich, alle Zugriffe zu protokollieren und eine schnellere Fehlersuche durchzuführen. 
 Alle elementaren \ac{fra} Funktionen sind als Wrapper in der \ac{fra} \gls{middleware} abgebildet. Beim Öffnen eines Geräts wird ein \ac{fra} Backend übergeben und abgespeichert. In der \gls{middleware} werden im Wrapper, die entsprechenden Funktionen im richtigen Backend aufgerufen. 
 Auf das Testbackend wird in Kapitel~\ref{sec:test} näher eingegangen. Im Kernelbackend werden \ac{ioctl}s aufgerufen, welche im generischen Kerneltreiber die Speicherbereiche im \ac{fpga} setzt oder ausliest.
+Das Sequenzdiagramm in Abbildung~\ref{fig:sequkern} veranschaulicht die unterschiedlichen Zugriffe.
 Damit es möglich ist die Geräte zu öffnen, müssen diese vorher erstellt werden. Dies geschieht beim Laden des \ac{fpga}s im bestehenden \ac{fpga} Treiber. Zum Anlegen werden der Modulname, der Typ, die Speicheradresse und die Größe benötigt. 
 
 
 
+
+
 \section{Generischer Plattformtreiber} \label{sec:plat}
-Zunächst soll auf den Plattformtreiber eingegangen werden, der eine einwandfreie Kommunikation zwischen den Firmware Modulen im \ac{fpga} und dem Kernel gewährleisten soll.
+Damit eine einwandfreie Kommunikation zwischen den Firmware Modulen im \ac{fpga} und dem Kernel gewährleisten werden kann, benötigt man einen generischen Plattformtreiber.
+Für die grundlegende  Funktionsweise eines Treibers werden die folgenden Funktionen benötigt (siehe Kapitel~\ref{sec:plat_t}) und in diesem Kapitel näher erläutert:
+\begin{itemize}
+	\item \textit{afm\_init\_driver()}
+	\item \textit{afm\_exit\_driver()}
+	\item \textit{afm\_probe()}
+	\item \textit{afm\_remove()}
+\end{itemize}
 
 
-Wie in Kapitel~\ref{sec:plat_t} bereits erläutert, werden für die grundlegende Funktionsweise eines Treiber verschiedene Funktionen benötigt. Zunächst soll auf die Registrierungs- bzw. Aufräumfunktion des Treibers eingegangen werden.\\
-
-
+\paragraph*{\textit{afm\_init\_driver()}}
 Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz allokiert. 
+
+
 \begin{lstfloat}
 \begin{lstlisting}
 struct afm_driver
@@ -50,16 +70,19 @@ In Linux werden die Geräte mit einer Major- und Minornummer in dem Ordner\texti
 Die Majornummer kennzeichnet üblicherweise den Treiber, zu welchem das Gerät gehört. Analog wird die Minornummer genutzt um auf das exakte Gerät zu referenzieren. \citep[S. 43f.]{corbet2005linux} %überprüft am 3.12. 
 Seit der Kernelverion 2.6 arbeitet dieser intern nicht mehr mit Major- und Minornummern, sondern mit Gerätenummern. Die 32-Bit Variable setzt sich aus den beiden Nummern zusammen. \citep[Seite 244]{schroder2009embedded}%überprüft am 3.12.
 
-Die Majornummer kennzeichnet den Treiber und wird in der globalen Treiberstruktur als \textit{major\_id} gespeichert. Für die Minornummer wird in der Datenstruktur eine Liste \textit{minor\_list[AFM\_MAX]} und ein zugehöriges Spinlock \textit{minor\_spinlock} initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die bei jedem Module individuell ist und gleichzeitig wird dadurch die Anzahl der möglichen Module auf \textit{AFM\_MAX} begrenzt. Das Spinlock sorgt bei der Auswahl der Minornummer für einen konfliktfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. 
+Die Majornummer kennzeichnet den Treiber und wird in der globalen Treiberstruktur als \textit{major\_id} gespeichert. Für die Minornummer wird in der Datenstruktur eine Liste \textit{minor\_list[AFM\_MAX]} und ein zugehöriges \gls{spinlock} \textit{minor\_spinlock} initialisiert. Über die Liste wird später eine freie Nummer ausgewählt, die bei jedem Module individuell ist und gleichzeitig wird dadurch die Anzahl der möglichen Module auf \textit{AFM\_MAX} begrenzt. Das \gls{spinlock} sorgt bei der Auswahl der Minornummer für einen konfliktfreien Vorgang, sodass keine Nummer doppelt vergeben werden kann. 
 
 
 Am Ende der initialen Funktion wird der Plattformtreiber mit der \textit{platfrom\_driver} Struktur (siehe Codeausschnitt~\ref{code:platform_driver}) registriert. Damit werden die initiale Funktion zum Anlegen, aber auch die Funktion zum Deinitialisieren der Geräte übergeben.
 
 
-Analog wird beim Freigeben des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstellte Klasse aufgelöst.\\
+\paragraph*{\textit{afm\_exit\_driver()}}
+Analog wird beim Beenden des Treibers der allokierte speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstelle Klasse wird aufgelöst.
 
 
+\paragraph*{\textit{afm\_probe()}}
 Beim Anlegen einer Instanz vom Treiber wird die \textit{probe} Funktion des Plattformtreibers aufgerufen und es wird der Modultyp und der Name in einer \textit{arri\_fra\_mod\_config} Struktur zur Verfügung gestellt. In der initialen Funktion der Instanz wird diese Struktur genutzt um spezifische Einstellungen für jedes einzelnes Gerät festgelegt und in einer entsprechenden Datenstruktur (siehe Codeausschnitt~\ref{code:afm_device}) gespeichert. 
+
 %todo evtl tabelle zur erklärung!
 %todo aussotieren
 \begin{lstfloat}
@@ -86,10 +109,13 @@ struct afm_device
 \end{lstfloat}
 
 Der einzige Übergabeparameter der Probefunktion ist die Struktur des \textit{platform\_device}, diese wird in dem Zeiger \textit{pdev} gespeichert. 
-Aus der Liste der Minornummern (siehe Codeausschnitt~\ref{code:afm_data}) wird nach dem Sperren des zugehörigen Spinlocks eine freie Nummer ausgewählt und als \textit{minor\_id} gespeichert, sowie in der Liste als verwendet gesetzt. Danach wird das Spinlock wieder freigegeben.
+Aus der Liste der Minornummern (siehe Codeausschnitt~\ref{code:afm_data}) wird nach dem Sperren des zugehörigen \glspl{spinlock} eine freie Nummer ausgewählt und als \textit{minor\_id} gespeichert, sowie in der Liste als verwendet gesetzt. Danach wird das \gls{spinlock} wieder freigegeben.
 Anschließend wird mit Hilfe der Majornummer und der Minornummer ein Gerät erstellt und als \textit{cdev} gespeichert. 
 %todo vorteile statischer speicher
-Damit das Öffnen der Geräte auf eine bestimmte Anzahl limitiert ist, wird beim Initialisieren der Instanz ein Array der \textit{afm\_file} Struktur angelegt. Dadurch wird gleichzeitig der Speicherplatz statisch zur Kompilierzeit reserviert. Durch den Spinlock \textit{open\_spinlock} wird später dafür gesorgt, dass Kollisionen und Raceconditions vermieden werden.
+Damit das Öffnen der Geräte auf eine bestimmte Anzahl limitiert ist, wird beim Initialisieren der Instanz ein Array der \textit{afm\_file} Struktur angelegt. Dadurch wird gleichzeitig der Speicherplatz statisch zur Kompilierzeit reserviert. Durch den \gls{spinlock} \textit{open\_spinlock} wird später dafür gesorgt, dass Kollisionen und Raceconditions vermieden werden.
+
+\paragraph*{\textit{afm\_remove()}}
+Bei dem Entfernen einer Instanz wird zunächst das, unter \textit{cdev}, gespeicherte Gerät aufgelöst. Noch geöffnete Geräte werden zwangsläufig geschlossen und der Nutzer wird durch eine Fehlermeldung über die Vorgehensweise informiert.
 
 %todo base/res
 
@@ -213,7 +239,7 @@ struct afm_file {
 %todo caption umbenennen
 \end{lstfloat}
 
-Beim Öffnen eines Geräts wird, nachdem das entsprechende Spinlock (\textit{open\_spinlock}) gesperrt wurde, nach einem freien Dateieintrag zum Öffnen gesucht. In jedem Durchgang wird die Variable \textit{in\_use} überprüft, entsprechend dem Define kann dann festgestellt werden, ob es noch möglich ist ein Gerät zu öffnen. Wurde eine freie Stelle gefunden, wird der Parameter auf \textit{AFM\_USED} gesetzt und das Spinlock wieder freigegeben.
+Beim Öffnen eines Geräts wird, nachdem das entsprechende \gls{spinlock} (\textit{open\_spinlock}) gesperrt wurde, nach einem freien Dateieintrag zum Öffnen gesucht. In jedem Durchgang wird die Variable \textit{in\_use} überprüft, entsprechend dem Define kann dann festgestellt werden, ob es noch möglich ist ein Gerät zu öffnen. Wurde eine freie Stelle gefunden, wird der Parameter auf \textit{AFM\_USED} gesetzt und das \gls{spinlock} wieder freigegeben.
 Wenn die maximale Anzahl erreicht ist, wird eine Fehlermeldung ausgegeben und ein Fehlercode zurückgegeben.
 Die Variable \textit{dev} wird auf das geöffnete Gerät gesetzt, analog wird \textit{minor} auf die verwendete Minornummer und \textit{file} auf die, in der \textit{open} Methode, übergebene Datei gesetzt. 
 Die anderen Parameter beschreiben den Prozess, welcher das Gerät öffnet und werden durch ein \ac{ioctl} entsprechend beschrieben.\\
