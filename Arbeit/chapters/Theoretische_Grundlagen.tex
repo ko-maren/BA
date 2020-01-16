@@ -48,7 +48,7 @@ unsigned long copy_to_user(void *to, const void *from, unsigned long num);
 \end{lstfloat}
 
 Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, aber zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
-In \textit{copy\_from\_user} (siehe Codeausschnitt~\ref{code:code}) werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
+In \textit{copy\_from\_user} (siehe Codeausschnitt~\ref{code:copy}) werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
 Analog arbeitet das Gegenstück \textit{copy\_to\_user}. Hier gibt \textit{from} allerdings die Speicherstelle im Kernel an und somit ist \textit{to} die Stelle im Userspace.
 Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der nicht kopierten Bytes zurückgegeben. \citep[S. 250f.]{schroder2009embedded}%überprüft am 3.12.
 
@@ -95,7 +95,7 @@ Auf der Abbildung~\ref{fig:mfd} sieht man die Beziehung zwischen dem Elterngerä
 
 \begin{figure}[!hbtp]
 	\centering
-	\includegraphics[width = 0.4\linewidth]{pictures/2020-01-10-MFD.png}
+	\includegraphics[width = 0.4\linewidth]{pictures/2020-01-16-MFD.eps}
 	\smallskip
 	\caption{Schema zur Funktionsweise des \ac{mfd}}
 	\label{fig:mfd}

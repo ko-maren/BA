@@ -8,15 +8,15 @@ In diesem Kapitel wird auf die  Vorgehensweise und die Implementierung des in Ka
 
 \begin{figure}[!hbtp]
 	\centering
-	\includegraphics[width = \linewidth]{pictures/2020-01-10_FRA_Overview.png}
+	\includegraphics[width = 0.9\linewidth]{pictures/2020-01-16_FRA_Overview.eps}
 	\smallskip
 	\caption{Darstellung des Aufbaus des \ac{fra}}
 	\label{fig:overview}
 \end{figure} 
 
-\begin{figure}[!hbtp]
+\begin{figure}[!hb]
 	\centering
-	\includegraphics[width = \linewidth]{pictures/2020-01-10-SequKernel.png}
+	\includegraphics[width = \linewidth]{pictures/2020-01-16-SequKernel.eps}
 	\smallskip
 	\caption{Beispielhaftes Sequenzdiagramm des \ac{fra}}
 	\label{fig:sequkern}
@@ -38,6 +38,7 @@ Damit es möglich ist, die Geräte zu öffnen, müssen diese vorher erstellt wer
 \section{Generischer Plattformtreiber} \label{sec:plat}
 Damit eine einwandfreie Kommunikation zwischen den Firmware-Modulen im \ac{fpga} und dem Kernel gewährleisten werden kann, benötigt man einen generischen Plattformtreiber.
 Für die grundlegende  Funktionsweise eines Treibers werden die folgenden Funktionen benötigt (siehe Kapitel~\ref{sec:plat_t}) und in diesem Kapitel näher erläutert:
+
 \begin{itemize}
 	\item \textit{afm\_init\_driver()}
 	\item \textit{afm\_exit\_driver()}

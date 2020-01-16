@@ -60,6 +60,9 @@
 
 %% spezielles Zeug
 \usepackage{Abschlussarbeit}
+\usepackage{epstopdf}
+
+
 
 \usepackage{thmtools}
 \declaretheorem[style=Definition, title=Definition, numberwithin=chapter]{dfn}
@@ -95,7 +98,8 @@
 		numbersep=5pt,
 		numberstyle=\tiny\color{mygray},
 		breakatwhitespace=false,
-		morekeywords={uint8\_t, spinlock\_t, uint32\_t, bool, NULL, int32\_t},
+		morekeywords={uint8\_t, spinlock\_t, uint32\_t, bool, NULL, int32\_t, resource\_size\_t,
+					  size\_t, u8, \_\_iomem},
 		tabsize=2,	
 		%frame=single, %todo ja oder nein??
 		breaklines=true}
