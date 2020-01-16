@@ -1,25 +1,25 @@
 \chapter{Grundlagen Linux} \label{sec:grund}
-Zu Beginn sollen einige Grundlagen näher erläutert werden, die zum Erstellen der Arbeit essenziell waren.
+Zu Beginn sollen einige Grundlagen näher erläutert werden, die für die Erstellung der Arbeit essenziell waren.
 
 \section{Linux - Kernel und Userspace}\label{sec:linux}
 Da das Zielsystem auf Linux läuft, soll zunächst dieses Betriebssystem betrachtet werden. 
-Im Herbst 1991 wurde die erste Version des Systems von Linus Torvalds veröffentlicht und der Gründer kümmert sich, mit Unterstützung, weiterhin um die Entwicklung des frei verfügbaren Betriebssystem. \citep[S. 53f.]{plotner2012linux}
+Im Herbst 1991 wurde die erste Version des Systems von Linus Torvalds veröffentlicht und der Gründer kümmert sich, mit Unterstützung, weiterhin um die Entwicklung des frei verfügbaren Betriebssystems. \citep[S. 53f.]{plotner2012linux}
  
 Der Name Linux bezeichnet dabei eigentlich nur den Kern des Systems, auch Kernel genannt. Zusätzlich benötigt man noch System- und Anwendersoftware. Oft wird dieser Teil als Userspace zusammengefasst. \citep[S. 46]{plotner2012linux} 
 
 Der Kernel hat verschiedene Aufgaben. Unter anderem ist er für die Prozess- und die Speicherverwaltung sowie das Gerätemanagement zuständig. \citep[S. 234]{schroder2009embedded} 
 %überprüft am 3.12.
 
-Im Normalfall hat der Nutzer aus dem Userspace keinen direkten Zugriff auf die Kernelfunktionen und die Hardware. Nur über Systemaufrufe, auch Syscalls, hat ein Programm im Userspace die Möglichkeit Änderungen an der Hardware zu kommunizieren beziehungsweise bestimmte Funktionen im Kernel zu nutzen. \citep[S. 124]{plotner2012linux} 
-Die Brücke zwischen der Hardware und dem Benutzer stellt somit der Kernel dar.
+Im Normalfall hat der Nutzer aus dem Userspace keinen direkten Zugriff auf die Kernelfunktionen und die Hardware. Nur über Systemaufrufe, auch Syscalls, hat ein Programm im Userspace die Möglichkeit, Änderungen an der Hardware zu kommunizieren beziehungsweise bestimmte Funktionen im Kernel zu nutzen. \citep[S. 124]{plotner2012linux} 
+Der Kernel stellt somit die Brücke zwischen der Hardware und dem Benutzer dar.
 
 
 \section{\acl{ioctl}}\label{sec:ioctl_t}
-Um ein zuverlässig arbeitendes Betriebssystem zu haben, muss der Speicherbereich von Kernel und der vom Userspace getrennt sein. \citep[S. 233]{schroder2009embedded} %überprüft am 3.12.
+Um ein zuverlässig arbeitendes Betriebssystem zu gewährleisten, müssen die Speicherbereiche des Kernel und des Userspace voneinander getrennt sein. \citep[S. 233]{schroder2009embedded} %überprüft am 3.12.
 
-Damit entsteht die Notwenigkeit zwischen Userspace und Kernel aktiv Daten auszutauschen. Die Anwendungen im Userspace können über das sogenannte Systemcall Interface auf die Funktionen im Kernel zugreifen. In einer Struktur vom Typ \textit{file\_operations} wird die Schnittstelle zu einem Treiber vorgegeben. In dieser Struktur werden treiberabhängige Funktionszeiger gespeichert. \citep[S. 249]{schroder2009embedded} %überprüft am 3.12.
+Damit entsteht die Notwenigkeit, zwischen Userspace und Kernel aktiv Daten auszutauschen. Die Anwendungen im Userspace können über das sogenannte Systemcall Interface auf die Funktionen im Kernel zugreifen. In einer Struktur vom Typ \textit{file\_operations} wird die Schnittstelle zu einem Treiber vorgegeben. In dieser Struktur werden treiberabhängige Funktionszeiger gespeichert. \citep[S. 249]{schroder2009embedded} %überprüft am 3.12.
 
-Im folgenden soll lediglich der Zeiger auf das \acf{ioctl} betrachtet werden, da dieser im weiteren Teil der Arbeit eine wichtige Rolle spielt.
+Im Folgenden soll lediglich der Zeiger auf das \acf{ioctl} betrachtet werden, da dieser im weiteren Teil der Arbeit eine wichtige Rolle spielt.
 Durch die \ac{ioctl} Methode wird dem Programmierer ein flexibles Werkzeug zur Verfügung gestellt. 
 
 
@@ -30,13 +30,13 @@ int (*ioctl) (struct inode *node, struct file *instanz, unsigned int cmd, unsign
 \captionof{code}{Funktionsdeklaration des \ac{ioctl} in der file\_operations Struktur \citep[S. 249f.]{schroder2009embedded}} %überprüft am 3.12.
 \end{lstfloat}
 
-Über die \textit{node} wird der \gls{dateideskriptor} und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird als Zeiger auf eine Dateistruktur, welche kopiert werden soll angegeben. \citep[S. 249f.]{schroder2009embedded} %überprüft am 3.12.
+Über den \textit{node} wird der \gls{dateideskriptor} und über \textit{instanz} ein Zeiger auf die Treiberinstanz an den Funktionszeiger übergeben. Das Kommando wird durch eine Nummer widergespiegelt und ist in der Funktionsdeklaration als \textit{cmd} zu finden. Das optionale Argument \textit{arg} wird als Zeiger auf eine Dateistruktur, welche kopiert werden soll, angegeben. \citep[S. 249f.]{schroder2009embedded} %überprüft am 3.12.
 
 
-Mit den Übergabeparametern und dem Dateideskriptor wird die Funktion dann in Anwendungen im Userspace aufgerufen, im Kernel werden die Daten weiterverarbeitet und wieder zurück gegeben.
+Mit den Übergabeparametern und dem Dateideskriptor wird die Funktion dann in Anwendungen im Userspace aufgerufen, im Kernel werden die Daten weiterverarbeitet und wieder zurückgegeben.
 
 \section{Datenaustausch zwischen Kernel und Userspace}
-Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Userspaces, wie im vorausgegangen Kapitel erläutert, wird der Datenaustausch zwischen den beiden Ebenen natürlich schwieriger. Durch \textit{copy\_from\_user} beziehungsweise \textit{copy\_to\_user} stehen im Linuxkernel zwei Funktionen als hilfreiche Werkzeuge für diesen Austausch zu Verfügung. %todo quelle!
+Durch die Notwendigkeit von getrennten Speicherbereichen des Kernels und des Userspaces, wie im vorausgegangen Kapitel erläutert, wird der Datenaustausch zwischen den beiden Ebenen natürlich schwieriger. Durch \textit{copy\_from\_user} beziehungsweise \textit{copy\_to\_user} stehen im Linux-Kernel zwei Funktionen als hilfreiche Werkzeuge für diesen Austausch zu Verfügung. %todo quelle!
 
 
 \begin{lstfloat}
@@ -48,7 +48,7 @@ unsigned long copy_to_user(void *to, const void *from, unsigned long num);
 \end{lstfloat}
 
 Die Hauptaufgabe beider Funktionen ist das Kopieren von Daten, aber zusätzlich werden die übergebenen Speicherbereiche auf Gültigkeit überprüft. 
-In der \textit{copy\_from\_user} (siehe Codeausschnitt~\ref{code:code}) werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
+In \textit{copy\_from\_user} (siehe Codeausschnitt~\ref{code:code}) werden die Daten ab \textit{from} aus dem Userspace mit der Größe von \textit{num} Bytes an die Stelle \textit{to} in den Kernel kopiert.
 Analog arbeitet das Gegenstück \textit{copy\_to\_user}. Hier gibt \textit{from} allerdings die Speicherstelle im Kernel an und somit ist \textit{to} die Stelle im Userspace.
 Im Erfolgsfall geben beide Funktionen 0 zurück, andernfalls wird die Anzahl der nicht kopierten Bytes zurückgegeben. \citep[S. 250f.]{schroder2009embedded}%überprüft am 3.12.
 
@@ -89,9 +89,9 @@ In dieser Arbeit werden lediglich die \textit{probe} und \textit{remove} Funktio
 Beim Anlegen der Instanz kann ein Zeiger auf eine Struktur übergeben werden, in welchem Daten gespeichert sind. In der \textit{probe} Funktion sind somit spezielle Daten für ein entsprechendes Gerät vorhanden. \cite{corbetplatform} %überprüft am 3.12.
 
 \section{\acl{mfd}}\label{sec:mfd_t}
-Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, benötigt man die Möglichkeit es als \ac{mfd} anzulegen. \cite{bellonimfd} %überprüft am 3.12.\\ 
+Normalerweise wird lediglich ein Gerät angelegt, ohne weitere Unterteilungen vorzunehmen. Es ist allerdings möglich, dass ein Hardwareblock mehr als eine Funktionalität hat. Damit das gleiche Gerät in mehreren Untersystemen registriert werden kann, muss die Möglichkeit bestehen, es als \ac{mfd} anzulegen. \cite{bellonimfd} %überprüft am 3.12.\\ 
 
-Auf der Abbildung~\ref{fig:mfd} sieht man die Beziehung zwischen dem Elterngerät (links) und den Kindergeräten (rechts), die jeweils verschiedene Funktionalitäten haben können.
+Auf der Abbildung~\ref{fig:mfd} sieht man die Beziehung zwischen dem Elterngerät (links) und den untergeordneten Geräten (rechts), die jeweils verschiedene Funktionalitäten haben können.
 
 \begin{figure}[!hbtp]
 	\centering
@@ -120,8 +120,8 @@ struct resource {
 
 Als erste Struktur wird die \textit{resource} näher betrachtet. Hier werden Parameter für einen Speicherbereich abgelegt, damit auf diesen zugegriffen werden kann. 
 Die beiden Parameter sind \textit{start} und \textit{end}. Die beiden Werte legen die Größe und den Ort des Speicherbereichs fest. 
-In \textit{name} wird der Name der Datenquelle gespeichert und in der Variable \textit{flags} werden über Defines unter anderem der Datentyp und weitere optionale Einstellungen festgelegt.
-In dem letzten drei Parametern können abhängige Ressources entsprechend ihrem Grad gespeichert werden. \\
+In \textit{name} wird der Name der Datenquelle gespeichert und in der Variable \textit{flags} werden über Definitionen unter anderem der Datentyp und weitere optionale Einstellungen festgelegt.
+In den letzten drei Parametern können abhängige Ressources entsprechend ihrem Grad gespeichert werden. \\
 
 %todo id klären
 \begin{lstfloat}
@@ -157,6 +157,7 @@ Die zweite Struktur wird benötigt um einem \ac{mfd} wichtige Parameter zum Anle
 In der Variable \textit{name} wird der Name des Treibers gespeichert. Durch die \textit{id} bekommt jede Plattformtreiberinstanz beim Allokieren eine spezifische Nummer.
 Der \textit{void} Zeiger \textit{platform\_data} ist ein benutzerdefinierter Datenzeiger, welcher an das untergeordnete Gerät weitergereicht wird. Da der Typ variieren kann, wird in \textit{pdata\_size} die zugehörige Datengröße übergeben. 
 In der Variable \textit{of\_compatible} wird eine sortierte Liste von strings gespeichert. Beginnend mit dem exakten Namen des Geräts folgt dann eine optionale Liste mit weiteren kompatiblen Geräten. \cite[Zeile 116ff.]{linuxsourcedocu} %überprüft am 3.12. 
+
 Der Zeiger \textit{resources} speichert die zugehörige Ressource ab, bzw. ein Zeiger auf ein Array von Ressourcen. Die Anzahl der abgespeicherten Ressourcen wird in \textit{num\_resources} abgelegt.\\
 
 \begin{lstfloat}
@@ -167,9 +168,9 @@ extern int devm_mfd_add_devices(struct device *dev, int id, const struct mfd_cel
 \end{lstfloat}
 
 Beim Anlegen eines Untergeräts über \textit{devm\_mfd\_add\_devices} werden mehrere Parameter benötigt. 
-Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}, wie oben erwähnt wird diese benötigt um das anzulegende Gerät näher zu beschreiben.
-Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden Kindergeräte angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. 
-Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im folgenden nicht benötigt werden. \cite[Zeile 359ff.]{linuxsourcedriver} %überprüft am 3.12.
+Als Erstes wird ein Zeiger auf das übergeordnete Gerät übergeben. Der zweite Übergabeparameter ist die Struktur \textit{mfd\_cell}, wie oben erwähnt, wird diese benötigt, um das anzulegende Gerät näher zu beschreiben.
+Durch den Integer \textit{n\_devs} wird die Anzahl der zu registrierenden untergeordneten Geräte angegeben. Dies ist notwendig, da der Parameter \textit{cells} auch ein Array beinhalten kann. 
+Die anderen Übergabeparameter werden nicht näher betrachtet, da sie im Folgenden nicht benötigt werden. \cite[Zeile 359ff.]{linuxsourcedriver} %überprüft am 3.12.
 
 
 In der Funktion ist zusätzlich implementiert, dass beim Entfernen des übergeordneten Gerät alle Untergeräte automatisch aufgelöst werden. \cite[Zeile 356f.]{linuxsourcedriver}%überprüft am 3.12.

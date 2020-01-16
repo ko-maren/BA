@@ -21,7 +21,7 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.1}{\ignorespaces Struktur des Treibers\relax }}{15}{code.3.1}
+\contentsline {code}{\numberline {3.1}{\ignorespaces Struktur des \ac {fra}-Treibers\relax }}{15}{code.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {code}{\numberline {3.2}{\ignorespaces Auszug aus der Struktur einer Instanz\relax }}{17}{code.3.2}
 \defcounter {refsection}{0}\relax 
@@ -37,7 +37,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {code}{\numberline {3.8}{\ignorespaces Funktion zum Setzen eines Registers\relax }}{25}{code.3.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {code}{\numberline {3.9}{\ignorespaces Funktion im Kernelbackend zum Setzen eines Registers\relax }}{26}{code.3.9}
+\contentsline {code}{\numberline {3.9}{\ignorespaces Funktion im Kernel-Backend zum Setzen eines Registers\relax }}{26}{code.3.9}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

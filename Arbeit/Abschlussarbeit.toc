@@ -16,7 +16,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2.3}Implementierung}{3}{subsection.1.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2.4}Problematiken}{4}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.4}Problematiken}{3}{subsection.1.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.3}Konzept}{4}{section.1.3}
 \defcounter {refsection}{0}\relax 
@@ -48,11 +48,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.5}Implementierung im Userspace}{21}{section.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.1}\acs {fra} Bibliothek}{22}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.1}\acs {fra}-Bibliothek}{22}{subsection.3.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.2}\acs {fra} Middleware}{23}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.2}\acs {fra}-Middleware}{23}{subsection.3.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.3}\acs {fra} Kernelbackend}{26}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.3}\acs {fra}-Kernel-Backend}{26}{subsection.3.5.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.6}Einbindung ins \acl {geo}}{26}{section.3.6}
 \defcounter {refsection}{0}\relax 
