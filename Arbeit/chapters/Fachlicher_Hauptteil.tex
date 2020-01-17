@@ -48,7 +48,7 @@ Für die grundlegende  Funktionsweise eines Treibers werden die folgenden Funkti
 
 
 \paragraph*{\textit{afm\_init\_driver()}}
-Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz allokiert. 
+Beim Laden des Treibers werden verschiedene allgemeingültige Parameter gesetzt und zusätzlich Speicherplatz alloziert. 
 
 
 \begin{lstfloat}
@@ -78,7 +78,7 @@ Am Ende der initialen Funktion wird der Plattformtreiber mit der \textit{platfro
 
 
 \paragraph*{\textit{afm\_exit\_driver()}}
-Analog werden beim Beenden des Treibers der allokierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstelle Klasse wird aufgelöst.
+Analog werden beim Beenden des Treibers der allozierte Speicherplatz freigegeben, der Plattformtreiber abgemeldet und die erstelle Klasse wird aufgelöst.
 
 
 \paragraph*{\textit{afm\_probe()}}
@@ -202,7 +202,7 @@ struct arri_fra_mod_init
 Über ein \ac{ioctl}, mit der obigen Struktur als Übergabeparameter wird das Gerät angelegt. 
 
 
-Als Erstes wird hier Speicherplatz für die drei Strukturen \textit{resource}, \textit{mfd\_cell} und \textit{arri\_fra\_mod\_config} allokiert. Mithilfe dieser Strukturen wird am Ende der Funktion das Gerät angelegt.
+Als Erstes wird hier Speicherplatz für die drei Strukturen \textit{resource}, \textit{mfd\_cell} und \textit{arri\_fra\_mod\_config} alloziert. Mithilfe dieser Strukturen wird am Ende der Funktion das Gerät angelegt.
 
 
 In der \textit{resource} Struktur (siehe Codeausschnitt~\ref{code:res}) wird der Speicherbereich des \ac{fpga}-Moduls abgebildet. Für die Variable \textit{start} wird auf den bereits gemappten Registerbereich im \ac{fpga} noch der im \textit{arri\_fra\_mod\_init} übergebene \textit{offset} aufaddiert. Die Variable \textit{end} wird aus dem Startwert (\textit{start}) und der Größe des Speicherbereichs (\textit{size}) bestimmt. Durch den Parameter \textit{flags} wird die Ressource als Speicherbereich festgelegt und als \textit{parent} wird die Ressource des gesamten \ac{fpga} angegeben.
@@ -245,7 +245,7 @@ Wenn die maximale Anzahl erreicht ist, wird eine Fehlermeldung ausgegeben und ei
 Die Variable \textit{dev} wird auf das geöffnete Gerät gesetzt, analog wird \textit{minor} auf die verwendete Minornummer und \textit{file} auf die in der \textit{open} Methode übergebene Datei gesetzt. 
 Die anderen Parameter beschreiben den Prozess, der das Gerät öffnet. Sie werden durch ein \ac{ioctl} entsprechend beschrieben.\\
 
-Analog wird beim Schließen eines Geräts in der \textit{release} Funktion die Inhalte aus \textit{file} und \textit{dev} auf \textit{NULL} gesetzt. Dadurch ist keine Zuordnung mehr möglich und durch das Freigeben der Variable \textit{in\_use} kann beim nächsten Öffnen der Eintrag im Array wiederverwendet werden.
+Analog wird beim Schließen eines Geräts in der \textit{release} Funktion die Inhalte aus \textit{file} und \textit{dev} auf \textit{NULL} gesetzt. Dadurch ist keine Zuordnung mehr möglich und durch das Zurücksetzen der Variable \textit{in\_use} kann beim nächsten Öffnen der Eintrag im Array wiederverwendet werden.
 
 
 \section{Implementierung im Userspace}\label{sec:user}
@@ -254,7 +254,7 @@ Analog wird beim Schließen eines Geräts in der \textit{release} Funktion die I
 %testprogramm
 %xbar
 %überlegungen zum testen, backend entscheidung
-Der Zugriff auf die \ac{fra}-Module im Userspace ist in drei Ebenen gekapselt. In diesem Kapitel wird auf die Bibliothek, die \gls{middleware} und das Backend eingegangen und somit ein Überblick über alle drei Ebenen gegeben.
+Der Zugriff auf die \ac{fra}-Module im Userspace ist in drei Ebenen gekapselt (siehe Abbildung~\ref{fig:overview}). In diesem Kapitel wird auf die Bibliothek, die \gls{middleware} und das Backend eingegangen und somit ein Überblick über alle drei Ebenen gegeben.
 
 
 Die untere Stufe besteht aus verschiedenen backendspezifischen Funktionen. Im Folgenden wird nur auf das Kernel-Backend eingegangen, das Test-Backend wird im Kapitel~\ref{sec:test} erläutert. Im Kernel-Backend werden mit den übergebenen Parametern die \ac{ioctl}s (siehe Kapitel~\ref{sec:ioctl}) abgesetzt und somit im Kernel die Hardware gelesen oder beschrieben.
@@ -293,7 +293,7 @@ int32_t fra_xbar(struct fra_handle const *handle, const uint32_t transid, const 
 
 Für die \ac{xbar} sind fünf spezifische Funktionen implementiert. In diesen Funktionen werden die Einstellungen gesetzt, die aktuellen Registerwerte protokolliert, auf aktuelle Fehlercodes überprüft und der aktuelle Status zurückgegeben. Da in allen Funktionen hauptsächlich auf die \ac{fra}-\gls{middleware} zugegriffen wird und abgesehen von diesem Zugriff nur die Daten aufbereitet werden, wird nur die \textit{fra\_xbar} Funktion exemplarisch betrachtet.\\
 
-In der Funktion im Codeausschnitt~\ref{code:fra_xbar} werden die Ein- und Ausgänge einer \ac{xbar} entsprechend dem übergebenen \textit{setting} verbunden.
+In der Funktion \textit{fra\_xbar} (siehe Codeausschnitt~\ref{code:fra_xbar}) werden die Ein- und Ausgänge einer \ac{xbar} entsprechend dem übergebenen \textit{setting} verbunden.
 Durch das Makro \textit{FRA\_CHECK\_HANDLE\_TYPE} wird vorher überprüft, ob das Gerät im \textit{handle} eine \ac{xbar} ist. Wenn dies nicht der Fall ist, wird ein entsprechender Fehlercode zurückgegeben und die Funktion ist beendet. Diese Überprüfung wird auch für die restlichen Funktionen in der \ac{fra}-Bibliothek durchgeführt.
 Ist der Modultyp korrekt, werden die Übergabeparameter für \textit{fra\_set\_reg} befüllt und die Funktion aufgerufen. Mit dem Zurückgeben des Rückgabewerts der \gls{middleware}-Funktion ist die Funktion beendet.\\
 
@@ -324,11 +324,11 @@ struct fra_handle
 
 Der erste und wichtigste Parameter in der Struktur ist der \gls{dateideskriptor} \textit{dev}. Hierüber kann nach dem Öffnen des Geräts auf dieses zugegriffen werden. Die restlichen Parameter werden beim Initialisieren des Geräts gesetzt. \textit{dev\_type} und \textit{dev\_name} geben den Modultyp und den Namen an. Diese werden beim Anlegen der Geräte über den \ac{fpga}-Treiber als Geräteeigenschaften abgespeichert und über ein \ac{ioctl} hier ausgelesen.
 %todo gibt es ersetzen?
-Für spätere Überprüfungen gibt es für jeden Modultyp noch eine ID, dieses wird in der Variablen \textit{type\_id} abgelegt. In der \textit{fra\_backend\_funcs} Struktur sind Prototypen aller backendspezifischen Funktionen abgelegt. \\
+Für spätere Überprüfungen gibt es für jeden Modultyp noch eine ID, diese wird in der Variablen \textit{type\_id} abgelegt. In der \textit{fra\_backend\_funcs} Struktur sind Prototypen aller backendspezifischen Funktionen abgelegt. \\
 
 Das Öffnen eines Geräts ist über die \textit{fra\_init} Funktion möglich. Da neben dem Öffnen auch eine Anmeldung der Anwendung bei dem Gerät stattfinden muss (siehe Kapitel~\ref{sec:ioctl}), wird dies über einen einheitlichen Funktionsaufruf abgedeckt. 
 
-In der initialen Funktion \textit{fra\_init} werden verschiedene Einstellungen vorgenommen und Funktionen aufgerufen. Zum Einen wird der Funktion ein Backendtyp übergeben und anhand von diesem die Funktionsstruktur im \textit{fra\_handle} gesetzt.
+In der initialen Funktion \textit{fra\_init} werden verschiedene Einstellungen vorgenommen und Funktionen aufgerufen (siehe Abbildung~\ref{fig:sequkern}). Zum Einen wird der Funktion ein Backendtyp übergeben und anhand von diesem die Funktionsstruktur im \textit{fra\_handle} gesetzt.
 Zum Anderen muss neben dem Öffnen des Geräts auch eine Anmeldung vom Prozess stattfinden (siehe Kapitel~\ref{sec:ioctl}). Hierzu werden jeweils die entsprechenden Wrapper-Funktionen aufgerufen, um die Funktionalität bei allen Backend-Typen zu garantieren. Zum Bestimmen von \textit{dev\_type} und \textit{dev\_name} werden auch über eine Wrapper-Funktion die Parameter vom Gerät abgerufen und entsprechend im \textit{fra\_handle} gesetzt. Mithilfe einer Liste, in welcher Name, ID und Größe der einzelnen Module hinterlegt sind, wird die Variable \textit{type\_id} gesetzt. Hierfür wird \textit{dev\_type} mit den Namen der Liste verglichen und bei einem Treffer die entsprechende ID abgespeichert.\\
 
 
